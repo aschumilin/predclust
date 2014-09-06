@@ -1,0 +1,140 @@
+//===========================================================
+// JDOM, XPath: minimal example:
+//===========================================================
+
+		
+		String srlXMLString = "<root><a>hi</a><b>world</b></root>";
+		
+		// tools:
+		SAXBuilder builder = new SAXBuilder();
+		XPathFactory xFactory = XPathFactory.instance();  
+		
+		// parse XML from file or String
+		Document doc = null;
+		try {
+			doc= (Document) builder.build(new StringReader(srlXMLString));} catch (JDOMException e) {e.printStackTrace();} catch (IOException e) {e.printStackTrace();
+		}
+
+
+		// define xpath pattern and evaluate it on the jdom-document:
+		XPathExpression<Element> expr = xFactory.compile("//b", Filters.element());
+		List<Element> results = expr.evaluate(doc);
+		
+		System.out.println(results.get(0).getText());
+		
+		
+//===========================================================
+// JDOM: Add new Child to all Topic-Elements. 
+// doc is altered permanently!
+//===========================================================
+	Document doc = (Document) new SAXBuilder().build(new StringReader(xmlString));
+	List<Element> elements =  doc.getRootElement().getChild("Topics").getChildren("Topic");
+		for(Element el : annots){
+			
+			Element newEl = new Element("new_tag");
+			newEl.setText("content");
+			newEl.setAttribute("atrib", "val");
+			
+			el.addContent(newEl);
+		}	
+		
+		System.out.println(new XMLOutputter(Format.getPrettyFormat()).outputString(doc));		
+
+//===========================================================
+// MongoDB: get result set with custom field selection
+// 			limit result set to 1 doc if searched by id
+//===========================================================
+
+	BasicDBObject query = new BasicDBObject();			// empty query = all items in DB
+	BasicDBObject keys = new BasicDBObject("_id", 1);	// only the id field
+//	or:
+	keys = new BasicDBObject("fieldX",1).add("fieldY", 1);
+	
+	DBCursor results = collection.find(query, keys); 
+	
+
+	
+	// for faster processing
+	BasicDBObject query2 = new BasicDBObject("_id", docKey);
+	DBCursor resultSingle = targetColl.find(query2).limit(1);
+	
+//===========================================================
+// MongoDB query and insert
+//===========================================================	
+// doc for insert zB:
+//			{"name" : "MongoDB",
+//				   "type" : "database",
+//				   "count" : 1,
+//				   "info" : {
+//				               x : 203,
+//				               y : 102
+//				             }
+//			}
+			BasicDBObject doc = new BasicDBObject("name", "MongoDB")
+	        .append("type", "database")
+	        .append("count", 1)
+	        .append("info", new BasicDBObject("x", 203).append("y", 102));
+
+			// 6 find first document
+			DBObject found = coll.findOne();
+			System.out.println(found);
+
+			// 7 adding multiple docs {"i", 1} {"i", 2}, ...
+			for (int i=0; i < 100; i++) {
+			    coll.insert(new BasicDBObject("i", i));
+			}
+
+			// 8 get all docs and iterate over them
+			DBCursor cursor = coll.find();
+			try {
+			   while(cursor.hasNext()) {
+			       System.out.println(cursor.next());
+			   }
+			} finally {cursor.close();}
+
+			// 9 get one single doc by query
+			BasicDBObject query = new BasicDBObject("i", 71);
+			cursor = coll.find(query);
+			try {
+			   while(cursor.hasNext()) {
+			       System.out.println(cursor.next());
+			   }
+			} finally {cursor.close();}
+			
+//===========================================================
+// Add dependencies to java path and execute main class
+//===========================================================
+java -cp "lib/*:path-to-my.jar" my.main.Class "arg0"
+my.main.Class is packaged in some jar contained in path
+separate cp sources with :(unix?) or ;(win?)
+
+//===========================================================
+// 
+//===========================================================
+
+
+//===========================================================
+// 
+//===========================================================
+
+
+//===========================================================
+// 
+//===========================================================
+
+
+//===========================================================
+// 
+//===========================================================
+
+//===========================================================
+// 
+//===========================================================
+
+
+//===========================================================
+// 
+//===========================================================
+
+
+		 

@@ -1,0 +1,21 @@
+#!/bin/python
+import pymongo
+from pymongo import MongoClient
+
+
+dbHost = "localhost"
+dbPort = 22222
+dbName = "all"
+
+db = MongoClient(dbHost, dbPort)[dbName]
+db.authenticate("atsc", "123")
+
+docs = db["docs"]
+
+file = open("/dev/shm/artem/docIDs.txt", "w")
+
+for doc in docs.find():
+	file.write(doc.get("_id"))
+	file.write("\n")
+	
+file.close()

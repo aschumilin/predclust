@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# execute the algo implemented in algo.Test.runAlgo() 
+# on the data files listed in the filescollector (dir or file paths)
+
+
+logfile=mongodumper.log 
+algo=algo.MongoDumper
+maxNumThreads=15
+filescollector=files
+#mode = files OR nofiles
+mode=files
+
+
+# needed for mongoDB access
+
+addr=localhost
+port=22222
+user=atsc
+pwd=123
+dbName=all
+
+java -Dfile.encoding=UTF-8 \
+	-Dmongo.addr=$addr -Dmongo.port=$port \
+	-Dmongo.user=$user -Dmongo.pwd=$pwd \
+	-Dmongo.db.name=$dbName \
+	-Dlogfile=$logfile \
+	-Xmx100000M \
+	#-Dsrl.endpoint.ip=123.123.123.123 \
+	-jar par.jar $algo $maxNumThreads (files/nofiles) $filescollector
+	
+	
+java -Dfile.encoding=UTF-8 \
+-Dmongo.addr=localhost \
+-Dmongo.port=22222 \
+-Dmongo.user=atsc \
+-Dmongo.pwd=123 \
+-Dmongo.db.name=all \
+-Dlogfile=en-wikinews-stats.log \
+-jar par.jar algo.SrlToXml 4 nofiles artem/srlTestDoc

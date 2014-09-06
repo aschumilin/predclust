@@ -1,0 +1,54 @@
+#!/bin/bash
+
+mongopath=/home/pilatus/WORK/pred-clust/mongoDB/mongodb-linux-2.6.1/bin
+export PATH=$mongopath:$PATH
+
+logfile=/home/pilatus/WORK/pred-clust/wiki-worker/mongo.log
+port=22222
+dbpath=/dev/shm/mongo
+
+
+mongod --verbose \
+	--logpath $logfile \
+	--port $port \
+	--auth \
+	--dbpath $dbpath \
+	--directoryperdb 
+#	--smallfiles
+
+mongopath=/home/pilatus/WORK/pred-clust/mongoDB/mongodb-linux-2.6.1/bin
+export PATH=$mongopath:$PATH
+mongod --port 22222 --dbpath /home/pilatus/WORK/pred-clust/data/mongo --auth --directoryperdb
+mongod --port 22222 --dbpath /dev/shm/artem/mongo --auth --directoryperdb
+
+db.createUser({user: "atsc", pwd: "123", roles: [{ role: "readWrite", db:"all"}]})
+
+mongo --port 22222 -u atsc -p 123
+mongo -u user -p pass localhost:22221/dbName
+
+use admin
+adm/123
+use all
+atsc/1234
+tester/123
+
+
+script.js:
+use all
+db.auth({user:"atsc", pwd:"123"})
+cursor = db.docs.find();
+while(cursor.hasNext()){
+    printjson(cursor.next());
+}
+
+then run the script and redirect output to a file:
+cd /local/users/atsc/mongoDB/mongodb-linux-2.6.1/bin
+./mongo --port 22222 --quiet readAll.js > docUrls.txt
+
+
+create admin user:
+db.createUser({user:"admin", pwd:"123", roles:[{role:"userAdminAnyDatabase", db:"admin"}]})
+create reader and writer:
+db.createUser({user: "writer", pwd: "1234", roles: [{ role: "readWrite", db:"srl"}]})
+db.createUser({user: "reader", pwd: "12345", roles: [{ role: "read", db:"srl"}]})
+	
