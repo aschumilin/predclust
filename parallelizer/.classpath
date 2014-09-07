@@ -2,35 +2,92 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/mongo-java-driver-2.12.2.jar">
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/mongo-java-driver-2.12.2.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/parallelizer/lib/mongo-java-driver-javadoc-2.12.2.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jdom-2.0.5.jar">
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jdom-2.0.5.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/parallelizer/lib/jdom-2.0.5-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jdom-2.0.5/lib/jaxen-1.1.6.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/collections-generic-4.01.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/colt-1.2.0.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/concurrent-1.3.4.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/j3d-core-1.3.1.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/jung-3d-2.0.1.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/jung-3d-demos-2.0.1.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/jung-algorithms-2.0.1.jar" sourcepath="lib/jung2-2_0_1/jung2-2_0_1-sources/jung-algorithms-2.0.1-sources.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/jung-api-2.0.1.jar" sourcepath="lib/jung2-2_0_1/jung2-2_0_1-sources/jung-api-2.0.1-sources.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/jung-graph-impl-2.0.1.jar" sourcepath="lib/jung2-2_0_1/jung2-2_0_1-sources/jung-graph-impl-2.0.1-sources.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/jung-io-2.0.1.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/jung-jai-2.0.1.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/jung-jai-samples-2.0.1.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/jung-samples-2.0.1.jar" sourcepath="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/jung2-2_0_1-sources/jung-samples-2.0.1-sources.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/jung-visualization-2.0.1.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/stax-api-1.0.1.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/vecmath-1.3.1.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/jung2-2_0_1/wstx-asl-3.2.6.jar"/>
-	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/wiki-worker/parallelizer/lib/gwifi4.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jdom-2.0.5/lib/jaxen-1.1.6.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/collections-generic-4.01.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/colt-1.2.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/concurrent-1.3.4.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/j3d-core-1.3.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/jung-3d-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/jung-3d-demos-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/jung-algorithms-2.0.1.jar" sourcepath="lib/jung2-2_0_1/jung2-2_0_1-sources/jung-algorithms-2.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/jung-api-2.0.1.jar" sourcepath="lib/jung2-2_0_1/jung2-2_0_1-sources/jung-api-2.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/jung-graph-impl-2.0.1.jar" sourcepath="lib/jung2-2_0_1/jung2-2_0_1-sources/jung-graph-impl-2.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/jung-io-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/jung-jai-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/jung-jai-samples-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/jung-samples-2.0.1.jar" sourcepath="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/jung2-2_0_1-sources/jung-samples-2.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/jung-visualization-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/vecmath-1.3.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/jung2-2_0_1/wstx-asl-3.2.6.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/ant-1.8.2.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/ant-launcher-1.8.2.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/bliki-core-3.0.19.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/collections-generic-4.01.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/colt-1.2.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/commons-cli-1.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/commons-codec-1.2.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/commons-compress-1.4.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/commons-httpclient-3.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/concurrent-1.3.4.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/ejml-0.23.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/gwifi-1.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/hadoop-core-0.20.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/jaxb-api-2.2.7.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/je-4.0.92.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/jms-1.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/jmxri-1.2.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/jmxtools-1.2.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/joda-time-2.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/jollyday-0.4.7.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/jopt-simple-4.6.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/jung-algorithms-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/jung-api-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/jung-graph-impl-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/junit-4.8.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/jwnl-1.3.3.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/lucene-analyzers-common-4.8.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/lucene-core-4.8.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/lucene-queries-4.8.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/lucene-queryparser-4.8.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/lucene-sandbox-4.8.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/mail-1.4.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/opennlp-maxent-3.0.3.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/opennlp-tools-1.5.3.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/org.apache.commons.io-2.4.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/org.apache.commons.lang-2.6.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/org.apache.xerces-2.9.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/spring-aop-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/spring-asm-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/spring-beans-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/spring-context-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/spring-core-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/spring-expression-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/spring-web-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/stanford-corenlp-3.3.1.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/trove4j-3.0.3.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/xalan-2.7.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/xercesImpl-2.8.0.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/xml-apis-1.3.03.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/xom-1.2.10.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gwifi/xz-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

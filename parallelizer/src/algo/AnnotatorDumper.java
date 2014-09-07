@@ -25,7 +25,7 @@ import org.jdom2.output.XMLOutputter;
 import parallelizer.Coordinator;
 import parallelizer.Parallelizable;
 import parallelizer.Worker;
-import annotator.xLimeAnnotationService;
+import annotator.Annotator;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -65,7 +65,7 @@ public class AnnotatorDumper extends Parallelizable {
 	// sync access to these 3 variables:
 	private static Map<String, String[][]> annotMap = new TreeMap<String, String[][]>();
 	private static BufferedWriter failedDocFileWriter = null;
-	private static xLimeAnnotationService annotator = null;
+	private static Annotator annotator = null;
 	
 	
 	
@@ -359,7 +359,7 @@ public class AnnotatorDumper extends Parallelizable {
 		if (annotator==null){
 			L.info("initialising annotator service");
 			
-			annotator = new xLimeAnnotationService("configs/hub-template.xml",
+			annotator = new Annotator("configs/hub-template.xml",
 					"configs/wikipedia-template-"+ annotatorLang +".xml", annotatorLang, "en", "dbpedia");
 
 			L.info("annotator service ready");

@@ -109,9 +109,10 @@ my.main.Class is packaged in some jar contained in path
 separate cp sources with :(unix?) or ;(win?)
 
 //===========================================================
-// 
+// MongoDB Python: on allfields(multi=true)update just
+//  one field, the rest  is same:
 //===========================================================
-
+	db.docs.update({lang:"UNKNOWN"}, {"$set":{lang:"es"}}, {multi:true})
 
 //===========================================================
 // 
