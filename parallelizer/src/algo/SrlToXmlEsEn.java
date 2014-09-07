@@ -15,6 +15,8 @@ import parallelizer.Coordinator;
 import parallelizer.Parallelizable;
 import parallelizer.Worker;
 
+import util.Funcs;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -23,6 +25,10 @@ import com.mongodb.MongoClient;
 
 /**
  * @author aschumilin
+ * 
+ * 
+ * FINALE VERSION DES TEXT->SRLXML TEILSTUECKS
+ * 
  * 
  * push the texts through SRL and store the results in mongoDB collection 
  * 
@@ -41,7 +47,7 @@ import com.mongodb.MongoClient;
 	}
  *
  */
-public class SrlToXml extends Parallelizable {
+public class SrlToXmlEsEn extends Parallelizable {
 
 
 	private static final String ORIGIN_COLLECTION_NAME = 	"docs";
@@ -94,7 +100,7 @@ public class SrlToXml extends Parallelizable {
 
 		String SRL_ENDPOINT = "";
 		///////////////////////////////////////////////
-		// just use the english SRL pipeline
+		// waehle zwischen EN und ES 
 		if(docKey.startsWith("http://en.")){
 			
 			SRL_ENDPOINT = EN_SRL_ENDPOINT;
@@ -124,6 +130,7 @@ public class SrlToXml extends Parallelizable {
 			BasicDBObject query = new BasicDBObject("_id", docKey);
 			
 			// 0. check if doc has not already been processed
+			/*
 			try{
 				DBCursor results = targetColl.find(query).limit(1);
 				
@@ -136,7 +143,7 @@ public class SrlToXml extends Parallelizable {
 			}catch(Exception e){
 				L.error(docKey + "\t exception during target coll lookup");
 			}
-			
+			*/
 			
 			// 1. query the DB for given docId (it is the primary key in the [docs] collection)
 			query = new BasicDBObject("_id", docKey);
@@ -145,7 +152,7 @@ public class SrlToXml extends Parallelizable {
 			try {
 				doc = (BasicDBObject)results.next();
 			}catch(Exception e){
-				L.error(docKey + "\t exception while getting result set", e);
+				L.error("<" +docKey + ">\t exception while getting result set", e);
 				Worker.decrBusyWorkers();
 				return;
 			}finally {
@@ -160,12 +167,16 @@ public class SrlToXml extends Parallelizable {
 			if( doc!=null ){
 				// 2. get docText
 				String textData = MessageFormat.format(DATA_FORMAT, doc.get("docText").toString());
-
+				
+				// 2.1. remove non-xml characters at this point already
+				textData = Funcs.removeInvalidXMLChars(textData);
+				
+				
 				// 3. call SRL service
 				HttpURLConnection connection = null; 
 				try {
 					//Create connection
-					URL url = new URL(EN_SRL_ENDPOINT);
+					URL url = new URL(SRL_ENDPOINT);
 					connection = (HttpURLConnection)url.openConnection();
 					connection.setRequestMethod("POST");
 					connection.setRequestProperty("Content-Type", CONTENT_TYPE);
@@ -185,7 +196,7 @@ public class SrlToXml extends Parallelizable {
 					String line;
 					StringBuffer response = new StringBuffer(); 
 					while((line = rd.readLine()) != null) {
-						response.append(line);
+						response.append(line + "\n");
 					}
 					rd.close();
 
@@ -204,24 +215,24 @@ public class SrlToXml extends Parallelizable {
 						if( ! response.toString().startsWith("<item>")){
 							srlXmlDoc = doc.append("badSrl", "1").append("srlAnnot", response.toString());
 						}else{
-							srlXmlDoc = doc.append("srlAnnot", util.Funcs.removeInvalidXMLChars(response.toString()));		
+							srlXmlDoc = doc.append("badSrl", "0").append("srlAnnot", Funcs.removeInvalidXMLChars(response.toString()));		
 						}
 						
 						targetColl.insert(srlXmlDoc);
 						
 					}catch(Exception e){
-						L.error(docKey + "\t exception while writing to result collection ", e);
+						L.error("<" +docKey + ">\t exception while writing to result collection ", e);
 						Worker.decrBusyWorkers();
 						return;
 					}
 
 				} catch (Exception e) {
-					L.error(docKey + "\t exception during http request handling");
+					L.error("<" +docKey + ">\t exception during http request handling");
 					// !!! wait two minutes for service restart 
 					try {
-						Thread.sleep(120000);
+						Thread.sleep(100000);
 					} catch (InterruptedException e1) {
-						L.error("thread sleep interrupted: " + e.getCause().getClass().getName() + " : " + e.getMessage());
+						L.debug("thread sleep interrupted: " + e.getCause().getClass().getName() + " : " + e.getMessage());
 						e1.printStackTrace();
 					}
 					Worker.decrBusyWorkers();
@@ -233,7 +244,7 @@ public class SrlToXml extends Parallelizable {
 				}
 
 			}else{
-				L.error(docKey + "\t result is null");
+				L.error("<" +docKey + ">\t result is null");
 				Worker.decrBusyWorkers();
 				return;
 			}

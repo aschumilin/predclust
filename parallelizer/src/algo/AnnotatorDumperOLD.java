@@ -33,7 +33,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 
-public class AnnotatorDumper extends Parallelizable {
+public class AnnotatorDumperOLD extends Parallelizable {
 	
 	private static final String ORIGIN_COLLECTION_NAME = 	"srl";
 

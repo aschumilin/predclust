@@ -51,7 +51,7 @@ import edu.kit.aifb.gwifi.util.Position;
 import edu.kit.aifb.gwifi.util.RelatednessCache;
 import edu.kit.aifb.gwifi.util.nlp.Language;
 
-public class Annotator {
+public class AnnotationService {
 
 	private static float DEFAULT_MIN_PROB = 0.01f;
 	private static boolean DEFAULT_TOOLTIPS = true;
@@ -90,10 +90,10 @@ public class Annotator {
 	// first arg : inpur lang
 	// second arg: path to configs directory
 	public static void main(String[] args) throws Exception {
-		System.out.println("main args[]: 1: input lang, 2: path to configs dir");
+//		System.out.println("main args[]: 1: input lang, 2: path to configs dir");
 		String LANG_IN = args[0];
 		String CONF_PATH = args[1];
-		Annotator service = new Annotator(CONF_PATH+"/hub-template.xml",
+		AnnotationService service = new AnnotationService(CONF_PATH+"/hub-template.xml",
 				CONF_PATH+"/wikipedia-template-" + LANG_IN + ".xml", LANG_IN, "en", "dbpedia");
 		Scanner scanner = new Scanner(System.in);
 		while (true) {
@@ -134,7 +134,7 @@ public class Annotator {
 	 * 
 	 * @exception Exception
 	 */
-	public Annotator(String hubconfig, String wikiconfig, String inputLangLabel, String outputLangLabel,
+	public AnnotationService(String hubconfig, String wikiconfig, String inputLangLabel, String outputLangLabel,
 			String kb) throws Exception {
 		inputLang = Language.getLanguage(inputLangLabel);
 		outputLang = Language.getLanguage(outputLangLabel);
