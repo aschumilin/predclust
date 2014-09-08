@@ -1,12 +1,15 @@
 package algo;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.nio.charset.Charset;
 import java.text.MessageFormat;
 
 import org.apache.log4j.Logger;
@@ -48,7 +51,10 @@ import com.mongodb.MongoClient;
  *
  */
 public class SrlToXmlEsEn extends Parallelizable {
-
+/*
+ * invalid utf-8 in text:
+http://en.wikipedia.org/wiki?curid=125903
+ */
 
 	private static final String ORIGIN_COLLECTION_NAME = 	"docs";
 	private static final String TARGET_COLLECTION_NAME = 	"srl";
@@ -141,7 +147,7 @@ public class SrlToXmlEsEn extends Parallelizable {
 					return;
 				}
 			}catch(Exception e){
-				L.error(docKey + "\t exception during target coll lookup");
+				L.error("<" + docKey + ">\t exception during target coll lookup");
 			}
 			*/
 			
@@ -152,7 +158,7 @@ public class SrlToXmlEsEn extends Parallelizable {
 			try {
 				doc = (BasicDBObject)results.next();
 			}catch(Exception e){
-				L.error("<" +docKey + ">\t exception while getting result set", e);
+				//L.error("<" +docKey + ">\t exception while getting result set", e);
 				Worker.decrBusyWorkers();
 				return;
 			}finally {
@@ -166,10 +172,15 @@ public class SrlToXmlEsEn extends Parallelizable {
 			
 			if( doc!=null ){
 				// 2. get docText
-				String textData = MessageFormat.format(DATA_FORMAT, doc.get("docText").toString());
+				String articleText = doc.get("docText").toString();
 				
-				// 2.1. remove non-xml characters at this point already
-				textData = Funcs.removeInvalidXMLChars(textData);
+				// 2.1. remove potentially messy characters
+				////////////////////////////////////////////////////////////
+				articleText = articleText.replace("<",  "").replace(">", "");
+				//////////////////////////////////////////////////////////////
+				
+				String textData = MessageFormat.format(DATA_FORMAT, articleText);
+				
 				
 				
 				// 3. call SRL service
@@ -181,15 +192,27 @@ public class SrlToXmlEsEn extends Parallelizable {
 					connection.setRequestMethod("POST");
 					connection.setRequestProperty("Content-Type", CONTENT_TYPE);
 					connection.setRequestProperty("Content-Length", Integer.toString(textData.getBytes().length));
-					connection.setUseCaches (false);
+					connection.setUseCaches(false);
 					connection.setDoInput(true);
 					connection.setDoOutput(true);
+//					connection.setc
+
 
 					//Send request
-					DataOutputStream wr = new DataOutputStream (connection.getOutputStream());
-					wr.writeBytes (textData);
-					wr.flush ();
-					wr.close ();
+//					DataOutputStream wr = new DataOutputStream (connection.getOutputStream());
+//					wr.writeBytes(textData);
+//					wr.flush ();
+//					wr.close ();
+					DataOutputStream wr = new DataOutputStream (connection.getOutputStream());					
+					BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(wr, CHARSET));
+					writer.write(textData);
+					writer.flush();
+					writer.close();
+					wr.close();					
+				// http://en.wikipedia.org/wiki?curid=163883
+			    // http://en.wikipedia.org/wiki?curid=125903
+			    // http://es.wikipedia.org/wiki?curid=4945504
+					
 					//Get Response	
 					InputStream is = connection.getInputStream();
 					BufferedReader rd = new BufferedReader(new InputStreamReader(is));
@@ -214,6 +237,7 @@ public class SrlToXmlEsEn extends Parallelizable {
 						// check for error message in SRL output
 						if( ! response.toString().startsWith("<item>")){
 							srlXmlDoc = doc.append("badSrl", "1").append("srlAnnot", response.toString());
+							L.error("<" +docKey + ">\t SRL-Fehler: \t "+ response.toString());
 						}else{
 							srlXmlDoc = doc.append("badSrl", "0").append("srlAnnot", Funcs.removeInvalidXMLChars(response.toString()));		
 						}

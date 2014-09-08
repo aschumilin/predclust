@@ -160,26 +160,41 @@ public class Coordinator {
 		Coordinator.start = System.currentTimeMillis();
 		long dataSetSize = dataSet.size();
 		
-		long ticks = 1000;
-		long step = dataSetSize / ticks;
-		long workersStarted = 0;
+		
+
+		
+		
+
+							
+		
+		
+		
+		
+		
+		
+//				long workersStarted = 0;
+//				long totalTasks = dataSet.size();
+//				long interval = totalTasks / 500; // Schrittweite
+
+		
 		while(true){
-//			if(System.currentTimeMillis()%20000==0){
-//				L.info(Worker.getBusyWorkers() + " busy workers " + " / " + dataSet.size() + " files left");
-//			}
-			
 			
 			// check if there are idle workers
 			if (dataSetSize>0){ 
-				// print progress info
-				if(step>0 && workersStarted % step == 0){
-					L.info("PROGRESS: " + Math.round(100.0 * workersStarted / dataSetSize) +  " %");
-				}
+				
 				
 				if(Worker.getBusyWorkers() < maxNumWorkers){
+					// print progress info
+//					try{
+//						if(workersStarted % interval == 0)
+//							L.info("PROGRESS: " + (100.0 * workersStarted / totalTasks) +  " %");
+//
+//					}catch(ArithmeticException ae){
+//
+//					}
 //					int bef = Worker.getBusyWorkers();
 					Thread t = new Thread(new Worker(dataSet.pop(), algoClass, L));
-					workersStarted++;
+//					workersStarted++;
 					dataSetSize--;
 					t.start();
 //					int aft = Worker.getBusyWorkers();
