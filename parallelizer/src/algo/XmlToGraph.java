@@ -1,6 +1,10 @@
 package algo;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.StringReader;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -19,7 +23,7 @@ import org.jdom2.xpath.XPathFactory;
 
 import parallelizer.Parallelizable;
 import parallelizer.Worker;
-import util.GRAPHTESTER;
+import test.GRAPHTESTER;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -60,7 +64,47 @@ public class XmlToGraph extends Parallelizable {
 	private static String 	mongoDBName = System.getProperty("mongo.db.name");
 
 
+public static void main(String[] args) {
+	String id = "http://en.wikipedia.org/wiki?curid=9833554";
+	util.Mongo m = new util.Mongo("romulus", "srl");
+	String srl = m.getById(id).get("srlAnnot").toString();
+	System.out.println(srl);
 
+	
+	
+	try{
+		// don't use buffering
+		OutputStream file = new FileOutputStream("/home/pilatus/Desktop/graph.ser");
+//		OutputStream buffer = new BufferedOutputStream(file);
+		ObjectOutput output = new ObjectOutputStream(file);//buffer);
+		try{
+			ArrayList<DirectedSparseMultigraph<Argument,Role>> graph= composeGraph(srl, true);
+			output.writeObject(graph);
+			System.out.println("finished serializing");
+			System.out.println(graph.size());
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{output.close();}
+	}  
+	catch(IOException ioe){
+		System.out.println("could not serialize annotations map: ");
+	}
+	
+	
+	try {
+		composeGraph(srl, true);
+	} catch (JDOMException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	System.out.println();
+}
 
 	@Override
 	public void runAlgo(String docKey, Logger L) {
