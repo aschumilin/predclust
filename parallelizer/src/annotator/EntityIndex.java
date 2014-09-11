@@ -15,7 +15,7 @@ import org.jdom2.input.SAXBuilder;
 
 public class EntityIndex {
 	
-	Map<Integer, List<String[]>> index = new TreeMap<Integer, List<String[]>>();
+	private Map<Integer, List<String[]>> index = new TreeMap<Integer, List<String[]>>();
 	
 	public EntityIndex(Document annotatorResponse){
 		
@@ -50,34 +50,68 @@ public class EntityIndex {
 	}
 	
 	/**
-	 * @return {URL, mention, weight, from, to} 
+	 * @return 
 	 */
-	public Map<Integer, List<String[]>> getIndex(){
-		return index;
+	
+	/**
+	 * For a given srl node, find the annotation with the highest weight.
+	 * @param from beginning position of the node in the document
+	 * @param to ending position of the node in the document
+	 * @return String[]{URL, mention, weight, from, to} of the best entity found between the indices OR null if no entity annotation found
+	 */
+	public String[] getBestAnnotation(int from, int to){
+		String[] bestEntity = null;
+		
+//		LinkedList<String[]> candidates = new LinkedList<String[]>();
+		double currentWeight = 0;
+		
+		for (int i=from; i <= to; i++){
+			List<String[]> candidates = index.get(i);
+			if (candidates != null){
+				for (String[] cand : candidates){
+					double candidateWeight = Double.parseDouble(cand[2]);
+					if (candidateWeight > currentWeight){
+						bestEntity = cand;
+						currentWeight = candidateWeight;
+					}
+				}
+			}
+			
+		}
+		
+		return bestEntity;
+		
+		
 	}
 	
 	public static void main(String[] args) throws JDOMException, IOException{
 		long anf = System.currentTimeMillis();
-		File srlTestFile = new File("/home/pilatus/Desktop/en-26221135.xml");
+		File srlTestFile = new File("/home/pilatus/Desktop/ann-en-test-text.xml");
 		SAXBuilder builder = new SAXBuilder();
 		Document jdomDoc = (Document) builder.build(srlTestFile);
 		EntityIndex ind = new EntityIndex(jdomDoc);
 		System.out.println(System.currentTimeMillis() - anf);
 		
-		StringBuffer sb = new StringBuffer();
+//		StringBuffer sb = new StringBuffer();
 		for (Integer i : ind.index.keySet()){
-//			System.out.print(i);
-			sb.append(i);
+			System.out.print(i);
+//			sb.append(i);
 			List<String[]> tops = ind.index.get(i);
 			for (String[] top : tops){
-//				System.out.println("\t" + top[0] +"\t" + top[1] + "\t" + top[2] +"\t" +top[3] +"\t" +top[4]);
-				sb.append("\t" + top[0] +"\t" + top[1] + "\t" + top[2] +"\t" +top[3] +"\t" +top[4] + "\n");
+				System.out.println("\t" + top[0] +"\t" + top[1] + "\t" + top[2] +"\t" +top[3] +"\t" +top[4]);
+//				sb.append("\t" + top[0] +"\t" + top[1] + "\t" + top[2] +"\t" +top[3] +"\t" +top[4] + "\n");
 			}
 //			System.out.println();
 		}
-		FileWriter fw = new FileWriter(new File("/home/pilatus/Desktop/bigAnnot.txt"));
-		fw.write(sb.toString());
-		fw.close();
+//		FileWriter fw = new FileWriter(new File("/home/pilatus/Desktop/bigAnnot.txt"));
+//		fw.write(sb.toString());
+//		fw.close();
+		int from = 0;
+		int to = 100;
+		String[] result = ind.getBestAnnotation(from, to);
+		if(result != null){
+			System.out.println(result[0] +  " weight: " + result[2]);
+		}
 	}
 	
 }

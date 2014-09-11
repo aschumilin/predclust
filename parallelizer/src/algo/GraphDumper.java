@@ -21,7 +21,8 @@ import org.jdom2.xpath.XPathFactory;
 import parallelizer.Parallelizable;
 import parallelizer.Worker;
 import test.GRAPHTESTER;
-import annotator.AnnotationService;
+
+import annotator.EntityIndex;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -66,7 +67,7 @@ public class GraphDumper extends Parallelizable {
 	 * @param L
 	 * @return jdom2.Document of detected topics OR null if error
 	 */
-	private Document getAnnotations(String shortDocKey, String annotPath, Logger L){
+	private Document getAnnotationsJdom(String shortDocKey, String annotPath, Logger L){
 		// parse annot file, return as jdom2.Document
 		String annotFileName = annotPath + shortDocKey;
 		File annotFile = new File(annotFileName);
@@ -91,7 +92,7 @@ public class GraphDumper extends Parallelizable {
 	/**
 	 * @param longDocKey
 	 * @param L
-	 * @return rrot Element of srl xml OR null if error
+	 * @return root Element (<item>)of srl xml OR null if error
 	 */
 	private Element getSrl(String longDocKey, Logger L){
 		BasicDBObject query = new BasicDBObject("_id", longDocKey);	
@@ -125,6 +126,7 @@ public class GraphDumper extends Parallelizable {
 	 * @param L
 	 * @return document text OR null if error
 	 */
+	/*
 	private String getText(String longDocKey, Logger L){
 		BasicDBObject query = new BasicDBObject("_id", longDocKey);	
 		DBCursor dbResult = null;
@@ -148,14 +150,15 @@ public class GraphDumper extends Parallelizable {
 		}
 	}
 	
-	
+	*/
 	
 	private String transformKey(String shortKey){
 		// es-2726363 -> http://es.wikipedia.org/wiki?curid=2726363
 		String[] parts = shortKey.split("-");
-		return "http://" + parts[0] + ".wikipedia.org/wiki?curid=" + parts[1];
-		
+		return "http://" + parts[0] + ".wikipedia.org/wiki?curid=" + parts[1];		
 	}
+
+	
 
 	
 	
@@ -172,8 +175,10 @@ public class GraphDumper extends Parallelizable {
 		String longDocKey = transformKey(docKey);
 		
 		// 1. get index of detected topics (entities)
+		EntityIndex entIndex = new EntityIndex(getAnnotationsJdom(docKey, annotDir, L));
 		
 		// 2. get srl xml
+		Element srlRoot = getSrl(longDocKey, L);
 		
 		// 3. iterate over srl nodes, get all node mentions
 		
@@ -182,63 +187,7 @@ public class GraphDumper extends Parallelizable {
 		// 5. make graph, add entity annotations 
 	
 		
-		
-		
-	
-		
-		
-		
-		
-		
-		
 
-// 1. read srl document from DB
-		BasicDBObject query = new BasicDBObject("_id", docKey);	
-		DBCursor dbResult = null;
-		String wikiID = null;
-		String language = null;
-		String docText = null;
-		String annotResult = null;
-		
-		try{
-			 dbResult = collDocs.find(query).limit(1);
-			
-			if(dbResult.size() == 0){
-				Worker.decrBusyWorkers();
-				L.error("doc not found in DB: " + docKey);
-				return;
-			}else{
-				BasicDBObject dbDoc = (BasicDBObject)dbResult.next();
-				language = dbDoc.getString("lang");
-				wikiID = dbDoc.getString("docId");
-				docText = dbDoc.getString("docText");
-			}
-			
-		}catch(Exception e){
-			L.error("<" + docKey + ">\texception during target coll lookup", e);
-			Worker.decrBusyWorkers();
-			return;
-		}
-		
-	
-		
-	
-		
-		 
-
-		
-		
-// dump result to file		
-		String resultFileName = resultDir + language + "-" + wikiID + ".xml";
-		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter(resultFileName));			
-			writer.write(annotResult);
-			writer.close();
-		}catch(IOException ioe){
-			L.error("<" + docKey + ">\t result file writeout failed");
-			Worker.decrBusyWorkers();
-			return;
-		}
 		
 		
 		
@@ -247,14 +196,15 @@ public class GraphDumper extends Parallelizable {
 	}
 	
 	
-	public static ArrayList<DirectedSparseMultigraph<Argument,Role>> composeGraph(String srlXMLString, boolean visualize) throws JDOMException, IOException{
+	public static ArrayList<DirectedSparseMultigraph<Argument,Role>> composeAnnotatedGraph(String srlXMLString, boolean visualize) throws JDOMException, IOException{
 
 		ArrayList<DirectedSparseMultigraph<Argument, Role>> oneGraphPerSentence = new ArrayList<DirectedSparseMultigraph<Argument, Role>>();
 //		try {
 
-			SAXBuilder builder = new SAXBuilder();
-			final Document jdomDoc = (Document) builder.build(new StringReader(srlXMLString));			
-			XPathFactory xFactory = XPathFactory.instance();  
+		// 1. build jdom2.Document from srl xml string 
+		SAXBuilder builder = new SAXBuilder();
+		final Document jdomDoc = (Document) builder.build(new StringReader(srlXMLString));			
+		XPathFactory xFactory = XPathFactory.instance();  
 
 
 
@@ -270,7 +220,6 @@ public class GraphDumper extends Parallelizable {
 					String sentenceText = sent.getChildText("text");
 					DirectedSparseMultigraph<Argument, Role> sentenceSRLGraph = new DirectedSparseMultigraph<Argument, Role>();
 					////////
-
 
 
 					String sentId = sent.getAttributeValue("id");
@@ -294,7 +243,7 @@ public class GraphDumper extends Parallelizable {
 						expr = xFactory.compile("//token[@id='"+frameTokenID + "']", Filters.element());
 						Element frameToken = expr.evaluateFirst(jdomDoc);		// this element must exist
 						String POS 		= frameToken.getAttributeValue("pos");
-						String lemma 	= frameToken.getAttributeValue("lemma");
+//						String lemma 	= frameToken.getAttributeValue("lemma");
 						String frameDisplName = frame.getAttributeValue("displayName");
 						String frameID = frame.getAttributeValue("id");
 						// only first frame for each sentence can be root frame !!!
@@ -311,7 +260,7 @@ public class GraphDumper extends Parallelizable {
 								String refKB = predRef.getAttributeValue("knowledgeBase");
 								Ref predReference = new Ref(uri, refDisplName, refKB);
 
-								predicate.addKBRef(predReference);
+								predicate.addRef(predReference);
 							}
 						}
 
@@ -362,7 +311,7 @@ public class GraphDumper extends Parallelizable {
 								// 4.5 init new Node instance
 ///* NODE */									argPlaceholder = new Node(nodeId + "." + nodeTracker.get(nodeId), nodeType, nodePos, nodeLemma, nodeDisplName);
 								argPlaceholder = new Node(nodeId, nodeType, "?pos", "?lemma", nodeDisplName);
-
+								
 								// 4.6. read the node KB references
 								expr = xFactory.compile("//node[@id='" + nodeId + "']", Filters.element());
 								Element nodeDescriptions = expr.evaluateFirst(jdomDoc).getChild("descriptions");
@@ -370,7 +319,7 @@ public class GraphDumper extends Parallelizable {
 									List<Element> nodeRefs = nodeDescriptions.getChildren("description");
 									for(Element nodeRef : nodeRefs){
 										Ref r = new Ref(nodeRef.getAttributeValue("URI"), nodeRef.getAttributeValue("displayName"), nodeRef.getAttributeValue("knowledgeBase"));
-										argPlaceholder.addKBRef(r);
+										argPlaceholder.addRef(r);
 									}
 
 								}

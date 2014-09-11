@@ -1,38 +1,53 @@
 package graph;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Predicate extends Argument implements Serializable {
 
 	private static final long serialVersionUID = 3916606925750377816L;
+	
+	private String pos;
+	private boolean rootFlag;
+	private String sentence;
 
-
-
-
-
-	public Predicate(boolean isRoot,String id, String pos, String lemma, String displayName) {
-		super(isRoot, id, pos, lemma, displayName);
-
-	}
-	public String getPos() {
-		return super.getPos();
-	}
-	public String getLemma() {
-		return super.getLemma();
-	}
-	public String getDisplayName() {
-		return super.getDisplayName();
+	public Predicate(boolean isRoot, String id, String pos, String displayName, String mention) {
+		
+		super(id, displayName, mention);
+		this.pos = pos;
+		rootFlag = isRoot;
 	}
 
+	
+	@Override
+	public boolean isPredicate() {
+		return true;
+	}
+	@Override
+	public boolean isRoot() {
+		return rootFlag;
+	}	
 
-
-	public String toString(){
-		if (super.isRoot()){
-			return "ROOT<"+super.getId() + ">" + super.getLemma() +"(" + super.getPos() + ")";
+	
+	
+	public String getSentence(){
+		if(rootFlag){
+			return sentence;
 		}else{
-			return "<"+super.getId() + ">" + super.getLemma() +"(" + super.getPos() + ")";
+			return "";
+		}
+	}
+	
+	public void setSentence(String sentence){
+		this.sentence = sentence;
+	}
+	
+	
+	public String toString(){
+		if (rootFlag){
+			return "ROOT<"+super.getId() + ">" +"(" + pos + ")";
+		}else{
+			return "<"+super.getId() + ">" +"(" + pos + ")";
 		}
 	}
 

@@ -1,8 +1,6 @@
 package graph;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Node extends Argument implements Serializable {
 	
@@ -13,22 +11,18 @@ public class Node extends Argument implements Serializable {
 	private String type;
 
 	
-	public Node(String id, String type, String pos, String lemma,
-			String displayName) {
-		super(Boolean.FALSE, id, pos, lemma, displayName);
+	public Node(String id, String type, String displayName, String mention) {
+		super(id, displayName, mention);	
 		this.type = type;
-
 	}
 	
-	
-	public void addKBRef(Ref r){
-		super.addKBRef(r);
+	@Override
+	public boolean isPredicate() {
+		return false;
 	}
-
-
-
-	public String getId() {
-		return super.getId();
+	@Override
+	public boolean isRoot(){
+		return false;
 	}
 
 
