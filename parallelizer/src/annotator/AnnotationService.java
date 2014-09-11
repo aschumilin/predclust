@@ -238,7 +238,7 @@ public class AnnotationService {
 		for (Topic dt : detectedTopics) {
 
 			if (dt.getWeight() <= DEFAULT_MIN_PROB){
-				System.out.println("<=DEFAULT_MIN_PROB: " + dt.getDisplayName() + "\t" + dt.getWeight());
+//				System.out.println("<=DEFAULT_MIN_PROB: " + dt.getDisplayName() + "\t" + dt.getWeight());
 				
 				continue;
 			}
