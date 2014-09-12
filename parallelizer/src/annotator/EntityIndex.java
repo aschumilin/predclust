@@ -55,33 +55,34 @@ public class EntityIndex {
 	
 	/**
 	 * For a given srl node, find the annotation with the highest weight.
-	 * @param from beginning position of the node in the document
-	 * @param to ending position of the node in the document
+	 * @param mentions List of int[]{from,to}
 	 * @return String[]{URL, mention, weight, from, to} of the best entity found between the indices OR null if no entity annotation found
 	 */
-	public String[] getBestAnnotation(int from, int to){
+	public String[] getBestAnnotation(List<int[]> mentions){
 		String[] bestEntity = null;
 		
 //		LinkedList<String[]> candidates = new LinkedList<String[]>();
 		double currentWeight = 0;
 		
-		for (int i=from; i <= to; i++){
-			List<String[]> candidates = index.get(i);
-			if (candidates != null){
-				for (String[] cand : candidates){
-					double candidateWeight = Double.parseDouble(cand[2]);
-					if (candidateWeight > currentWeight){
-						bestEntity = cand;
-						currentWeight = candidateWeight;
-					}
-				}
-			}
+		for (int[] mention : mentions){
+			int from = mention[0];
+			int to = mention[1];
 			
+			for (int i=from; i <= to; i++){
+				List<String[]> candidates = index.get(i);
+				if (candidates != null){
+					for (String[] cand : candidates){
+						double candidateWeight = Double.parseDouble(cand[2]);
+						if (candidateWeight > currentWeight){
+							bestEntity = cand;
+							currentWeight = candidateWeight;
+						}
+					}
+				}	
+			}
 		}
 		
-		return bestEntity;
-		
-		
+		return bestEntity;		
 	}
 	
 	public static void main(String[] args) throws JDOMException, IOException{

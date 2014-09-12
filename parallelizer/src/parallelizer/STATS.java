@@ -163,7 +163,7 @@ public class STATS {
 					
 					
 					
-					List<Ref> kbRefs= ((Node)arg).getKBRefs();
+					List<Ref> kbRefs= ((Node)arg).getRefs();
 					for(Ref ref : kbRefs){
 						sumRefs ++;
 						

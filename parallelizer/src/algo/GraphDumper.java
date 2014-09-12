@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -43,23 +44,23 @@ public class GraphDumper extends Parallelizable {
 	private static final String SRL_COLLECTION_NAME = "srl";
 
 
-	// singleton mongoDB client for all threads
-	private static MongoClient 		mongoClient = null;
-	private static DB 				db = 		null;
-	private static DBCollection 	collDocs = 	null;
-	private static DBCollection		collSrl = null;
+////	 singleton mongoDB client for all threads
+//	private static MongoClient 		mongoClient = null;
+//	private static DB 				db = 		null;
+//	private static DBCollection 	collDocs = 	null;
+//	private static DBCollection		collSrl = null;
+//	
+//	private static String 	mongoAddr = System.getProperty("mongo.addr");
+//	private static int 		mongoPort = Integer.parseInt(System.getProperty("mongo.port"));
+//	private static String 	mongoUser = System.getProperty("mongo.user");
+//	private static String 	mongoPass = System.getProperty("mongo.pwd");
+//	private static String 	mongoDBName = System.getProperty("mongo.db.name");
+//	
+////	private static String failedDocsFileName = System.getProperty("failed.path");
+//	private static String resultDir			= System.getProperty("result.dir");	
+//	private static String annotDir		= System.getProperty("annots.dir");
 	
-	private static String 	mongoAddr = System.getProperty("mongo.addr");
-	private static int 		mongoPort = Integer.parseInt(System.getProperty("mongo.port"));
-	private static String 	mongoUser = System.getProperty("mongo.user");
-	private static String 	mongoPass = System.getProperty("mongo.pwd");
-	private static String 	mongoDBName = System.getProperty("mongo.db.name");
-	
-//	private static String failedDocsFileName = System.getProperty("failed.path");
-	private static String resultDir			= System.getProperty("result.dir");	
-	private static String annotDir		= System.getProperty("annots.dir");
-	
-
+	private EntityIndex entIndex = null;
 	
 	/**
 	 * @param shortDocKey
@@ -94,7 +95,7 @@ public class GraphDumper extends Parallelizable {
 	 * @param L
 	 * @return root Element (<item>)of srl xml OR null if error
 	 */
-	private Element getSrl(String longDocKey, Logger L){
+	private Document getSrl(String longDocKey, Logger L){
 		BasicDBObject query = new BasicDBObject("_id", longDocKey);	
 		DBCursor dbResult = null;
 				
@@ -110,7 +111,7 @@ public class GraphDumper extends Parallelizable {
 				SAXBuilder builder = new SAXBuilder();
 				String srlString = dbDoc.get("srlAnnot").toString();
 				Document jdomDoc = (Document) builder.build(new StringReader(srlString));
-				return jdomDoc.getRootElement();
+				return jdomDoc;
 			}
 			
 		}catch(Exception e){
@@ -175,10 +176,12 @@ public class GraphDumper extends Parallelizable {
 		String longDocKey = transformKey(docKey);
 		
 		// 1. get index of detected topics (entities)
-		EntityIndex entIndex = new EntityIndex(getAnnotationsJdom(docKey, annotDir, L));
+		entIndex = new EntityIndex(getAnnotationsJdom(docKey, annotDir, L));
 		
 		// 2. get srl xml
-		Element srlRoot = getSrl(longDocKey, L);
+		Document srlRoot = getSrl(longDocKey, L);
+		
+		
 		
 		// 3. iterate over srl nodes, get all node mentions
 		
@@ -196,22 +199,98 @@ public class GraphDumper extends Parallelizable {
 	}
 	
 	
-	public static ArrayList<DirectedSparseMultigraph<Argument,Role>> composeAnnotatedGraph(String srlXMLString, boolean visualize) throws JDOMException, IOException{
-
-		ArrayList<DirectedSparseMultigraph<Argument, Role>> oneGraphPerSentence = new ArrayList<DirectedSparseMultigraph<Argument, Role>>();
-//		try {
-
-		// 1. build jdom2.Document from srl xml string 
+	public static void main(String[] args) throws JDOMException, IOException {
+		File annotFile = new File("/home/pilatus/Desktop/srl-en-test-text.xml");
 		SAXBuilder builder = new SAXBuilder();
-		final Document jdomDoc = (Document) builder.build(new StringReader(srlXMLString));			
-		XPathFactory xFactory = XPathFactory.instance();  
+		Document jdomDoc = (Document) builder.build(annotFile);
 
+		XPathFactory xpf = XPathFactory.instance();
+		XPathExpression<Element> expr = null;
+		expr = xpf.compile("/item/nodes/node[@id='" + "W11" + "']/mentions/mention[@sentenceId='1']/mention_token", Filters.element());
+		List<Element> l = expr.evaluate(jdomDoc);
+		for (Element e : l){
+			System.out.println(e.getAttributeValue("id"));
+		}
+	}
+	/*
+	 * <node type="word" displayName="would" id="W11">
+	 * <mentions>
+	 * 	<mention sentenceId="1" id="W11.1" words="would">
+	 * 		<mention_token id="1.16"/>
+	 * 	</mention>
+	 * 	<mention sentenceId="1" id="W11.2" words="would">
+	 * 		<mention_token id="1.28"/>
+	 * 	</mention>
+	 * </mentions>
+	 * </node>								
+	 */
+	
+	
+	
+	
+	/**
+	 * Compute this once for each srl xml.
+	 * @param srlRoot
+	 * @return array with cumulated text length for global token positioning (adjustment to annotation).
+	 */
+	private int[] computeCumulatedTextLength(List<Element> sentences){
 
+		int numSentences = sentences.size();
+		int cumulTextLength[] = new int[numSentences];
+		cumulTextLength[0] = 0;
+		int i = 1;
+		
+		for(Element sent : sentences){
+			if (i == numSentences){
+				break;
+			}
+			String sentenceText = sent.getChild("text").getText();
+			cumulTextLength[i] = cumulTextLength[i-1] + sentenceText.length();
+//			System.out.println("sent " + i + " = " + cumulTextLength[i]);
+			i++;
+		}
+		return cumulTextLength;
+	}
+	
+	
+	
+	/**
+	 * Srl output provides the from/to indices of tokens on individual sentence level.
+	 * This methode computes the global article-level indices for any token in a given sentence.
+	 * @param sentenceId number of the sentence as given by the ID attribute value
+	 * @param from token begin index on sentence level
+	 * @param to token end index on sentence level
+	 * @return int[]{globalFrom, globalTo}
+	 */
+	private int[] getGlobalIndices(String sentenceId, String from, String to, int[] cmulTextLength){
+		
+		int globalFrom, globalTo;
+		
+		int sentId = Integer.parseInt(sentenceId);
+		
+		globalFrom = Integer.parseInt(from) + cmulTextLength[sentId-1];
+		globalTo = Integer.parseInt(to) + cmulTextLength[sentId -1];
+		System.out.println(from + "-" + to +" = " + globalFrom + "-" + globalTo);
+		
+		return new int[]{globalFrom, globalTo};
 
-//			try{
-				// 1. select all sentences
-				XPathExpression<Element> expr = xFactory.compile("//sentence", Filters.element());
-				List<Element> sentences = expr.evaluate(jdomDoc);
+		
+	}
+	
+	public ArrayList<DirectedSparseMultigraph<Argument,Role>> composeAnnotatedGraphs(Document srlJdomDoc, boolean visualize) throws JDOMException, IOException{
+
+		ArrayList<DirectedSparseMultigraph<Argument, Role>> graphsInArticle = new ArrayList<DirectedSparseMultigraph<Argument, Role>>();
+
+		XPathFactory xpf = XPathFactory.instance();
+		XPathExpression<Element> expr = null;
+		Element srlRoot = srlJdomDoc.getRootElement();
+		
+		List<Element> sentences = srlRoot.getChild("sentences").getChildren("sentence");
+		
+		
+		// 1. prepare the local-to-global token indexing 
+		int[] cumulatedTextLength = computeCumulatedTextLength(sentences);
+
 
 				// 2. for each sentence			 
 				for (Element sent : sentences) {
@@ -225,30 +304,38 @@ public class GraphDumper extends Parallelizable {
 					String sentId = sent.getAttributeValue("id");
 
 					// 3. get all frames for that sentence
-					expr = xFactory.compile("//frame[@sentenceId='"+sentId + "']", Filters.element());
-					List<Element> frames = expr.evaluate(jdomDoc);
+					expr = xpf.compile("//frame[@sentenceId='"+sentId + "']", Filters.element());
+					List<Element> frames = expr.evaluate(srlJdomDoc);
 
 					int rootIndicator = 0;		// to keep track of first frame in each sentence
 /******************/for(Element frame: frames){
+						
 						rootIndicator ++;
+						
+						// 2. extract frame arguments
+						// continue to next frame if the current one has less than 2 arguments
+						List<Element> arguments = frame.getChildren("argument");
+						if(arguments.size() < 2){
+							continue;
+						}
+						
+						
 
 
 						////////							
 						// each frame represents a predicate
-
-
-
 						// 1. extract frame attributes (isRoot, pos, lemma, displName) through tokenID
-						String frameTokenID = frame.getAttributeValue("tokenId");
-						expr = xFactory.compile("//token[@id='"+frameTokenID + "']", Filters.element());
-						Element frameToken = expr.evaluateFirst(jdomDoc);		// this element must exist
-						String POS 		= frameToken.getAttributeValue("pos");
-//						String lemma 	= frameToken.getAttributeValue("lemma");
-						String frameDisplName = frame.getAttributeValue("displayName");
-						String frameID = frame.getAttributeValue("id");
+						String frameTokenID 	= frame.getAttributeValue("tokenId");
+						expr = xpf.compile("//token[@id='"+frameTokenID + "']", Filters.element());
+						Element frameToken 		= expr.evaluateFirst(srlJdomDoc);		// this element must exist
+						String POS 				= frameToken.getAttributeValue("pos");
+						String frameMention 	= frameToken.getText();
+						String frameDisplName 	= frame.getAttributeValue("displayName");
+						String frameID 			= frame.getAttributeValue("id");
+						
 						// only first frame for each sentence can be root frame !!!
 						boolean isRoot = (rootIndicator == 1);		
-/* PREDICATE */			Predicate predicate = new Predicate(isRoot, frameID, POS, lemma, frameDisplName);
+/* PREDICATE */			Predicate predicate = new Predicate(isRoot, frameID, POS, frameDisplName, frameMention);
 
 						// add KB references to predicate
 						Element descriptions = frame.getChild("descriptions");
@@ -259,16 +346,17 @@ public class GraphDumper extends Parallelizable {
 								String refDisplName = predRef.getAttributeValue("displayName");
 								String refKB = predRef.getAttributeValue("knowledgeBase");
 								Ref predReference = new Ref(uri, refDisplName, refKB);
-
-								predicate.addRef(predReference);
+								if(refKB.startsWith("WordNet")){
+									predicate.addRef(predReference);
+								}
 							}
 						}
 
 
 						Argument argPlaceholder = null;
-
-						// 2. extract frame arguments
-						List<Element> arguments = frame.getChildren("argument");
+							
+						int valid
+						
 /* ARGUMENTS */			for(Element argument : arguments){
 
 
@@ -280,34 +368,50 @@ public class GraphDumper extends Parallelizable {
 								// 4.2. get some node attributes
 								String nodeDisplName = argument.getAttributeValue("displayName");
 								String nodeId = argument.getAttributeValue("id");
-								expr = xFactory.compile("//node[@id='" + nodeId + "']", Filters.element());
-								String nodeType = expr.evaluateFirst(jdomDoc).getAttributeValue("type");
+								expr = xpf.compile("/item/nodes/node[@id='" + nodeId + "']", Filters.element());
+								Element nodeArg = expr.evaluateFirst(srlJdomDoc);
+								String nodeType = nodeArg.getAttributeValue("type");
+								// get all the mentions of this node in that sentence:
+								expr = xpf.compile("/item/nodes/node[@id='" + nodeId + "']/mentions/mention[@sentenceId='" + sentId + "']/mention_token", Filters.element());
+								List<Element> nodeMentionTokens = expr.evaluate(srlJdomDoc); 
+								// store the mention indices here
+								List<int[]> mentionIndices = new LinkedList<int[]>();
+								for (Element mentionToken : nodeMentionTokens){
+									String tokenId = mentionToken.getAttributeValue("id");
+									expr = xpf.compile("/item/sentences/seentence[@id='" + sentId + "']/tokens/token[@id='" + tokenId + "']", Filters.element());
+									Element token = expr.evaluateFirst(srlJdomDoc);
+									int from = Integer.parseInt(token.getAttributeValue("from"));
+									int to = Integer.parseInt(token.getAttributeValue("to"));
+									int[] occurrence = new int[]{from, to};
+									mentionIndices.add(occurrence);
+								}
+								String[] bestAnnotation = entIndex.getBestAnnotation(mentionIndices);
+								Ref dbpeadiaRef = null;
+								if(bestAnnotation != null){
+									dbpeadiaRef = new Ref(bestAnnotation[0], bestAnnotation[1], "dbpedia");
+								}else{
+									
+									// 
+								}
+										
+										
+//								String nodeMention = 
+
+/*
+ * <node type="word" displayName="would" id="W11">
+ * <mentions>
+ * 	<mention sentenceId="1" id="W11.1" words="would">
+ * 		<mention_token id="1.16"/>
+ * 	</mention>
+ * 	<mention sentenceId="1" id="W11.2" words="would">
+ * 		<mention_token id="1.28"/>
+ * 	</mention>
+ * </mentions>
+ * </node>								
+ */
 
 
-								// 4.2.2 track the occurrence of this node in the treemap
-//								if(nodeTracker.containsKey(nodeId)){
-//									nodeTracker.put(nodeId, nodeTracker.get(nodeId)+1);
-//								}else{
-//									nodeTracker.put(nodeId, 1);
-//								}
-//System.out.println("\n" + srlXml + "\n");									
-//System.out.println("frame" +  frameID + " / node: " + nodeDisplName + "(" + nodeId +")" + nodeId + "." + nodeTracker.get(nodeId));								
-								// 4.3. using sentenceID and nodeID, get the corresponding mention token id 
-
-//								XPathExpression e = xFactory.compile("count(//node[@id='" + nodeId +"']//mention)"); 
-//								double maxMentions = (Double)e.evaluate(jdomDoc).get(0);
-////System.out.println("---" + maxMentions);
-//								String exactNodeID = nodeId + "." + new Double(Math.min(maxMentions, nodeTracker.get(nodeId))).intValue();
-//
-//								expr = xFactory.compile("//mention[@id='" + exactNodeID + "']//mention_token", Filters.element());											
-//								String nodeMentionTokenID = expr.evaluateFirst(jdomDoc).getAttributeValue("id");
-//
-//								// 4.4. find pos and lemma using the nodeMentionTokenID
-//								expr = xFactory.compile("//token[@id='" + nodeMentionTokenID + "']", Filters.element());
-//								Element nodeEl = expr.evaluateFirst(jdomDoc);
-//								String nodePos = nodeEl.getAttributeValue("pos");
-//								String nodeLemma = nodeEl.getAttributeValue("lemma");
-
+					
 								// 4.5 init new Node instance
 ///* NODE */									argPlaceholder = new Node(nodeId + "." + nodeTracker.get(nodeId), nodeType, nodePos, nodeLemma, nodeDisplName);
 								argPlaceholder = new Node(nodeId, nodeType, "?pos", "?lemma", nodeDisplName);
