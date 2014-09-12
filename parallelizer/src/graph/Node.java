@@ -8,7 +8,7 @@ public class Node extends Argument implements Serializable {
 	private static final long serialVersionUID = 6961741340587011057L;
 	
 	
-	private String type;
+	private String type; // e.g. word or entity_person/organization.. or entity_other
 
 	
 	public Node(String id, String type, String displayName, String mention) {
@@ -34,8 +34,7 @@ public class Node extends Argument implements Serializable {
 
 
 	public String toString(){
-//		return "[" + super.getId() + "]" + super.getLemma() +"(" + super.getPos() +")";
-		return "[" + super.getId() + "]" + super.getDisplayName();
+		return "[" + super.getMention() + "]" + super.getRefs().get(0);
 	}
 	
 	

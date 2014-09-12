@@ -61,7 +61,6 @@ public class EntityIndex {
 	public String[] getBestAnnotation(List<int[]> mentions){
 		String[] bestEntity = null;
 		
-//		LinkedList<String[]> candidates = new LinkedList<String[]>();
 		double currentWeight = 0;
 		
 		for (int[] mention : mentions){
@@ -109,10 +108,10 @@ public class EntityIndex {
 //		fw.close();
 		int from = 0;
 		int to = 100;
-		String[] result = ind.getBestAnnotation(from, to);
-		if(result != null){
-			System.out.println(result[0] +  " weight: " + result[2]);
-		}
+//		String[] result = ind.getBestAnnotation(from, to);
+//		if(result != null){
+//			System.out.println(result[0] +  " weight: " + result[2]);
+//		}
 	}
 	
 }

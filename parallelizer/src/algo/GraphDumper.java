@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.jdom2.DefaultJDOMFactory;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -37,6 +38,7 @@ import graph.Node;
 import graph.Predicate;
 import graph.Ref;
 import graph.Role;
+import graph.SentenceGraphContainer;
 
 public class GraphDumper extends Parallelizable {
 	
@@ -58,9 +60,9 @@ public class GraphDumper extends Parallelizable {
 //	
 ////	private static String failedDocsFileName = System.getProperty("failed.path");
 //	private static String resultDir			= System.getProperty("result.dir");	
-//	private static String annotDir		= System.getProperty("annots.dir");
+//	private static String annotSourceDir	= System.getProperty("annots.dir");
+//	
 	
-	private EntityIndex entIndex = null;
 	
 	/**
 	 * @param shortDocKey
@@ -176,7 +178,7 @@ public class GraphDumper extends Parallelizable {
 		String longDocKey = transformKey(docKey);
 		
 		// 1. get index of detected topics (entities)
-		entIndex = new EntityIndex(getAnnotationsJdom(docKey, annotDir, L));
+		EntityIndex entIndex = new EntityIndex(getAnnotationsJdom(docKey, annotSourceDir, L));
 		
 		// 2. get srl xml
 		Document srlRoot = getSrl(longDocKey, L);
@@ -206,27 +208,66 @@ public class GraphDumper extends Parallelizable {
 
 		XPathFactory xpf = XPathFactory.instance();
 		XPathExpression<Element> expr = null;
-		expr = xpf.compile("/item/nodes/node[@id='" + "W11" + "']/mentions/mention[@sentenceId='1']/mention_token", Filters.element());
-		List<Element> l = expr.evaluate(jdomDoc);
-		for (Element e : l){
-			System.out.println(e.getAttributeValue("id"));
+	
+		DefaultJDOMFactory jdf = new DefaultJDOMFactory();
+
+		
+		
+		
+		// 1. collect all mentions
+		
+		
+		String nodeId = "W28";
+		
+		// get all mention-token elements
+		expr = xpf.compile("/item/nodes/node[@id='" + nodeId + "']", Filters.element());
+		Element node = expr.evaluateFirst(jdomDoc);
+		Element n = (Element) node.clone();
+		n.detach();
+		expr = xpf.compile("/node/mentions/mention[@sentenceId='" + "3" + "']/mention_token", Filters.element());
+		Document d = jdf.document(n);
+		System.out.println("---");
+		List<Element> nodeMentionTokens = expr.evaluate(d); 
+		for (Element ll : nodeMentionTokens){
+			System.out.println(ll.getAttributeValue("id"));
 		}
+		System.out.println("---");
+		
+		expr = xpf.compile("/node/mentions/mention[@sentenceId='" + "3" + "']/mention_token", Filters.element());
+		nodeMentionTokens = expr.evaluate(d); 
+		for (Element ll : nodeMentionTokens){
+			System.out.println(ll.getAttributeValue("id"));
+		}
+		System.out.println("---");
+		System.out.println("---");
+		
+		
+//expr = xpf.compile("/item/nodes/node[@id='" + "W28" + "']/mentions/mention[@sentenceId='3']/mention_token", Filters.element());
+//		
+//		List<Element> l = expr.evaluate(jdomDoc);
+//		for (Element e : l){
+//			System.out.println(e.getAttributeValue("id"));
+//		}
+		expr = xpf.compile("//frame", Filters.element());
+		List<Element> fs = expr.evaluate(jdomDoc);
+		for(Element f: fs){
+			System.out.println(f.getAttributeValue("id") + " valid " + isValidFrame(f));
+		}
+		
+		
+		
+		
+//		expr = xpf.compile("//argument", Filters.element());
+//		
+//		List<Element> argS = expr.evaluate(jdomDoc);
+//		for (Element a : argS){
+//			Object[] res = validateNodeArgument(a, a.getAttributeValue("));
+//			if (res != null){
+//				System.out.println(res);
+//			}
+//		}
 	}
-	/*
-	 * <node type="word" displayName="would" id="W11">
-	 * <mentions>
-	 * 	<mention sentenceId="1" id="W11.1" words="would">
-	 * 		<mention_token id="1.16"/>
-	 * 	</mention>
-	 * 	<mention sentenceId="1" id="W11.2" words="would">
-	 * 		<mention_token id="1.28"/>
-	 * 	</mention>
-	 * </mentions>
-	 * </node>								
-	 */
-	
-	
-	
+
 	
 	/**
 	 * Compute this once for each srl xml.
@@ -251,9 +292,6 @@ public class GraphDumper extends Parallelizable {
 		}
 		return cumulTextLength;
 	}
-	
-	
-	
 	/**
 	 * Srl output provides the from/to indices of tokens on individual sentence level.
 	 * This methode computes the global article-level indices for any token in a given sentence.
@@ -262,32 +300,177 @@ public class GraphDumper extends Parallelizable {
 	 * @param to token end index on sentence level
 	 * @return int[]{globalFrom, globalTo}
 	 */
-	private int[] getGlobalIndices(String sentenceId, String from, String to, int[] cmulTextLength){
+	private int[] getGlobalIndices(String sentenceId, String from, String to, int[] cumulTextLength){
 		
 		int globalFrom, globalTo;
 		
 		int sentId = Integer.parseInt(sentenceId);
 		
-		globalFrom = Integer.parseInt(from) + cmulTextLength[sentId-1];
-		globalTo = Integer.parseInt(to) + cmulTextLength[sentId -1];
+		globalFrom = Integer.parseInt(from) + cumulTextLength[sentId-1];
+		globalTo = Integer.parseInt(to) + cumulTextLength[sentId -1];
 		System.out.println(from + "-" + to +" = " + globalFrom + "-" + globalTo);
 		
-		return new int[]{globalFrom, globalTo};
+		return new int[]{globalFrom, globalTo};	
+	}
+
+	
+	
+	
+	
+	
+	/**
+	 * Node is valid if it has at least one DBPedia annotation for all its mentions in a given sentence.
+	 * @param argument
+	 * @param sentenceId
+	 * @param srlDoc
+	 * @param entIndex
+	 * @return Object[]{graph.Node, String role} new node complete with all attributes and annotations OR null if no annotation found
+	 */
+	private Object[] validateNodeArgument(Element argument, String sentenceId, Document srlDoc, EntityIndex entIndex){
+		
+		XPathFactory xpf = XPathFactory.instance();
+		XPathExpression<Element> expr = null;
+		DefaultJDOMFactory jdf = new DefaultJDOMFactory();
 
 		
+		
+		
+		// 1. collect all mentions
+		
+		
+		String nodeId = argument.getAttributeValue("id");
+		expr = xpf.compile("/item/nodes/node[@id='" + nodeId + "']", Filters.element());		
+		Element n = expr.evaluateFirst(srlDoc);
+		Element node = (Element) n.clone();
+		node.detach();
+		Document docNode = jdf.document(node);	// eval xpath on smaller document for speedup
+		
+		expr = xpf.compile("/node/mentions/mention[@sentenceId='" + sentenceId + "']/mention_token", Filters.element());
+		List<Element> nodeMentionTokens = expr.evaluate(docNode); 
+		
+		// for each mention, get its coordinates
+		LinkedList<int[]> mentionCoordinates = new LinkedList<int[]>();
+		
+		for (Element mentionToken : nodeMentionTokens){
+			
+			String tokenId = mentionToken.getAttributeValue("id");
+			expr = xpf.compile("/item/sentences/seentence[@id='" + sentenceId + "']/tokens/token[@id='" + tokenId + "']", Filters.element());
+			Element token = expr.evaluateFirst(srlDoc);
+			
+			int from = Integer.parseInt(token.getAttributeValue("from"));
+			int to = Integer.parseInt(token.getAttributeValue("to"));
+			mentionCoordinates.add(new int[]{from, to});
+		}
+		
+		// get the Annotations OR null
+		String[] bestNodeAnnotation = entIndex.getBestAnnotation(mentionCoordinates);
+		
+		if(bestNodeAnnotation != null){
+			
+			
+			
+			
+			
+			// id, type(_class), displayname, mention, Annotations
+			String type, nodeClass, role, displayName, mention;
+			type = node.getAttributeValue("type");
+			nodeClass = null;
+			if((nodeClass = node.getAttributeValue("class")) != null)
+				type = type + "_" + nodeClass;
+			role = argument.getAttributeValue("role");
+			displayName = node.getAttributeValue("displayName");
+			expr = xpf.compile("/node/mentions/mention[@sentenceId='" + sentenceId + "']", Filters.element());
+			mention = expr.evaluateFirst(docNode).getAttributeValue("words");
+			
+			
+
+			Node newGraphNode = new Node(nodeId, type, displayName, mention);
+			
+			Ref dbpeadiaRef = new Ref(bestNodeAnnotation[0], bestNodeAnnotation[1], "dbpedia");
+			newGraphNode.addRef(dbpeadiaRef);
+			
+			Ref wordnetRef = null;
+			
+			if (node.getChild("descriptions") != null){
+				expr = xpf.compile("/node/descriptions/description[@knowledgeBase='WordNet-3.0']", Filters.element());
+				Element wordnetDescr = expr.evaluateFirst(docNode);
+				if(wordnetDescr != null){
+					wordnetRef = new Ref(wordnetDescr.getAttributeValue("URI"), wordnetDescr.getAttributeValue("displayName"), "wordnet-3.0");
+					newGraphNode.addRef(wordnetRef);
+				}
+			}
+			
+			return new Object[]{newGraphNode, role} ;
+			
+		}else{
+			return null;		 
+		}	
+	}
+
+	
+	
+	/**
+	 * A frame is valid if it has >= 2 arguments AND every frame-argument is valid as well.
+	 * @param frame
+	 * @param sentenceId
+	 * @param srlDoc
+	 * @return true or false
+	 */
+	private static boolean isValidFrame(Element frame){
+		
+		List<Element> arguments = frame.getChildren("argument");
+		int size = arguments.size();
+		
+		if( size > 2){
+			
+			boolean frameValidationResult = true;
+			
+			for(Element arg : arguments){
+				
+				if(arg.getAttributeValue("frame") != null){
+					return frameValidationResult & isValidFrame(arg);
+				}			
+			}
+			
+			return frameValidationResult;
+		}else{
+			return false;
+		}
 	}
 	
-	public ArrayList<DirectedSparseMultigraph<Argument,Role>> composeAnnotatedGraphs(Document srlJdomDoc, boolean visualize) throws JDOMException, IOException{
+private static List<List<Element>> magic(Element frame){
+		
+		List<Element> arguments = frame.getChildren("argument");
+		int size = arguments.size();
+		
+		if( size > 2){
+			
+			boolean frameValidationResult = true;
+			
+			for(Element arg : arguments){
+				
+				if(arg.getAttributeValue("frame") != null){
+					return frameValidationResult & isValidFrame(arg);
+				}			
+			}
+			
+			return frameValidationResult;
+		}else{
+			return false;
+		}
+	}
+	
+	
+	private List<SentenceGraphContainer> composeAnnotatedGraphs(Document srlJdomDoc, EntityIndex entIndex) throws JDOMException, IOException{
 
-		ArrayList<DirectedSparseMultigraph<Argument, Role>> graphsInArticle = new ArrayList<DirectedSparseMultigraph<Argument, Role>>();
+		List<SentenceGraphContainer> graphsInArticle = new LinkedList<SentenceGraphContainer>();
 
 		XPathFactory xpf = XPathFactory.instance();
 		XPathExpression<Element> expr = null;
+		DefaultJDOMFactory jdf = new DefaultJDOMFactory();
 		Element srlRoot = srlJdomDoc.getRootElement();
 		
 		List<Element> sentences = srlRoot.getChild("sentences").getChildren("sentence");
-		
-		
 		// 1. prepare the local-to-global token indexing 
 		int[] cumulatedTextLength = computeCumulatedTextLength(sentences);
 
@@ -355,7 +538,7 @@ public class GraphDumper extends Parallelizable {
 
 						Argument argPlaceholder = null;
 							
-						int valid
+						int annotatedNodes = 0;
 						
 /* ARGUMENTS */			for(Element argument : arguments){
 
@@ -393,22 +576,30 @@ public class GraphDumper extends Parallelizable {
 									
 									// 
 								}
-										
-										
+////////////////////////////////////										
+// node mention ist der "words"-attribut in <mention>
+////////////////////////////////////							
+								
+								
 //								String nodeMention = 
 
-/*
- * <node type="word" displayName="would" id="W11">
- * <mentions>
- * 	<mention sentenceId="1" id="W11.1" words="would">
- * 		<mention_token id="1.16"/>
- * 	</mention>
- * 	<mention sentenceId="1" id="W11.2" words="would">
- * 		<mention_token id="1.28"/>
- * 	</mention>
- * </mentions>
- * </node>								
- */
+								/*
+								 * <node type="word" displayName="would" id="W11">
+								 * <mentions>
+								 * 	<mention sentenceId="1" id="W11.1" words="would">
+								 * 		<mention_token id="1.16"/>
+								 * 	</mention>
+								 * 	<mention sentenceId="1" id="W11.2" words="would">
+								 * 		<mention_token id="1.28"/>
+								 * 	</mention>
+								 * </mentions>
+								 * </node>	
+								 * 
+								 * 
+								 * <tokens>
+								 * 	<token pos="MD" end="112" lemma="would" id="1.16" start="107">would</token>
+								 * </tokens>							
+								 */
 
 
 					

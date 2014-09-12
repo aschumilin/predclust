@@ -308,7 +308,7 @@ public static void main(String[] args) {
 
 								// 4.5 init new Node instance
 ///* NODE */									argPlaceholder = new Node(nodeId + "." + nodeTracker.get(nodeId), nodeType, nodePos, nodeLemma, nodeDisplName);
-								argPlaceholder = new Node(nodeId, nodeType, "?pos", "?lemma", nodeDisplName);
+								argPlaceholder = null;//new Node(nodeId, nodeType, "?pos", "?lemma", nodeDisplName);
 
 								// 4.6. read the node KB references
 								expr = xFactory.compile("//node[@id='" + nodeId + "']", Filters.element());

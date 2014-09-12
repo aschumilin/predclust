@@ -9,7 +9,6 @@ public class Predicate extends Argument implements Serializable {
 	
 	private String pos;
 	private boolean rootFlag;
-	private String sentence;
 
 	public Predicate(boolean isRoot, String id, String pos, String displayName, String mention) {
 		
@@ -28,21 +27,7 @@ public class Predicate extends Argument implements Serializable {
 		return rootFlag;
 	}	
 
-	
-	
-	public String getSentence(){
-		if(rootFlag){
-			return sentence;
-		}else{
-			return "";
-		}
-	}
-	
-	public void setSentence(String sentence){
-		this.sentence = sentence;
-	}
-	
-	
+		
 	public String toString(){
 		if (rootFlag){
 			return "ROOT<"+super.getId() + ">" +"(" + pos + ")";

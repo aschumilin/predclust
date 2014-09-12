@@ -12,7 +12,7 @@ public abstract class Argument implements Serializable {
 	private String id;
 	private String mention;
 	private String displayName;
-	private List<Ref> references;
+	private ArrayList<Ref> references;
 	
 	
 	public Argument(String id, String displayName, String mention) {
@@ -53,7 +53,7 @@ public abstract class Argument implements Serializable {
 	public void addRef(Ref r){
 		references.add(r);
 	}
-	public List<Ref> getRefs() {
+	public ArrayList<Ref> getRefs() {
 		return references;
 	}
 	
