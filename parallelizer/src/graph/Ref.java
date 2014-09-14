@@ -8,12 +8,14 @@ public class Ref implements Serializable {
 	private String URI;
 	private String displayName;
 	private String knowledgeBase;
+	private double weight;
 	
 	
-	public Ref(String uri, String displayName, String knowledgeBase) {
+	public Ref(String uri, String displayName, String knowledgeBase, double weight) {
 		URI = uri;
 		this.displayName = displayName;
 		this.knowledgeBase = knowledgeBase;
+		this.weight = weight;
 	}
 
 
@@ -31,7 +33,9 @@ public class Ref implements Serializable {
 		return knowledgeBase;
 	}
 	
-	
+	public double getWeight(){
+		return weight;
+	}
 	
 	
 }

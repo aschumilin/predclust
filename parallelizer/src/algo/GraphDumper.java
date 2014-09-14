@@ -7,11 +7,9 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.StringReader;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 import org.jdom2.DefaultJDOMFactory;
@@ -99,6 +97,23 @@ public class GraphDumper extends Parallelizable {
 	 * @return root Element (<item>)of srl xml OR null if error
 	 */
 	private Document getSrl(String longDocKey, Logger L){
+		
+		if (true){
+			Document doc = null;
+			try {
+				doc = new SAXBuilder().build(new File("/home/pilatus/Desktop/srl-en-test-text.xml"));
+			} catch (JDOMException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return doc;
+			
+			
+			
+		}else{
 		BasicDBObject query = new BasicDBObject("_id", longDocKey);	
 		DBCursor dbResult = null;
 				
@@ -121,6 +136,7 @@ public class GraphDumper extends Parallelizable {
 			L.error("<" + longDocKey + ">\t exception during srl coll lookup");
 			Worker.decrBusyWorkers();
 			return null;
+		}
 		}
 	}
 	
@@ -174,7 +190,6 @@ public class GraphDumper extends Parallelizable {
 	
 		// docKeys are file names of annotation dumps
 		String longDocKey = transformKey(docKey);
-		
 		// 1. get index of detected topics (entities)
 		EntityIndex annotationsIndex = new EntityIndex(getAnnotationsJdom(docKey, annotSourceDir, L));
 		
@@ -225,16 +240,21 @@ public class GraphDumper extends Parallelizable {
 	
 	public static void main(String[] args) throws JDOMException, IOException {
 
-		String[] ids = new String[] {"en-26221135.xml","en-63876.xml","en-690842.xml","es-14819.xml","es-54595.xml","es-79562.xml"};
-
-		for (String file : ids){
-			
-		}
+//		String[] ids = new String[] {"en-26221135.xml","en-63876.xml","en-690842.xml","es-14819.xml","es-54595.xml","es-79562.xml"};
+//
+//		for (String file : ids){
+//			
+//		}
 		
 //		result.dir=/home/pilatus/Desktop/annot-test/res/ 
 //				annots.dir=/home/pilatus/Desktop/annot-test/
+		System.out.println("1");
 		GraphDumper gd = new GraphDumper();
-		gd.runAlgo("ann-en-test-text.xml");
+		System.out.println("2");
+		long anf = System.currentTimeMillis();
+		gd.runAlgo("en-testannot.xml", Logger.getLogger(GraphDumper.class));
+		System.out.println(System.currentTimeMillis() - anf);
+		System.out.println("3");
 		
 //		File annotFile = new File("/home/pilatus/Desktop/srl-en-test-text.xml");
 //		SAXBuilder builder = new SAXBuilder();
@@ -347,7 +367,7 @@ public class GraphDumper extends Parallelizable {
 		
 		globalFrom = Integer.parseInt(from) + cumulTextLength[sentId-1];
 		globalTo = Integer.parseInt(to) + cumulTextLength[sentId -1];
-		System.out.println(from + "-" + to +" = " + globalFrom + "-" + globalTo);
+//		System.out.println(from + "-" + to +" = " + globalFrom + "-" + globalTo);
 		
 		return new int[]{globalFrom, globalTo};	
 	}
@@ -393,11 +413,11 @@ public class GraphDumper extends Parallelizable {
 		for (Element mentionToken : nodeMentionTokens){
 			
 			String tokenId = mentionToken.getAttributeValue("id");
-			expr = xpf.compile("/item/sentences/seentence[@id='" + sentenceId + "']/tokens/token[@id='" + tokenId + "']", Filters.element());
+			expr = xpf.compile("/item/sentences/sentence[@id='" + sentenceId + "']/tokens/token[@id='" + tokenId + "']", Filters.element());
 			Element token = expr.evaluateFirst(srlDoc);
 			
-			String from = token.getAttributeValue("from");
-			String to = token.getAttributeValue("to");
+			String from = token.getAttributeValue("start");
+			String to = token.getAttributeValue("end");
 			
 			// !!! convert to global indices !!!
 			mentionCoordinates.add(getGlobalIndices(sentenceId, from, to, cumulTextLength));
@@ -426,8 +446,8 @@ public class GraphDumper extends Parallelizable {
 			
 
 			Node newGraphNode = new Node(nodeId, type, displayName, mention);
-			
-			Ref dbpeadiaRef = new Ref(bestNodeAnnotation[0], bestNodeAnnotation[1], "dbpedia");
+			// String[]{URL, mention, weight, from, to} = bestNodeAnnotation
+			Ref dbpeadiaRef = new Ref(bestNodeAnnotation[0], bestNodeAnnotation[1], "dbpedia", Double.parseDouble(bestNodeAnnotation[2]));
 			newGraphNode.addRef(dbpeadiaRef);
 			
 			Ref wordnetRef = null;
@@ -436,7 +456,8 @@ public class GraphDumper extends Parallelizable {
 				expr = xpf.compile("/node/descriptions/description[@knowledgeBase='WordNet-3.0']", Filters.element());
 				Element wordnetDescr = expr.evaluateFirst(docNode);
 				if(wordnetDescr != null){
-					wordnetRef = new Ref(wordnetDescr.getAttributeValue("URI"), wordnetDescr.getAttributeValue("displayName"), "wordnet-3.0");
+					/* wordnet annotation gets a weight of 1 */
+					wordnetRef = new Ref(wordnetDescr.getAttributeValue("URI"), wordnetDescr.getAttributeValue("displayName"), "wordnet-3.0", 1);
 					newGraphNode.addRef(wordnetRef);
 				}
 			}
@@ -594,7 +615,6 @@ public class GraphDumper extends Parallelizable {
 
 		XPathFactory xpf = XPathFactory.instance();
 		XPathExpression<Element> expr = null;
-		DefaultJDOMFactory jdf = new DefaultJDOMFactory();
 		Element srlRoot = srlJdomDoc.getRootElement();
 		
 		List<Element> sentences = srlRoot.getChild("sentences").getChildren("sentence");
@@ -659,7 +679,8 @@ public class GraphDumper extends Parallelizable {
 							if(refKB.startsWith("W")){//startsWith("WordNet")){
 								String uri = predRef.getAttributeValue("URI");
 								String refDisplName = predRef.getAttributeValue("displayName");
-								Ref predReference = new Ref(uri, refDisplName, refKB);
+								/* wordnet annotation gets a weight of 1 */
+								Ref predReference = new Ref(uri, refDisplName, refKB, 1);
 								predicate.addRef(predReference);
 							}
 						}

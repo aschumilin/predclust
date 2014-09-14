@@ -31,10 +31,13 @@ public class Node extends Argument implements Serializable {
 	}
 
 
-
-
 	public String toString(){
-		return "[" + super.getMention() + "]" + super.getRefs().get(0);
+		if(type.equals("PREDICATE")){
+			return "[" + super.getId() +"->" + super.getDisplayName() + "]";
+		}else{
+			return "[" + super.getMention() +"] "+ super.getRefs().get(0).getURI() + " (" + super.getRefs().get(0).getWeight() + ")";
+		}
+		
 	}
 	
 	
