@@ -1,14 +1,17 @@
 package algo;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.StringReader;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 import org.jdom2.DefaultJDOMFactory;
@@ -23,7 +26,6 @@ import org.jdom2.xpath.XPathFactory;
 import parallelizer.Parallelizable;
 import parallelizer.Worker;
 import test.GRAPHTESTER;
-
 import annotator.EntityIndex;
 
 import com.mongodb.BasicDBObject;
@@ -32,13 +34,12 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 
-import edu.uci.ics.jung.graph.DirectedSparseMultigraph;
+import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import graph.Argument;
 import graph.Node;
 import graph.Predicate;
 import graph.Ref;
 import graph.Role;
-import graph.SentenceGraphContainer;
 
 public class GraphDumper extends Parallelizable {
 	
@@ -46,22 +47,22 @@ public class GraphDumper extends Parallelizable {
 	private static final String SRL_COLLECTION_NAME = "srl";
 
 
-////	 singleton mongoDB client for all threads
-//	private static MongoClient 		mongoClient = null;
-//	private static DB 				db = 		null;
-//	private static DBCollection 	collDocs = 	null;
-//	private static DBCollection		collSrl = null;
-//	
-//	private static String 	mongoAddr = System.getProperty("mongo.addr");
-//	private static int 		mongoPort = Integer.parseInt(System.getProperty("mongo.port"));
-//	private static String 	mongoUser = System.getProperty("mongo.user");
-//	private static String 	mongoPass = System.getProperty("mongo.pwd");
-//	private static String 	mongoDBName = System.getProperty("mongo.db.name");
-//	
-////	private static String failedDocsFileName = System.getProperty("failed.path");
-//	private static String resultDir			= System.getProperty("result.dir");	
-//	private static String annotSourceDir	= System.getProperty("annots.dir");
-//	
+//	 singleton mongoDB client for all threads
+	private static MongoClient 		mongoClient = null;
+	private static DB 				db = 		null;
+	private static DBCollection 	collDocs = 	null;
+	private static DBCollection		collSrl = null;
+	
+	private static String 	mongoAddr = System.getProperty("mongo.addr");
+	private static int 		mongoPort = Integer.parseInt(System.getProperty("mongo.port"));
+	private static String 	mongoUser = System.getProperty("mongo.user");
+	private static String 	mongoPass = System.getProperty("mongo.pwd");
+	private static String 	mongoDBName = System.getProperty("mongo.db.name");
+	
+//	private static String failedDocsFileName = System.getProperty("failed.path");
+	private static String resultDir			= System.getProperty("result.dir");	
+	private static String annotSourceDir	= System.getProperty("annots.dir");
+	
 	
 	
 	/**
@@ -162,9 +163,6 @@ public class GraphDumper extends Parallelizable {
 	}
 
 	
-
-	
-	
 	@Override
 	public void runAlgo(String docKey, Logger L) {
 		try{
@@ -178,21 +176,45 @@ public class GraphDumper extends Parallelizable {
 		String longDocKey = transformKey(docKey);
 		
 		// 1. get index of detected topics (entities)
-		EntityIndex entIndex = new EntityIndex(getAnnotationsJdom(docKey, annotSourceDir, L));
+		EntityIndex annotationsIndex = new EntityIndex(getAnnotationsJdom(docKey, annotSourceDir, L));
 		
 		// 2. get srl xml
-		Document srlRoot = getSrl(longDocKey, L);
+		Document srlJdomDoc = getSrl(longDocKey, L);
 		
-		
-		
-		// 3. iterate over srl nodes, get all node mentions
-		
-		// 4. get indexed entities for each mention, select the one with highes weight
-		
-		// 5. make graph, add entity annotations 
+		// 3. extract graph from srl
+		// cumulated text length is computed in extractGraph function
 	
+		TreeMap<String, List<DirectedSparseGraph<Argument, Role>>> sentenceGraphSetMap = null;
 		
+		try {
+			sentenceGraphSetMap = composeAnnotatedGraphs(docKey, srlJdomDoc, annotationsIndex);
+		} catch (JDOMException e) {
+			L.error("<" + docKey +">\t jdom exception composing graph", e);
+		} catch (IOException e) {
+			L.error("<" + docKey +">\t io exception composing graph", e);
+		}
 
+		// 4. serialize result to file
+		
+		FileOutputStream f_out = null;
+		ObjectOutputStream obj_out = null;
+		try {
+			f_out = new FileOutputStream(resultDir + docKey + ".graph");
+			obj_out = new ObjectOutputStream (f_out);
+			obj_out.writeObject(sentenceGraphSetMap);
+			obj_out.close();
+		} catch (FileNotFoundException e) {
+			L.error("<" + docKey +">\t file not found exception when writing result file", e);
+		} catch (IOException e) {
+			L.error("<" + docKey +">\t io exception when writing result file", e);
+		} finally{
+			try {
+				obj_out.close();
+			} catch (IOException e) {
+				L.error("<" + docKey +">\t io exception closing object output stream");
+			}
+		}
+		
 		
 		
 		
@@ -202,44 +224,56 @@ public class GraphDumper extends Parallelizable {
 	
 	
 	public static void main(String[] args) throws JDOMException, IOException {
-		File annotFile = new File("/home/pilatus/Desktop/srl-en-test-text.xml");
-		SAXBuilder builder = new SAXBuilder();
-		Document jdomDoc = (Document) builder.build(annotFile);
 
-		XPathFactory xpf = XPathFactory.instance();
-		XPathExpression<Element> expr = null;
-	
-		DefaultJDOMFactory jdf = new DefaultJDOMFactory();
+		String[] ids = new String[] {"en-26221135.xml","en-63876.xml","en-690842.xml","es-14819.xml","es-54595.xml","es-79562.xml"};
 
-		
-		
-		
-		// 1. collect all mentions
-		
-		
-		String nodeId = "W28";
-		
-		// get all mention-token elements
-		expr = xpf.compile("/item/nodes/node[@id='" + nodeId + "']", Filters.element());
-		Element node = expr.evaluateFirst(jdomDoc);
-		Element n = (Element) node.clone();
-		n.detach();
-		expr = xpf.compile("/node/mentions/mention[@sentenceId='" + "3" + "']/mention_token", Filters.element());
-		Document d = jdf.document(n);
-		System.out.println("---");
-		List<Element> nodeMentionTokens = expr.evaluate(d); 
-		for (Element ll : nodeMentionTokens){
-			System.out.println(ll.getAttributeValue("id"));
+		for (String file : ids){
+			
 		}
-		System.out.println("---");
 		
-		expr = xpf.compile("/node/mentions/mention[@sentenceId='" + "3" + "']/mention_token", Filters.element());
-		nodeMentionTokens = expr.evaluate(d); 
-		for (Element ll : nodeMentionTokens){
-			System.out.println(ll.getAttributeValue("id"));
-		}
-		System.out.println("---");
-		System.out.println("---");
+//		result.dir=/home/pilatus/Desktop/annot-test/res/ 
+//				annots.dir=/home/pilatus/Desktop/annot-test/
+		GraphDumper gd = new GraphDumper();
+		gd.runAlgo("ann-en-test-text.xml");
+		
+//		File annotFile = new File("/home/pilatus/Desktop/srl-en-test-text.xml");
+//		SAXBuilder builder = new SAXBuilder();
+//		Document jdomDoc = (Document) builder.build(annotFile);
+//
+//		XPathFactory xpf = XPathFactory.instance();
+//		XPathExpression<Element> expr = null;
+//	
+//		DefaultJDOMFactory jdf = new DefaultJDOMFactory();
+//
+//		
+//		
+//		
+//		// 1. collect all mentions
+//		
+//		
+//		String nodeId = "W28";
+//		
+//		// get all mention-token elements
+//		expr = xpf.compile("/item/nodes/node[@id='" + nodeId + "']", Filters.element());
+//		Element node = expr.evaluateFirst(jdomDoc);
+//		Element n = (Element) node.clone();
+//		n.detach();
+//		expr = xpf.compile("/node/mentions/mention[@sentenceId='" + "3" + "']/mention_token", Filters.element());
+//		Document d = jdf.document(n);
+//		System.out.println("---");
+//		List<Element> nodeMentionTokens = expr.evaluate(d); 
+//		for (Element ll : nodeMentionTokens){
+//			System.out.println(ll.getAttributeValue("id"));
+//		}
+//		System.out.println("---");
+//		
+//		expr = xpf.compile("/node/mentions/mention[@sentenceId='" + "3" + "']/mention_token", Filters.element());
+//		nodeMentionTokens = expr.evaluate(d); 
+//		for (Element ll : nodeMentionTokens){
+//			System.out.println(ll.getAttributeValue("id"));
+//		}
+//		System.out.println("---");
+//		System.out.println("---");
 		
 		
 //expr = xpf.compile("/item/nodes/node[@id='" + "W28" + "']/mentions/mention[@sentenceId='3']/mention_token", Filters.element());
@@ -248,14 +282,19 @@ public class GraphDumper extends Parallelizable {
 //		for (Element e : l){
 //			System.out.println(e.getAttributeValue("id"));
 //		}
-		expr = xpf.compile("//frame", Filters.element());
-		List<Element> fs = expr.evaluate(jdomDoc);
-		for(Element f: fs){
-			System.out.println(f.getAttributeValue("id") + " valid " + isValidFrame(f));
-		}
-		
-		
-		
+//		expr = xpf.compile("//frame", Filters.element());
+//		List<Element> fs = expr.evaluate(jdomDoc);
+//		for(Element f: fs){
+////			System.out.println(f.getAttributeValue("id") + " valid " + validateFrame(f));
+//		}
+//		
+//		TreeMap<String, ArrayList<Element>> map = new TreeMap<String, ArrayList<Element>>();
+//		TreeSet<String> s = new TreeSet<String>();
+//		s.add("hi");
+//		s.add("bye");
+//		System.out.println(s);
+//		s.remove("hi");
+//		System.out.println(s);
 		
 //		expr = xpf.compile("//argument", Filters.element());
 //		
@@ -324,9 +363,9 @@ public class GraphDumper extends Parallelizable {
 	 * @param sentenceId
 	 * @param srlDoc
 	 * @param entIndex
-	 * @return Object[]{graph.Node, String role} new node complete with all attributes and annotations OR null if no annotation found
+	 * @return Object[]{graph.Node, Role} new node complete with all attributes and annotations OR null if no annotation found
 	 */
-	private Object[] validateNodeArgument(Element argument, String sentenceId, Document srlDoc, EntityIndex entIndex){
+	private Object[] validateNodeArgument(Element argument, String sentenceId, Document srlDoc, EntityIndex entIndex, int[] cumulTextLength){
 		
 		XPathFactory xpf = XPathFactory.instance();
 		XPathExpression<Element> expr = null;
@@ -357,9 +396,11 @@ public class GraphDumper extends Parallelizable {
 			expr = xpf.compile("/item/sentences/seentence[@id='" + sentenceId + "']/tokens/token[@id='" + tokenId + "']", Filters.element());
 			Element token = expr.evaluateFirst(srlDoc);
 			
-			int from = Integer.parseInt(token.getAttributeValue("from"));
-			int to = Integer.parseInt(token.getAttributeValue("to"));
-			mentionCoordinates.add(new int[]{from, to});
+			String from = token.getAttributeValue("from");
+			String to = token.getAttributeValue("to");
+			
+			// !!! convert to global indices !!!
+			mentionCoordinates.add(getGlobalIndices(sentenceId, from, to, cumulTextLength));
 		}
 		
 		// get the Annotations OR null
@@ -400,7 +441,7 @@ public class GraphDumper extends Parallelizable {
 				}
 			}
 			
-			return new Object[]{newGraphNode, role} ;
+			return new Object[]{newGraphNode, new Role(role)} ;
 			
 		}else{
 			return null;		 
@@ -410,60 +451,146 @@ public class GraphDumper extends Parallelizable {
 	
 	
 	/**
-	 * A frame is valid if it has >= 2 arguments AND every frame-argument is valid as well.
+	 * A frame is valid if it has >= 2 valid non-frame arguments.
 	 * @param frame
 	 * @param sentenceId
 	 * @param srlDoc
 	 * @return true or false
 	 */
+	private List<Object[]> validateFrame(Element frame, String sentenceId, Document srlDoc, EntityIndex entIndex, int[] cumulTextLength){
+		List<Element> arguments = frame.getChildren("argument");
+//		int totalArgs = arguments.size();
+		int numValidNodeArgs = 0;
+		List<Element> frameArguments = new LinkedList<Element>();
+		List<Object[]> nodeArguments = new LinkedList<Object[]>();
+		
+		// count valid node-arguments
+		for (Element arg : arguments){
+			if(arg.getAttributeValue("frame") == null){
+				 // determine if node is valid
+				Object[] potentiallyValidNode = validateNodeArgument(arg, sentenceId, srlDoc, entIndex, cumulTextLength);
+				if(potentiallyValidNode != null){
+					numValidNodeArgs ++;
+					nodeArguments.add(potentiallyValidNode);
+				}				
+			}else{
+				// save the frame-arguments for later
+				frameArguments.add(arg);
+			}
+		}
+		
+		if(numValidNodeArgs >= 2){
+			// make nodes from frame-arguments
+			String id, type, dispName;
+			Role role;
+			for(Element frameArg : frameArguments){
+				
+				id 		= frameArg.getAttributeValue("id");
+				dispName = frameArg.getAttributeValue("displayName");
+				role 	= new Role(frameArg.getAttributeValue("role"));
+				type 	= "PREDICATE";
+				Node frameNode = new Node(id, type, dispName, "");
+				
+				nodeArguments.add(new Object[]{frameNode, role});
+			}
+			return nodeArguments;
+		}else{
+			
+			// return null if frame has less than two valid arguments
+			return null;
+		}
+	}
+	
+	/*
 	private static boolean isValidFrame(Element frame){
-		
-		List<Element> arguments = frame.getChildren("argument");
-		int size = arguments.size();
-		
-		if( size > 2){
-			
-			boolean frameValidationResult = true;
-			
-			for(Element arg : arguments){
-				
-				if(arg.getAttributeValue("frame") != null){
-					return frameValidationResult & isValidFrame(arg);
-				}			
-			}
-			
-			return frameValidationResult;
-		}else{
-			return false;
-		}
-	}
-	
-private static List<List<Element>> magic(Element frame){
-		
-		List<Element> arguments = frame.getChildren("argument");
-		int size = arguments.size();
-		
-		if( size > 2){
-			
-			boolean frameValidationResult = true;
-			
-			for(Element arg : arguments){
-				
-				if(arg.getAttributeValue("frame") != null){
-					return frameValidationResult & isValidFrame(arg);
-				}			
-			}
-			
-			return frameValidationResult;
-		}else{
-			return false;
-		}
-	}
-	
-	
-	private List<SentenceGraphContainer> composeAnnotatedGraphs(Document srlJdomDoc, EntityIndex entIndex) throws JDOMException, IOException{
 
-		List<SentenceGraphContainer> graphsInArticle = new LinkedList<SentenceGraphContainer>();
+		List<Element> arguments = frame.getChildren("argument");
+		int size = arguments.size();
+
+		if( size > 2){
+
+			boolean frameValidationResult = true;
+
+			for(Element arg : arguments){
+
+				if(arg.getAttributeValue("frame") != null){
+					return frameValidationResult & isValidFrame(arg);
+				}			
+			}
+
+			return frameValidationResult;
+		}else{
+			return false;
+		}
+	}
+	private static void magic2 (List<Element> frames){
+
+		TreeMap<String, LinkedList<Element>> global = new TreeMap<String, LinkedList<Element>> ();
+		String parentId = null;
+
+		for (Element me : frames){
+			List<Element> myArguments = me.getChildren("argument");
+			String myId = me.getAttributeValue("id");
+
+			LinkedList<Element> kids = null;
+			boolean hasKids = false;
+			for(Element arg : myArguments){
+
+				if(arg.getAttributeValue("frame") != null){
+
+				}			
+			}
+
+			if (hasKids){
+				global.put(myId, kids);
+			}else{
+				global.put(myId, null);
+			}
+
+		}
+
+	}
+	private static void magic(Element me, TreeMap<String, List<Element>> global, String parentId, TreeSet<String> todo){
+
+		List<Element> myArguments = me.getChildren("argument");
+		String myId = me.getAttributeValue("id");
+
+
+		if (parentId == null){
+
+			// separate graph
+			ArrayList<Element> container = new ArrayList<Element>();
+			container.add(me);
+			global.put(myId, container);
+
+
+			for(Element arg : myArguments){				
+				if(arg.getAttributeValue("frame") != null){
+					magic(arg, global, myId, todo);
+				}			
+			}	
+		}else{
+			// graph is subgraph
+
+			List<Element> container = global.get(parentId);
+			container.add(me);
+			global.put(parentId, container);
+
+			for(Element arg : myArguments){
+
+				if(arg.getAttributeValue("frame") != null){
+					magic(arg, global, parentId, todo);
+				}			
+			}
+		}
+	}
+
+*/
+	private TreeMap<String, List<DirectedSparseGraph<Argument, Role>>> composeAnnotatedGraphs(String shortDocKey, Document srlJdomDoc, EntityIndex entIndex) throws JDOMException, IOException{
+		
+		////////result variables
+		TreeMap<String, List<DirectedSparseGraph<Argument, Role>>> sentenceToGraphSetMap = new TreeMap<String, List<DirectedSparseGraph<Argument, Role>>>();
+		////////
 
 		XPathFactory xpf = XPathFactory.instance();
 		XPathExpression<Element> expr = null;
@@ -471,208 +598,103 @@ private static List<List<Element>> magic(Element frame){
 		Element srlRoot = srlJdomDoc.getRootElement();
 		
 		List<Element> sentences = srlRoot.getChild("sentences").getChildren("sentence");
+		
 		// 1. prepare the local-to-global token indexing 
 		int[] cumulatedTextLength = computeCumulatedTextLength(sentences);
+		
+		// 2. for each sentence			 
+		for (Element sent : sentences) {
+
+			//////// result variables
+			List<DirectedSparseGraph<Argument, Role>> graphsInSentence = new LinkedList<DirectedSparseGraph<Argument, Role>>();
+			////////
 
 
-				// 2. for each sentence			 
-				for (Element sent : sentences) {
+			String sentenceId = sent.getAttributeValue("id");
 
-					//////// result variables
-					String sentenceText = sent.getChildText("text");
-					DirectedSparseMultigraph<Argument, Role> sentenceSRLGraph = new DirectedSparseMultigraph<Argument, Role>();
-					////////
+			// 3. get all frames for that sentence
+			expr = xpf.compile("/item/frames/frame[@sentenceId='"+sentenceId + "']", Filters.element());
+			List<Element> frames = expr.evaluate(srlJdomDoc);
 
+			// only first frame for each sentence can be root frame 
+			int rootIndicator = 0;		// to keep track of first frame in each sentence
 
-					String sentId = sent.getAttributeValue("id");
+			
+			for(Element frame: frames){
+				//////// result variables
+				DirectedSparseGraph<Argument, Role> oneGraphPerFrame = new DirectedSparseGraph<Argument, Role>();
+				////////
+				
+				rootIndicator ++;
 
-					// 3. get all frames for that sentence
-					expr = xpf.compile("//frame[@sentenceId='"+sentId + "']", Filters.element());
-					List<Element> frames = expr.evaluate(srlJdomDoc);
+				// 3. check if this frame is valid
+				List<Object[]> validatedNodesList = validateFrame(frame, sentenceId, srlJdomDoc, entIndex, cumulatedTextLength);
 
-					int rootIndicator = 0;		// to keep track of first frame in each sentence
-/******************/for(Element frame: frames){
+				if (validatedNodesList != null){
+
+					
 						
-						rootIndicator ++;
-						
-						// 2. extract frame arguments
-						// continue to next frame if the current one has less than 2 arguments
-						List<Element> arguments = frame.getChildren("argument");
-						if(arguments.size() < 2){
-							continue;
-						}
-						
-						
-
-
-						////////							
-						// each frame represents a predicate
-						// 1. extract frame attributes (isRoot, pos, lemma, displName) through tokenID
-						String frameTokenID 	= frame.getAttributeValue("tokenId");
-						expr = xpf.compile("//token[@id='"+frameTokenID + "']", Filters.element());
-						Element frameToken 		= expr.evaluateFirst(srlJdomDoc);		// this element must exist
-						String POS 				= frameToken.getAttributeValue("pos");
-						String frameMention 	= frameToken.getText();
-						String frameDisplName 	= frame.getAttributeValue("displayName");
-						String frameID 			= frame.getAttributeValue("id");
-						
-						// only first frame for each sentence can be root frame !!!
-						boolean isRoot = (rootIndicator == 1);		
-/* PREDICATE */			Predicate predicate = new Predicate(isRoot, frameID, POS, frameDisplName, frameMention);
-
-						// add KB references to predicate
-						Element descriptions = frame.getChild("descriptions");
-						if (descriptions != null){
-							List<Element> predRefs = descriptions.getChildren("description");
-							for(Element predRef : predRefs){
+					// 3.1. construct new predicate					
+					// each frame represents a predicate
+					// 1. extract frame attributes (isRoot, pos, lemma, displName) through tokenID
+					boolean isRoot = (rootIndicator == 1);
+					String frameTokenID 	= frame.getAttributeValue("tokenId");
+					expr = xpf.compile("/item/sentences/sentence[@id='" + sentenceId + "']/tokens/token[@id='"+frameTokenID + "']", Filters.element());
+					Element frameToken 		= expr.evaluateFirst(srlJdomDoc);		
+					String pos 				= frameToken.getAttributeValue("pos");
+					String frameMention 	= frameToken.getText();
+					String frameDisplName 	= frame.getAttributeValue("displayName");
+					String frameID 			= frame.getAttributeValue("id");
+					
+/* PREDICATE */		Predicate predicate = new Predicate(isRoot, frameID, pos, frameDisplName, frameMention);
+					
+					// add KB references to predicate
+					Element descriptions = frame.getChild("descriptions");
+					if (descriptions != null){
+						List<Element> predRefs = descriptions.getChildren("description");
+						for(Element predRef : predRefs){
+							
+							String refKB = predRef.getAttributeValue("knowledgeBase");
+							
+							if(refKB.startsWith("W")){//startsWith("WordNet")){
 								String uri = predRef.getAttributeValue("URI");
 								String refDisplName = predRef.getAttributeValue("displayName");
-								String refKB = predRef.getAttributeValue("knowledgeBase");
 								Ref predReference = new Ref(uri, refDisplName, refKB);
-								if(refKB.startsWith("WordNet")){
-									predicate.addRef(predReference);
-								}
+								predicate.addRef(predReference);
 							}
 						}
-
-
-						Argument argPlaceholder = null;
-							
-						int annotatedNodes = 0;
-						
-/* ARGUMENTS */			for(Element argument : arguments){
-
-
-
-							// 4.1. is this argument a node? query the frame attribute of each argument
-							if (argument.getAttributeValue("frame") == null){
-
-
-								// 4.2. get some node attributes
-								String nodeDisplName = argument.getAttributeValue("displayName");
-								String nodeId = argument.getAttributeValue("id");
-								expr = xpf.compile("/item/nodes/node[@id='" + nodeId + "']", Filters.element());
-								Element nodeArg = expr.evaluateFirst(srlJdomDoc);
-								String nodeType = nodeArg.getAttributeValue("type");
-								// get all the mentions of this node in that sentence:
-								expr = xpf.compile("/item/nodes/node[@id='" + nodeId + "']/mentions/mention[@sentenceId='" + sentId + "']/mention_token", Filters.element());
-								List<Element> nodeMentionTokens = expr.evaluate(srlJdomDoc); 
-								// store the mention indices here
-								List<int[]> mentionIndices = new LinkedList<int[]>();
-								for (Element mentionToken : nodeMentionTokens){
-									String tokenId = mentionToken.getAttributeValue("id");
-									expr = xpf.compile("/item/sentences/seentence[@id='" + sentId + "']/tokens/token[@id='" + tokenId + "']", Filters.element());
-									Element token = expr.evaluateFirst(srlJdomDoc);
-									int from = Integer.parseInt(token.getAttributeValue("from"));
-									int to = Integer.parseInt(token.getAttributeValue("to"));
-									int[] occurrence = new int[]{from, to};
-									mentionIndices.add(occurrence);
-								}
-								String[] bestAnnotation = entIndex.getBestAnnotation(mentionIndices);
-								Ref dbpeadiaRef = null;
-								if(bestAnnotation != null){
-									dbpeadiaRef = new Ref(bestAnnotation[0], bestAnnotation[1], "dbpedia");
-								}else{
-									
-									// 
-								}
-////////////////////////////////////										
-// node mention ist der "words"-attribut in <mention>
-////////////////////////////////////							
-								
-								
-//								String nodeMention = 
-
-								/*
-								 * <node type="word" displayName="would" id="W11">
-								 * <mentions>
-								 * 	<mention sentenceId="1" id="W11.1" words="would">
-								 * 		<mention_token id="1.16"/>
-								 * 	</mention>
-								 * 	<mention sentenceId="1" id="W11.2" words="would">
-								 * 		<mention_token id="1.28"/>
-								 * 	</mention>
-								 * </mentions>
-								 * </node>	
-								 * 
-								 * 
-								 * <tokens>
-								 * 	<token pos="MD" end="112" lemma="would" id="1.16" start="107">would</token>
-								 * </tokens>							
-								 */
-
-
-					
-								// 4.5 init new Node instance
-///* NODE */									argPlaceholder = new Node(nodeId + "." + nodeTracker.get(nodeId), nodeType, nodePos, nodeLemma, nodeDisplName);
-								argPlaceholder = new Node(nodeId, nodeType, "?pos", "?lemma", nodeDisplName);
-								
-								// 4.6. read the node KB references
-								expr = xFactory.compile("//node[@id='" + nodeId + "']", Filters.element());
-								Element nodeDescriptions = expr.evaluateFirst(jdomDoc).getChild("descriptions");
-								if (nodeDescriptions != null){
-									List<Element> nodeRefs = nodeDescriptions.getChildren("description");
-									for(Element nodeRef : nodeRefs){
-										Ref r = new Ref(nodeRef.getAttributeValue("URI"), nodeRef.getAttributeValue("displayName"), nodeRef.getAttributeValue("knowledgeBase"));
-										argPlaceholder.addRef(r);
-									}
-
-								}
-
-
-
-
-							}else{
-								// 4.2. is this argument another frame?
-								// 1. extract frame attributes (isRoot, pos, lemma, displName) through tokenID
-								String argId = argument.getAttributeValue("id");
-								String argFrameDisplName = argument.getAttributeValue("displayName");
-								expr = xFactory.compile("//frame[@id='" + argId + "']", Filters.element());
-								// from argument to frame
-								Element argFrame = expr.evaluateFirst(jdomDoc);
-								String argFrameTokenID = argFrame.getAttributeValue("tokenId");
-								expr = xFactory.compile("//token[@id='"+argFrameTokenID + "']", Filters.element());
-								Element argFrameToken = expr.evaluateFirst(jdomDoc);		// this element must exist
-								String argFramePOS 		= argFrameToken.getAttributeValue("pos");
-								String argFrameLemma 	= argFrameToken.getAttributeValue("lemma");
-								
-/* Inner PREDICATE */			argPlaceholder = new Predicate(Boolean.FALSE, argId, argFramePOS, argFrameLemma, argFrameDisplName);
-
-
-							}
-
-							// init new role instance (edge between two nodes in graph)
-							sentenceSRLGraph.addEdge(new Role(argument.getAttributeValue("role")), predicate, argPlaceholder);
-/* GRAPH */
-						}				
 					}
-
-
-/******************/
-					oneGraphPerSentence.add(sentenceSRLGraph);
-					if(visualize)
-						GRAPHTESTER.visGraph(sentenceSRLGraph, sentenceText);	
 					
-/******************/					
 					
+					// 3.2. compose graph					
+					for (Object[] nodeContainer : validatedNodesList){
+/* GRAPH */				oneGraphPerFrame.addEdge((Role)nodeContainer[1], predicate, (Node)nodeContainer[0]);
+						
+					}
+					graphsInSentence.add(oneGraphPerFrame);
+					
+GRAPHTESTER.visGraph(oneGraphPerFrame, "sentence " + sentenceId);
+					
+				} else {
+					continue;
 				}
-
-			/**}catch(Exception e){
-				System.err.println("while parsing srl xml");
-				e.printStackTrace();
-			}
-
-		}catch(Exception e){
-			System.err.println("while reading in xml file");
-			e.printStackTrace();
-		}
-		**/
 		
+			} // loop over frames finished
 
-		return oneGraphPerSentence;
+			
+			
+			// construct informative sentence id from <lang>-<articleID>-<sentenceID>
+			String globalSentenceID = shortDocKey + "-" + sentenceId;
+/* MAP */	sentenceToGraphSetMap.put(globalSentenceID, graphsInSentence);
 
-
+			
+		} // loop over sentences finished
+				
+		
+		return sentenceToGraphSetMap;
 	}
+
+	
 
 		
 	

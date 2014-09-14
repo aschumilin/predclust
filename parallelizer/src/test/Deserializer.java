@@ -23,7 +23,7 @@ public class Deserializer {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// 	
+		 	
 		try{
 			// don't use buffering
 			InputStream file = new FileInputStream("/home/pilatus/Desktop/graph.ser");
@@ -47,6 +47,9 @@ public class Deserializer {
 		catch(IOException ioe){
 			System.out.println("could not serialize annotations map: ");
 		}
+		
+
+
 	}
 
 }
