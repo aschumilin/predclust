@@ -256,7 +256,7 @@ public static void main(String[] args) {
 								String uri = predRef.getAttributeValue("URI");
 								String refDisplName = predRef.getAttributeValue("displayName");
 								String refKB = predRef.getAttributeValue("knowledgeBase");
-								Ref predReference = new Ref(uri, refDisplName, refKB);
+								Ref predReference = new Ref(uri, refDisplName, refKB, 123);
 
 								predicate.addRef(predReference);
 							}
@@ -316,7 +316,7 @@ public static void main(String[] args) {
 								if (nodeDescriptions != null){
 									List<Element> nodeRefs = nodeDescriptions.getChildren("description");
 									for(Element nodeRef : nodeRefs){
-										Ref r = new Ref(nodeRef.getAttributeValue("URI"), nodeRef.getAttributeValue("displayName"), nodeRef.getAttributeValue("knowledgeBase"));
+										Ref r = new Ref(nodeRef.getAttributeValue("URI"), nodeRef.getAttributeValue("displayName"), nodeRef.getAttributeValue("knowledgeBase"), 123);
 										argPlaceholder.addRef(r);
 									}
 

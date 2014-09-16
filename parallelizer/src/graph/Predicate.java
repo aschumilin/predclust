@@ -30,9 +30,9 @@ public class Predicate extends Argument implements Serializable {
 		
 	public String toString(){
 		if (rootFlag){
-			return "ROOT<"+super.getId() + ">" +"(" + pos + ")";
+			return "ROOT<"+super.getDisplayName()+"> ("+ super.getMention() + ")";
 		}else{
-			return "<"+super.getId() + ">" +"(" + pos + ")";
+			return "<"+super.getDisplayName()+"> ("+ super.getMention() + ")";
 		}
 	}
 
