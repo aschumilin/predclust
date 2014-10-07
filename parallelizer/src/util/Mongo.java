@@ -51,15 +51,13 @@ DBCollection coll= null;
 	public static void main(String[] args) throws IOException {
 		
 	
+			Mongo m = new Mongo("romulus", "srl");
 		
-//		DBCursor cursor = coll.find(query, keys)
-//	    System.out.println("got file, enter loop on cursor size: " + cursor.size());
-//		
-//		while(cursor.hasNext()){
-//			BasicDBObject o = (BasicDBObject)cursor.next();
-//			System.out.println(o.get("docTitle"));
-		
-		
+			DBObject o = m.getById("http://es.wikipedia.org/wiki?curid=14819");
+			// http://en.wikipedia.org/wiki/Imperial_Roman_army 
+			FileWriter fw = new FileWriter(new File("/home/pilatus/Desktop/es-14819-srl.xml"));
+			fw.write((String)o.get("srlAnnot"));
+			fw.close();
 
 
 	}

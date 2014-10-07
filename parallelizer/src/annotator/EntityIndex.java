@@ -49,9 +49,7 @@ public class EntityIndex {
 		}
 	}
 	
-	/**
-	 * @return 
-	 */
+
 	
 	/**
 	 * For a given srl node, find the annotation with the highest weight.

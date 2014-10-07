@@ -1,21 +1,7 @@
 package test;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
-
-import org.jdom2.JDOMException;
-
-import edu.uci.ics.jung.graph.DirectedSparseMultigraph;
-import graph.Argument;
-import graph.Role;
+import java.util.List;
 
 public class Deserializer {
 
@@ -23,7 +9,7 @@ public class Deserializer {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		 	
+		 	/*
 		try{
 			// don't use buffering
 			InputStream file = new FileInputStream("/home/pilatus/Desktop/graph.ser");
@@ -47,6 +33,11 @@ public class Deserializer {
 		catch(IOException ioe){
 			System.out.println("could not serialize annotations map: ");
 		}
+		*/
+		List<Integer> x = new ArrayList<Integer>();
+		
+		x.add(new Integer(1));
+		x.addAll(null);
 		
 
 
