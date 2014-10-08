@@ -1,8 +1,12 @@
 package algo;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StringReader;
 import java.net.UnknownHostException;
@@ -122,7 +126,6 @@ public class GraphDumper2 extends Parallelizable {
 //			fw.flush();
 //			fw.close();
 			
-			
 			return jdomDoc;
 		}
 	}
@@ -208,7 +211,7 @@ public class GraphDumper2 extends Parallelizable {
 			try {
 				sentenceGraphSetMap = composeAnnotatedGraphs(docKey, srlJdomDoc, annotationsIndex);
 			} catch (Exception e) {
-				L.error("<" + docKey +">\t jdom exception composing graph", e);
+				L.error("<" + docKey +">\t exception composing graph list for sentence", e);
 				Worker.decrBusyWorkers();
 				return;
 			}
@@ -246,39 +249,43 @@ public class GraphDumper2 extends Parallelizable {
 	
 	public static void main(String[] args) throws JDOMException, IOException {
 
-//		String[] ids = new String[] {"en-26221135.xml","en-63876.xml","en-690842.xml","es-14819.xml","es-54595.xml","es-79562.xml"};
-//
-//		for (String file : ids){
-//			
-//		}
+		String[] ids = new String[] {"en-997414.xml"}; //"en-26221135.xml","en-63876.xml","en-690842.xml","es-14819.xml","es-54595.xml"};
 		
-//		result.dir=/home/pilatus/Desktop/annot-test/res/ 
-//				annots.dir=/home/pilatus/Desktop/annot-test/
-		GraphDumper2 gd = new GraphDumper2();
-
 		long anf = System.currentTimeMillis();
-////		gd.runAlgo("en-997414.xml", Logger.getLogger(GraphDumper.class));
-//		InputStream file = new FileInputStream(resultDir + "en-997414.graph" );
-////		OutputStream buffer = new BufferedOutputStream(file);
-//		ObjectInput input = new ObjectInputStream(file);//buffer);
-//		try{
-//			TreeMap<String, List<DirectedSparseGraph<Argument,Role>>> map= (TreeMap<String, List<DirectedSparseGraph<Argument,Role>>>)input.readObject();
-//			System.out.println("finished de-serializing");
-//			
-//			
-//			for (String sentId : map.keySet()){
-//				for(DirectedSparseGraph<Argument,Role> g : map.get(sentId)){
-//					test.GRAPHTESTER.visGraph(g, sentId);
-//				}
-//			}
-//			
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		finally{input.close();}
-//		System.out.println(System.currentTimeMillis() - anf);
-	
+		GraphDumper2 gd = new GraphDumper2();
+		
+		for (String annotFileName : ids){
+			System.out.println("doing " + annotFileName);
+			
+			gd.runAlgo(annotFileName, Logger.getLogger(GraphDumper.class));
+			/*
+			InputStream file = new FileInputStream(resultDir + annotFileName);
+			ObjectInput input = new ObjectInputStream(file);
+			try{
+				TreeMap<String, List<DirectedSparseGraph<Argument,Role>>> map= (TreeMap<String, List<DirectedSparseGraph<Argument,Role>>>)input.readObject();
+		
+				for (String sentId : map.keySet()){
+					for(DirectedSparseGraph<Argument,Role> g : map.get(sentId)){
+						test.GRAPHTESTER.visGraph(g, sentId);
+					}
+				}
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finally{input.close();}
+			*/
+		}
+		System.out.println(System.currentTimeMillis() - anf);
+		
+		// /home/pilatus/Desktop/annot-test/en-26221135.xml
+//		result.dir=/home/pilatus/Desktop/annot-test2/
+//		annots.dir=/home/pilatus/Desktop/annot-test2/
+		
+
+		
+			
 	}
 
 	
@@ -456,17 +463,29 @@ public class GraphDumper2 extends Parallelizable {
 	 * Frames that are arguments of top-level predicates are removed from the sentence's frameTreeMap 
 	 * in order not to be processed again.
 	 * A frame is valid if it has >= 2 non-frame arguments. 
-	 * @param frame
+	 * @param topLevelFrame
 	 * @param sentenceId
 	 * @param srlDoc
-	 * @return List of Node arguments OR null. Each argument comes with its corresponding role in a Object[]{Node, Role}.
+	 * @return Null if frame is npt valid. Or List of graph building blocks: Object[]{Role, predicateArg, nodeOrPredicateArg}. 
+	 * List of Node arguments OR null. Each argument comes with its corresponding role in a Object[]{Node, Role}.
 	 */
-	private List<Object[]> validateFrame(TreeMap<String, Element> frameMap, Element frame, String sentenceId, Document srlDoc, EntityIndex entIndex, int[] cumulTextLength){
-		List<Element> allArguments = frame.getChildren("argument");
+	private static int i = 0;
+	
+	private List<Object[]> validateFrame(Predicate topLevelPredicate, TreeMap<String, Boolean> framesToDoMap, Element parentFrame, String sentenceId, Document srlDoc, EntityIndex entIndex, int[] cumulTextLength){
+//		System.out.println("sentID: " + sentenceId + " , frameID " + topLevelFrame.getAttributeValue("id"));
+		
+		
+		XPathFactory xpf = XPathFactory.instance();
+		XPathExpression<Element> expr = null;
+		
+		List<Element> allArguments = parentFrame.getChildren("argument");
 //		int totalArgs = arguments.size();
 		int numValidNonPredicateArgs = 0;
-		List<Element> frameArguments = new LinkedList<Element>();
 		List<Object[]> resultingArguments = new LinkedList<Object[]>();
+		
+		i++;
+		if(sentenceId.equals("6")){
+			System.out.println(i +" in val frame with frameid " + parentFrame.getAttributeValue("id") +  " = " + topLevelPredicate.getDisplayName() + " has children args: " + allArguments.size());}
 		
 		// count valid node-arguments
 		for (Element arg : allArguments){
@@ -475,7 +494,11 @@ public class GraphDumper2 extends Parallelizable {
 				Object[] potentiallyValidNonPredicateNode = validateNodeArgument(arg, sentenceId, srlDoc, entIndex, cumulTextLength);
 				if(potentiallyValidNonPredicateNode != null){
 					numValidNonPredicateArgs ++;
-					resultingArguments.add(potentiallyValidNonPredicateNode);
+					if(sentenceId.equals("6")){
+						System.out.println("\tvalid node id: " + ((Node)potentiallyValidNonPredicateNode[0]).getId());
+					}
+					// add node to this top level predicate
+					resultingArguments.add(new Object[]{(Role)potentiallyValidNonPredicateNode[1], topLevelPredicate, potentiallyValidNonPredicateNode[0]});
 				}				
 			}else{
 				// !!! handle predicate arguments recursively only if this top-level frame is valid !!!			
@@ -484,19 +507,6 @@ public class GraphDumper2 extends Parallelizable {
 		}
 		
 		if(numValidNonPredicateArgs >= 2){
-			// make nodes from non-predicate arguments
-			String id, type, dispName;
-			Role role;
-			for(Element frameArg : frameArguments){
-				
-				id 		= frameArg.getAttributeValue("id");
-				dispName = frameArg.getAttributeValue("displayName");
-				role 	= new Role(frameArg.getAttributeValue("role"));
-				type 	= "PREDICATE";
-				Node frameNode = new Node(id, type, dispName, "");
-				
-				resultingArguments.add(new Object[]{frameNode, role});
-			}
 			
 			//
 			// after processing the valid non-predicate arguments
@@ -504,61 +514,80 @@ public class GraphDumper2 extends Parallelizable {
 			//
 			for (Element subFrameArg : allArguments){
 				if(subFrameArg.getAttributeValue("frame") != null){
-					 // recursion here
+					 
+					// 1. construct subLevelPredicate				
+					// extract frame attributes (isRoot, pos, lemma, displName) through tokenID
 					
-					List<Object[]> nonPredicateArgsOfSubframe = validateFrame(frameMap, subFrameArg, sentenceId, srlDoc, entIndex, cumulTextLength);
+					boolean isRoot = false;
+					String subFrameID 			= subFrameArg.getAttributeValue("id");
+					// get from this frame argument to the actual frame element and grab tokenID from there
+					expr = xpf.compile("/item/frames/frame[@id='" + subFrameID + "']", Filters.element());	
+					Element actualSubFrame	= expr.evaluateFirst(srlDoc); 
+					String frameTokenID 	= actualSubFrame.getAttributeValue("tokenId");
+					expr = xpf.compile("/item/sentences/sentence[@id='" + sentenceId + "']/tokens/token[@id='"+frameTokenID + "']", Filters.element());
+					Element frameToken 		= expr.evaluateFirst(srlDoc);		
+					
+					String pos 				= frameToken.getAttributeValue("pos");
+					String frameMention 	= frameToken.getText();
+					String frameDisplName 	= subFrameArg.getAttributeValue("displayName");
+					
+/* SUB-PREDICATE */	Predicate subPredicate = new Predicate(isRoot, subFrameID, pos, frameDisplName, frameMention);
+					
+					// add KB references to predicate
+					Element descriptions = subFrameArg.getChild("descriptions");
+					if (descriptions != null){
+						List<Element> predRefs = descriptions.getChildren("description");
+						for(Element predRef : predRefs){
+							
+							String refKB = predRef.getAttributeValue("knowledgeBase");
+							
+							if(refKB.startsWith("W")){//startsWith("WordNet")){
+								String uri = predRef.getAttributeValue("URI");
+								String refDisplName = predRef.getAttributeValue("displayName");
+								/* wordnet annotation gets a weight of 1 */
+								Ref predReference = new Ref(uri, refDisplName, refKB, 1);
+								subPredicate.addRef(predReference);
+							}
+						}
+					}
+					
+					if(sentenceId.equals("6")){
+						 System.out.println("\tsub-predicate : " + subPredicate.getDisplayName());
+					 }
+					
+					// RECURSION HERE
+					List<Object[]> nonPredicateArgsOfSubframe = validateFrame(subPredicate, framesToDoMap, actualSubFrame, sentenceId, srlDoc, entIndex, cumulTextLength);
+					
+
 					
 					if(nonPredicateArgsOfSubframe != null){		// valid sub-predicate
 						// 1. make and add new predicate node 
 						// 2. remove it from global frameMap
 						// 3. add all of its returned non-predicate nodes
 						
-						// 1. 				
-						// extract frame attributes (isRoot, pos, lemma, displName) through tokenID
-						XPathFactory xpf = XPathFactory.instance();
-						XPathExpression<Element> expr = null;
-						boolean isRoot = false;
-						String subFrameID 			= subFrameArg.getAttributeValue("id");
-						String frameTokenID 	= subFrameArg.getAttributeValue("tokenId");
-						expr = xpf.compile("/item/sentences/sentence[@id='" + sentenceId + "']/tokens/token[@id='"+frameTokenID + "']", Filters.element());
-						Element frameToken 		= expr.evaluateFirst(srlDoc);		
-						String pos 				= frameToken.getAttributeValue("pos");
-						String frameMention 	= frameToken.getText();
-						String frameDisplName 	= subFrameArg.getAttributeValue("displayName");
+						System.out.println("\t valid sub-frame detected: " + subFrameID);
+
 						
-/* SUB-PREDICATE */		Predicate predicate = new Predicate(isRoot, subFrameID, pos, frameDisplName, frameMention);
-						
-						// add KB references to predicate
-						Element descriptions = subFrameArg.getChild("descriptions");
-						if (descriptions != null){
-							List<Element> predRefs = descriptions.getChildren("description");
-							for(Element predRef : predRefs){
-								
-								String refKB = predRef.getAttributeValue("knowledgeBase");
-								
-								if(refKB.startsWith("W")){//startsWith("WordNet")){
-									String uri = predRef.getAttributeValue("URI");
-									String refDisplName = predRef.getAttributeValue("displayName");
-									/* wordnet annotation gets a weight of 1 */
-									Ref predReference = new Ref(uri, refDisplName, refKB, 1);
-									predicate.addRef(predReference);
-								}
-							}
-						}
+						System.out.println("sub pred added: " + subPredicate.getDisplayName());
 						
 						// 2.
-						frameMap.remove(subFrameID);
+						framesToDoMap.put(subFrameID, true);
 						
 						// 3. 
+						// add sub-predicate and its role to argument list						
+						resultingArguments.add(new Object[]{new Role(subFrameArg.getAttributeValue("role")), topLevelPredicate, subPredicate});
 						resultingArguments.addAll(nonPredicateArgsOfSubframe);
+					}else{
+						// sub-frame is not valid
 					}
 				}else{
 					// non-predicate arguments already handled above			
 				}
-			}
+			} // for loop over sub-frame arguments 
 			return resultingArguments;
 		}else{
-			
+			if(sentenceId.equals("6")){
+System.out.println("NULL");}
 			// return null if frame has less than two valid arguments
 			return null;
 		}
@@ -596,8 +625,11 @@ public class GraphDumper2 extends Parallelizable {
 			
 			// build a map of frames with frameID as key and frame element as value
 			TreeMap<String, Element> frameTreeMap = new TreeMap<String, Element>();
+			TreeMap<String, Boolean> framesToDoTracker = new TreeMap<String, Boolean>();
 			for (Element frame : frames){
-				frameTreeMap.put(frame.getAttributeValue("id"), frame);
+				String id = frame.getAttributeValue("id");
+				frameTreeMap.put(id, frame);
+				framesToDoTracker.put(id, false);
 			}
 			
 			// only first frame for each sentence can be root frame 
@@ -605,54 +637,67 @@ public class GraphDumper2 extends Parallelizable {
 
 			
 			for(String frameID: frameTreeMap.keySet()){
-				//////// result variables
+				
+				////////////////////
+				// move to next frame if this one was already done recursively
+				if(framesToDoTracker.get(frameID) == true){
+					System.out.println(" CONTINUE in compose");
+					continue;
+				}
+				////////////////////
+				
+				//////// 
+				// result variables
 				DirectedSparseGraph<Argument, Role> oneGraphPerFrame = new DirectedSparseGraph<Argument, Role>();
 				////////
 				
 				rootIndicator ++;
-
+				
+				Element currentFrame = frameTreeMap.get(frameID);
+				
+				// 3.0. construct new predicate					
+				// each frame represents a predicate
+				// 1. extract frame attributes (isRoot, pos, lemma, displName) through tokenID
+				boolean isRoot = (rootIndicator == 1);
+				String frameTokenID 	= currentFrame.getAttributeValue("tokenId");
+				expr = xpf.compile("/item/sentences/sentence[@id='" + sentenceId + "']/tokens/token[@id='"+frameTokenID + "']", Filters.element());
+				Element frameToken 		= expr.evaluateFirst(srlJdomDoc);		
+				String pos 				= frameToken.getAttributeValue("pos");
+				String frameMention 	= frameToken.getText();
+				String frameDisplName 	= currentFrame.getAttributeValue("displayName");
+				
+/* PREDICATE */	Predicate topLevelPredicate = new Predicate(isRoot, frameID, pos, frameDisplName, frameMention);
+				
+				// add KB references to predicate
+				Element descriptions = currentFrame.getChild("descriptions");
+				if (descriptions != null){
+					List<Element> predRefs = descriptions.getChildren("description");
+					for(Element predRef : predRefs){
+						
+						String refKB = predRef.getAttributeValue("knowledgeBase");
+						
+						if(refKB.startsWith("W")){//startsWith("WordNet")){
+							String uri = predRef.getAttributeValue("URI");
+							String refDisplName = predRef.getAttributeValue("displayName");
+							/* wordnet annotation gets a weight of 1 */
+							Ref predReference = new Ref(uri, refDisplName, refKB, 1);
+							topLevelPredicate.addRef(predReference);
+						}
+					}
+				}
+				
 				// 3. check if this frame is valid
-				List<Object[]> validatedNodesList = validateFrame(frameTreeMap, frameTreeMap.get(frameID), sentenceId, srlJdomDoc, entIndex, cumulatedTextLength);
+				List<Object[]> validatedNodesList = validateFrame(topLevelPredicate, framesToDoTracker, frameTreeMap.get(frameID), sentenceId, srlJdomDoc, entIndex, cumulatedTextLength);
 
 				if (validatedNodesList != null){
 					
-					Element currentFrame = frameTreeMap.get(frameID);
-						
-					// 3.1. construct new predicate					
-					// each frame represents a predicate
-					// 1. extract frame attributes (isRoot, pos, lemma, displName) through tokenID
-					boolean isRoot = (rootIndicator == 1);
-					String frameTokenID 	= currentFrame.getAttributeValue("tokenId");
-					expr = xpf.compile("/item/sentences/sentence[@id='" + sentenceId + "']/tokens/token[@id='"+frameTokenID + "']", Filters.element());
-					Element frameToken 		= expr.evaluateFirst(srlJdomDoc);		
-					String pos 				= frameToken.getAttributeValue("pos");
-					String frameMention 	= frameToken.getText();
-					String frameDisplName 	= currentFrame.getAttributeValue("displayName");
-					
-/* PREDICATE */		Predicate predicate = new Predicate(isRoot, frameID, pos, frameDisplName, frameMention);
-					
-					// add KB references to predicate
-					Element descriptions = currentFrame.getChild("descriptions");
-					if (descriptions != null){
-						List<Element> predRefs = descriptions.getChildren("description");
-						for(Element predRef : predRefs){
-							
-							String refKB = predRef.getAttributeValue("knowledgeBase");
-							
-							if(refKB.startsWith("W")){//startsWith("WordNet")){
-								String uri = predRef.getAttributeValue("URI");
-								String refDisplName = predRef.getAttributeValue("displayName");
-								/* wordnet annotation gets a weight of 1 */
-								Ref predReference = new Ref(uri, refDisplName, refKB, 1);
-								predicate.addRef(predReference);
-							}
-						}
-					}
-					
+					// !!! mark this top-level frame as done on the todo list of frames. This is also done in validateFrame() !!!
+					framesToDoTracker.put(frameID, true);
+										
 					
 					// 3.2. compose graph					
 					for (Object[] nodeContainer : validatedNodesList){
-/* GRAPH */				oneGraphPerFrame.addEdge((Role)nodeContainer[1], predicate, (Node)nodeContainer[0]);
+/* GRAPH */				oneGraphPerFrame.addEdge((Role)nodeContainer[0], (Argument)nodeContainer[1], (Argument)nodeContainer[2]);
 						
 					}
 					graphsInSentence.add(oneGraphPerFrame);
@@ -669,13 +714,17 @@ public class GraphDumper2 extends Parallelizable {
 			
 			// construct informative sentence id from <lang>-<articleID>-<sentenceID>
 			String globalSentenceID = shortDocKey + "-" + sentenceId;
-/* MAP */	sentenceToGraphSetMap.put(globalSentenceID, graphsInSentence);
+			if(graphsInSentence.size() > 0){
+/* MAP */		sentenceToGraphSetMap.put(globalSentenceID, graphsInSentence);
+			}
 
-			
+//			System.out.println(framesToDoTracker.toString());
 		} // loop over sentences finished
 				
 		
+		
 		return sentenceToGraphSetMap;
+		
 	}
 
 	

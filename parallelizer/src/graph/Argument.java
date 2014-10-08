@@ -54,7 +54,11 @@ public abstract class Argument implements Serializable {
 		references.add(r);
 	}
 	public ArrayList<Ref> getRefs() {
-		return references;
+		if(references==null){
+			return new ArrayList<Ref>();
+		}else{
+			return references;
+		}
 	}
 	
 }

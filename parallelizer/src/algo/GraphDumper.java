@@ -244,39 +244,35 @@ public class GraphDumper extends Parallelizable {
 	
 	public static void main(String[] args) throws JDOMException, IOException {
 
-//		String[] ids = new String[] {"en-26221135.xml","en-63876.xml","en-690842.xml","es-14819.xml","es-54595.xml","es-79562.xml"};
-//
-//		for (String file : ids){
-//			
-//		}
+		String[] ids = new String[] {"en-26221135.xml","en-63876.xml","en-690842.xml","es-14819.xml","es-54595.xml","es-79562.xml"};
 		
-//		result.dir=/home/pilatus/Desktop/annot-test/res/ 
-//				annots.dir=/home/pilatus/Desktop/annot-test/
-		GraphDumper gd = new GraphDumper();
-
 		long anf = System.currentTimeMillis();
-////		gd.runAlgo("en-997414.xml", Logger.getLogger(GraphDumper.class));
-//		InputStream file = new FileInputStream(resultDir + "en-997414.graph" );
-////		OutputStream buffer = new BufferedOutputStream(file);
-//		ObjectInput input = new ObjectInputStream(file);//buffer);
-//		try{
-//			TreeMap<String, List<DirectedSparseGraph<Argument,Role>>> map= (TreeMap<String, List<DirectedSparseGraph<Argument,Role>>>)input.readObject();
-//			System.out.println("finished de-serializing");
-//			
-//			
-//			for (String sentId : map.keySet()){
-//				for(DirectedSparseGraph<Argument,Role> g : map.get(sentId)){
-//					test.GRAPHTESTER.visGraph(g, sentId);
-//				}
-//			}
-//			
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		finally{input.close();}
-//		System.out.println(System.currentTimeMillis() - anf);
-	
+		GraphDumper gd = new GraphDumper();
+		
+		for (String annotFileName : ids){
+			System.out.println("doing " + annotFileName);
+			
+			gd.runAlgo(annotFileName, Logger.getLogger(GraphDumper.class));
+			/*
+			InputStream file = new FileInputStream(resultDir + annotFileName);
+			ObjectInput input = new ObjectInputStream(file);
+			try{
+				TreeMap<String, List<DirectedSparseGraph<Argument,Role>>> map= (TreeMap<String, List<DirectedSparseGraph<Argument,Role>>>)input.readObject();
+		
+				for (String sentId : map.keySet()){
+					for(DirectedSparseGraph<Argument,Role> g : map.get(sentId)){
+						test.GRAPHTESTER.visGraph(g, sentId);
+					}
+				}
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finally{input.close();}
+			*/
+		}
+		System.out.println(System.currentTimeMillis() - anf);
 	}
 
 	

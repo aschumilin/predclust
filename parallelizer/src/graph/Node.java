@@ -1,6 +1,7 @@
 package graph;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Node extends Argument implements Serializable {
 	
@@ -32,11 +33,23 @@ public class Node extends Argument implements Serializable {
 
 
 	public String toString(){
-		if(type.equals("PREDICATE")){
-			return "[" + super.getId() +"->" + super.getDisplayName() + "]";
-		}else{
-			return "[" + super.getMention() +"] "+ super.getRefs().get(0).getURI() + " (" + super.getRefs().get(0).getWeight() + ")";
-		}
+//		if(type.equals("PREDICATE")){
+//			return "[" + super.getId() +"->" + super.getDisplayName() + "]";
+//		}else{
+		
+		String refs = "";
+			for(Ref ref : super.getRefs()){
+				refs += "[" + ref.getURI() + "(" + ref.getWeight() + ")" + "] ";
+			}
+			
+			String label = "(" + super.getMention() + ") " +
+//							"[srl display name] " + super.getDisplayName() + " | " +
+//							"[srl class] " + 		super.getClass() + " | " + 
+//							"[srl node type] " + 	getType() + " | " +
+							refs;
+							
+			return label;//"[" + super.getMention() +"] "+ super.getRefs().get(0).getURI() + " (" + super.getRefs().get(0).getWeight() + ")";
+//		}
 		
 	}
 	

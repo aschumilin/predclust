@@ -27,12 +27,15 @@ public class Predicate extends Argument implements Serializable {
 		return rootFlag;
 	}	
 
-		
+
 	public String toString(){
-		if (rootFlag){
-			return "ROOT<"+super.getDisplayName()+"> ("+ super.getMention() + ")";
+		String label = "(" + super.getMention() + ") " + 
+				"[" + super.getDisplayName() + "] " + 
+				 pos;
+		if (rootFlag){			
+			return "<R> "+ label;
 		}else{
-			return "<"+super.getDisplayName()+"> ("+ super.getMention() + ")";
+			return "<N-R> "+ label;
 		}
 	}
 
