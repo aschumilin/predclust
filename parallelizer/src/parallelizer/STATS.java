@@ -142,7 +142,7 @@ public class STATS {
 //System.err.println("p " + ((Argument)arg).getDisplayName());
 					sumPreds ++;
 					
-					if (((Argument)arg).isRoot()){
+					if (((Argument)arg).isSentenceRoot()){
 						String rootName = ((Argument)arg).getDisplayName();
 						if(roots.containsKey(rootName)){
 							roots.put(rootName, roots.get(rootName) + 1);

@@ -8,13 +8,15 @@ public class Predicate extends Argument implements Serializable {
 	private static final long serialVersionUID = 3916606925750377816L;
 	
 	private String pos;
-	private boolean rootFlag;
+	private boolean sentenceRootFlag;
+	private boolean graphRootFlag;
 
-	public Predicate(boolean isRoot, String id, String pos, String displayName, String mention) {
+	public Predicate(boolean isSentenceRoot, String id, String pos, String displayName, String mention, boolean isGraphRoot) {
 		
 		super(id, displayName, mention);
 		this.pos = pos;
-		rootFlag = isRoot;
+		sentenceRootFlag = isSentenceRoot;
+		graphRootFlag = isGraphRoot;
 	}
 
 	
@@ -23,16 +25,20 @@ public class Predicate extends Argument implements Serializable {
 		return true;
 	}
 	@Override
-	public boolean isRoot() {
-		return rootFlag;
+	public boolean isSentenceRoot() {
+		return sentenceRootFlag;
 	}	
+	@Override
+	public boolean isGraphRoot(){
+		return graphRootFlag;
+	}
 
 
 	public String toString(){
 		String label = "(" + super.getMention() + ") " + 
 				"[" + super.getDisplayName() + "] " + 
 				 pos;
-		if (rootFlag){			
+		if (graphRootFlag){			
 			return "<R> "+ label;
 		}else{
 			return "<N-R> "+ label;

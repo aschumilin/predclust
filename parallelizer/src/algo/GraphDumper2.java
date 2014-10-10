@@ -2,6 +2,7 @@ package algo;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,7 +50,9 @@ public class GraphDumper2 extends Parallelizable {
 	private static final String TEXT_COLLECTION_NAME = 	"docs";
 	private static final String SRL_COLLECTION_NAME = "srl";
 
-
+	// DBpedia categories
+	private static TreeMap<String, ArrayList<String>> cats = null; 
+	
 //	 singleton mongoDB client for all threads
 	private static MongoClient 		mongoClient = null;
 	private static DB 				db = 		null;
@@ -66,6 +69,7 @@ public class GraphDumper2 extends Parallelizable {
 	private static String resultDir			= System.getProperty("result.dir");	
 	private static String annotSourceDir	= System.getProperty("annots.dir");
 	
+	private static String catsMapFilePath 	= System.getProperty("cats.path");
 	
 	
 	/**
@@ -172,10 +176,23 @@ public class GraphDumper2 extends Parallelizable {
 	@Override
 	public void runAlgo(String docKey, Logger L) {
 		
+//	if(docKey.equals("es-996098.xml")){
+//		Worker.decrBusyWorkers();
+//		L.info("##################################################################################");
+//		return;
+//	}
 		try{
 			getDB(L);	
 		}catch(Exception e){
 			L.fatal("\t can't perform getDB.. exiting...", e);
+			System.exit(1);
+		}
+		
+		try{
+			getCatsMap(L);
+		}catch(Exception e){
+			L.fatal("Exception when deserializing Entity-Category map from " + catsMapFilePath);
+			L.fatal("exiting now ...");
 			System.exit(1);
 		}
 	
@@ -240,7 +257,7 @@ public class GraphDumper2 extends Parallelizable {
 			L.error("<" + docKey + ">\t crashed");
 		}
 		L.info("done \t" + docKey);
-		
+
 		
 // finished !		
 		Worker.decrBusyWorkers();
@@ -249,7 +266,7 @@ public class GraphDumper2 extends Parallelizable {
 	
 	public static void main(String[] args) throws JDOMException, IOException {
 
-		String[] ids = new String[] {"en-997414.xml"}; //"en-26221135.xml","en-63876.xml","en-690842.xml","es-14819.xml","es-54595.xml"};
+		String[] ids = new String[] {"es-14819.xml"}; //"en-26221135.xml","en-63876.xml","en-690842.xml","es-14819.xml","es-54595.xml"};
 		
 		long anf = System.currentTimeMillis();
 		GraphDumper2 gd = new GraphDumper2();
@@ -412,8 +429,7 @@ public class GraphDumper2 extends Parallelizable {
 			Ref dbpeadiaRef = new Ref(bestNodeAnnotation[0], bestNodeAnnotation[1], "dbpedia", Double.parseDouble(bestNodeAnnotation[2]));
 			newGraphNode.addRef(dbpeadiaRef);
 			
-			Ref wordnetRef = null;
-			
+			Ref wordnetRef = null;		
 			if (node.getChild("descriptions") != null){
 				expr = xpf.compile("/node/descriptions/description[@knowledgeBase='WordNet-3.0']", Filters.element());
 				Element wordnetDescr = expr.evaluateFirst(docNode);
@@ -421,6 +437,14 @@ public class GraphDumper2 extends Parallelizable {
 					/* wordnet annotation gets a weight of 1 */
 					wordnetRef = new Ref(wordnetDescr.getAttributeValue("URI"), wordnetDescr.getAttributeValue("displayName"), "wordnet-3.0", 1);
 					newGraphNode.addRef(wordnetRef);
+				}
+			}
+			
+			// look for categories list in the DBpedia ent-cat map (4,449,790 entities)
+			ArrayList<String> dbpCategories = cats.get(bestNodeAnnotation[0]);
+			if(dbpCategories != null){
+				for (String cat : dbpCategories){
+					newGraphNode.addCat(cat);
 				}
 			}
 			
@@ -469,7 +493,6 @@ public class GraphDumper2 extends Parallelizable {
 	 * @return Null if frame is npt valid. Or List of graph building blocks: Object[]{Role, predicateArg, nodeOrPredicateArg}. 
 	 * List of Node arguments OR null. Each argument comes with its corresponding role in a Object[]{Node, Role}.
 	 */
-	private static int i = 0;
 	
 	private List<Object[]> validateFrame(Predicate topLevelPredicate, TreeMap<String, Boolean> framesToDoMap, Element parentFrame, String sentenceId, Document srlDoc, EntityIndex entIndex, int[] cumulTextLength){
 //		System.out.println("sentID: " + sentenceId + " , frameID " + topLevelFrame.getAttributeValue("id"));
@@ -483,9 +506,6 @@ public class GraphDumper2 extends Parallelizable {
 		int numValidNonPredicateArgs = 0;
 		List<Object[]> resultingArguments = new LinkedList<Object[]>();
 		
-		i++;
-		if(sentenceId.equals("6")){
-			System.out.println(i +" in val frame with frameid " + parentFrame.getAttributeValue("id") +  " = " + topLevelPredicate.getDisplayName() + " has children args: " + allArguments.size());}
 		
 		// count valid node-arguments
 		for (Element arg : allArguments){
@@ -494,9 +514,7 @@ public class GraphDumper2 extends Parallelizable {
 				Object[] potentiallyValidNonPredicateNode = validateNodeArgument(arg, sentenceId, srlDoc, entIndex, cumulTextLength);
 				if(potentiallyValidNonPredicateNode != null){
 					numValidNonPredicateArgs ++;
-					if(sentenceId.equals("6")){
-						System.out.println("\tvalid node id: " + ((Node)potentiallyValidNonPredicateNode[0]).getId());
-					}
+					
 					// add node to this top level predicate
 					resultingArguments.add(new Object[]{(Role)potentiallyValidNonPredicateNode[1], topLevelPredicate, potentiallyValidNonPredicateNode[0]});
 				}				
@@ -518,7 +536,6 @@ public class GraphDumper2 extends Parallelizable {
 					// 1. construct subLevelPredicate				
 					// extract frame attributes (isRoot, pos, lemma, displName) through tokenID
 					
-					boolean isRoot = false;
 					String subFrameID 			= subFrameArg.getAttributeValue("id");
 					// get from this frame argument to the actual frame element and grab tokenID from there
 					expr = xpf.compile("/item/frames/frame[@id='" + subFrameID + "']", Filters.element());	
@@ -531,7 +548,7 @@ public class GraphDumper2 extends Parallelizable {
 					String frameMention 	= frameToken.getText();
 					String frameDisplName 	= subFrameArg.getAttributeValue("displayName");
 					
-/* SUB-PREDICATE */	Predicate subPredicate = new Predicate(isRoot, subFrameID, pos, frameDisplName, frameMention);
+/* SUB-PREDICATE */	Predicate subPredicate = new Predicate(false, subFrameID, pos, frameDisplName, frameMention, false);
 					
 					// add KB references to predicate
 					Element descriptions = subFrameArg.getChild("descriptions");
@@ -550,13 +567,11 @@ public class GraphDumper2 extends Parallelizable {
 							}
 						}
 					}
+				
 					
-					if(sentenceId.equals("6")){
-						 System.out.println("\tsub-predicate : " + subPredicate.getDisplayName());
-					 }
-					
+					List<Object[]> nonPredicateArgsOfSubframe = null;
 					// RECURSION HERE
-					List<Object[]> nonPredicateArgsOfSubframe = validateFrame(subPredicate, framesToDoMap, actualSubFrame, sentenceId, srlDoc, entIndex, cumulTextLength);
+					nonPredicateArgsOfSubframe = validateFrame(subPredicate, framesToDoMap, actualSubFrame, sentenceId, srlDoc, entIndex, cumulTextLength);
 					
 
 					
@@ -565,10 +580,6 @@ public class GraphDumper2 extends Parallelizable {
 						// 2. remove it from global frameMap
 						// 3. add all of its returned non-predicate nodes
 						
-						System.out.println("\t valid sub-frame detected: " + subFrameID);
-
-						
-						System.out.println("sub pred added: " + subPredicate.getDisplayName());
 						
 						// 2.
 						framesToDoMap.put(subFrameID, true);
@@ -586,8 +597,6 @@ public class GraphDumper2 extends Parallelizable {
 			} // for loop over sub-frame arguments 
 			return resultingArguments;
 		}else{
-			if(sentenceId.equals("6")){
-System.out.println("NULL");}
 			// return null if frame has less than two valid arguments
 			return null;
 		}
@@ -641,7 +650,6 @@ System.out.println("NULL");}
 				////////////////////
 				// move to next frame if this one was already done recursively
 				if(framesToDoTracker.get(frameID) == true){
-					System.out.println(" CONTINUE in compose");
 					continue;
 				}
 				////////////////////
@@ -666,7 +674,7 @@ System.out.println("NULL");}
 				String frameMention 	= frameToken.getText();
 				String frameDisplName 	= currentFrame.getAttributeValue("displayName");
 				
-/* PREDICATE */	Predicate topLevelPredicate = new Predicate(isRoot, frameID, pos, frameDisplName, frameMention);
+/* PREDICATE */	Predicate topLevelPredicate = new Predicate(isRoot, frameID, pos, frameDisplName, frameMention, true);
 				
 				// add KB references to predicate
 				Element descriptions = currentFrame.getChild("descriptions");
@@ -687,8 +695,15 @@ System.out.println("NULL");}
 				}
 				
 				// 3. check if this frame is valid
-				List<Object[]> validatedNodesList = validateFrame(topLevelPredicate, framesToDoTracker, frameTreeMap.get(frameID), sentenceId, srlJdomDoc, entIndex, cumulatedTextLength);
-
+				List<Object[]> validatedNodesList = null;
+				try{
+					validatedNodesList = validateFrame(topLevelPredicate, framesToDoTracker, frameTreeMap.get(frameID), sentenceId, srlJdomDoc, entIndex, cumulatedTextLength);
+				}catch(StackOverflowError ee){
+					System.out.println("#############################");	
+					continue;
+				}
+				
+				
 				if (validatedNodesList != null){
 					
 					// !!! mark this top-level frame as done on the todo list of frames. This is also done in validateFrame() !!!
@@ -718,7 +733,6 @@ System.out.println("NULL");}
 /* MAP */		sentenceToGraphSetMap.put(globalSentenceID, graphsInSentence);
 			}
 
-//			System.out.println(framesToDoTracker.toString());
 		} // loop over sentences finished
 				
 		
@@ -762,92 +776,106 @@ System.out.println("NULL");}
 
 		}
 	}
+	
+	private static synchronized void getCatsMap(Logger L) throws IOException, ClassNotFoundException {
+		if (cats == null){
+			L.info("DBPedia categories map null. Initializing...");
 
+			FileInputStream fis = new FileInputStream(new File(catsMapFilePath));
+			ObjectInputStream ois = new ObjectInputStream(fis);
 
+			cats = (TreeMap<String, ArrayList<String>>) ois.readObject();
 
-private static boolean isValidFrame(Element frame){
-
-	List<Element> arguments = frame.getChildren("argument");
-	int size = arguments.size();
-
-	if( size > 2){
-
-		boolean frameValidationResult = true;
-
-		for(Element arg : arguments){
-
-			if(arg.getAttributeValue("frame") != null){
-				return frameValidationResult & isValidFrame(arg);
-			}			
-		}
-
-		return frameValidationResult;
-	}else{
-		return false;
-	}
-}
-
-
-private static void magic2 (List<Element> frames){
-
-	TreeMap<String, LinkedList<Element>> global = new TreeMap<String, LinkedList<Element>> ();
-	String parentId = null;
-
-	for (Element me : frames){
-		List<Element> myArguments = me.getChildren("argument");
-		String myId = me.getAttributeValue("id");
-
-		LinkedList<Element> kids = null;
-		boolean hasKids = false;
-		for(Element arg : myArguments){
-
-			if(arg.getAttributeValue("frame") != null){
-
-			}			
-		}
-
-		if (hasKids){
-			global.put(myId, kids);
-		}else{
-			global.put(myId, null);
 		}
 
 	}
 
-}
-private static void magic(Element me, TreeMap<String, List<Element>> global, String parentId, TreeSet<String> todo){
-
-	List<Element> myArguments = me.getChildren("argument");
-	String myId = me.getAttributeValue("id");
 
 
-	if (parentId == null){
 
-		// separate graph
-		ArrayList<Element> container = new ArrayList<Element>();
-		container.add(me);
-		global.put(myId, container);
-
-
-		for(Element arg : myArguments){				
-			if(arg.getAttributeValue("frame") != null){
-				magic(arg, global, myId, todo);
-			}			
-		}	
-	}else{
-		// graph is subgraph
-
-		List<Element> container = global.get(parentId);
-		container.add(me);
-		global.put(parentId, container);
-
-		for(Element arg : myArguments){
-
-			if(arg.getAttributeValue("frame") != null){
-				magic(arg, global, parentId, todo);
-			}			
-		}
-	}
-}
+//private static boolean isValidFrame(Element frame){
+//
+//	List<Element> arguments = frame.getChildren("argument");
+//	int size = arguments.size();
+//
+//	if( size > 2){
+//
+//		boolean frameValidationResult = true;
+//
+//		for(Element arg : arguments){
+//
+//			if(arg.getAttributeValue("frame") != null){
+//				return frameValidationResult & isValidFrame(arg);
+//			}			
+//		}
+//
+//		return frameValidationResult;
+//	}else{
+//		return false;
+//	}
+//}
+//
+//
+//private static void magic2 (List<Element> frames){
+//
+//	TreeMap<String, LinkedList<Element>> global = new TreeMap<String, LinkedList<Element>> ();
+//	String parentId = null;
+//
+//	for (Element me : frames){
+//		List<Element> myArguments = me.getChildren("argument");
+//		String myId = me.getAttributeValue("id");
+//
+//		LinkedList<Element> kids = null;
+//		boolean hasKids = false;
+//		for(Element arg : myArguments){
+//
+//			if(arg.getAttributeValue("frame") != null){
+//
+//			}			
+//		}
+//
+//		if (hasKids){
+//			global.put(myId, kids);
+//		}else{
+//			global.put(myId, null);
+//		}
+//
+//	}
+//
+//}
+//private static void magic(Element me, TreeMap<String, List<Element>> global, String parentId, TreeSet<String> todo){
+//
+//	List<Element> myArguments = me.getChildren("argument");
+//	String myId = me.getAttributeValue("id");
+//
+//
+//	if (parentId == null){
+//
+//		// separate graph
+//		ArrayList<Element> container = new ArrayList<Element>();
+//		container.add(me);
+//		global.put(myId, container);
+//
+//
+//		for(Element arg : myArguments){				
+//			if(arg.getAttributeValue("frame") != null){
+//				magic(arg, global, myId, todo);
+//			}			
+//		}	
+//	}else{
+//		// graph is subgraph
+//
+//		List<Element> container = global.get(parentId);
+//		container.add(me);
+//		global.put(parentId, container);
+//
+//		for(Element arg : myArguments){
+//
+//			if(arg.getAttributeValue("frame") != null){
+//				magic(arg, global, parentId, todo);
+//			}			
+//		}
+//	}
+//}
 }
 

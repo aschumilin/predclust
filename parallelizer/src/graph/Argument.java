@@ -13,6 +13,7 @@ public abstract class Argument implements Serializable {
 	private String mention;
 	private String displayName;
 	private ArrayList<Ref> references;
+	private ArrayList<String> dbpCategories;
 	
 	
 	public Argument(String id, String displayName, String mention) {
@@ -21,11 +22,12 @@ public abstract class Argument implements Serializable {
 		this.mention = mention;
 		this.displayName = displayName;
 		references = new ArrayList<Ref>();
+		dbpCategories = new ArrayList<String>();
 	}
 	
 	
-	public abstract boolean isRoot();
-
+	public abstract boolean isSentenceRoot();
+	public abstract boolean isGraphRoot();
 	public abstract boolean isPredicate();
 	
 	
@@ -37,6 +39,9 @@ public abstract class Argument implements Serializable {
 	}
 	public String getMention(){
 		return mention;
+	}
+	public ArrayList<String> getCats(){
+		return dbpCategories;
 	}
 
 	@Override
@@ -50,6 +55,10 @@ public abstract class Argument implements Serializable {
 	}
 
 
+	public void addCat(String c){
+		dbpCategories.add(c);
+	}
+	
 	public void addRef(Ref r){
 		references.add(r);
 	}

@@ -246,7 +246,7 @@ public static void main(String[] args) {
 						String frameID = frame.getAttributeValue("id");
 						// only first frame for each sentence can be root frame !!!
 						boolean isRoot = (rootIndicator == 1);		
-/* PREDICATE */			Predicate predicate = new Predicate(isRoot, frameID, POS, lemma, frameDisplName);
+/* PREDICATE */			Predicate predicate = new Predicate(isRoot, frameID, POS, lemma, frameDisplName, isRoot);
 
 						// add KB references to predicate
 						Element descriptions = frame.getChild("descriptions");
@@ -339,7 +339,7 @@ public static void main(String[] args) {
 								String argFramePOS 		= argFrameToken.getAttributeValue("pos");
 								String argFrameLemma 	= argFrameToken.getAttributeValue("lemma");
 								
-/* Inner PREDICATE */			argPlaceholder = new Predicate(Boolean.FALSE, argId, argFramePOS, argFrameLemma, argFrameDisplName);
+/* Inner PREDICATE */			argPlaceholder = new Predicate(Boolean.FALSE, argId, argFramePOS, argFrameLemma, argFrameDisplName, false);
 
 
 							}

@@ -530,7 +530,7 @@ public class GraphDumper extends Parallelizable {
 					String frameDisplName 	= frame.getAttributeValue("displayName");
 					String frameID 			= frame.getAttributeValue("id");
 					
-/* PREDICATE */		Predicate predicate = new Predicate(isRoot, frameID, pos, frameDisplName, frameMention);
+/* PREDICATE */		Predicate predicate = new Predicate(isRoot, frameID, pos, frameDisplName, frameMention, isRoot);
 					
 					// add KB references to predicate
 					Element descriptions = frame.getChild("descriptions");

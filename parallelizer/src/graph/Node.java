@@ -22,7 +22,10 @@ public class Node extends Argument implements Serializable {
 		return false;
 	}
 	@Override
-	public boolean isRoot(){
+	public boolean isSentenceRoot(){
+		return false;
+	}
+	@Override public boolean isGraphRoot(){
 		return false;
 	}
 
@@ -38,18 +41,23 @@ public class Node extends Argument implements Serializable {
 //		}else{
 		
 		String refs = "";
-			for(Ref ref : super.getRefs()){
-				refs += "[" + ref.getURI() + "(" + ref.getWeight() + ")" + "] ";
-			}
-			
-			String label = "(" + super.getMention() + ") " +
-//							"[srl display name] " + super.getDisplayName() + " | " +
-//							"[srl class] " + 		super.getClass() + " | " + 
-//							"[srl node type] " + 	getType() + " | " +
-							refs;
-							
-			return label;//"[" + super.getMention() +"] "+ super.getRefs().get(0).getURI() + " (" + super.getRefs().get(0).getWeight() + ")";
-//		}
+		for(Ref ref : super.getRefs()){
+			refs += "[" + ref.getURI() + "(" + ref.getWeight() + ")" + "] ";
+		}
+		
+		String cat = "# ";
+		if (super.getCats().size() > 0){
+			cat += super.getCats().get(0);
+		}
+
+		String label = "(" + super.getMention() + ") " +
+				//							"[srl display name] " + super.getDisplayName() + " | " +
+				//							"[srl class] " + 		super.getClass() + " | " + 
+				//							"[srl node type] " + 	getType() + " | " +
+				refs + cat ;
+
+		return label;//"[" + super.getMention() +"] "+ super.getRefs().get(0).getURI() + " (" + super.getRefs().get(0).getWeight() + ")";
+		//		}
 		
 	}
 	
