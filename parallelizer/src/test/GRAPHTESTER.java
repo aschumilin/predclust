@@ -40,7 +40,7 @@ public class GRAPHTESTER {
 
 //		CallSRL s = new CallSRL();
 //		System.out.println(s.makeCall("hallo"));
-		
+		System.out.println(Integer.MAX_VALUE - 4);
 
 		String annotation = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Response>\n  <WikifiedDocument><![CDATA[[[freeware]]]]></WikifiedDocument>\n  <DetectedTopics>\n    <DetectedTopic URL=\"http://dbpedia.org/resource/Freeware\" displayName=\"Freeware\" id=\"11592\" lang=\"en\" mention=\"freeware\" weight=\"1\"/><DetectedTopic URL=\"http://dbpedia.org/resource/Freeware\" displayName=\"Freeware\" id=\"11592\" lang=\"en\" mention=\"freeware\" weight=\"1\"/><DetectedTopic URL=\"http://dbpedia.org/resource/Freeware\" displayName=\"Freeware\" id=\"11592\" lang=\"en\" mention=\"freeware\" weight=\"1\"/>\n  </DetectedTopics>\n</Response>";
 		

@@ -266,7 +266,7 @@ public class GraphDumper2 extends Parallelizable {
 	
 	public static void main(String[] args) throws JDOMException, IOException {
 
-		String[] ids = new String[] {"es-14819.xml"}; //"en-26221135.xml","en-63876.xml","en-690842.xml","es-14819.xml","es-54595.xml"};
+		String[] ids = new String[] {"en-26221135.xml"}; //"en-26221135.xml","en-63876.xml","en-690842.xml","es-14819.xml","es-54595.xml"};
 		
 		long anf = System.currentTimeMillis();
 		GraphDumper2 gd = new GraphDumper2();
