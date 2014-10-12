@@ -69,7 +69,7 @@ public class GraphSimilarity extends Parallelizable {
 		String g1FilePath = graphsSourceDir + graphUIDs[I];
 		String g2FilePath = graphsSourceDir + graphUIDs[J];
 		
-																						System.out.print("doing " + graphUIDs[I] + " : " + graphUIDs[J]);
+//		System.out.print("doing " + graphUIDs[I] + " : " + graphUIDs[J]);
 
 		DirectedSparseGraph<Argument, Role> g1 = null;
 		DirectedSparseGraph<Argument, Role> g2 = null;
@@ -105,38 +105,38 @@ public class GraphSimilarity extends Parallelizable {
 			double simSum = 0;
 
 			double m1Value 		= SimilarityMeasure.m1PredicateDisplName(root1, root2);
-			updateMatrix(m1, I, J, m1Value);
+//			updateMatrix(m1, I, J, m1Value);
 			simSum += m1Value;
 
 			double m1_2Value 	= SimilarityMeasure.m1PartialPredicateDisplName(root1, root2); 
-			updateMatrix(m1_2, I, J, m1_2Value);
+//			updateMatrix(m1_2, I, J, m1_2Value);
 			simSum += m1_2Value;
 
 			double m2Value	 	= SimilarityMeasure.m2WordnetSynset(root1,  root2);
-			updateMatrix(m2, I, J, m2Value);
+//			updateMatrix(m2, I, J, m2Value);
 			simSum += m2Value;
 
 			double m4Value		= SimilarityMeasure.m4OutNeighbourNodes(g1, g2, root1, root2);
-			updateMatrix(m4, I, J, m4Value);
+//			updateMatrix(m4, I, J, m4Value);
 			simSum += m4Value;
 
 			double m6Value		= SimilarityMeasure.m6OutRoleLabels(g1, g2, root1, root2);
-			updateMatrix(m6, I, J, m6Value);
+//			updateMatrix(m6, I, J, m6Value);
 			simSum += m6Value;
 
 			double m8Value		= SimilarityMeasure.m8OutRoleLabelsAndNodes(g1, g2, root1, root2);
-			updateMatrix(m8, I, J, m8Value);
+//			updateMatrix(m8, I, J, m8Value);
 			simSum += m8Value;
 
 			double mJCValue 	= SimilarityMeasure.simJaccardCategories(g1, g2, root1, root2);
-			updateMatrix(mJC, I, J, mJCValue);
+//			updateMatrix(mJC, I, J, mJCValue);
 			simSum += mJCValue;
 
 			updateMatrix(mSUM, I, J, simSum);
 			
 			Worker.decrBusyWorkers();
 			
-			System.out.println("   <- done !");
+//			System.out.println("   <- done !");
 		}catch(Exception e){
 				L.error("some exception during similarity calculation: " + jobDescription, e);
 				Worker.decrBusyWorkers();
@@ -185,13 +185,13 @@ public class GraphSimilarity extends Parallelizable {
 
 		private static synchronized void initMatrices(Logger L){
 			if(! matricesInitialized && dimension != 0){
-				m1 = new double[dimension][dimension];
-				m1_2 = new double[dimension][dimension];
-				m2 = new double[dimension][dimension];
-				m4 = new double[dimension][dimension];
-				m6 = new double[dimension][dimension];
-				m8 = new double[dimension][dimension];
-				mJC = new double[dimension][dimension];
+//				m1 = new double[dimension][dimension];
+//				m1_2 = new double[dimension][dimension];
+//				m2 = new double[dimension][dimension];
+//				m4 = new double[dimension][dimension];
+//				m6 = new double[dimension][dimension];
+//				m8 = new double[dimension][dimension];
+//				mJC = new double[dimension][dimension];
 				mSUM = new double[dimension][dimension];
 				
 				matricesInitialized = true;
@@ -205,7 +205,9 @@ public class GraphSimilarity extends Parallelizable {
 
 		public static void main(String[] args) {
 			System.out.println("asdasd-asdad.asdda-12,asdasd-dljjs87-98".split(",")[0]);
-			m1 = new double[dimension][dimension];
+			double[][] a = new double[20000][20000];
+			a[2343][8767] = 1.0;
+			a[1][0] = 1233;
 			
 		}
 
@@ -214,9 +216,9 @@ public class GraphSimilarity extends Parallelizable {
 		public void cleanUpFinally(Logger L){
 			L.info("writing results to csv files");
 			
-//		
-			Object[] metrics = new Object[]{m1, m1_2, m2, m4, m6, m8, mJC, mSUM};
-			String[] resultFileNames = new String[]{"m1.csv", "m1_2.csv", "m2.csv", "m4.csv", "m6.csv", "m8.csv", "mCategories.csv", "mSUM.csv"};
+//			Object[] metrics = new Object[]{m1, m1_2, m2, m4, m6, m8, mJC, mSUM};
+			Object[] metrics = new Object[]{ mSUM};
+			String[] resultFileNames = new String[]{"mSUM.csv"};
 			PrintWriter[] pws = new PrintWriter[metrics.length];
 			String[] lines	= new String[metrics.length];
 			

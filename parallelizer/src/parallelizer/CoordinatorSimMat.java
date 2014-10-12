@@ -136,7 +136,7 @@ public class CoordinatorSimMat {
 
 		long workersStarted = 0;
 		double totalTasks = numGraphPairs;
-		double interval = totalTasks /1000; // 0,1% Schrittweite	
+		double interval = totalTasks /10000; // 0,1% Schrittweite	
 
 		L.info("dataset size (num graph pairs): " + numGraphPairs);
 		L.info("maxNumWorkers: " + maxNumWorkers);
