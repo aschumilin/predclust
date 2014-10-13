@@ -2,6 +2,9 @@ package graph;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
@@ -15,7 +18,7 @@ public class SimilarityMeasure {
 	 * @return 1 if both predicates have same WordNet URIs, else 0.
 	 */
 	
-	public static double m1PredicateDisplName(Argument p1, Argument p2){
+	public static final double m1PredicateDisplName(Argument p1, Argument p2){
 		// compare predicate display names
 		if(p1.getDisplayName().equalsIgnoreCase(p2.getDisplayName())){
 			return 1.0;
@@ -24,7 +27,7 @@ public class SimilarityMeasure {
 		}
 	}
 	
-	public static double m1PartialPredicateDisplName(Argument p1, Argument p2){
+	public static final double m1PartialPredicateDisplName(Argument p1, Argument p2){
 		// compare predicate display names without the digits
 		// e.g. record.01|tape.02 <-> record.02
 		
@@ -57,7 +60,7 @@ public class SimilarityMeasure {
 		
 	}
 	
-	public static double m2WordnetSynset(Argument p1, Argument p2){
+	public static final double m2WordnetSynset(Argument p1, Argument p2){
 		// different starting values
 		// are overridden if WordNet IDs are available
 		String synsetId1 = "s1", synsetId2 = "s2";
@@ -94,7 +97,7 @@ public class SimilarityMeasure {
 		}
 	}
 
-	public static double m2WordnetSynsetOnGraphRoots(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2){
+	public static final double m2WordnetSynsetOnGraphRoots(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2){
 
 		// different starting values
 		// should get overridden if WordNet IDs are available
@@ -130,11 +133,11 @@ public class SimilarityMeasure {
 		}
 	}
 	
-	public static double m3Hyponyms(Argument p1, Argument p2){
+	public static final double m3Hyponyms(Argument p1, Argument p2){
 		return 0.0;
 	}
 	
-	public static double m4OutNeighbourNodes(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2, Argument p1, Argument p2){
+	public static final double m4OutNeighbourNodes(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2, Argument p1, Argument p2){
 		
 		Collection<Argument> outNeighbours1 = new ArrayList<Argument>();
 		Collection<Argument> outNeighbours2 = new ArrayList<Argument>();
@@ -158,7 +161,7 @@ public class SimilarityMeasure {
 		return nodesJaccard(outNeighbours1, outNeighbours2);
 	}
 	
-	public static double m6OutRoleLabels(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2, Argument p1, Argument p2){
+	public static final double m6OutRoleLabels(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2, Argument p1, Argument p2){
 //		if(r1.getRole().equalsIgnoreCase(r2.getRole())){
 //			return 1.0;
 //		}else{
@@ -174,11 +177,10 @@ public class SimilarityMeasure {
 			roles2.add(role.getRole());
 		}
 		
-		
 		return genericJaccard(roles1, roles2);
 	}
 	
-	public static double m8OutRoleLabelsAndNodes(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2, Argument p1, Argument p2){
+	public static final double m8OutRoleLabelsAndNodes(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2, Argument p1, Argument p2){
 		// ignore predicate-arguments, just the nodes
 		
 		Collection <Object[]> c1 = new ArrayList<Object[]>();		
@@ -209,7 +211,7 @@ public class SimilarityMeasure {
 	 * @param g2
 	 * @return Sim value based on relative overlap of the combined category sets of the the nodes adjacent to each graph's root predicate. 
 	 */
-	public static double simJaccardCategories(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2, Argument p1, Argument p2){
+	public static final double simJaccardCategories(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2, Argument p1, Argument p2){
 
 		
 		ArrayList<String> cats1=new ArrayList<String>();
@@ -223,56 +225,8 @@ public class SimilarityMeasure {
 			cats2.addAll(arg.getCats());
 		}
 		double sim = genericJaccard(cats1, cats2);
-//		if(sim>0){
-//			System.out.println();
-//			for (String s:cats1){
-//				System.out.println("1\t" + s);
-//			}
-//			for(String s : cats2){
-//				System.out.println("2\t" + s);
-//			}
-//			System.out.println();
-//		}
+
 		return sim ;
-/*
-		int size1 = cats1.size();
-		int size2 = cats2.size();
-		
-	
-		if (size1>0 && size2>0){
-			
-			double intersectionSize = 0.0;
-						
-			// intersection size: iterate over smaller list
-			if(size1 <= size2){
-				// iterate over 1
-				for(String cat : cats1){
-					if(cats2.contains(cat)) intersectionSize++;
-				}
-			}else{
-				// iterate over 2
-				for(String cat : cats2){
-					if(cats1.contains(cat)) intersectionSize++;
-				}
-			}
-			
-			
-			if(intersectionSize > 0.0){		// dont calculate union if intersection is empty !
-				//union size
-				double unionSize = size1;
-				for(String cat : cats2){
-					if(!cats1.contains(cat)) unionSize++;
-				}
-				
-				System.out.println("s1:" + size1 + " s2:"+ size2 + " u:" + unionSize + " i:" + intersectionSize);
-				return intersectionSize / unionSize;
-			}else{
-				return 0.0;
-			}
-		}else{
-			return 0.0;
-		}
-		*/
 
 	}
 
@@ -292,14 +246,14 @@ public class SimilarityMeasure {
 
 	}
 
-	public static Argument getRoot(DirectedSparseGraph<Argument, Role> g){
+	public static final Argument getRoot(DirectedSparseGraph<Argument, Role> g){
 		for(Argument node : g.getVertices()){
 			if (node.isGraphRoot()) return node;	// get the graph root
 		}
 		return null;
 	}
 	
-	private static double compareNodes(Argument n1, Argument n2){
+	private static final double compareNodes(Argument n1, Argument n2){
 		// first, check if they have at least one matching entity reference
 		// then, check the display name
 		
@@ -319,7 +273,7 @@ public class SimilarityMeasure {
 				
 	}
 	
-	private static double nodesJaccard(Collection<Argument> c1, Collection<Argument> c2){
+	private static final double nodesJaccard(Collection<Argument> c1, Collection<Argument> c2){
 		int size1 = c1.size();
 		int size2 = c2.size();
 		
@@ -376,7 +330,7 @@ public class SimilarityMeasure {
 		}
 	}
 	
-	private static double compareRolesAndNodes(String role1, String role2, Argument n1, Argument n2){
+	private static final double compareRolesAndNodes(String role1, String role2, Argument n1, Argument n2){
 		// first, check the equality of role Strings
 		// then compare the nodes as in compareNodes()
 		
@@ -387,7 +341,7 @@ public class SimilarityMeasure {
 		}
 	}
 	
-	private static double rolesNodesJaccard(Collection<Object[]> c1, Collection<Object[]> c2){
+	private static final double rolesNodesJaccard(Collection<Object[]> c1, Collection<Object[]> c2){
 		// Collection<Object[]> c1 is a list of Object[]{role string, adjacent argument(node)}
 		
 		int size1 = c1.size();
@@ -474,43 +428,81 @@ public class SimilarityMeasure {
 		}
 	}
 	
-	private static <T> double genericJaccard(Collection<T> c1, Collection<T> c2){
+	
+	 public static final <T> double genericJaccard(Collection<T> x, Collection<T> y) {
+	       
+	        if( x.size() == 0 || y.size() == 0 ) {
+	            return 0.0;
+	        }
+	       
+	        Set<T> unionXY = new HashSet<T>(x);
+	        unionXY.addAll(y);
+	       
+	        Set<T> intersectionXY = new HashSet<T>(x);
+	        intersectionXY.retainAll(y);
+
+	        return (double) intersectionXY.size() / (double) unionXY.size();
+	    }
+
+
+	/*
+	public static final <T> double genericJaccard(Collection<T> cc1, Collection<T> cc2){
+		Set<T> c1 = new HashSet<T>(cc1);
+		Set<T> c2 = new HashSet<T>(cc2);
+		
 		int size1 = c1.size();
 		int size2 = c2.size();
 		
 		if (size1>0 && size2>0){
 			
 			double intersectionSize = 0.0;
-						
+			double duplicates1=0.0, duplicates2=0;
+					
 			// intersection size: iterate over smaller list
 			if(size1 <= size2){
 				// iterate over 1
 				for(T cat : c1){
-					if(c2.contains(cat)) intersectionSize++;
+					for(T cat : c1){
+						if(c1.t)
+					}
+					if(c2.contains(cat)) intersectionSize++;	
 				}
+				
+				if(intersectionSize> 0.0){
+					//union size
+					double unionSize = size1 + size2;
+					for(T cat : c1){
+						if(c2.contains(cat)) unionSize--;
+					}				
+					return intersectionSize / unionSize;
+				}else{
+					return 0.0;
+				}
+				
 			}else{
 				// iterate over 2
 				for(T cat : c2){
-					if(c1.contains(cat)) intersectionSize++;
-				}
-			}
-			
-			
-			if(intersectionSize > 0.0){		// dont calculate union if intersection is empty !
-				//union size
-				double unionSize = size1;
-				for(T cat : c2){
-					if(!c1.contains(cat)) unionSize++;
+					if(c1.contains(cat))intersectionSize++;					
 				}
 				
-//				System.out.println("s1:" + size1 + " s2:"+ size2 + " u:" + unionSize + " i:" + intersectionSize);
-				return intersectionSize / unionSize;
-			}else{
-				return 0.0;
+				if(intersectionSize> 0.0){
+					//union size
+					double unionSize = size1 + size2;
+					for(T cat : c2){
+						if(c1.contains(cat)) unionSize--;
+					}
+					return intersectionSize / unionSize;
+				}else{ 
+					return 0.0;
+				}
 			}
+			
+			
+
 		}else{
 			return 0.0;
 		}
 	}
+	*/
 	
 }

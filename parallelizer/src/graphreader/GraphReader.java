@@ -10,6 +10,8 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.io.StringReader;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
@@ -82,6 +84,21 @@ public class GraphReader {
 			if(f.getAbsolutePath().contains(".graph")) visualizeGraph(readOneGraphFromFile(f.getAbsolutePath()), f.getName());
 		}
 		
+		
+		DirectedSparseGraph<Argument, Role> g1 = readOneGraphFromFile("/home/pilatus/Desktop/sim-test/en-1110102.xml-18-0.graph");
+				DirectedSparseGraph<Argument, Role> g2 = readOneGraphFromFile("/home/pilatus/Desktop/sim-test/es-589573.xml-44-0.graph");
+				Argument root1 = SimilarityMeasure.getRoot(g1);
+		Argument root2 = SimilarityMeasure.getRoot(g2);
+		
+		System.out.println("1-2: " + SimilarityMeasure.m6OutRoleLabels(g1, g2, root1, root2));
+		System.out.println("---------");
+		System.out.println("2-1: " + SimilarityMeasure.m6OutRoleLabels(g2, g1, root2, root1));
+		
+		System.out.println();
+		System.out.println("1-2" + SimilarityMeasure.genericJaccard(new ArrayList<String>(Arrays.asList("a", "b", "c")), new ArrayList<String>(Arrays.asList("d", "c"))));
+		System.out.println("---------");
+		System.out.println("2-1" + SimilarityMeasure.genericJaccard(new ArrayList<String>(Arrays.asList("d", "c")), new ArrayList<String>(Arrays.asList("a", "b", "c"))));
+
 		
 					//			visualizeGraph(tempMap.get("es-14819.xml-125").get(0), "2");
 					
