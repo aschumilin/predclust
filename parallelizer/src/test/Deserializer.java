@@ -1,45 +1,66 @@
 package test;
 
-import java.util.ArrayList;
+import graph.Argument;
+import graph.Ref;
+import graph.SimilarityMeasure;
+import graphreader.GraphReader;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.util.List;
 
 public class Deserializer {
 
 	/**
 	 * @param args
+	 * @throws FileNotFoundException 
 	 */
-	public static void main(String[] args) {
-		 	/*
-		try{
-			// don't use buffering
-			InputStream file = new FileInputStream("/home/pilatus/Desktop/graph.ser");
-//			OutputStream buffer = new BufferedOutputStream(file);
-			ObjectInput input = new ObjectInputStream(file);//buffer);
-			try{
-				ArrayList<DirectedSparseMultigraph<Argument,Role>> graph= (ArrayList<DirectedSparseMultigraph<Argument,Role>>)input.readObject();
-				System.out.println("finished de-serializing");
-				
-				
-				for (DirectedSparseMultigraph g : graph){
-					test.GRAPHTESTER.visGraph(g, "some title");
-				}
-				
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	public static void main(String[] args) throws FileNotFoundException, IOException {
+		 	
+		
+		String fileName = "/ssd/users/arsc/SIM/50k-graph-ids";
+		BufferedReader br =new BufferedReader(new InputStreamReader(new FileInputStream(fileName), Charset.forName("UTF-8")));
+		
+		PrintWriter L = null;
+		try {
+			L = new PrintWriter(new File("/ssd/users/arsc/SIM/50k-graph-details"));
+		} catch (IOException e1) {e1.printStackTrace();}
+		
+		String graphID = "";
+		String line ="";
+		while((graphID = br.readLine()) != null){
+			System.out.println(graphID);
+			String ref = ";";
+			
+			
+			
+			Argument pred = SimilarityMeasure.getRoot(GraphReader.readOneGraphFromFile("/dev/shm/artem/SINGLES/" + graphID));
+			List<Ref> refs = pred.getRefs();
+			if (refs.size() > 0){
+				ref = pred.getRefs().get(0).getURI();				
+			}else{
+				ref = "-";
 			}
-			finally{input.close();}
-		}  
-		catch(IOException ioe){
-			System.out.println("could not serialize annotations map: ");
+			
+			line = graphID.trim() + " , " + pred.getDisplayName() + " , " + pred.getMention() + " , " + ref + " ;";
+			
+			L.println(line);
 		}
-		*/
-		List<Integer> x = new ArrayList<Integer>();
+		br.close();
+		L.close();
 		
-		x.add(new Integer(1));
-		x.addAll(null);
+		br = new BufferedReader(new InputStreamReader(new FileInputStream("/ssd/users/arsc/SIM/50k-graph-details"), Charset.forName("UTF-8")));
 		
-
+		while((line = br.readLine()) != null){
+			System.out.println(line);
+		}
+		br.close();
 
 	}
 
