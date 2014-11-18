@@ -39,6 +39,7 @@ public class AnnotatorDumper extends Parallelizable {
 	private static final String ORIGIN_COLLECTION_NAME = 	"docs";
 
 	private static AnnotServicePool annotatorPool = null;
+	private static int 		numAnnotServices = Integer.parseInt(System.getProperty("annots.num"));
 
 	// singleton mongoDB client for all threads
 	private static MongoClient 		mongoClient = null;
@@ -54,7 +55,7 @@ public class AnnotatorDumper extends Parallelizable {
 //	private static String failedDocsFileName = System.getProperty("failed.path");
 	private static String resultDir			= System.getProperty("result.dir");
 	
-	private static int 		numAnnotServices = Integer.parseInt(System.getProperty("annots.num"));
+	
 	private static String 	annotConfDir		= System.getProperty("annots.confdir");
 	
 

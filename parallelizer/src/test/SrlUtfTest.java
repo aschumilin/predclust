@@ -1,5 +1,6 @@
 package test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,7 +43,11 @@ public class SrlUtfTest {
 	}
 	
 	public static void main(String[] args) throws IOException, InterruptedException {
-
+		for(File f : new File("/home/pilatus/Desktop/1-test-result-AWS/en-1000557_es-998304/").listFiles()){
+			if (f.getName().endsWith("graph"))
+				test.GRAPHTESTER.visGraph(graphreader.GraphReader.readOneGraphFromFile(f.getAbsolutePath()), "test");
+		}
+			
 		/***************************/
 		// very bad hearbeat example
 //		timeOfReset = System.currentTimeMillis();	
@@ -80,7 +85,6 @@ public class SrlUtfTest {
 		System.out.println(a);
 		Collections.shuffle(a);
 		System.out.println(a);
-		System.exit(1);
 		for (int i=0;i<=100000; i++){
 			Thread.sleep(10);
 			sendHeartBeat(i);

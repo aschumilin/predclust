@@ -62,7 +62,7 @@ public class AnnotServicePool {
 					if (isFree == true){
 						// SET BUSY FLAG AFTER PROCESSING
 						serv[1] = new Boolean(false);
-System.out.println("\t" + servId + " doing " + docKey);
+// System.out.println("\t" + servId + " doing " + docKey);
 						return new Object[]{serv[0], servId};
 					}
 				}

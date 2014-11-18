@@ -777,6 +777,7 @@ public class GraphDumper2 extends Parallelizable {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	private static synchronized void getCatsMap(Logger L) throws IOException, ClassNotFoundException {
 		if (cats == null){
 			L.info("DBPedia categories map null. Initializing...");
@@ -785,7 +786,7 @@ public class GraphDumper2 extends Parallelizable {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			cats = (TreeMap<String, ArrayList<String>>) ois.readObject();
-
+			ois.close();
 		}
 
 	}

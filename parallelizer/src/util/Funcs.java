@@ -4,10 +4,10 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
@@ -15,21 +15,21 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.RollingFileAppender;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
-import org.jdom2.filter.Filters;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import org.jdom2.xpath.XPathExpression;
 import org.jdom2.xpath.XPathFactory;
 
-import com.mongodb.BasicDBObject;
+import parallelizer.Coordinator;
+import parallelizer.CoordinatorSimMat;
+
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoException;
 
@@ -194,8 +194,30 @@ public class Funcs {
 		return inputXML.replaceAll(xml10pattern, " ");
 	}
 
+	public static Logger getTestLogger(String logFilePath, Class c){
+		
+		Logger L = Logger.getLogger(c); 
+		RollingFileAppender fa = new RollingFileAppender();
+		fa.setName("L");
+		fa.setFile(logFilePath);
+		fa.setLayout(new org.apache.log4j.PatternLayout("%d{dd MMM yyyy HH:mm:ss} %p %t %c - %m%n"));
+		fa.setThreshold(org.apache.log4j.Level.DEBUG);
+		fa.setAppend(true);
+		fa.setMaxFileSize("15MB");
+		fa.activateOptions();
+		Logger.getLogger(c).addAppender(fa);
+		return L;
+	}
 
-
+	public static String fileToString(String filePath) throws IOException{
+		BufferedReader br = new BufferedReader(new FileReader(filePath));
+		StringBuffer buffer = new StringBuffer();
+		String line = null;
+		while((line = br.readLine()) != null){
+			buffer.append(line + System.getProperty("line.separator"));
+		}
+		return buffer.toString();
+	}
 
 	public static String getPostResponse(String endpoint, String dataPayload) throws java.io.IOException {
 		HttpURLConnection connection = null;

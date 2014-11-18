@@ -49,10 +49,54 @@ public class EntityIndex {
 		}
 	}
 	
+	/**
+	 * Find best annotation with coordinates exaclty matching 
+	 * the srl node coordinates.
+	 * @param mentions List of int[]{from,to}
+	 * @return String[]{URL, mention, weight, from, to} of the best entity found exactly at the given coordinates OR null if no entity annotation found
+	 */
+	public String[] getBestEXACTAnnotation(List<int[]> mentions){
 
+		String[] bestEntity = null;
+		
+		double currentWeight = 0;
+		
+		for (int[] mention : mentions){
+			int from = mention[0];
+			int to = mention[1];
+			
+			// collect all candidates from index
+			for (int i=from; i <= to; i++){
+				List<String[]> candidates = index.get(i);
+				if (candidates != null){
+					for (String[] cand : candidates){
+						
+						
+						int candFrom = Integer.parseInt(cand[3]);
+						int candTo   = Integer.parseInt(cand[4]);
+						
+						// !!! consider only the those candidates with exaclty matchig coordinates !!!
+						if ( from == candFrom && to == candTo){
+							
+							// track the one with the highest weight
+							double candidateWeight = Double.parseDouble(cand[2]);
+							if (candidateWeight > currentWeight){
+								bestEntity = cand;
+								currentWeight = candidateWeight;
+							}
+						}
+					}
+				}	
+			}
+		}
+		
+		return bestEntity;	
+	}
 	
 	/**
-	 * For a given srl node, find the annotation with the highest weight.
+	 * For a given srl node, find the annotation with the highest weight among the 
+	 * the ones that overlap between the coordinates of the given srl node.
+	 * 
 	 * @param mentions List of int[]{from,to}
 	 * @return String[]{URL, mention, weight, from, to} of the best entity found between the indices OR null if no entity annotation found
 	 */
