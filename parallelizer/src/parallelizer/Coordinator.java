@@ -207,7 +207,7 @@ public class Coordinator {
 			// short intervals
 			if(numAtReset >= updateIntervalShort){
 				numAtReset = 0;
-				L.info("[UP]: " + (1.0 * finishedDocPairs / allDocs) + "%");
+				L.info("[UP]: " + (100.0 * finishedDocPairs / allDocs) + "%");
 
 			}else{
 				numAtReset++;
@@ -216,7 +216,7 @@ public class Coordinator {
 			// long intervals
 			if(numAtReset >= updateIntervalLong){
 				numAtReset = 0;
-				L.info("[UP]: " + (1.0 * finishedDocPairs / allDocs) + "%");
+				L.info("[UP]: " + (100.0 * finishedDocPairs / allDocs) + "%");
 
 			}else{
 				numAtReset++;

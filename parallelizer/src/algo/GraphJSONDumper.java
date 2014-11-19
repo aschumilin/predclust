@@ -34,6 +34,13 @@ public class GraphJSONDumper extends Parallelizable{
 		
 		System.out.println(graphName);
 		System.out.println(targetDir);
+		try{
+			System.out.println("try");
+		}catch(Exception e){
+			System.out.println("except");
+		}finally{
+			System.out.println("fin");
+		}
 		
 	}
 
@@ -68,6 +75,7 @@ public class GraphJSONDumper extends Parallelizable{
 		try {
 			bw = new BufferedWriter(new FileWriter(targetDir + graphName));		
 			bw.write(graphJson.toString());
+			bw.close();
 		} catch (IOException ioe) {
 			L.error(ID + "result-write-fail: ", ioe);
 			Worker.decrBusyWorkers();
