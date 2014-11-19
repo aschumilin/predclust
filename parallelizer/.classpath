@@ -96,5 +96,10 @@
 	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/javaml/javaml-0.1.7.jar"/>
 	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/javaml/libsvm.jar"/>
 	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/javaml/weka.jar"/>
+	<classpathentry kind="lib" path="/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gson/gson-2.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/pilatus/WORK/pred-clust/predclust/parallelizer/lib/gson/gson-2.3-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

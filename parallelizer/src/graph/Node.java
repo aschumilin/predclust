@@ -3,12 +3,14 @@ package graph;
 import java.io.Serializable;
 import java.util.List;
 
+import com.google.gson.annotations.Expose;
+
 public class Node extends Argument implements Serializable {
 	
 
 	private static final long serialVersionUID = 6961741340587011057L;
 	
-	
+	@Expose
 	private String type; // e.g. word or entity_person/organization.. or entity_other
 
 	

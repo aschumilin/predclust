@@ -2,12 +2,18 @@ package graph;
 
 import java.io.Serializable;
 
+import com.google.gson.annotations.Expose;
+
 public class Ref implements Serializable {
 
 	private static final long serialVersionUID = 2903064202001923035L;
+	@Expose
 	private String URI;
+	@Expose
 	private String displayName;
+	@Expose
 	private String knowledgeBase;
+	@Expose
 	private double weight;
 	
 	
