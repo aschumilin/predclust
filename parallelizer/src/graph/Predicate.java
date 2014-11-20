@@ -2,12 +2,16 @@ package graph;
 
 import java.io.Serializable;
 
+import com.google.gson.annotations.Expose;
+
 
 public class Predicate extends Argument implements Serializable {
 
 	private static final long serialVersionUID = 3916606925750377816L;
 	
+	@Expose
 	private String pos;
+	
 	private boolean sentenceRootFlag;
 	private boolean graphRootFlag;
 

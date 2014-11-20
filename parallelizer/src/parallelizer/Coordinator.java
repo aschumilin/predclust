@@ -32,6 +32,16 @@ public class Coordinator {
 	
 	private static String logfilePath = System.getProperty("logfile");
 
+	///////////////////////////////////////// heart beat setting
+	private static final long updateIntervalShort = 22000; // every 1000 docs
+	private static final long updateIntervalLong = 22000; 
+	private static final long updateThreshold = 0; // nach 0 fertigen Docs, mache update nur alle 500 Docs
+	private static long finishedDocPairs = 0;
+	private static long allDocs = 0;
+	private static long numAtReset = 0;
+	///////////////////////////////////////// heart beat setting
+	
+	
 	/**
 	 * @param args 
 	 * 		args[0]: fully qualified algorithm class name 
@@ -40,14 +50,14 @@ public class Coordinator {
 	 */
 	public static void main(String[] args) {
 		
-		fa.setName("L");
-		fa.setFile(logfilePath);
-		fa.setLayout(new org.apache.log4j.PatternLayout("%d{dd MMM yyyy HH:mm:ss} %p %t %c - %m%n"));
-		fa.setThreshold(org.apache.log4j.Level.DEBUG);
-		fa.setAppend(true);
-		fa.setMaxFileSize("500MB");
-		fa.activateOptions();
-		Logger.getLogger(Coordinator.class).addAppender(fa);
+//		fa.setName("L");
+//		fa.setFile(logfilePath);
+//		fa.setLayout(new org.apache.log4j.PatternLayout("%d{dd MMM yyyy HH:mm:ss} %p %t %c - %m%n"));
+//		fa.setThreshold(org.apache.log4j.Level.DEBUG);
+//		fa.setAppend(true);
+//		fa.setMaxFileSize("500MB");
+//		fa.activateOptions();
+//		Logger.getLogger(Coordinator.class).addAppender(fa);
 		  
 		L.info("==============================================");
 		L.info("==============================================");
@@ -63,42 +73,6 @@ public class Coordinator {
 			e.printStackTrace();
 		} 
 		
-		// TODO: fix external class file loading
-		// can't load external class files: ClassCastException		
-		// works in eclipse, but not with executable jar !!!
-		
-		// arg 3
-//		File algoClassFile = new File(args[1]);
-//		assert algoClassFile.exists(): "Error: Coordinator main: algo class file does not exist";
-//		
-//		try {
-//			URL url = algoClassFile.toURI().toURL();
-//			URL[] urls = new URL[]{url};
-//			ClassLoader cl = new URLClassLoader(urls);
-//			try {
-//		
-//				
-//		
-//				algoClass = (Parallelizable)cl.loadClass(algoClassName).newInstance();
-//			} catch (InstantiationException e) {
-//				L.fatal("exception while loading algo class:");
-//				e.printStackTrace();
-//				System.exit(1);
-//			} catch (IllegalAccessException e) {
-//				L.fatal("exception while loading algo class:");
-//				e.printStackTrace();
-//				System.exit(1);
-//			}
-//		}catch(MalformedURLException mue){
-//			L.fatal("malformed expression");
-//			mue.printStackTrace();
-//			System.exit(1);
-//		}catch (ClassNotFoundException e) {
-//			L.fatal("algo class not found");
-//			e.printStackTrace();
-//			System.exit(1);
-//		}
-//		assert algoClass!=null: ("Coordinator: algoClass not loaded");
 
 		// arg 1
 		maxNumWorkers = Integer.parseInt(args[1]);
@@ -113,6 +87,15 @@ public class Coordinator {
 		} catch (FileNotFoundException fnfe) {
 			System.err.println("ERROR: parallelizer.Coordinator: file not found:" + args[3]);
 		}
+		
+		// arg 3: heartbeat flag 
+		boolean doHeartBeat = false;
+		try{
+			doHeartBeat = Boolean.parseBoolean(args[4]);
+		}catch(Exception e){
+			L.info("NO HEART BEAT setting found");
+		}
+		
 		try {
 			if(br!=null){
 				dataSet = new DataSet();
@@ -159,7 +142,7 @@ public class Coordinator {
 		
 		Coordinator.start = System.currentTimeMillis();
 		long dataSetSize = dataSet.size();
-		
+		allDocs = dataSetSize;
 		
 
 		
@@ -197,6 +180,8 @@ public class Coordinator {
 //					workersStarted++;
 					dataSetSize--;
 					t.start();
+					finishedDocPairs ++;
+					if (doHeartBeat) { sendHeartBeat(); }
 //					int aft = Worker.getBusyWorkers();
 //					L.info("----- # busy before/after: " + bef+"/"+aft);
 				}else{
@@ -217,7 +202,28 @@ public class Coordinator {
 		
 
 	}
+	private static final void sendHeartBeat(){
+		if (finishedDocPairs < updateThreshold){
+			// short intervals
+			if(numAtReset >= updateIntervalShort){
+				numAtReset = 0;
+				L.info("[UP]: " + (100.0 * finishedDocPairs / allDocs) + "%");
 
+			}else{
+				numAtReset++;
+			}
+		}else{
+			// long intervals
+			if(numAtReset >= updateIntervalLong){
+				numAtReset = 0;
+				L.info("[UP]: " + (100.0 * finishedDocPairs / allDocs) + "%");
+
+			}else{
+				numAtReset++;
+			}
+		}
+
+	}
 	public static List<String> listRecursive(String fileName){
 		File f = new File(fileName);
 		LinkedList<String> files = new LinkedList<String>();

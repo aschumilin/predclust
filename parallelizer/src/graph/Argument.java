@@ -1,5 +1,5 @@
 package graph;
-
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,13 @@ public abstract class Argument implements Serializable {
 	private static final long serialVersionUID = 1189089332581539650L;
 	
 	private String id;
+	@Expose
 	private String mention;
+	@Expose
 	private String displayName;
+	@Expose
 	private ArrayList<Ref> references;
+	@Expose
 	private ArrayList<String> dbpCategories;
 	
 	
