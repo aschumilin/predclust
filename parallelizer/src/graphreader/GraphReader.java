@@ -395,7 +395,7 @@ public class GraphReader {
 			input.close();
 			fis.close();
 		}catch(Exception e){
-			System.out.println("could not deserialize annotations map: ");
+			System.out.println("could not deserialize graph object from file: " + fullFilePath);
 			e.printStackTrace();
 		}
 

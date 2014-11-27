@@ -11,15 +11,11 @@ import javax.swing.JFrame;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
-import org.jdom2.filter.Filters;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import org.jdom2.xpath.XPathExpression;
-import org.jdom2.xpath.XPathFactory;
 
-import edu.uci.ics.jung.algorithms.layout.CircleLayout;
-import edu.uci.ics.jung.algorithms.layout.Layout;
+import edu.uci.ics.jung.algorithms.layout.*;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.visualization.VisualizationViewer;
 import edu.uci.ics.jung.visualization.control.CrossoverScalingControl;
@@ -121,7 +117,7 @@ public class GRAPHTESTER {
 
 	}
 	public static void visGraph(Graph g, String title){
-		Layout<Argument, Role> layout = new CircleLayout(g);
+		Layout<Argument, Role> layout = new FRLayout(g);//new CircleLayout(g);
 		layout.setSize(new Dimension(300,300));
 		VisualizationViewer<Argument, Role> vv = new VisualizationViewer<Argument, Role>(layout);
 		vv.setPreferredSize(new Dimension(700, 500));
