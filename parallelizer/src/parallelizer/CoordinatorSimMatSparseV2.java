@@ -27,7 +27,7 @@ public class CoordinatorSimMatSparseV2 {
 	private static String graphsSourceDir		= System.getProperty("graphs.dir");
 
 	
-	private static final int maxBufferFlushSize = 10000000;	// 10m characters = 20m bytes
+	private static final int maxBufferFlushSize = 40000000;	// 10*10^6 characters = 20m bytes
 	
 	private static StringBuffer[] 	buffers 		= null;
 	private static FileWriter[] 	writers 		= null;
@@ -37,6 +37,7 @@ public class CoordinatorSimMatSparseV2 {
 	
 	public static Object[] GRAPHS = null; 
 	
+	private static final int WAIT_TIME = 200000;
 	private static final void initResultInfra() throws IOException{
 		L.info("init result infrastructure");
 		buffers = new StringBuffer[simMeasureNames.length];
@@ -56,7 +57,7 @@ public class CoordinatorSimMatSparseV2 {
 		
 		for(int i=0; i<graphFileNames.length; i++){
 			try{
-			GRAPHS[i] = graphreader.GraphReader.readOneGraphFromFile(graphsSourceDir + graphFileNames[i]);
+				GRAPHS[i] = graphreader.GraphReader.readOneGraphFromFile(graphsSourceDir + graphFileNames[i]);
 			}catch(Exception e){
 				L.error("error reading graph file: " + graphFileNames[i], e);
 			}
@@ -99,13 +100,8 @@ public class CoordinatorSimMatSparseV2 {
 		final String MODE = args[2];
 
 		// arg 4: max number of graphs for similarity matrix
-		int maxNumGraphsForThisJob = 0;
-		if(args[4].equals("-1")){
-			// read entire file if arg is set to -1
-			maxNumGraphsForThisJob = 147483647;
-		}else{
-			maxNumGraphsForThisJob = Integer.parseInt(args[4]);
-		}
+		int maxNumGraphsForThisJob = Integer.parseInt(args[4]);
+		
 		
 		
 		// arg 3 joblist file
@@ -121,11 +117,7 @@ public class CoordinatorSimMatSparseV2 {
 				
 				String lineInFilesCollector = null;
 				if(MODE.equals("nofiles")){
-					
-//					int numZeilen = 0;
-//					while (br.readLine() != null) {
-//						numZeilen++;
-//					}
+	
 					/************************************************/				
 					graphUIDs = new String[maxNumGraphsForThisJob];			
 					int i = 0;
@@ -133,7 +125,7 @@ public class CoordinatorSimMatSparseV2 {
 					/************************************************/	
 					
 					// filescollector contains other data chunks, e.g. URLs
-					while (i<maxNumGraphsForThisJob && (lineInFilesCollector = br.readLine()) != null) {
+					while (i<maxNumGraphsForThisJob && ((lineInFilesCollector = br.readLine()) != null)) {
 						graphUIDs[i] = lineInFilesCollector;	
 						i++;
 					}
@@ -201,6 +193,8 @@ public class CoordinatorSimMatSparseV2 {
 					Thread t = new Thread(new Worker(new DataChunk(jobDescription), algoClass, L));
 					t.start();
 					
+					i++;
+					
 					numLines--;
 					
 					
@@ -220,24 +214,24 @@ public class CoordinatorSimMatSparseV2 {
 		
 		// wait for all worker threads to finish, then flush ad close files
 		try {
-			Thread.sleep(200000);
+			L.info("sleeping before closing streams");
+			Thread.sleep(WAIT_TIME);
 		} catch (InterruptedException ie) {
 			L.error("thread sleep interrupted", ie);
 		}
 		
 		// flush result buffers 
 		for(int k=0; k < simMeasureNames.length; k++){		
-			L.info("finishing buffer flush");
 			try {
 				writers[k].write(buffers[k].toString());
-				L.info("closing result file " + simMeasureNames[k]);
 				writers[k].close();
+				L.info("closed result file " + simMeasureNames[k]);
 			} catch (IOException e) {
 				L.error("failed to write and close result file: " + simMeasureNames[k]);
 			}
 		}
 		
-		L.info("finished flushing buffers");
+		L.info("ALL DONE");
 		
 		
 		
