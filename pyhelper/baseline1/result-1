@@ -1,0 +1,2327 @@
+how often did jane fonda marry?
+	exception: failed to parse target query 
+which books by kerouac were published by viking press?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/publisher
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/author
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  books 	http://dbpedia.org/property/books 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  kerouac 	http://dbpedia.org/property/erotic 	0.571428571429
+	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
+	CANDIDATE:  published 	http://dbpedia.org/property/published 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  viking 	http://dbpedia.org/property/viewing 	0.714285714286
+	CANDIDATE:  press 	http://dbpedia.org/property/press 	1.0
+	hits  0 :
+
+
+what is the official website of tom cruise?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/website
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  official 	http://dbpedia.org/property/official 	1.0
+	CANDIDATE:  website 	http://dbpedia.org/property/website 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  tom 	http://dbpedia.org/property/atom 	0.75
+	CANDIDATE:  cruise 	http://dbpedia.org/property/course 	0.666666666667
+	hits  1 :
+	+  http://dbpedia.org/property/website
+
+
+which u.s. state has the highest population density?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/densityrank
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  u.s. 	http://dbpedia.org/property/m.s. 	0.75
+	CANDIDATE:  state 	http://dbpedia.org/ontology/state 	1.0
+	CANDIDATE:  has 	http://dbpedia.org/property/ben/whas 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  highest 	http://dbpedia.org/property/highest 	1.0
+	CANDIDATE:  population 	http://dbpedia.org/ontology/population 	1.0
+	CANDIDATE:  density 	http://dbpedia.org/property/density 	1.0
+	hits  0 :
+
+
+who created wikipedia?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/author
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  created 	http://dbpedia.org/ontology/created 	1.0
+	CANDIDATE:  wikipedia 	http://dbpedia.org/property/wikipedia 	1.0
+	hits  0 :
+
+
+what is the founding year of the brewery that produces pilsner urquell?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/foundation
+	> 	http://dbpedia.org/property/brewery
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  founding 	http://dbpedia.org/property/founding 	1.0
+	CANDIDATE:  year 	http://dbpedia.org/property/year 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  brewery 	http://dbpedia.org/property/brewery 	1.0
+	CANDIDATE:  that 	http://dbpedia.org/property/hat 	0.75
+	CANDIDATE:  produces 	http://dbpedia.org/ontology/produces 	1.0
+	CANDIDATE:  pilsner 	http://dbpedia.org/ontology/partner 	0.571428571429
+	CANDIDATE:  urquell 	http://dbpedia.org/property/quelle 	0.571428571429
+	hits  1 :
+	+  http://dbpedia.org/property/brewery
+
+
+how many films did hal roach produce?
+	exception: failed to parse target query 
+in which country does the nile start?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/sourceCountry
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  country 	http://dbpedia.org/ontology/country 	1.0
+	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  nile 	http://dbpedia.org/property/nite 	0.75
+	CANDIDATE:  start 	http://dbpedia.org/property/start 	1.0
+	hits  0 :
+
+
+give me all federal chancellors of germany.
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/office
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  federal 	http://dbpedia.org/property/federal 	1.0
+	CANDIDATE:  chancellors 	http://dbpedia.org/ontology/chancellor 	0.909090909091
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  germany 	http://dbpedia.org/property/german 	0.857142857143
+	hits  0 :
+
+
+which states of germany are governed by the social democratic party?
+	exception: failed to parse target query 
+which river does the brooklyn bridge cross?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/crosses
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  river 	http://dbpedia.org/ontology/river 	1.0
+	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  brooklyn 	http://dbpedia.org/property/brooklyn 	1.0
+	CANDIDATE:  bridge 	http://dbpedia.org/property/bridge 	1.0
+	CANDIDATE:  cross 	http://dbpedia.org/property/gross 	0.8
+	hits  0 :
+
+
+how tall is claudia schiffer?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/height
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  tall 	http://dbpedia.org/property/tail 	0.75
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  claudia 	http://dbpedia.org/property/classia 	0.714285714286
+	CANDIDATE:  schiffer 	http://dbpedia.org/property/schiffbar 	0.777777777778
+	hits  0 :
+
+
+which television shows were created by walt disney?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/creator
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  television 	http://dbpedia.org/property/television 	1.0
+	CANDIDATE:  shows 	http://dbpedia.org/property/shows 	1.0
+	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
+	CANDIDATE:  created 	http://dbpedia.org/ontology/created 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  walt 	http://dbpedia.org/property/salt 	0.75
+	CANDIDATE:  disney 	http://dbpedia.org/property/disLy 	0.666666666667
+	hits  0 :
+
+
+give me the websites of companies with more than 500000 employees.
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/property/homepage
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  websites 	http://dbpedia.org/property/websites 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  companies 	http://dbpedia.org/property/companies 	1.0
+	CANDIDATE:  with 	http://dbpedia.org/property/with 	1.0
+	CANDIDATE:  more 	http://dbpedia.org/property/more 	1.0
+	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
+	CANDIDATE:  500000 	http://dbpedia.org/property/2000pop 	0.428571428571
+	CANDIDATE:  employees 	http://dbpedia.org/property/employees 	1.0
+	hits  0 :
+
+
+give me all cities in new jersey with more than 100000 inhabitants.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/isPartOf
+	> 	http://dbpedia.org/ontology/populationTotal
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  cities 	http://dbpedia.org/property/cities 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  new 	http://dbpedia.org/property/new 	1.0
+	CANDIDATE:  jersey 	http://dbpedia.org/property/jersey 	1.0
+	CANDIDATE:  with 	http://dbpedia.org/property/with 	1.0
+	CANDIDATE:  more 	http://dbpedia.org/property/more 	1.0
+	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
+	CANDIDATE:  100000 	http://dbpedia.org/property/100meg 	0.5
+	CANDIDATE:  inhabitants 	http://dbpedia.org/property/inhabitants 	1.0
+	hits  0 :
+
+
+which actors were born in germany?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  actors 	http://dbpedia.org/property/actors 	1.0
+	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
+	CANDIDATE:  born 	http://dbpedia.org/property/born 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  germany 	http://dbpedia.org/property/german 	0.857142857143
+	hits  0 :
+
+
+which countries have more than two official languages?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/officialLanguage
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  countries 	http://dbpedia.org/property/countries 	1.0
+	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
+	CANDIDATE:  more 	http://dbpedia.org/property/more 	1.0
+	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
+	CANDIDATE:  two 	http://dbpedia.org/property/two 	1.0
+	CANDIDATE:  official 	http://dbpedia.org/property/official 	1.0
+	CANDIDATE:  languages 	http://dbpedia.org/property/languages 	1.0
+	hits  0 :
+
+
+in which u.s. state is mount mckinley located?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/locatedInArea
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  u.s. 	http://dbpedia.org/property/m.s. 	0.75
+	CANDIDATE:  state 	http://dbpedia.org/ontology/state 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  mount 	http://dbpedia.org/property/mount 	1.0
+	CANDIDATE:  mckinley 	http://dbpedia.org/property/mtitle 	0.5
+	CANDIDATE:  located 	http://dbpedia.org/property/located 	1.0
+	hits  0 :
+
+
+when was the statue of liberty built?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/beginningDate
+	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  statue 	http://dbpedia.org/ontology/state 	0.833333333333
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  liberty 	http://dbpedia.org/property/livery 	0.714285714286
+	CANDIDATE:  built 	http://dbpedia.org/property/builT 	1.0
+	hits  0 :
+
+
+give me all people that were born in vienna and died in berlin.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/birthPlace
+	> 	http://dbpedia.org/ontology/deathPlace
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  people 	http://dbpedia.org/property/people 	1.0
+	CANDIDATE:  that 	http://dbpedia.org/property/hat 	0.75
+	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
+	CANDIDATE:  born 	http://dbpedia.org/property/born 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  vienna 	http://dbpedia.org/property/viewing 	0.571428571429
+	CANDIDATE:  and 	http://dbpedia.org/property/and 	1.0
+	CANDIDATE:  died 	http://dbpedia.org/property/born/Died 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  berlin 	http://dbpedia.org/property/verein 	0.666666666667
+	hits  0 :
+
+
+give me all movies with tom cruise.
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/starring
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  movies 	http://dbpedia.org/property/movies 	1.0
+	CANDIDATE:  with 	http://dbpedia.org/property/with 	1.0
+	CANDIDATE:  tom 	http://dbpedia.org/property/atom 	0.75
+	CANDIDATE:  cruise 	http://dbpedia.org/property/course 	0.666666666667
+	hits  0 :
+
+
+how tall is michael jordan?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/height
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  tall 	http://dbpedia.org/property/tail 	0.75
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  michael 	http://dbpedia.org/property/marchLabel 	0.6
+	CANDIDATE:  jordan 	http://dbpedia.org/ontology/organ 	0.666666666667
+	hits  0 :
+
+
+what is the total amount of men and women serving in the fdny?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/strength
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  total 	http://dbpedia.org/property/total 	1.0
+	CANDIDATE:  amount 	http://dbpedia.org/property/amount 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  men 	http://dbpedia.org/property/men 	1.0
+	CANDIDATE:  and 	http://dbpedia.org/property/and 	1.0
+	CANDIDATE:  women 	http://dbpedia.org/property/women 	1.0
+	CANDIDATE:  serving 	http://dbpedia.org/property/serving 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  fdny 	http://dbpedia.org/property/edN 	0.5
+	hits  0 :
+
+
+give me all breeds of the german shepherd dog.
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/breed
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  breeds 	http://dbpedia.org/property/breeds 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  german 	http://dbpedia.org/property/german 	1.0
+	CANDIDATE:  shepherd 	http://dbpedia.org/property/shipHead 	0.75
+	CANDIDATE:  dog 	http://dbpedia.org/property/dog 	1.0
+	hits  0 :
+
+
+how often was michael jordan divorced?
+	exception: failed to parse target query 
+what is the official language of suriname?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/officialLanguage
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  official 	http://dbpedia.org/property/official 	1.0
+	CANDIDATE:  language 	http://dbpedia.org/ontology/language 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  suriname 	http://dbpedia.org/property/surname 	0.875
+	hits  0 :
+
+
+who composed the music for harold and maude?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/musicComposer
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  composed 	http://dbpedia.org/property/composed 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  music 	http://dbpedia.org/property/music 	1.0
+	CANDIDATE:  for 	http://dbpedia.org/property/for 	1.0
+	CANDIDATE:  harold 	http://dbpedia.org/property/hold 	0.666666666667
+	CANDIDATE:  and 	http://dbpedia.org/property/and 	1.0
+	CANDIDATE:  maude 	http://dbpedia.org/property/made 	0.8
+	hits  0 :
+
+
+in which city was the former dutch queen juliana buried?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/restingPlace
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  city 	http://dbpedia.org/ontology/city 	1.0
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  former 	http://dbpedia.org/property/former 	1.0
+	CANDIDATE:  dutch 	http://dbpedia.org/property/clutch 	0.666666666667
+	CANDIDATE:  queen 	http://dbpedia.org/property/queen 	1.0
+	CANDIDATE:  juliana 	http://dbpedia.org/property/julMeanF 	0.625
+	CANDIDATE:  buried 	http://dbpedia.org/property/buried 	1.0
+	hits  0 :
+
+
+who wrote the book the pillars of the earth?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/author
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  wrote 	http://dbpedia.org/property/wrote 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  book 	http://dbpedia.org/property/book 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  pillars 	http://dbpedia.org/property/pillars 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  earth 	http://dbpedia.org/property/charth 	0.666666666667
+	hits  0 :
+
+
+what are the nicknames of san francisco?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/nickname
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  nicknames 	http://dbpedia.org/property/nicknames 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  san 	http://dbpedia.org/property/san 	1.0
+	CANDIDATE:  francisco 	http://dbpedia.org/property/francisco 	1.0
+	hits  0 :
+
+
+which companies work in the aerospace industry as well as in medicine?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/industry
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  companies 	http://dbpedia.org/property/companies 	1.0
+	CANDIDATE:  work 	http://dbpedia.org/property/work 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  aerospace 	http://dbpedia.org/property/demospace 	0.777777777778
+	CANDIDATE:  industry 	http://dbpedia.org/ontology/industry 	1.0
+	CANDIDATE:  as 	http://dbpedia.org/property/as 	1.0
+	CANDIDATE:  well 	http://dbpedia.org/property/ell 	0.75
+	CANDIDATE:  as 	http://dbpedia.org/property/as 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  medicine 	http://dbpedia.org/property/emedicine 	0.888888888889
+	hits  1 :
+	+  http://dbpedia.org/ontology/industry
+
+
+which languages are spoken in estonia?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/spokenIn
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  languages 	http://dbpedia.org/property/languages 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  spoken 	http://dbpedia.org/property/spoken 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  estonia 	http://dbpedia.org/property/estOpening 	0.6
+	hits  0 :
+
+
+are tree frogs a type of amphibian?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/class
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  tree 	http://dbpedia.org/ontology/tree 	1.0
+	CANDIDATE:  frogs 	http://dbpedia.org/property/gross 	0.6
+	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
+	CANDIDATE:  type 	http://dbpedia.org/ontology/type 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  amphibian 	http://dbpedia.org/property/amphibian 	1.0
+	hits  0 :
+
+
+what were the main discoveries of the mars rover curiosity?
+	exception: failed to parse target query 
+when did latvia join the eu?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/accessioneudate
+	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  latvia 	http://dbpedia.org/property/latin 	0.666666666667
+	CANDIDATE:  join 	http://dbpedia.org/property/join 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  eu 	http://dbpedia.org/property/eu 	1.0
+	hits  0 :
+
+
+where is the residence of the prime minister of spain?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/residence
+	CANDIDATE:  where 	http://dbpedia.org/property/where 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  residence 	http://dbpedia.org/ontology/residence 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  prime 	http://dbpedia.org/property/prime 	1.0
+	CANDIDATE:  minister 	http://dbpedia.org/property/minister 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  spain 	http://dbpedia.org/property/spanIn 	0.833333333333
+	hits  0 :
+
+
+which countries have more than ten caves?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  countries 	http://dbpedia.org/property/countries 	1.0
+	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
+	CANDIDATE:  more 	http://dbpedia.org/property/more 	1.0
+	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
+	CANDIDATE:  ten 	http://dbpedia.org/property/theN 	0.75
+	CANDIDATE:  caves 	http://dbpedia.org/property/calves 	0.833333333333
+	hits  0 :
+
+
+give me all animal species that live in the teutoburg forest.
+	exception: failed to parse target query 
+who created goofy?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/creator
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  created 	http://dbpedia.org/ontology/created 	1.0
+	CANDIDATE:  goofy 	http://dbpedia.org/property/roof 	0.6
+	hits  0 :
+
+
+give me all sister cities of brno.
+	exception: failed to parse target query 
+give me all soccer clubs in spain.
+	exception: failed to parse target query 
+which other weapons did the designer of the uzi develop?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/property/designer
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  other 	http://dbpedia.org/property/other 	1.0
+	CANDIDATE:  weapons 	http://dbpedia.org/property/weapons 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  designer 	http://dbpedia.org/ontology/designer 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  uzi 	http://dbpedia.org/property/uni 	0.666666666667
+	CANDIDATE:  develop 	http://dbpedia.org/ontology/developer 	0.777777777778
+	hits  0 :
+
+
+which caves have more than 3 entrances?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/entranceCount
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  caves 	http://dbpedia.org/property/calves 	0.833333333333
+	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
+	CANDIDATE:  more 	http://dbpedia.org/property/more 	1.0
+	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
+	CANDIDATE:  3 	http://dbpedia.org/property/h3 	0.5
+	CANDIDATE:  entrances 	http://dbpedia.org/property/entrances 	1.0
+	hits  0 :
+
+
+which countries adopted the euro?
+	exception: failed to parse target query 
+which country does the creator of miffy come from?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/nationality
+	> 	http://dbpedia.org/ontology/creator
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  country 	http://dbpedia.org/ontology/country 	1.0
+	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  creator 	http://dbpedia.org/ontology/creator 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  miffy 	http://dbpedia.org/property/mmff 	0.6
+	CANDIDATE:  come 	http://dbpedia.org/property/com 	0.75
+	CANDIDATE:  from 	http://dbpedia.org/property/from 	1.0
+	hits  1 :
+	+  http://dbpedia.org/ontology/creator
+
+
+give me all female given names.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/gender
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  female 	http://dbpedia.org/property/female 	1.0
+	CANDIDATE:  given 	http://dbpedia.org/property/given 	1.0
+	CANDIDATE:  names 	http://dbpedia.org/property/names 	1.0
+	hits  0 :
+
+
+was margaret thatcher a chemist?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/profession
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  margaret 	http://dbpedia.org/property/target 	0.625
+	CANDIDATE:  thatcher 	http://dbpedia.org/property/teacher 	0.75
+	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
+	CANDIDATE:  chemist 	http://dbpedia.org/property/chest 	0.714285714286
+	hits  0 :
+
+
+which german cities have more than 250000 inhabitants?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/country
+	> 	http://dbpedia.org/ontology/populationTotal
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  german 	http://dbpedia.org/property/german 	1.0
+	CANDIDATE:  cities 	http://dbpedia.org/property/cities 	1.0
+	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
+	CANDIDATE:  more 	http://dbpedia.org/property/more 	1.0
+	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
+	CANDIDATE:  250000 	http://dbpedia.org/property/enrollment(2008/2009) 	0.5
+	CANDIDATE:  inhabitants 	http://dbpedia.org/property/inhabitants 	1.0
+	hits  0 :
+
+
+was marc chagall a jew?
+	exception: failed to parse target query 
+which presidents were born in 1945?
+	exception: failed to parse target query 
+how many aldi stores are there?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/numberOfLocations
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  many 	http://dbpedia.org/property/many 	1.0
+	CANDIDATE:  aldi 	http://dbpedia.org/property/alds 	0.75
+	CANDIDATE:  stores 	http://dbpedia.org/property/stores 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  there 	http://dbpedia.org/property/three 	0.8
+	hits  0 :
+
+
+was u.s. president jackson involved in a war?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/battle
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  u.s. 	http://dbpedia.org/property/m.s. 	0.75
+	CANDIDATE:  president 	http://dbpedia.org/ontology/president 	1.0
+	CANDIDATE:  jackson 	http://dbpedia.org/property/jackn 	0.714285714286
+	CANDIDATE:  involved 	http://dbpedia.org/property/dissolved 	0.666666666667
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
+	CANDIDATE:  war 	http://dbpedia.org/property/war 	1.0
+	hits  0 :
+
+
+what is the capital of canada?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/capital
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  capital 	http://dbpedia.org/ontology/capital 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  canada 	http://dbpedia.org/property/canada 	1.0
+	hits  1 :
+	+  http://dbpedia.org/ontology/capital
+
+
+what is the average temperature on hawaii?
+	exception: failed to parse target query 
+in which u.s. state is fort knox located?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/country
+	> 	http://dbpedia.org/property/location
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  u.s. 	http://dbpedia.org/property/m.s. 	0.75
+	CANDIDATE:  state 	http://dbpedia.org/ontology/state 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  fort 	http://dbpedia.org/property/fort 	1.0
+	CANDIDATE:  knox 	http://dbpedia.org/property/knot 	0.75
+	CANDIDATE:  located 	http://dbpedia.org/property/located 	1.0
+	hits  0 :
+
+
+which museum exhibits the scream by munch?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/museum
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  museum 	http://dbpedia.org/ontology/museum 	1.0
+	CANDIDATE:  exhibits 	http://dbpedia.org/property/exhibits 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  scream 	http://dbpedia.org/property/stream 	0.833333333333
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  munch 	http://dbpedia.org/property/lunch 	0.8
+	hits  1 :
+	+  http://dbpedia.org/ontology/museum
+
+
+for which label did elvis record his first album?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/releaseDate
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/recordLabel
+	> 	http://dbpedia.org/ontology/artist
+	CANDIDATE:  for 	http://dbpedia.org/property/for 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  label 	http://dbpedia.org/property/Label 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  elvis 	http://dbpedia.org/property/alis 	0.6
+	CANDIDATE:  record 	http://dbpedia.org/property/record 	1.0
+	CANDIDATE:  his 	http://dbpedia.org/property/this 	0.75
+	CANDIDATE:  first 	http://dbpedia.org/property/first 	1.0
+	CANDIDATE:  album 	http://dbpedia.org/ontology/album 	1.0
+	hits  0 :
+
+
+do prince harry and prince william have the same mother?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/mother
+	CANDIDATE:  do 	http://dbpedia.org/property/dop 	0.666666666667
+	CANDIDATE:  prince 	http://dbpedia.org/property/prince 	1.0
+	CANDIDATE:  harry 	http://dbpedia.org/property/warCry 	0.666666666667
+	CANDIDATE:  and 	http://dbpedia.org/property/and 	1.0
+	CANDIDATE:  prince 	http://dbpedia.org/property/prince 	1.0
+	CANDIDATE:  william 	http://dbpedia.org/property/hillName 	0.625
+	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  same 	http://dbpedia.org/property/same 	1.0
+	CANDIDATE:  mother 	http://dbpedia.org/ontology/mother 	1.0
+	hits  0 :
+
+
+which budget did the first movie of zdenek sverak have?
+	exception: failed to parse target query 
+in which military conflicts did lawrence of arabia participate?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/battle
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  military 	http://dbpedia.org/property/military 	1.0
+	CANDIDATE:  conflicts 	http://dbpedia.org/property/conflicts 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  lawrence 	http://dbpedia.org/property/laenge 	0.625
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  arabia 	http://dbpedia.org/property/arabic 	0.833333333333
+	CANDIDATE:  participate 	http://dbpedia.org/property/participate 	1.0
+	hits  0 :
+
+
+who invented the zipper?
+	exception: failed to parse target query 
+give me the capitals of all countries in africa.
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/capital
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  capitals 	http://dbpedia.org/property/capitals 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  countries 	http://dbpedia.org/property/countries 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  africa 	http://dbpedia.org/property/african 	0.857142857143
+	hits  0 :
+
+
+which states border illinois?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/borderingstates
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  states 	http://dbpedia.org/property/states 	1.0
+	CANDIDATE:  border 	http://dbpedia.org/ontology/border 	1.0
+	CANDIDATE:  illinois 	http://dbpedia.org/property/fillings 	0.625
+	hits  0 :
+
+
+which u.s. states are in the same time zone as utah?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/timezone
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  u.s. 	http://dbpedia.org/property/m.s. 	0.75
+	CANDIDATE:  states 	http://dbpedia.org/property/states 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  same 	http://dbpedia.org/property/same 	1.0
+	CANDIDATE:  time 	http://dbpedia.org/property/time 	1.0
+	CANDIDATE:  zone 	http://dbpedia.org/property/zone 	1.0
+	CANDIDATE:  as 	http://dbpedia.org/property/as 	1.0
+	CANDIDATE:  utah 	http://dbpedia.org/property/tch 	0.5
+	hits  0 :
+
+
+give me all islands that belong to japan.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/country
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  islands 	http://dbpedia.org/property/islands 	1.0
+	CANDIDATE:  that 	http://dbpedia.org/property/hat 	0.75
+	CANDIDATE:  belong 	http://dbpedia.org/property/below 	0.666666666667
+	CANDIDATE:  to 	http://dbpedia.org/property/to 	1.0
+	CANDIDATE:  japan 	http://dbpedia.org/property/japan 	1.0
+	hits  0 :
+
+
+who designed the brooklyn bridge?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/designer
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  designed 	http://dbpedia.org/property/designed 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  brooklyn 	http://dbpedia.org/property/brooklyn 	1.0
+	CANDIDATE:  bridge 	http://dbpedia.org/property/bridge 	1.0
+	hits  0 :
+
+
+who was the first president of the united states?
+	exception: failed to parse target query 
+what is the highest mountain in australia?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/locatedInArea
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/elevation
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  highest 	http://dbpedia.org/property/highest 	1.0
+	CANDIDATE:  mountain 	http://dbpedia.org/property/mountain 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  australia 	http://dbpedia.org/property/australian 	0.9
+	hits  0 :
+
+
+which airports are located in california, usa?
+	exception: failed to parse target query 
+who developed minecraft?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/developer
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  developed 	http://dbpedia.org/property/developed 	1.0
+	CANDIDATE:  minecraft 	http://dbpedia.org/property/mineral 	0.666666666667
+	hits  0 :
+
+
+which chess players died in the same place they were born in?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/birthPlace
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/deathPlace
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  chess 	http://dbpedia.org/property/mChess 	0.833333333333
+	CANDIDATE:  players 	http://dbpedia.org/property/players 	1.0
+	CANDIDATE:  died 	http://dbpedia.org/property/born/Died 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  same 	http://dbpedia.org/property/same 	1.0
+	CANDIDATE:  place 	http://dbpedia.org/ontology/place 	1.0
+	CANDIDATE:  they 	http://dbpedia.org/property/theO 	0.75
+	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
+	CANDIDATE:  born 	http://dbpedia.org/property/born 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	hits  0 :
+
+
+how many space missions have there been?
+	exception: failed to parse target query 
+which capitals in europe were host cities of the summer olympic games?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  capitals 	http://dbpedia.org/property/capitals 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  europe 	http://dbpedia.org/property/europe 	1.0
+	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
+	CANDIDATE:  host 	http://dbpedia.org/property/dj/host 	1.0
+	CANDIDATE:  cities 	http://dbpedia.org/property/cities 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  summer 	http://dbpedia.org/property/summer 	1.0
+	CANDIDATE:  olympic 	http://dbpedia.org/property/olympic 	1.0
+	CANDIDATE:  games 	http://dbpedia.org/property/games 	1.0
+	hits  0 :
+
+
+give me all cars that are produced in germany.
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  cars 	http://dbpedia.org/property/cars 	1.0
+	CANDIDATE:  that 	http://dbpedia.org/property/hat 	0.75
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  produced 	http://dbpedia.org/property/produced 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  germany 	http://dbpedia.org/property/german 	0.857142857143
+	hits  0 :
+
+
+who was the wife of u.s. president lincoln?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/spouse
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  wife 	http://dbpedia.org/ontology/wife 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  u.s. 	http://dbpedia.org/property/m.s. 	0.75
+	CANDIDATE:  president 	http://dbpedia.org/ontology/president 	1.0
+	CANDIDATE:  lincoln 	http://dbpedia.org/property/linecol 	0.714285714286
+	hits  0 :
+
+
+how many children did benjamin franklin have?
+	exception: failed to parse target query 
+is michelle obama the wife of barack obama?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/spouse
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  michelle 	http://dbpedia.org/property/nicheLabel 	0.6
+	CANDIDATE:  obama 	http://dbpedia.org/property/obama 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  wife 	http://dbpedia.org/ontology/wife 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  barack 	http://dbpedia.org/property/bTrack 	0.833333333333
+	CANDIDATE:  obama 	http://dbpedia.org/property/obama 	1.0
+	hits  0 :
+
+
+give me all actors starring in movies directed by william shatner.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/director
+	> 	http://dbpedia.org/ontology/starring
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  actors 	http://dbpedia.org/property/actors 	1.0
+	CANDIDATE:  starring 	http://dbpedia.org/ontology/starring 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  movies 	http://dbpedia.org/property/movies 	1.0
+	CANDIDATE:  directed 	http://dbpedia.org/property/directed 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  william 	http://dbpedia.org/property/hillName 	0.625
+	CANDIDATE:  shatner 	http://dbpedia.org/property/shaper 	0.714285714286
+	hits  1 :
+	+  http://dbpedia.org/ontology/starring
+
+
+list the children of margaret thatcher.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/child
+	CANDIDATE:  list 	http://dbpedia.org/property/list 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  children 	http://dbpedia.org/property/children 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  margaret 	http://dbpedia.org/property/target 	0.625
+	CANDIDATE:  thatcher 	http://dbpedia.org/property/teacher 	0.75
+	hits  0 :
+
+
+which professional surfers were born in australia?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/birthPlace
+	> 	http://dbpedia.org/ontology/occupation
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  professional 	http://dbpedia.org/property/professional 	1.0
+	CANDIDATE:  surfers 	http://dbpedia.org/property/murders 	0.714285714286
+	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
+	CANDIDATE:  born 	http://dbpedia.org/property/born 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  australia 	http://dbpedia.org/property/australian 	0.9
+	hits  0 :
+
+
+who is the editor of forbes?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/editor
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  editor 	http://dbpedia.org/ontology/editor 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  forbes 	http://dbpedia.org/property/forbes 	1.0
+	hits  1 :
+	+  http://dbpedia.org/ontology/editor
+
+
+give me all actors starring in last action hero.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/starring
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  actors 	http://dbpedia.org/property/actors 	1.0
+	CANDIDATE:  starring 	http://dbpedia.org/ontology/starring 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  last 	http://dbpedia.org/property/last 	1.0
+	CANDIDATE:  action 	http://dbpedia.org/property/action 	1.0
+	CANDIDATE:  hero 	http://dbpedia.org/property/hero 	1.0
+	hits  1 :
+	+  http://dbpedia.org/ontology/starring
+
+
+in which programming language is gimp written?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/programmingLanguage
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  programming 	http://dbpedia.org/property/programming 	1.0
+	CANDIDATE:  language 	http://dbpedia.org/ontology/language 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  gimp 	http://dbpedia.org/property/imp 	0.75
+	CANDIDATE:  written 	http://dbpedia.org/property/written 	1.0
+	hits  0 :
+
+
+in which country is the limerick lake?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/country
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  country 	http://dbpedia.org/ontology/country 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  limerick 	http://dbpedia.org/property/america 	0.625
+	CANDIDATE:  lake 	http://dbpedia.org/ontology/lake 	1.0
+	hits  1 :
+	+  http://dbpedia.org/ontology/country
+
+
+who is the youngest player in the premier league?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/league
+	> 	http://dbpedia.org/ontology/birthDate
+	> 	http://dbpedia.org/ontology/team
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  youngest 	http://dbpedia.org/property/youngest 	1.0
+	CANDIDATE:  player 	http://dbpedia.org/property/2ndAssistantCoach/player 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  premier 	http://dbpedia.org/property/premier 	1.0
+	CANDIDATE:  league 	http://dbpedia.org/ontology/league 	1.0
+	hits  1 :
+	+  http://dbpedia.org/ontology/league
+
+
+give me all video games published by mean hamster software.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/publisher
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  video 	http://dbpedia.org/property/video 	1.0
+	CANDIDATE:  games 	http://dbpedia.org/property/games 	1.0
+	CANDIDATE:  published 	http://dbpedia.org/property/published 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  mean 	http://dbpedia.org/property/mean 	1.0
+	CANDIDATE:  hamster 	http://dbpedia.org/property/gmaster 	0.714285714286
+	CANDIDATE:  software 	http://dbpedia.org/property/software 	1.0
+	hits  0 :
+
+
+who produced films starring natalie portman?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/producer
+	> 	http://dbpedia.org/ontology/starring
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  produced 	http://dbpedia.org/property/produced 	1.0
+	CANDIDATE:  films 	http://dbpedia.org/property/films 	1.0
+	CANDIDATE:  starring 	http://dbpedia.org/ontology/starring 	1.0
+	CANDIDATE:  natalie 	http://dbpedia.org/property/naturalized 	0.636363636364
+	CANDIDATE:  portman 	http://dbpedia.org/property/portal 	0.714285714286
+	hits  1 :
+	+  http://dbpedia.org/ontology/starring
+
+
+in which films did julia roberts as well as richard gere play?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/starring
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  films 	http://dbpedia.org/property/films 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  julia 	http://dbpedia.org/property/julMax 	0.666666666667
+	CANDIDATE:  roberts 	http://dbpedia.org/property/projects 	0.625
+	CANDIDATE:  as 	http://dbpedia.org/property/as 	1.0
+	CANDIDATE:  well 	http://dbpedia.org/property/ell 	0.75
+	CANDIDATE:  as 	http://dbpedia.org/property/as 	1.0
+	CANDIDATE:  richard 	http://dbpedia.org/property/richard 	1.0
+	CANDIDATE:  gere 	http://dbpedia.org/ontology/genre 	0.8
+	CANDIDATE:  play 	http://dbpedia.org/property/play 	1.0
+	hits  0 :
+
+
+was natalie portman born in the united states?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/country
+	> 	http://dbpedia.org/ontology/birthPlace
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  natalie 	http://dbpedia.org/property/naturalized 	0.636363636364
+	CANDIDATE:  portman 	http://dbpedia.org/property/portal 	0.714285714286
+	CANDIDATE:  born 	http://dbpedia.org/property/born 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  united 	http://dbpedia.org/property/branch/unit 	0.666666666667
+	CANDIDATE:  states 	http://dbpedia.org/property/states 	1.0
+	hits  0 :
+
+
+how many films did leonardo dicaprio star in?
+	exception: failed to parse target query 
+what is the second highest mountain on earth?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/elevation
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  second 	http://dbpedia.org/property/second 	1.0
+	CANDIDATE:  highest 	http://dbpedia.org/property/highest 	1.0
+	CANDIDATE:  mountain 	http://dbpedia.org/property/mountain 	1.0
+	CANDIDATE:  on 	http://dbpedia.org/property/on 	1.0
+	CANDIDATE:  earth 	http://dbpedia.org/property/charth 	0.666666666667
+	hits  0 :
+
+
+give me all books by william goldman with more than 300 pages.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/numberOfPages
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/author
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  books 	http://dbpedia.org/property/books 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  william 	http://dbpedia.org/property/hillName 	0.625
+	CANDIDATE:  goldman 	http://dbpedia.org/property/golden 	0.714285714286
+	CANDIDATE:  with 	http://dbpedia.org/property/with 	1.0
+	CANDIDATE:  more 	http://dbpedia.org/property/more 	1.0
+	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
+	CANDIDATE:  300 	http://dbpedia.org/property/100, 	0.5
+	CANDIDATE:  pages 	http://dbpedia.org/property/pages 	1.0
+	hits  0 :
+
+
+give me all danish films.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/country
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  danish 	http://dbpedia.org/property/garnish 	0.714285714286
+	CANDIDATE:  films 	http://dbpedia.org/property/films 	1.0
+	hits  0 :
+
+
+what is the largest city in australia?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/largestCity
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  largest 	http://dbpedia.org/property/largest 	1.0
+	CANDIDATE:  city 	http://dbpedia.org/ontology/city 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  australia 	http://dbpedia.org/property/australian 	0.9
+	hits  0 :
+
+
+who painted the storm on the sea of galilee?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/author
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  painted 	http://dbpedia.org/property/painted 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  storm 	http://dbpedia.org/property/strom 	0.8
+	CANDIDATE:  on 	http://dbpedia.org/property/on 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  sea 	http://dbpedia.org/ontology/sea 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  galilee 	http://dbpedia.org/property/gaeilge 	0.714285714286
+	hits  0 :
+
+
+give me all launch pads operated by nasa.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/operator
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  launch 	http://dbpedia.org/property/launch 	1.0
+	CANDIDATE:  pads 	http://dbpedia.org/property/pads 	1.0
+	CANDIDATE:  operated 	http://dbpedia.org/property/operated 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  nasa 	http://dbpedia.org/property/nama 	0.75
+	hits  0 :
+
+
+who wrote the lyrics for the polish national anthem?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/anthem
+	> 	http://dbpedia.org/property/author
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  wrote 	http://dbpedia.org/property/wrote 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  lyrics 	http://dbpedia.org/ontology/lyrics 	1.0
+	CANDIDATE:  for 	http://dbpedia.org/property/for 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  polish 	http://dbpedia.org/property/polish 	1.0
+	CANDIDATE:  national 	http://dbpedia.org/property/national 	1.0
+	CANDIDATE:  anthem 	http://dbpedia.org/ontology/anthem 	1.0
+	hits  1 :
+	+  http://dbpedia.org/ontology/anthem
+
+
+give me the birthdays of all actors of the television show charmed.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/birthDate
+	> 	http://dbpedia.org/ontology/starring
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  birthdays 	http://dbpedia.org/property/birthDay 	0.888888888889
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  actors 	http://dbpedia.org/property/actors 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  television 	http://dbpedia.org/property/television 	1.0
+	CANDIDATE:  show 	http://dbpedia.org/ontology/show 	1.0
+	CANDIDATE:  charmed 	http://dbpedia.org/property/charged 	0.857142857143
+	hits  0 :
+
+
+in which city did john f. kennedy die?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/deathPlace
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  city 	http://dbpedia.org/ontology/city 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  john 	http://dbpedia.org/property/john 	1.0
+	CANDIDATE:  f. 	http://dbpedia.org/property/name443zx/////@. 	0.5
+	CANDIDATE:  kennedy 	http://dbpedia.org/ontology/enemy 	0.571428571429
+	CANDIDATE:  die 	http://dbpedia.org/property/born/Died 	0.75
+	hits  0 :
+
+
+who produced the most films?
+	exception: failed to parse target query 
+who created the comic captain america?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/creator
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  created 	http://dbpedia.org/ontology/created 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  comic 	http://dbpedia.org/ontology/comic 	1.0
+	CANDIDATE:  captain 	http://dbpedia.org/property/captain 	1.0
+	CANDIDATE:  america 	http://dbpedia.org/property/america 	1.0
+	hits  0 :
+
+
+who was the father of queen elizabeth ii?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/father
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  father 	http://dbpedia.org/ontology/father 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  queen 	http://dbpedia.org/property/queen 	1.0
+	CANDIDATE:  elizabeth 	http://dbpedia.org/property/alphabet 	0.555555555556
+	CANDIDATE:  ii 	http://dbpedia.org/property/gii 	0.666666666667
+	hits  0 :
+
+
+which u.s. state has the abbreviation mn?
+	exception: failed to parse target query 
+which movies did kurosawa direct after rashomon?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/director
+	> 	http://dbpedia.org/ontology/releaseDate
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  movies 	http://dbpedia.org/property/movies 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  kurosawa 	http://dbpedia.org/property/uhsaa 	0.5
+	CANDIDATE:  direct 	http://dbpedia.org/property/direct 	1.0
+	CANDIDATE:  after 	http://dbpedia.org/property/after 	1.0
+	CANDIDATE:  rashomon 	http://dbpedia.org/property/rason 	0.625
+	hits  0 :
+
+
+is there a video game called battle chess?
+	exception: failed to parse target query 
+which mountains are higher than the nanga parbat?
+	exception: failed to parse target query 
+when is the movie worst case scenario going to be in cinemas in the netherlands?
+	exception: failed to parse target query 
+list all episodes of the first season of the hbo television series the sopranos.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/series
+	> 	http://dbpedia.org/ontology/seasonNumber
+	CANDIDATE:  list 	http://dbpedia.org/property/list 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  episodes 	http://dbpedia.org/property/episodes 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  first 	http://dbpedia.org/property/first 	1.0
+	CANDIDATE:  season 	http://dbpedia.org/ontology/season 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  hbo 	http://dbpedia.org/property/hb 	0.666666666667
+	CANDIDATE:  television 	http://dbpedia.org/property/television 	1.0
+	CANDIDATE:  series 	http://dbpedia.org/ontology/series 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  sopranos 	http://dbpedia.org/property/spans 	0.625
+	hits  1 :
+	+  http://dbpedia.org/ontology/series
+
+
+is jens friebe a vegan?
+	exception: failed to parse target query 
+which telecommunications organizations are located in belgium?
+	exception: failed to parse target query 
+give me a list of all american inventions.
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
+	CANDIDATE:  list 	http://dbpedia.org/property/list 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  american 	http://dbpedia.org/property/american 	1.0
+	CANDIDATE:  inventions 	http://dbpedia.org/property/intentions 	0.9
+	hits  0 :
+
+
+which films starring clint eastwood did he direct himself?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/director
+	> 	http://dbpedia.org/ontology/starring
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  films 	http://dbpedia.org/property/films 	1.0
+	CANDIDATE:  starring 	http://dbpedia.org/ontology/starring 	1.0
+	CANDIDATE:  clint 	http://dbpedia.org/property/client 	0.833333333333
+	CANDIDATE:  eastwood 	http://dbpedia.org/property/eastEnd 	0.625
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  he 	http://dbpedia.org/property/he 	1.0
+	CANDIDATE:  direct 	http://dbpedia.org/property/direct 	1.0
+	CANDIDATE:  himself 	http://dbpedia.org/property/hiuse 	0.571428571429
+	hits  1 :
+	+  http://dbpedia.org/ontology/starring
+
+
+is the wife of president obama called michelle?
+	exception: failed to parse target query 
+what is the highest mountain?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/elevation
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  highest 	http://dbpedia.org/property/highest 	1.0
+	CANDIDATE:  mountain 	http://dbpedia.org/property/mountain 	1.0
+	hits  0 :
+
+
+who are the parents of the wife of juan carlos i?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/spouse
+	> 	http://dbpedia.org/ontology/parent
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  parents 	http://dbpedia.org/property/parents 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  wife 	http://dbpedia.org/ontology/wife 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  juan 	http://dbpedia.org/property/jun 	0.75
+	CANDIDATE:  carlos 	http://dbpedia.org/property/carton 	0.666666666667
+	CANDIDATE:  i 	http://dbpedia.org/property/i 	1.0
+	hits  0 :
+
+
+give me all canadian grunge record labels.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/genre
+	> 	http://dbpedia.org/ontology/country
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  canadian 	http://dbpedia.org/property/canadian 	1.0
+	CANDIDATE:  grunge 	http://dbpedia.org/ontology/lounge 	0.666666666667
+	CANDIDATE:  record 	http://dbpedia.org/property/record 	1.0
+	CANDIDATE:  labels 	http://dbpedia.org/property/labels 	1.0
+	hits  0 :
+
+
+what is the birth name of angela merkel?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/birthName
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  birth 	http://dbpedia.org/property/birth 	1.0
+	CANDIDATE:  name 	http://dbpedia.org/property/naMe 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  angela 	http://dbpedia.org/property/angel 	0.833333333333
+	CANDIDATE:  merkel 	http://dbpedia.org/property/merger 	0.666666666667
+	hits  0 :
+
+
+in which uk city are the headquarters of the mi6?
+	exception: failed to parse target query 
+what is the longest river?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  longest 	http://dbpedia.org/property/youngest 	0.75
+	CANDIDATE:  river 	http://dbpedia.org/ontology/river 	1.0
+	hits  0 :
+
+
+did socrates influence aristotle?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/influencedBy
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  socrates 	http://dbpedia.org/property/associates 	0.7
+	CANDIDATE:  influence 	http://dbpedia.org/property/influence 	1.0
+	CANDIDATE:  aristotle 	http://dbpedia.org/property/aliastitle 	0.7
+	hits  0 :
+
+
+in which films directed by garry marshall was julia roberts starring?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/director
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/starring
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  films 	http://dbpedia.org/property/films 	1.0
+	CANDIDATE:  directed 	http://dbpedia.org/property/directed 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  garry 	http://dbpedia.org/property/warCry 	0.666666666667
+	CANDIDATE:  marshall 	http://dbpedia.org/property/marChill 	0.75
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  julia 	http://dbpedia.org/property/julMax 	0.666666666667
+	CANDIDATE:  roberts 	http://dbpedia.org/property/projects 	0.625
+	CANDIDATE:  starring 	http://dbpedia.org/ontology/starring 	1.0
+	hits  1 :
+	+  http://dbpedia.org/ontology/starring
+
+
+who was called scarface?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/nickname
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  called 	http://dbpedia.org/property/called 	1.0
+	CANDIDATE:  scarface 	http://dbpedia.org/property/surface 	0.75
+	hits  0 :
+
+
+is christian bale starring in velvet goldmine?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/starring
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  christian 	http://dbpedia.org/property/christian 	1.0
+	CANDIDATE:  bale 	http://dbpedia.org/property/ball 	0.75
+	CANDIDATE:  starring 	http://dbpedia.org/ontology/starring 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  velvet 	http://dbpedia.org/property/helmet 	0.666666666667
+	CANDIDATE:  goldmine 	http://dbpedia.org/property/holding 	0.625
+	hits  1 :
+	+  http://dbpedia.org/ontology/starring
+
+
+who developed the video game world of warcraft?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/developer
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  developed 	http://dbpedia.org/property/developed 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  video 	http://dbpedia.org/property/video 	1.0
+	CANDIDATE:  game 	http://dbpedia.org/property/game 	1.0
+	CANDIDATE:  world 	http://dbpedia.org/ontology/world 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  warcraft 	http://dbpedia.org/property/aircraft 	0.75
+	hits  0 :
+
+
+what is the time zone of salt lake city?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/timezone
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  time 	http://dbpedia.org/property/time 	1.0
+	CANDIDATE:  zone 	http://dbpedia.org/property/zone 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  salt 	http://dbpedia.org/property/salt 	1.0
+	CANDIDATE:  lake 	http://dbpedia.org/ontology/lake 	1.0
+	CANDIDATE:  city 	http://dbpedia.org/ontology/city 	1.0
+	hits  0 :
+
+
+through which countries does the yenisei river flow?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/country
+	CANDIDATE:  through 	http://dbpedia.org/property/through 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  countries 	http://dbpedia.org/property/countries 	1.0
+	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  yenisei 	http://dbpedia.org/property/genuses 	0.571428571429
+	CANDIDATE:  river 	http://dbpedia.org/ontology/river 	1.0
+	CANDIDATE:  flow 	http://dbpedia.org/property/flow 	1.0
+	hits  0 :
+
+
+list all games by gmt.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/publisher
+	CANDIDATE:  list 	http://dbpedia.org/property/list 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  games 	http://dbpedia.org/property/games 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  gmt 	http://dbpedia.org/property/mt 	0.666666666667
+	hits  0 :
+
+
+which organizations were founded in 1930?
+	exception: failed to parse target query 
+to which countries does the himalayan mountain system extend?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/country
+	CANDIDATE:  to 	http://dbpedia.org/property/to 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  countries 	http://dbpedia.org/property/countries 	1.0
+	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  himalayan 	http://dbpedia.org/ontology/wilaya 	0.555555555556
+	CANDIDATE:  mountain 	http://dbpedia.org/property/mountain 	1.0
+	CANDIDATE:  system 	http://dbpedia.org/property/system 	1.0
+	CANDIDATE:  extend 	http://dbpedia.org/property/extend 	1.0
+	hits  0 :
+
+
+how many employees does ibm have?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/numberOfEmployees
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  many 	http://dbpedia.org/property/many 	1.0
+	CANDIDATE:  employees 	http://dbpedia.org/property/employees 	1.0
+	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
+	CANDIDATE:  ibm 	http://dbpedia.org/property/ibs 	0.666666666667
+	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
+	hits  0 :
+
+
+when was alberta admitted as province?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/admittancedate
+	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  alberta 	http://dbpedia.org/property/almerMata 	0.666666666667
+	CANDIDATE:  admitted 	http://dbpedia.org/property/readmitted 	0.8
+	CANDIDATE:  as 	http://dbpedia.org/property/as 	1.0
+	CANDIDATE:  province 	http://dbpedia.org/ontology/province 	1.0
+	hits  0 :
+
+
+which countries are connected by the rhine?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/country
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://www.w3.org/2000/01/rdf-schema#label
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  countries 	http://dbpedia.org/property/countries 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  connected 	http://dbpedia.org/property/contested 	0.777777777778
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  rhine 	http://dbpedia.org/property/rLine 	0.8
+	hits  0 :
+
+
+give me all cosmonauts.
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  cosmonauts 	http://dbpedia.org/property/commonNames 	0.636363636364
+	hits  0 :
+
+
+who is the mayor of tel aviv?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/leaderName
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  mayor 	http://dbpedia.org/ontology/mayor 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  tel 	http://dbpedia.org/property/tel 	1.0
+	CANDIDATE:  aviv 	http://dbpedia.org/property/alive 	0.6
+	hits  0 :
+
+
+which ships were called after benjamin franklin?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/shipNamesake
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  ships 	http://dbpedia.org/property/ships 	1.0
+	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
+	CANDIDATE:  called 	http://dbpedia.org/property/called 	1.0
+	CANDIDATE:  after 	http://dbpedia.org/property/after 	1.0
+	CANDIDATE:  benjamin 	http://dbpedia.org/property/beamIn 	0.75
+	CANDIDATE:  franklin 	http://dbpedia.org/property/rankin 	0.75
+	hits  0 :
+
+
+who is the husband of amanda palmer?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/spouse
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  husband 	http://dbpedia.org/property/husband 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  amanda 	http://dbpedia.org/property/aAndE 	0.666666666667
+	CANDIDATE:  palmer 	http://dbpedia.org/property/almer 	0.833333333333
+	hits  0 :
+
+
+how many employees does google have?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/numberOfEmployees
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  many 	http://dbpedia.org/property/many 	1.0
+	CANDIDATE:  employees 	http://dbpedia.org/property/employees 	1.0
+	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
+	CANDIDATE:  google 	http://dbpedia.org/property/google 	1.0
+	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
+	hits  0 :
+
+
+which mountain is the highest after the annapurna?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/elevation
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  mountain 	http://dbpedia.org/property/mountain 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  highest 	http://dbpedia.org/property/highest 	1.0
+	CANDIDATE:  after 	http://dbpedia.org/property/after 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  annapurna 	http://dbpedia.org/property/anchura 	0.555555555556
+	hits  0 :
+
+
+does breaking bad have more episodes than game of thrones?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/numberOfEpisodes
+	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
+	CANDIDATE:  breaking 	http://dbpedia.org/property/breeding 	0.75
+	CANDIDATE:  bad 	http://dbpedia.org/property/band 	0.75
+	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
+	CANDIDATE:  more 	http://dbpedia.org/property/more 	1.0
+	CANDIDATE:  episodes 	http://dbpedia.org/property/episodes 	1.0
+	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
+	CANDIDATE:  game 	http://dbpedia.org/property/game 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  thrones 	http://dbpedia.org/property/throne 	0.857142857143
+	hits  0 :
+
+
+give me a list of all bandleaders that play trumpet.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/instrument
+	> 	http://dbpedia.org/ontology/occupation
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
+	CANDIDATE:  list 	http://dbpedia.org/property/list 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  bandleaders 	http://dbpedia.org/property/bandleader 	0.909090909091
+	CANDIDATE:  that 	http://dbpedia.org/property/hat 	0.75
+	CANDIDATE:  play 	http://dbpedia.org/property/play 	1.0
+	CANDIDATE:  trumpet 	http://dbpedia.org/ontology/trustee 	0.571428571429
+	hits  0 :
+
+
+when was the battle of gettysburg?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/date
+	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  battle 	http://dbpedia.org/ontology/battle 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  gettysburg 	http://dbpedia.org/property/gattung 	0.5
+	hits  0 :
+
+
+when did michael jackson die?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/deathDate
+	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  michael 	http://dbpedia.org/property/marchLabel 	0.6
+	CANDIDATE:  jackson 	http://dbpedia.org/property/jackn 	0.714285714286
+	CANDIDATE:  die 	http://dbpedia.org/property/born/Died 	0.75
+	hits  0 :
+
+
+how many languages are spoken in turkmenistan?
+	exception: failed to parse target query 
+is frank herbert still alive?
+	exception: failed to parse target query 
+how many big fires struck paris during the middle ages?
+	exception: failed to parse target query 
+how many inhabitants does maribor have?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/populationTotal
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  many 	http://dbpedia.org/property/many 	1.0
+	CANDIDATE:  inhabitants 	http://dbpedia.org/property/inhabitants 	1.0
+	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
+	CANDIDATE:  maribor 	http://dbpedia.org/ontology/mayor 	0.571428571429
+	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
+	hits  0 :
+
+
+give me a list of all lakes in denmark.
+	exception: failed to parse target query 
+is proinsulin a protein?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  proinsulin 	http://dbpedia.org/ontology/provinceLink 	0.666666666667
+	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
+	CANDIDATE:  protein 	http://dbpedia.org/property/protein 	1.0
+	hits  0 :
+
+
+which awards did wikileaks win?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/awards
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  awards 	http://dbpedia.org/property/awards 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  wikileaks 	http://dbpedia.org/property/wikiLinks 	0.777777777778
+	CANDIDATE:  win 	http://dbpedia.org/property/win 	1.0
+	hits  1 :
+	+  http://dbpedia.org/property/awards
+
+
+which greek goddesses dwelt on mount olympus?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/abode
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  greek 	http://dbpedia.org/property/greek 	1.0
+	CANDIDATE:  goddesses 	http://dbpedia.org/property/goddessOf 	0.777777777778
+	CANDIDATE:  dwelt 	http://dbpedia.org/property/dhalt 	0.6
+	CANDIDATE:  on 	http://dbpedia.org/property/on 	1.0
+	CANDIDATE:  mount 	http://dbpedia.org/property/mount 	1.0
+	CANDIDATE:  olympus 	http://dbpedia.org/property/olympics 	0.75
+	hits  0 :
+
+
+how high is the mount everest?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/elevation
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  high 	http://dbpedia.org/property/high 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  mount 	http://dbpedia.org/property/mount 	1.0
+	CANDIDATE:  everest 	http://dbpedia.org/property/reverend 	0.625
+	hits  0 :
+
+
+which country has the most official languages?
+	exception: failed to parse target query 
+give me all communist countries.
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  communist 	http://dbpedia.org/property/commonst 	0.777777777778
+	CANDIDATE:  countries 	http://dbpedia.org/property/countries 	1.0
+	hits  0 :
+
+
+which instruments does cat stevens play?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/instrument
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  instruments 	http://dbpedia.org/property/instruments 	1.0
+	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
+	CANDIDATE:  cat 	http://dbpedia.org/property/cat 	1.0
+	CANDIDATE:  stevens 	http://dbpedia.org/property/sevens 	0.857142857143
+	CANDIDATE:  play 	http://dbpedia.org/property/play 	1.0
+	hits  0 :
+
+
+sean parnell is the governor of which u.s. state?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/property/governor
+	CANDIDATE:  sean 	http://dbpedia.org/ontology/sea 	0.75
+	CANDIDATE:  parnell 	http://dbpedia.org/property/panel 	0.714285714286
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  governor 	http://dbpedia.org/ontology/governor 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  u.s. 	http://dbpedia.org/property/m.s. 	0.75
+	CANDIDATE:  state 	http://dbpedia.org/ontology/state 	1.0
+	hits  0 :
+
+
+give me all books written by danielle steel.
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/author
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  books 	http://dbpedia.org/property/books 	1.0
+	CANDIDATE:  written 	http://dbpedia.org/property/written 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  danielle 	http://dbpedia.org/property/cancelled 	0.666666666667
+	CANDIDATE:  steel 	http://dbpedia.org/property/steals 	0.666666666667
+	hits  0 :
+
+
+what is the most beautiful painting?
+	exception: failed to parse target query 
+did tesla win a nobel prize in physics?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/award
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  tesla 	http://dbpedia.org/property/thesNa 	0.666666666667
+	CANDIDATE:  win 	http://dbpedia.org/property/win 	1.0
+	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
+	CANDIDATE:  nobel 	http://dbpedia.org/property/nobel 	1.0
+	CANDIDATE:  prize 	http://dbpedia.org/property/prizes 	0.833333333333
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  physics 	http://dbpedia.org/property/physios 	0.857142857143
+	hits  0 :
+
+
+who is the owner of universal studios?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/owner
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  owner 	http://dbpedia.org/ontology/owner 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  universal 	http://dbpedia.org/property/universe 	0.777777777778
+	CANDIDATE:  studios 	http://dbpedia.org/property/studios 	1.0
+	hits  1 :
+	+  http://dbpedia.org/ontology/owner
+
+
+who is the governor of wyoming?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/governor
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  governor 	http://dbpedia.org/ontology/governor 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  wyoming 	http://dbpedia.org/property/woking 	0.714285714286
+	hits  0 :
+
+
+when were the hells angels founded?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/founded
+	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
+	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  hells 	http://dbpedia.org/property/hills 	0.8
+	CANDIDATE:  angels 	http://dbpedia.org/property/angel 	0.833333333333
+	CANDIDATE:  founded 	http://dbpedia.org/property/founded 	1.0
+	hits  1 :
+	+  http://dbpedia.org/property/founded
+
+
+who is the daughter of ingrid bergman married to?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/spouse
+	> 	http://dbpedia.org/ontology/child
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  daughter 	http://dbpedia.org/property/daughter 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  ingrid 	http://dbpedia.org/property/cineGrId 	0.75
+	CANDIDATE:  bergman 	http://dbpedia.org/property/german 	0.714285714286
+	CANDIDATE:  married 	http://dbpedia.org/property/married 	1.0
+	CANDIDATE:  to 	http://dbpedia.org/property/to 	1.0
+	hits  0 :
+
+
+give me all libraries established earlier than 1400.
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/established
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  libraries 	http://dbpedia.org/property/libraries 	1.0
+	CANDIDATE:  established 	http://dbpedia.org/property/established 	1.0
+	CANDIDATE:  earlier 	http://dbpedia.org/property/earliest 	0.75
+	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
+	CANDIDATE:  1400 	http://dbpedia.org/property/10v 	0.5
+	hits  1 :
+	+  http://dbpedia.org/property/established
+
+
+is egypts largest city also its capital?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/largestCity
+	> 	http://dbpedia.org/ontology/capital
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  egypts 	http://dbpedia.org/property/egmPs 	0.666666666667
+	CANDIDATE:  largest 	http://dbpedia.org/property/largest 	1.0
+	CANDIDATE:  city 	http://dbpedia.org/ontology/city 	1.0
+	CANDIDATE:  also 	http://dbpedia.org/property/also 	1.0
+	CANDIDATE:  its 	http://dbpedia.org/property/itis 	0.75
+	CANDIDATE:  capital 	http://dbpedia.org/ontology/capital 	1.0
+	hits  1 :
+	+  http://dbpedia.org/ontology/capital
+
+
+how many countries are there in europe?
+	exception: failed to parse target query 
+who is the mayor of berlin?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/leader
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  mayor 	http://dbpedia.org/ontology/mayor 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  berlin 	http://dbpedia.org/property/verein 	0.666666666667
+	hits  0 :
+
+
+how many people live in the capital of australia?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/populationTotal
+	> 	http://dbpedia.org/ontology/capital
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  many 	http://dbpedia.org/property/many 	1.0
+	CANDIDATE:  people 	http://dbpedia.org/property/people 	1.0
+	CANDIDATE:  live 	http://dbpedia.org/property/live 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  capital 	http://dbpedia.org/ontology/capital 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  australia 	http://dbpedia.org/property/australian 	0.9
+	hits  1 :
+	+  http://dbpedia.org/ontology/capital
+
+
+who founded intel?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/foundedBy
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  founded 	http://dbpedia.org/property/founded 	1.0
+	CANDIDATE:  intel 	http://dbpedia.org/property/intel 	1.0
+	hits  0 :
+
+
+give me all b-sides of the ramones.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/bSide
+	> 	http://dbpedia.org/ontology/musicalArtist
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  b-sides 	http://dbpedia.org/property/bSides 	0.857142857143
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  ramones 	http://dbpedia.org/property/raions 	0.714285714286
+	hits  0 :
+
+
+give me all films produced by hal roach.
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/producer
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  films 	http://dbpedia.org/property/films 	1.0
+	CANDIDATE:  produced 	http://dbpedia.org/property/produced 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  hal 	http://dbpedia.org/property/hail 	0.75
+	CANDIDATE:  roach 	http://dbpedia.org/ontology/coach 	0.8
+	hits  0 :
+
+
+which bridges are of the same type as the manhattan bridge?
+	exception: failed to parse target query 
+give me all apollo 14 astronauts.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/mission
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  apollo 	http://dbpedia.org/property/poll# 	0.666666666667
+	CANDIDATE:  14 	http://dbpedia.org/property/1u 	0.5
+	CANDIDATE:  astronauts 	http://dbpedia.org/property/stauts 	0.6
+	hits  0 :
+
+
+what is the area code of berlin?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/areaCode
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  area 	http://dbpedia.org/property/city/area 	1.0
+	CANDIDATE:  code 	http://dbpedia.org/property/code 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  berlin 	http://dbpedia.org/property/verein 	0.666666666667
+	hits  0 :
+
+
+which software has been developed by organizations founded in california?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/developer
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  software 	http://dbpedia.org/property/software 	1.0
+	CANDIDATE:  has 	http://dbpedia.org/property/ben/whas 	0.75
+	CANDIDATE:  been 	http://dbpedia.org/property/betn 	0.75
+	CANDIDATE:  developed 	http://dbpedia.org/property/developed 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  organizations 	http://dbpedia.org/property/organizations 	1.0
+	CANDIDATE:  founded 	http://dbpedia.org/property/founded 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  california 	http://dbpedia.org/property/calorie 	0.6
+	hits  0 :
+
+
+what is the currency of the czech republic?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/currency
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  currency 	http://dbpedia.org/ontology/currency 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  czech 	http://dbpedia.org/ontology/coach 	0.6
+	CANDIDATE:  republic 	http://dbpedia.org/property/republic 	1.0
+	hits  1 :
+	+  http://dbpedia.org/ontology/currency
+
+
+which music albums contain the song last christmas?
+	exception: failed to parse target query 
+give me all world heritage sites designated within the past two years.
+	exception: failed to parse target query 
+which cities does the weser flow through?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/city
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  cities 	http://dbpedia.org/property/cities 	1.0
+	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  weser 	http://dbpedia.org/property/western 	0.714285714286
+	CANDIDATE:  flow 	http://dbpedia.org/property/flow 	1.0
+	CANDIDATE:  through 	http://dbpedia.org/property/through 	1.0
+	hits  0 :
+
+
+give me all companies in the advertising industry.
+	exception: failed to parse target query 
+give me all people with first name jimmy.
+	exception: failed to parse target query 
+give me all movies directed by francis ford coppola.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/director
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  movies 	http://dbpedia.org/property/movies 	1.0
+	CANDIDATE:  directed 	http://dbpedia.org/property/directed 	1.0
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  francis 	http://dbpedia.org/property/franchise 	0.777777777778
+	CANDIDATE:  ford 	http://dbpedia.org/property/ord 	0.75
+	CANDIDATE:  coppola 	http://dbpedia.org/property/cupPoles 	0.625
+	hits  0 :
+
+
+what is the ruling party in lisbon?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/leaderParty
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  ruling 	http://dbpedia.org/property/ruling 	1.0
+	CANDIDATE:  party 	http://dbpedia.org/ontology/party 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  lisbon 	http://dbpedia.org/property/eisbn 	0.666666666667
+	hits  0 :
+
+
+who produces orangina?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/product
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  produces 	http://dbpedia.org/ontology/produces 	1.0
+	CANDIDATE:  orangina 	http://dbpedia.org/ontology/origin 	0.625
+	hits  0 :
+
+
+give me all companies in munich.
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  companies 	http://dbpedia.org/property/companies 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  munich 	http://dbpedia.org/property/munic 	0.833333333333
+	hits  0 :
+
+
+what is the melting point of copper?
+	exception: failed to parse target query 
+was the cuban missile crisis earlier than the bay of pigs invasion?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/date
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  cuban 	http://dbpedia.org/property/cuba 	0.8
+	CANDIDATE:  missile 	http://dbpedia.org/property/missiles 	0.875
+	CANDIDATE:  crisis 	http://dbpedia.org/property/risks 	0.666666666667
+	CANDIDATE:  earlier 	http://dbpedia.org/property/earliest 	0.75
+	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  bay 	http://dbpedia.org/property/bday 	0.75
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  pigs 	http://dbpedia.org/property/pags 	0.75
+	CANDIDATE:  invasion 	http://dbpedia.org/property/inversions 	0.7
+	hits  0 :
+
+
+who was john f. kennedy's vice president?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/vicePresident
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  john 	http://dbpedia.org/property/john 	1.0
+	CANDIDATE:  f. 	http://dbpedia.org/property/name443zx/////@. 	0.5
+	CANDIDATE:  kennedy 	http://dbpedia.org/ontology/enemy 	0.571428571429
+	CANDIDATE:  's 	http://dbpedia.org/property/7's 	0.666666666667
+	CANDIDATE:  vice 	http://dbpedia.org/property/chairman/vice 	1.0
+	CANDIDATE:  president 	http://dbpedia.org/ontology/president 	1.0
+	hits  0 :
+
+
+when was capcom founded?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/foundingDate
+	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  capcom 	http://dbpedia.org/property/capion 	0.666666666667
+	CANDIDATE:  founded 	http://dbpedia.org/property/founded 	1.0
+	hits  0 :
+
+
+who is the formula 1 race driver with the most races?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/races
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  formula 	http://dbpedia.org/property/formula 	1.0
+	CANDIDATE:  1 	http://dbpedia.org/property/1u 	0.5
+	CANDIDATE:  race 	http://dbpedia.org/ontology/race 	1.0
+	CANDIDATE:  driver 	http://dbpedia.org/property/driver 	1.0
+	CANDIDATE:  with 	http://dbpedia.org/property/with 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  most 	http://dbpedia.org/property/most 	1.0
+	CANDIDATE:  races 	http://dbpedia.org/property/races 	1.0
+	hits  0 :
+
+
+which u.s. state has been admitted latest?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/property/admittancedate
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  u.s. 	http://dbpedia.org/property/m.s. 	0.75
+	CANDIDATE:  state 	http://dbpedia.org/ontology/state 	1.0
+	CANDIDATE:  has 	http://dbpedia.org/property/ben/whas 	0.75
+	CANDIDATE:  been 	http://dbpedia.org/property/betn 	0.75
+	CANDIDATE:  admitted 	http://dbpedia.org/property/readmitted 	0.8
+	CANDIDATE:  latest 	http://dbpedia.org/property/latest 	1.0
+	hits  0 :
+
+
+give me all methodist politicians.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/religion
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  methodist 	http://dbpedia.org/property/methods 	0.777777777778
+	CANDIDATE:  politicians 	http://dbpedia.org/property/politician 	0.909090909091
+	hits  0 :
+
+
+what is the highest place of the urals?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/highestPlace
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  highest 	http://dbpedia.org/property/highest 	1.0
+	CANDIDATE:  place 	http://dbpedia.org/ontology/place 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  urals 	http://dbpedia.org/property/burials 	0.714285714286
+	hits  0 :
+
+
+give me all soccer clubs in the premier league.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/league
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  soccer 	http://dbpedia.org/property/soccer 	1.0
+	CANDIDATE:  clubs 	http://dbpedia.org/property/clubs 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  premier 	http://dbpedia.org/property/premier 	1.0
+	CANDIDATE:  league 	http://dbpedia.org/ontology/league 	1.0
+	hits  1 :
+	+  http://dbpedia.org/ontology/league
+
+
+which monarchs were married to a german?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/spouse
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  monarchs 	http://dbpedia.org/ontology/monarch 	0.875
+	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
+	CANDIDATE:  married 	http://dbpedia.org/property/married 	1.0
+	CANDIDATE:  to 	http://dbpedia.org/property/to 	1.0
+	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
+	CANDIDATE:  german 	http://dbpedia.org/property/german 	1.0
+	hits  0 :
+
+
+show me all songs from bruce springsteen released between 1980 and 1990.
+	exception: failed to parse target query 
+give me all professional skateboarders from sweden.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/occupation
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  professional 	http://dbpedia.org/property/professional 	1.0
+	CANDIDATE:  skateboarders 	http://dbpedia.org/property/landborders 	0.615384615385
+	CANDIDATE:  from 	http://dbpedia.org/property/from 	1.0
+	CANDIDATE:  sweden 	http://dbpedia.org/property/seeded 	0.666666666667
+	hits  0 :
+
+
+give me all members of prodigy.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/bandMember
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  members 	http://dbpedia.org/property/Members 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  prodigy 	http://dbpedia.org/property/prodMgr 	0.714285714286
+	hits  0 :
+
+
+how many students does the free university in amsterdam have?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/numberOfStudents
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  many 	http://dbpedia.org/property/many 	1.0
+	CANDIDATE:  students 	http://dbpedia.org/property/students 	1.0
+	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  free 	http://dbpedia.org/property/free 	1.0
+	CANDIDATE:  university 	http://dbpedia.org/ontology/university 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  amsterdam 	http://dbpedia.org/property/masteredAt 	0.7
+	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
+	hits  0 :
+
+
+give me all australian nonprofit organizations.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  australian 	http://dbpedia.org/property/australian 	1.0
+	CANDIDATE:  nonprofit 	http://dbpedia.org/property/nonprofit 	1.0
+	CANDIDATE:  organizations 	http://dbpedia.org/property/organizations 	1.0
+	hits  0 :
+
+
+what did bruce carver die from?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/deathCause
+	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  bruce 	http://dbpedia.org/property/braces 	0.666666666667
+	CANDIDATE:  carver 	http://dbpedia.org/property/career 	0.833333333333
+	CANDIDATE:  die 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  from 	http://dbpedia.org/property/from 	1.0
+	hits  0 :
+
+
+TOTAL HITS:  25
