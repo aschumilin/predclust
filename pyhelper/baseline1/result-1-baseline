@@ -14,7 +14,7 @@ which books by kerouac were published by viking press?
 	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
 	CANDIDATE:  viking 	http://dbpedia.org/property/viewing 	0.714285714286
 	CANDIDATE:  press 	http://dbpedia.org/property/press 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the official website of tom cruise?
@@ -28,8 +28,7 @@ what is the official website of tom cruise?
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  tom 	http://dbpedia.org/property/atom 	0.75
 	CANDIDATE:  cruise 	http://dbpedia.org/property/course 	0.666666666667
-	hits  1 :
-	+  http://dbpedia.org/property/website
+	+ tp:  1  precision:  0.125  recall:  1.0  f1:  0.222222222222
 
 
 which u.s. state has the highest population density?
@@ -44,7 +43,7 @@ which u.s. state has the highest population density?
 	CANDIDATE:  highest 	http://dbpedia.org/property/highest 	1.0
 	CANDIDATE:  population 	http://dbpedia.org/ontology/population 	1.0
 	CANDIDATE:  density 	http://dbpedia.org/property/density 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who created wikipedia?
@@ -53,7 +52,7 @@ who created wikipedia?
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
 	CANDIDATE:  created 	http://dbpedia.org/ontology/created 	1.0
 	CANDIDATE:  wikipedia 	http://dbpedia.org/property/wikipedia 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the founding year of the brewery that produces pilsner urquell?
@@ -72,8 +71,7 @@ what is the founding year of the brewery that produces pilsner urquell?
 	CANDIDATE:  produces 	http://dbpedia.org/ontology/produces 	1.0
 	CANDIDATE:  pilsner 	http://dbpedia.org/ontology/partner 	0.571428571429
 	CANDIDATE:  urquell 	http://dbpedia.org/property/quelle 	0.571428571429
-	hits  1 :
-	+  http://dbpedia.org/property/brewery
+	+ tp:  1  precision:  0.0909090909091  recall:  0.5  f1:  0.153846153846
 
 
 how many films did hal roach produce?
@@ -88,7 +86,7 @@ in which country does the nile start?
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  nile 	http://dbpedia.org/property/nite 	0.75
 	CANDIDATE:  start 	http://dbpedia.org/property/start 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all federal chancellors of germany.
@@ -101,7 +99,7 @@ give me all federal chancellors of germany.
 	CANDIDATE:  chancellors 	http://dbpedia.org/ontology/chancellor 	0.909090909091
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  germany 	http://dbpedia.org/property/german 	0.857142857143
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which states of germany are governed by the social democratic party?
@@ -116,7 +114,7 @@ which river does the brooklyn bridge cross?
 	CANDIDATE:  brooklyn 	http://dbpedia.org/property/brooklyn 	1.0
 	CANDIDATE:  bridge 	http://dbpedia.org/property/bridge 	1.0
 	CANDIDATE:  cross 	http://dbpedia.org/property/gross 	0.8
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 how tall is claudia schiffer?
@@ -127,7 +125,7 @@ how tall is claudia schiffer?
 	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
 	CANDIDATE:  claudia 	http://dbpedia.org/property/classia 	0.714285714286
 	CANDIDATE:  schiffer 	http://dbpedia.org/property/schiffbar 	0.777777777778
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which television shows were created by walt disney?
@@ -142,7 +140,7 @@ which television shows were created by walt disney?
 	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
 	CANDIDATE:  walt 	http://dbpedia.org/property/salt 	0.75
 	CANDIDATE:  disney 	http://dbpedia.org/property/disLy 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me the websites of companies with more than 500000 employees.
@@ -160,7 +158,7 @@ give me the websites of companies with more than 500000 employees.
 	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
 	CANDIDATE:  500000 	http://dbpedia.org/property/2000pop 	0.428571428571
 	CANDIDATE:  employees 	http://dbpedia.org/property/employees 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all cities in new jersey with more than 100000 inhabitants.
@@ -180,7 +178,7 @@ give me all cities in new jersey with more than 100000 inhabitants.
 	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
 	CANDIDATE:  100000 	http://dbpedia.org/property/100meg 	0.5
 	CANDIDATE:  inhabitants 	http://dbpedia.org/property/inhabitants 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which actors were born in germany?
@@ -192,7 +190,7 @@ which actors were born in germany?
 	CANDIDATE:  born 	http://dbpedia.org/property/born 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  germany 	http://dbpedia.org/property/german 	0.857142857143
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which countries have more than two official languages?
@@ -207,7 +205,7 @@ which countries have more than two official languages?
 	CANDIDATE:  two 	http://dbpedia.org/property/two 	1.0
 	CANDIDATE:  official 	http://dbpedia.org/property/official 	1.0
 	CANDIDATE:  languages 	http://dbpedia.org/property/languages 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 in which u.s. state is mount mckinley located?
@@ -222,7 +220,7 @@ in which u.s. state is mount mckinley located?
 	CANDIDATE:  mount 	http://dbpedia.org/property/mount 	1.0
 	CANDIDATE:  mckinley 	http://dbpedia.org/property/mtitle 	0.5
 	CANDIDATE:  located 	http://dbpedia.org/property/located 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 when was the statue of liberty built?
@@ -235,7 +233,7 @@ when was the statue of liberty built?
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  liberty 	http://dbpedia.org/property/livery 	0.714285714286
 	CANDIDATE:  built 	http://dbpedia.org/property/builT 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all people that were born in vienna and died in berlin.
@@ -255,7 +253,7 @@ give me all people that were born in vienna and died in berlin.
 	CANDIDATE:  died 	http://dbpedia.org/property/born/Died 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  berlin 	http://dbpedia.org/property/verein 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all movies with tom cruise.
@@ -269,7 +267,7 @@ give me all movies with tom cruise.
 	CANDIDATE:  with 	http://dbpedia.org/property/with 	1.0
 	CANDIDATE:  tom 	http://dbpedia.org/property/atom 	0.75
 	CANDIDATE:  cruise 	http://dbpedia.org/property/course 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 how tall is michael jordan?
@@ -280,7 +278,7 @@ how tall is michael jordan?
 	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
 	CANDIDATE:  michael 	http://dbpedia.org/property/marchLabel 	0.6
 	CANDIDATE:  jordan 	http://dbpedia.org/ontology/organ 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the total amount of men and women serving in the fdny?
@@ -299,7 +297,7 @@ what is the total amount of men and women serving in the fdny?
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  fdny 	http://dbpedia.org/property/edN 	0.5
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all breeds of the german shepherd dog.
@@ -314,7 +312,7 @@ give me all breeds of the german shepherd dog.
 	CANDIDATE:  german 	http://dbpedia.org/property/german 	1.0
 	CANDIDATE:  shepherd 	http://dbpedia.org/property/shipHead 	0.75
 	CANDIDATE:  dog 	http://dbpedia.org/property/dog 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 how often was michael jordan divorced?
@@ -329,7 +327,7 @@ what is the official language of suriname?
 	CANDIDATE:  language 	http://dbpedia.org/ontology/language 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  suriname 	http://dbpedia.org/property/surname 	0.875
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who composed the music for harold and maude?
@@ -343,7 +341,7 @@ who composed the music for harold and maude?
 	CANDIDATE:  harold 	http://dbpedia.org/property/hold 	0.666666666667
 	CANDIDATE:  and 	http://dbpedia.org/property/and 	1.0
 	CANDIDATE:  maude 	http://dbpedia.org/property/made 	0.8
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 in which city was the former dutch queen juliana buried?
@@ -360,7 +358,7 @@ in which city was the former dutch queen juliana buried?
 	CANDIDATE:  queen 	http://dbpedia.org/property/queen 	1.0
 	CANDIDATE:  juliana 	http://dbpedia.org/property/julMeanF 	0.625
 	CANDIDATE:  buried 	http://dbpedia.org/property/buried 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who wrote the book the pillars of the earth?
@@ -375,7 +373,7 @@ who wrote the book the pillars of the earth?
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  earth 	http://dbpedia.org/property/charth 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what are the nicknames of san francisco?
@@ -388,7 +386,7 @@ what are the nicknames of san francisco?
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  san 	http://dbpedia.org/property/san 	1.0
 	CANDIDATE:  francisco 	http://dbpedia.org/property/francisco 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which companies work in the aerospace industry as well as in medicine?
@@ -407,8 +405,7 @@ which companies work in the aerospace industry as well as in medicine?
 	CANDIDATE:  as 	http://dbpedia.org/property/as 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  medicine 	http://dbpedia.org/property/emedicine 	0.888888888889
-	hits  1 :
-	+  http://dbpedia.org/ontology/industry
+	+ tp:  1  precision:  0.1  recall:  0.5  f1:  0.166666666667
 
 
 which languages are spoken in estonia?
@@ -420,7 +417,7 @@ which languages are spoken in estonia?
 	CANDIDATE:  spoken 	http://dbpedia.org/property/spoken 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  estonia 	http://dbpedia.org/property/estOpening 	0.6
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 are tree frogs a type of amphibian?
@@ -433,7 +430,7 @@ are tree frogs a type of amphibian?
 	CANDIDATE:  type 	http://dbpedia.org/ontology/type 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  amphibian 	http://dbpedia.org/property/amphibian 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what were the main discoveries of the mars rover curiosity?
@@ -447,7 +444,7 @@ when did latvia join the eu?
 	CANDIDATE:  join 	http://dbpedia.org/property/join 	1.0
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  eu 	http://dbpedia.org/property/eu 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 where is the residence of the prime minister of spain?
@@ -463,7 +460,7 @@ where is the residence of the prime minister of spain?
 	CANDIDATE:  minister 	http://dbpedia.org/property/minister 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  spain 	http://dbpedia.org/property/spanIn 	0.833333333333
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which countries have more than ten caves?
@@ -476,7 +473,7 @@ which countries have more than ten caves?
 	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
 	CANDIDATE:  ten 	http://dbpedia.org/property/theN 	0.75
 	CANDIDATE:  caves 	http://dbpedia.org/property/calves 	0.833333333333
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all animal species that live in the teutoburg forest.
@@ -487,7 +484,7 @@ who created goofy?
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
 	CANDIDATE:  created 	http://dbpedia.org/ontology/created 	1.0
 	CANDIDATE:  goofy 	http://dbpedia.org/property/roof 	0.6
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all sister cities of brno.
@@ -508,7 +505,7 @@ which other weapons did the designer of the uzi develop?
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  uzi 	http://dbpedia.org/property/uni 	0.666666666667
 	CANDIDATE:  develop 	http://dbpedia.org/ontology/developer 	0.777777777778
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which caves have more than 3 entrances?
@@ -522,7 +519,7 @@ which caves have more than 3 entrances?
 	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
 	CANDIDATE:  3 	http://dbpedia.org/property/h3 	0.5
 	CANDIDATE:  entrances 	http://dbpedia.org/property/entrances 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which countries adopted the euro?
@@ -540,8 +537,7 @@ which country does the creator of miffy come from?
 	CANDIDATE:  miffy 	http://dbpedia.org/property/mmff 	0.6
 	CANDIDATE:  come 	http://dbpedia.org/property/com 	0.75
 	CANDIDATE:  from 	http://dbpedia.org/property/from 	1.0
-	hits  1 :
-	+  http://dbpedia.org/ontology/creator
+	+ tp:  1  precision:  0.111111111111  recall:  0.5  f1:  0.181818181818
 
 
 give me all female given names.
@@ -554,7 +550,7 @@ give me all female given names.
 	CANDIDATE:  female 	http://dbpedia.org/property/female 	1.0
 	CANDIDATE:  given 	http://dbpedia.org/property/given 	1.0
 	CANDIDATE:  names 	http://dbpedia.org/property/names 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 was margaret thatcher a chemist?
@@ -565,7 +561,7 @@ was margaret thatcher a chemist?
 	CANDIDATE:  thatcher 	http://dbpedia.org/property/teacher 	0.75
 	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
 	CANDIDATE:  chemist 	http://dbpedia.org/property/chest 	0.714285714286
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which german cities have more than 250000 inhabitants?
@@ -580,7 +576,7 @@ which german cities have more than 250000 inhabitants?
 	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
 	CANDIDATE:  250000 	http://dbpedia.org/property/enrollment(2008/2009) 	0.5
 	CANDIDATE:  inhabitants 	http://dbpedia.org/property/inhabitants 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 was marc chagall a jew?
@@ -596,7 +592,7 @@ how many aldi stores are there?
 	CANDIDATE:  stores 	http://dbpedia.org/property/stores 	1.0
 	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
 	CANDIDATE:  there 	http://dbpedia.org/property/three 	0.8
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 was u.s. president jackson involved in a war?
@@ -610,7 +606,7 @@ was u.s. president jackson involved in a war?
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
 	CANDIDATE:  war 	http://dbpedia.org/property/war 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the capital of canada?
@@ -622,8 +618,7 @@ what is the capital of canada?
 	CANDIDATE:  capital 	http://dbpedia.org/ontology/capital 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  canada 	http://dbpedia.org/property/canada 	1.0
-	hits  1 :
-	+  http://dbpedia.org/ontology/capital
+	+ tp:  1  precision:  0.166666666667  recall:  1.0  f1:  0.285714285714
 
 
 what is the average temperature on hawaii?
@@ -640,7 +635,7 @@ in which u.s. state is fort knox located?
 	CANDIDATE:  fort 	http://dbpedia.org/property/fort 	1.0
 	CANDIDATE:  knox 	http://dbpedia.org/property/knot 	0.75
 	CANDIDATE:  located 	http://dbpedia.org/property/located 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which museum exhibits the scream by munch?
@@ -653,8 +648,7 @@ which museum exhibits the scream by munch?
 	CANDIDATE:  scream 	http://dbpedia.org/property/stream 	0.833333333333
 	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
 	CANDIDATE:  munch 	http://dbpedia.org/property/lunch 	0.8
-	hits  1 :
-	+  http://dbpedia.org/ontology/museum
+	+ tp:  1  precision:  0.142857142857  recall:  1.0  f1:  0.25
 
 
 for which label did elvis record his first album?
@@ -672,7 +666,7 @@ for which label did elvis record his first album?
 	CANDIDATE:  his 	http://dbpedia.org/property/this 	0.75
 	CANDIDATE:  first 	http://dbpedia.org/property/first 	1.0
 	CANDIDATE:  album 	http://dbpedia.org/ontology/album 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 do prince harry and prince william have the same mother?
@@ -688,7 +682,7 @@ do prince harry and prince william have the same mother?
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  same 	http://dbpedia.org/property/same 	1.0
 	CANDIDATE:  mother 	http://dbpedia.org/ontology/mother 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which budget did the first movie of zdenek sverak have?
@@ -705,7 +699,7 @@ in which military conflicts did lawrence of arabia participate?
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  arabia 	http://dbpedia.org/property/arabic 	0.833333333333
 	CANDIDATE:  participate 	http://dbpedia.org/property/participate 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who invented the zipper?
@@ -723,7 +717,7 @@ give me the capitals of all countries in africa.
 	CANDIDATE:  countries 	http://dbpedia.org/property/countries 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  africa 	http://dbpedia.org/property/african 	0.857142857143
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which states border illinois?
@@ -733,7 +727,7 @@ which states border illinois?
 	CANDIDATE:  states 	http://dbpedia.org/property/states 	1.0
 	CANDIDATE:  border 	http://dbpedia.org/ontology/border 	1.0
 	CANDIDATE:  illinois 	http://dbpedia.org/property/fillings 	0.625
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which u.s. states are in the same time zone as utah?
@@ -751,7 +745,7 @@ which u.s. states are in the same time zone as utah?
 	CANDIDATE:  zone 	http://dbpedia.org/property/zone 	1.0
 	CANDIDATE:  as 	http://dbpedia.org/property/as 	1.0
 	CANDIDATE:  utah 	http://dbpedia.org/property/tch 	0.5
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all islands that belong to japan.
@@ -766,7 +760,7 @@ give me all islands that belong to japan.
 	CANDIDATE:  belong 	http://dbpedia.org/property/below 	0.666666666667
 	CANDIDATE:  to 	http://dbpedia.org/property/to 	1.0
 	CANDIDATE:  japan 	http://dbpedia.org/property/japan 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who designed the brooklyn bridge?
@@ -777,7 +771,7 @@ who designed the brooklyn bridge?
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  brooklyn 	http://dbpedia.org/property/brooklyn 	1.0
 	CANDIDATE:  bridge 	http://dbpedia.org/property/bridge 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who was the first president of the united states?
@@ -794,7 +788,7 @@ what is the highest mountain in australia?
 	CANDIDATE:  mountain 	http://dbpedia.org/property/mountain 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  australia 	http://dbpedia.org/property/australian 	0.9
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which airports are located in california, usa?
@@ -805,7 +799,7 @@ who developed minecraft?
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
 	CANDIDATE:  developed 	http://dbpedia.org/property/developed 	1.0
 	CANDIDATE:  minecraft 	http://dbpedia.org/property/mineral 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which chess players died in the same place they were born in?
@@ -825,7 +819,7 @@ which chess players died in the same place they were born in?
 	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
 	CANDIDATE:  born 	http://dbpedia.org/property/born 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 how many space missions have there been?
@@ -845,7 +839,7 @@ which capitals in europe were host cities of the summer olympic games?
 	CANDIDATE:  summer 	http://dbpedia.org/property/summer 	1.0
 	CANDIDATE:  olympic 	http://dbpedia.org/property/olympic 	1.0
 	CANDIDATE:  games 	http://dbpedia.org/property/games 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all cars that are produced in germany.
@@ -860,7 +854,7 @@ give me all cars that are produced in germany.
 	CANDIDATE:  produced 	http://dbpedia.org/property/produced 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  germany 	http://dbpedia.org/property/german 	0.857142857143
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who was the wife of u.s. president lincoln?
@@ -874,7 +868,7 @@ who was the wife of u.s. president lincoln?
 	CANDIDATE:  u.s. 	http://dbpedia.org/property/m.s. 	0.75
 	CANDIDATE:  president 	http://dbpedia.org/ontology/president 	1.0
 	CANDIDATE:  lincoln 	http://dbpedia.org/property/linecol 	0.714285714286
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 how many children did benjamin franklin have?
@@ -890,7 +884,7 @@ is michelle obama the wife of barack obama?
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  barack 	http://dbpedia.org/property/bTrack 	0.833333333333
 	CANDIDATE:  obama 	http://dbpedia.org/property/obama 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all actors starring in movies directed by william shatner.
@@ -908,8 +902,7 @@ give me all actors starring in movies directed by william shatner.
 	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
 	CANDIDATE:  william 	http://dbpedia.org/property/hillName 	0.625
 	CANDIDATE:  shatner 	http://dbpedia.org/property/shaper 	0.714285714286
-	hits  1 :
-	+  http://dbpedia.org/ontology/starring
+	+ tp:  1  precision:  0.0909090909091  recall:  0.5  f1:  0.153846153846
 
 
 list the children of margaret thatcher.
@@ -921,7 +914,7 @@ list the children of margaret thatcher.
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  margaret 	http://dbpedia.org/property/target 	0.625
 	CANDIDATE:  thatcher 	http://dbpedia.org/property/teacher 	0.75
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which professional surfers were born in australia?
@@ -935,7 +928,7 @@ which professional surfers were born in australia?
 	CANDIDATE:  born 	http://dbpedia.org/property/born 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  australia 	http://dbpedia.org/property/australian 	0.9
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who is the editor of forbes?
@@ -947,8 +940,7 @@ who is the editor of forbes?
 	CANDIDATE:  editor 	http://dbpedia.org/ontology/editor 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  forbes 	http://dbpedia.org/property/forbes 	1.0
-	hits  1 :
-	+  http://dbpedia.org/ontology/editor
+	+ tp:  1  precision:  0.166666666667  recall:  1.0  f1:  0.285714285714
 
 
 give me all actors starring in last action hero.
@@ -963,8 +955,7 @@ give me all actors starring in last action hero.
 	CANDIDATE:  last 	http://dbpedia.org/property/last 	1.0
 	CANDIDATE:  action 	http://dbpedia.org/property/action 	1.0
 	CANDIDATE:  hero 	http://dbpedia.org/property/hero 	1.0
-	hits  1 :
-	+  http://dbpedia.org/ontology/starring
+	+ tp:  1  precision:  0.111111111111  recall:  1.0  f1:  0.2
 
 
 in which programming language is gimp written?
@@ -977,7 +968,7 @@ in which programming language is gimp written?
 	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
 	CANDIDATE:  gimp 	http://dbpedia.org/property/imp 	0.75
 	CANDIDATE:  written 	http://dbpedia.org/property/written 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 in which country is the limerick lake?
@@ -990,8 +981,7 @@ in which country is the limerick lake?
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  limerick 	http://dbpedia.org/property/america 	0.625
 	CANDIDATE:  lake 	http://dbpedia.org/ontology/lake 	1.0
-	hits  1 :
-	+  http://dbpedia.org/ontology/country
+	+ tp:  1  precision:  0.142857142857  recall:  1.0  f1:  0.25
 
 
 who is the youngest player in the premier league?
@@ -1008,8 +998,7 @@ who is the youngest player in the premier league?
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  premier 	http://dbpedia.org/property/premier 	1.0
 	CANDIDATE:  league 	http://dbpedia.org/ontology/league 	1.0
-	hits  1 :
-	+  http://dbpedia.org/ontology/league
+	+ tp:  1  precision:  0.125  recall:  0.333333333333  f1:  0.181818181818
 
 
 give me all video games published by mean hamster software.
@@ -1026,7 +1015,7 @@ give me all video games published by mean hamster software.
 	CANDIDATE:  mean 	http://dbpedia.org/property/mean 	1.0
 	CANDIDATE:  hamster 	http://dbpedia.org/property/gmaster 	0.714285714286
 	CANDIDATE:  software 	http://dbpedia.org/property/software 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who produced films starring natalie portman?
@@ -1040,8 +1029,7 @@ who produced films starring natalie portman?
 	CANDIDATE:  starring 	http://dbpedia.org/ontology/starring 	1.0
 	CANDIDATE:  natalie 	http://dbpedia.org/property/naturalized 	0.636363636364
 	CANDIDATE:  portman 	http://dbpedia.org/property/portal 	0.714285714286
-	hits  1 :
-	+  http://dbpedia.org/ontology/starring
+	+ tp:  1  precision:  0.166666666667  recall:  0.333333333333  f1:  0.222222222222
 
 
 in which films did julia roberts as well as richard gere play?
@@ -1060,7 +1048,7 @@ in which films did julia roberts as well as richard gere play?
 	CANDIDATE:  richard 	http://dbpedia.org/property/richard 	1.0
 	CANDIDATE:  gere 	http://dbpedia.org/ontology/genre 	0.8
 	CANDIDATE:  play 	http://dbpedia.org/property/play 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 was natalie portman born in the united states?
@@ -1075,7 +1063,7 @@ was natalie portman born in the united states?
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  united 	http://dbpedia.org/property/branch/unit 	0.666666666667
 	CANDIDATE:  states 	http://dbpedia.org/property/states 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 how many films did leonardo dicaprio star in?
@@ -1092,7 +1080,7 @@ what is the second highest mountain on earth?
 	CANDIDATE:  mountain 	http://dbpedia.org/property/mountain 	1.0
 	CANDIDATE:  on 	http://dbpedia.org/property/on 	1.0
 	CANDIDATE:  earth 	http://dbpedia.org/property/charth 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all books by william goldman with more than 300 pages.
@@ -1112,7 +1100,7 @@ give me all books by william goldman with more than 300 pages.
 	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
 	CANDIDATE:  300 	http://dbpedia.org/property/100, 	0.5
 	CANDIDATE:  pages 	http://dbpedia.org/property/pages 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all danish films.
@@ -1124,7 +1112,7 @@ give me all danish films.
 	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
 	CANDIDATE:  danish 	http://dbpedia.org/property/garnish 	0.714285714286
 	CANDIDATE:  films 	http://dbpedia.org/property/films 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the largest city in australia?
@@ -1137,7 +1125,7 @@ what is the largest city in australia?
 	CANDIDATE:  city 	http://dbpedia.org/ontology/city 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  australia 	http://dbpedia.org/property/australian 	0.9
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who painted the storm on the sea of galilee?
@@ -1152,7 +1140,7 @@ who painted the storm on the sea of galilee?
 	CANDIDATE:  sea 	http://dbpedia.org/ontology/sea 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  galilee 	http://dbpedia.org/property/gaeilge 	0.714285714286
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all launch pads operated by nasa.
@@ -1167,7 +1155,7 @@ give me all launch pads operated by nasa.
 	CANDIDATE:  operated 	http://dbpedia.org/property/operated 	1.0
 	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
 	CANDIDATE:  nasa 	http://dbpedia.org/property/nama 	0.75
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who wrote the lyrics for the polish national anthem?
@@ -1183,8 +1171,7 @@ who wrote the lyrics for the polish national anthem?
 	CANDIDATE:  polish 	http://dbpedia.org/property/polish 	1.0
 	CANDIDATE:  national 	http://dbpedia.org/property/national 	1.0
 	CANDIDATE:  anthem 	http://dbpedia.org/ontology/anthem 	1.0
-	hits  1 :
-	+  http://dbpedia.org/ontology/anthem
+	+ tp:  1  precision:  0.125  recall:  0.5  f1:  0.2
 
 
 give me the birthdays of all actors of the television show charmed.
@@ -1203,7 +1190,7 @@ give me the birthdays of all actors of the television show charmed.
 	CANDIDATE:  television 	http://dbpedia.org/property/television 	1.0
 	CANDIDATE:  show 	http://dbpedia.org/ontology/show 	1.0
 	CANDIDATE:  charmed 	http://dbpedia.org/property/charged 	0.857142857143
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 in which city did john f. kennedy die?
@@ -1218,7 +1205,7 @@ in which city did john f. kennedy die?
 	CANDIDATE:  f. 	http://dbpedia.org/property/name443zx/////@. 	0.5
 	CANDIDATE:  kennedy 	http://dbpedia.org/ontology/enemy 	0.571428571429
 	CANDIDATE:  die 	http://dbpedia.org/property/born/Died 	0.75
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who produced the most films?
@@ -1232,7 +1219,7 @@ who created the comic captain america?
 	CANDIDATE:  comic 	http://dbpedia.org/ontology/comic 	1.0
 	CANDIDATE:  captain 	http://dbpedia.org/property/captain 	1.0
 	CANDIDATE:  america 	http://dbpedia.org/property/america 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who was the father of queen elizabeth ii?
@@ -1246,7 +1233,7 @@ who was the father of queen elizabeth ii?
 	CANDIDATE:  queen 	http://dbpedia.org/property/queen 	1.0
 	CANDIDATE:  elizabeth 	http://dbpedia.org/property/alphabet 	0.555555555556
 	CANDIDATE:  ii 	http://dbpedia.org/property/gii 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which u.s. state has the abbreviation mn?
@@ -1263,7 +1250,7 @@ which movies did kurosawa direct after rashomon?
 	CANDIDATE:  direct 	http://dbpedia.org/property/direct 	1.0
 	CANDIDATE:  after 	http://dbpedia.org/property/after 	1.0
 	CANDIDATE:  rashomon 	http://dbpedia.org/property/rason 	0.625
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 is there a video game called battle chess?
@@ -1290,8 +1277,7 @@ list all episodes of the first season of the hbo television series the sopranos.
 	CANDIDATE:  series 	http://dbpedia.org/ontology/series 	1.0
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  sopranos 	http://dbpedia.org/property/spans 	0.625
-	hits  1 :
-	+  http://dbpedia.org/ontology/series
+	+ tp:  1  precision:  0.0909090909091  recall:  0.5  f1:  0.153846153846
 
 
 is jens friebe a vegan?
@@ -1309,7 +1295,7 @@ give me a list of all american inventions.
 	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
 	CANDIDATE:  american 	http://dbpedia.org/property/american 	1.0
 	CANDIDATE:  inventions 	http://dbpedia.org/property/intentions 	0.9
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which films starring clint eastwood did he direct himself?
@@ -1325,8 +1311,7 @@ which films starring clint eastwood did he direct himself?
 	CANDIDATE:  he 	http://dbpedia.org/property/he 	1.0
 	CANDIDATE:  direct 	http://dbpedia.org/property/direct 	1.0
 	CANDIDATE:  himself 	http://dbpedia.org/property/hiuse 	0.571428571429
-	hits  1 :
-	+  http://dbpedia.org/ontology/starring
+	+ tp:  1  precision:  0.111111111111  recall:  0.5  f1:  0.181818181818
 
 
 is the wife of president obama called michelle?
@@ -1340,7 +1325,7 @@ what is the highest mountain?
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  highest 	http://dbpedia.org/property/highest 	1.0
 	CANDIDATE:  mountain 	http://dbpedia.org/property/mountain 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who are the parents of the wife of juan carlos i?
@@ -1358,7 +1343,7 @@ who are the parents of the wife of juan carlos i?
 	CANDIDATE:  juan 	http://dbpedia.org/property/jun 	0.75
 	CANDIDATE:  carlos 	http://dbpedia.org/property/carton 	0.666666666667
 	CANDIDATE:  i 	http://dbpedia.org/property/i 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all canadian grunge record labels.
@@ -1373,7 +1358,7 @@ give me all canadian grunge record labels.
 	CANDIDATE:  grunge 	http://dbpedia.org/ontology/lounge 	0.666666666667
 	CANDIDATE:  record 	http://dbpedia.org/property/record 	1.0
 	CANDIDATE:  labels 	http://dbpedia.org/property/labels 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the birth name of angela merkel?
@@ -1387,7 +1372,7 @@ what is the birth name of angela merkel?
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  angela 	http://dbpedia.org/property/angel 	0.833333333333
 	CANDIDATE:  merkel 	http://dbpedia.org/property/merger 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 in which uk city are the headquarters of the mi6?
@@ -1400,7 +1385,7 @@ what is the longest river?
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  longest 	http://dbpedia.org/property/youngest 	0.75
 	CANDIDATE:  river 	http://dbpedia.org/ontology/river 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 did socrates influence aristotle?
@@ -1410,7 +1395,7 @@ did socrates influence aristotle?
 	CANDIDATE:  socrates 	http://dbpedia.org/property/associates 	0.7
 	CANDIDATE:  influence 	http://dbpedia.org/property/influence 	1.0
 	CANDIDATE:  aristotle 	http://dbpedia.org/property/aliastitle 	0.7
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 in which films directed by garry marshall was julia roberts starring?
@@ -1429,8 +1414,7 @@ in which films directed by garry marshall was julia roberts starring?
 	CANDIDATE:  julia 	http://dbpedia.org/property/julMax 	0.666666666667
 	CANDIDATE:  roberts 	http://dbpedia.org/property/projects 	0.625
 	CANDIDATE:  starring 	http://dbpedia.org/ontology/starring 	1.0
-	hits  1 :
-	+  http://dbpedia.org/ontology/starring
+	+ tp:  1  precision:  0.0909090909091  recall:  0.333333333333  f1:  0.142857142857
 
 
 who was called scarface?
@@ -1440,7 +1424,7 @@ who was called scarface?
 	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
 	CANDIDATE:  called 	http://dbpedia.org/property/called 	1.0
 	CANDIDATE:  scarface 	http://dbpedia.org/property/surface 	0.75
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 is christian bale starring in velvet goldmine?
@@ -1453,8 +1437,7 @@ is christian bale starring in velvet goldmine?
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  velvet 	http://dbpedia.org/property/helmet 	0.666666666667
 	CANDIDATE:  goldmine 	http://dbpedia.org/property/holding 	0.625
-	hits  1 :
-	+  http://dbpedia.org/ontology/starring
+	+ tp:  1  precision:  0.142857142857  recall:  1.0  f1:  0.25
 
 
 who developed the video game world of warcraft?
@@ -1468,7 +1451,7 @@ who developed the video game world of warcraft?
 	CANDIDATE:  world 	http://dbpedia.org/ontology/world 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  warcraft 	http://dbpedia.org/property/aircraft 	0.75
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the time zone of salt lake city?
@@ -1483,7 +1466,7 @@ what is the time zone of salt lake city?
 	CANDIDATE:  salt 	http://dbpedia.org/property/salt 	1.0
 	CANDIDATE:  lake 	http://dbpedia.org/ontology/lake 	1.0
 	CANDIDATE:  city 	http://dbpedia.org/ontology/city 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 through which countries does the yenisei river flow?
@@ -1497,7 +1480,7 @@ through which countries does the yenisei river flow?
 	CANDIDATE:  yenisei 	http://dbpedia.org/property/genuses 	0.571428571429
 	CANDIDATE:  river 	http://dbpedia.org/ontology/river 	1.0
 	CANDIDATE:  flow 	http://dbpedia.org/property/flow 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 list all games by gmt.
@@ -1508,7 +1491,7 @@ list all games by gmt.
 	CANDIDATE:  games 	http://dbpedia.org/property/games 	1.0
 	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
 	CANDIDATE:  gmt 	http://dbpedia.org/property/mt 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which organizations were founded in 1930?
@@ -1525,7 +1508,7 @@ to which countries does the himalayan mountain system extend?
 	CANDIDATE:  mountain 	http://dbpedia.org/property/mountain 	1.0
 	CANDIDATE:  system 	http://dbpedia.org/property/system 	1.0
 	CANDIDATE:  extend 	http://dbpedia.org/property/extend 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 how many employees does ibm have?
@@ -1537,7 +1520,7 @@ how many employees does ibm have?
 	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
 	CANDIDATE:  ibm 	http://dbpedia.org/property/ibs 	0.666666666667
 	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 when was alberta admitted as province?
@@ -1549,7 +1532,7 @@ when was alberta admitted as province?
 	CANDIDATE:  admitted 	http://dbpedia.org/property/readmitted 	0.8
 	CANDIDATE:  as 	http://dbpedia.org/property/as 	1.0
 	CANDIDATE:  province 	http://dbpedia.org/ontology/province 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which countries are connected by the rhine?
@@ -1564,7 +1547,7 @@ which countries are connected by the rhine?
 	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  rhine 	http://dbpedia.org/property/rLine 	0.8
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all cosmonauts.
@@ -1574,7 +1557,7 @@ give me all cosmonauts.
 	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
 	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
 	CANDIDATE:  cosmonauts 	http://dbpedia.org/property/commonNames 	0.636363636364
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who is the mayor of tel aviv?
@@ -1587,7 +1570,7 @@ who is the mayor of tel aviv?
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  tel 	http://dbpedia.org/property/tel 	1.0
 	CANDIDATE:  aviv 	http://dbpedia.org/property/alive 	0.6
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which ships were called after benjamin franklin?
@@ -1600,7 +1583,7 @@ which ships were called after benjamin franklin?
 	CANDIDATE:  after 	http://dbpedia.org/property/after 	1.0
 	CANDIDATE:  benjamin 	http://dbpedia.org/property/beamIn 	0.75
 	CANDIDATE:  franklin 	http://dbpedia.org/property/rankin 	0.75
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who is the husband of amanda palmer?
@@ -1613,7 +1596,7 @@ who is the husband of amanda palmer?
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  amanda 	http://dbpedia.org/property/aAndE 	0.666666666667
 	CANDIDATE:  palmer 	http://dbpedia.org/property/almer 	0.833333333333
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 how many employees does google have?
@@ -1625,7 +1608,7 @@ how many employees does google have?
 	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
 	CANDIDATE:  google 	http://dbpedia.org/property/google 	1.0
 	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which mountain is the highest after the annapurna?
@@ -1640,7 +1623,7 @@ which mountain is the highest after the annapurna?
 	CANDIDATE:  after 	http://dbpedia.org/property/after 	1.0
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  annapurna 	http://dbpedia.org/property/anchura 	0.555555555556
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 does breaking bad have more episodes than game of thrones?
@@ -1656,7 +1639,7 @@ does breaking bad have more episodes than game of thrones?
 	CANDIDATE:  game 	http://dbpedia.org/property/game 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  thrones 	http://dbpedia.org/property/throne 	0.857142857143
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me a list of all bandleaders that play trumpet.
@@ -1673,7 +1656,7 @@ give me a list of all bandleaders that play trumpet.
 	CANDIDATE:  that 	http://dbpedia.org/property/hat 	0.75
 	CANDIDATE:  play 	http://dbpedia.org/property/play 	1.0
 	CANDIDATE:  trumpet 	http://dbpedia.org/ontology/trustee 	0.571428571429
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 when was the battle of gettysburg?
@@ -1685,7 +1668,7 @@ when was the battle of gettysburg?
 	CANDIDATE:  battle 	http://dbpedia.org/ontology/battle 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  gettysburg 	http://dbpedia.org/property/gattung 	0.5
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 when did michael jackson die?
@@ -1696,7 +1679,7 @@ when did michael jackson die?
 	CANDIDATE:  michael 	http://dbpedia.org/property/marchLabel 	0.6
 	CANDIDATE:  jackson 	http://dbpedia.org/property/jackn 	0.714285714286
 	CANDIDATE:  die 	http://dbpedia.org/property/born/Died 	0.75
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 how many languages are spoken in turkmenistan?
@@ -1714,7 +1697,7 @@ how many inhabitants does maribor have?
 	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
 	CANDIDATE:  maribor 	http://dbpedia.org/ontology/mayor 	0.571428571429
 	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me a list of all lakes in denmark.
@@ -1726,7 +1709,7 @@ is proinsulin a protein?
 	CANDIDATE:  proinsulin 	http://dbpedia.org/ontology/provinceLink 	0.666666666667
 	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
 	CANDIDATE:  protein 	http://dbpedia.org/property/protein 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which awards did wikileaks win?
@@ -1737,8 +1720,7 @@ which awards did wikileaks win?
 	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
 	CANDIDATE:  wikileaks 	http://dbpedia.org/property/wikiLinks 	0.777777777778
 	CANDIDATE:  win 	http://dbpedia.org/property/win 	1.0
-	hits  1 :
-	+  http://dbpedia.org/property/awards
+	+ tp:  1  precision:  0.2  recall:  1.0  f1:  0.333333333333
 
 
 which greek goddesses dwelt on mount olympus?
@@ -1752,7 +1734,7 @@ which greek goddesses dwelt on mount olympus?
 	CANDIDATE:  on 	http://dbpedia.org/property/on 	1.0
 	CANDIDATE:  mount 	http://dbpedia.org/property/mount 	1.0
 	CANDIDATE:  olympus 	http://dbpedia.org/property/olympics 	0.75
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 how high is the mount everest?
@@ -1764,7 +1746,7 @@ how high is the mount everest?
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  mount 	http://dbpedia.org/property/mount 	1.0
 	CANDIDATE:  everest 	http://dbpedia.org/property/reverend 	0.625
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which country has the most official languages?
@@ -1777,7 +1759,7 @@ give me all communist countries.
 	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
 	CANDIDATE:  communist 	http://dbpedia.org/property/commonst 	0.777777777778
 	CANDIDATE:  countries 	http://dbpedia.org/property/countries 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which instruments does cat stevens play?
@@ -1789,7 +1771,7 @@ which instruments does cat stevens play?
 	CANDIDATE:  cat 	http://dbpedia.org/property/cat 	1.0
 	CANDIDATE:  stevens 	http://dbpedia.org/property/sevens 	0.857142857143
 	CANDIDATE:  play 	http://dbpedia.org/property/play 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 sean parnell is the governor of which u.s. state?
@@ -1805,7 +1787,7 @@ sean parnell is the governor of which u.s. state?
 	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
 	CANDIDATE:  u.s. 	http://dbpedia.org/property/m.s. 	0.75
 	CANDIDATE:  state 	http://dbpedia.org/ontology/state 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all books written by danielle steel.
@@ -1820,7 +1802,7 @@ give me all books written by danielle steel.
 	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
 	CANDIDATE:  danielle 	http://dbpedia.org/property/cancelled 	0.666666666667
 	CANDIDATE:  steel 	http://dbpedia.org/property/steals 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the most beautiful painting?
@@ -1836,7 +1818,7 @@ did tesla win a nobel prize in physics?
 	CANDIDATE:  prize 	http://dbpedia.org/property/prizes 	0.833333333333
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  physics 	http://dbpedia.org/property/physios 	0.857142857143
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who is the owner of universal studios?
@@ -1849,8 +1831,7 @@ who is the owner of universal studios?
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  universal 	http://dbpedia.org/property/universe 	0.777777777778
 	CANDIDATE:  studios 	http://dbpedia.org/property/studios 	1.0
-	hits  1 :
-	+  http://dbpedia.org/ontology/owner
+	+ tp:  1  precision:  0.142857142857  recall:  1.0  f1:  0.25
 
 
 who is the governor of wyoming?
@@ -1862,7 +1843,7 @@ who is the governor of wyoming?
 	CANDIDATE:  governor 	http://dbpedia.org/ontology/governor 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  wyoming 	http://dbpedia.org/property/woking 	0.714285714286
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 when were the hells angels founded?
@@ -1874,8 +1855,7 @@ when were the hells angels founded?
 	CANDIDATE:  hells 	http://dbpedia.org/property/hills 	0.8
 	CANDIDATE:  angels 	http://dbpedia.org/property/angel 	0.833333333333
 	CANDIDATE:  founded 	http://dbpedia.org/property/founded 	1.0
-	hits  1 :
-	+  http://dbpedia.org/property/founded
+	+ tp:  1  precision:  0.166666666667  recall:  1.0  f1:  0.285714285714
 
 
 who is the daughter of ingrid bergman married to?
@@ -1891,7 +1871,7 @@ who is the daughter of ingrid bergman married to?
 	CANDIDATE:  bergman 	http://dbpedia.org/property/german 	0.714285714286
 	CANDIDATE:  married 	http://dbpedia.org/property/married 	1.0
 	CANDIDATE:  to 	http://dbpedia.org/property/to 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all libraries established earlier than 1400.
@@ -1906,8 +1886,7 @@ give me all libraries established earlier than 1400.
 	CANDIDATE:  earlier 	http://dbpedia.org/property/earliest 	0.75
 	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
 	CANDIDATE:  1400 	http://dbpedia.org/property/10v 	0.5
-	hits  1 :
-	+  http://dbpedia.org/property/established
+	+ tp:  1  precision:  0.125  recall:  0.5  f1:  0.2
 
 
 is egypts largest city also its capital?
@@ -1921,8 +1900,7 @@ is egypts largest city also its capital?
 	CANDIDATE:  also 	http://dbpedia.org/property/also 	1.0
 	CANDIDATE:  its 	http://dbpedia.org/property/itis 	0.75
 	CANDIDATE:  capital 	http://dbpedia.org/ontology/capital 	1.0
-	hits  1 :
-	+  http://dbpedia.org/ontology/capital
+	+ tp:  1  precision:  0.142857142857  recall:  0.5  f1:  0.222222222222
 
 
 how many countries are there in europe?
@@ -1936,7 +1914,7 @@ who is the mayor of berlin?
 	CANDIDATE:  mayor 	http://dbpedia.org/ontology/mayor 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  berlin 	http://dbpedia.org/property/verein 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 how many people live in the capital of australia?
@@ -1952,8 +1930,7 @@ how many people live in the capital of australia?
 	CANDIDATE:  capital 	http://dbpedia.org/ontology/capital 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  australia 	http://dbpedia.org/property/australian 	0.9
-	hits  1 :
-	+  http://dbpedia.org/ontology/capital
+	+ tp:  1  precision:  0.111111111111  recall:  0.5  f1:  0.181818181818
 
 
 who founded intel?
@@ -1962,7 +1939,7 @@ who founded intel?
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
 	CANDIDATE:  founded 	http://dbpedia.org/property/founded 	1.0
 	CANDIDATE:  intel 	http://dbpedia.org/property/intel 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all b-sides of the ramones.
@@ -1976,7 +1953,7 @@ give me all b-sides of the ramones.
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  ramones 	http://dbpedia.org/property/raions 	0.714285714286
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all films produced by hal roach.
@@ -1991,7 +1968,7 @@ give me all films produced by hal roach.
 	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
 	CANDIDATE:  hal 	http://dbpedia.org/property/hail 	0.75
 	CANDIDATE:  roach 	http://dbpedia.org/ontology/coach 	0.8
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which bridges are of the same type as the manhattan bridge?
@@ -2005,7 +1982,7 @@ give me all apollo 14 astronauts.
 	CANDIDATE:  apollo 	http://dbpedia.org/property/poll# 	0.666666666667
 	CANDIDATE:  14 	http://dbpedia.org/property/1u 	0.5
 	CANDIDATE:  astronauts 	http://dbpedia.org/property/stauts 	0.6
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the area code of berlin?
@@ -2018,7 +1995,7 @@ what is the area code of berlin?
 	CANDIDATE:  code 	http://dbpedia.org/property/code 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  berlin 	http://dbpedia.org/property/verein 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which software has been developed by organizations founded in california?
@@ -2035,7 +2012,7 @@ which software has been developed by organizations founded in california?
 	CANDIDATE:  founded 	http://dbpedia.org/property/founded 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  california 	http://dbpedia.org/property/calorie 	0.6
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the currency of the czech republic?
@@ -2049,8 +2026,7 @@ what is the currency of the czech republic?
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  czech 	http://dbpedia.org/ontology/coach 	0.6
 	CANDIDATE:  republic 	http://dbpedia.org/property/republic 	1.0
-	hits  1 :
-	+  http://dbpedia.org/ontology/currency
+	+ tp:  1  precision:  0.142857142857  recall:  1.0  f1:  0.25
 
 
 which music albums contain the song last christmas?
@@ -2067,7 +2043,7 @@ which cities does the weser flow through?
 	CANDIDATE:  weser 	http://dbpedia.org/property/western 	0.714285714286
 	CANDIDATE:  flow 	http://dbpedia.org/property/flow 	1.0
 	CANDIDATE:  through 	http://dbpedia.org/property/through 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all companies in the advertising industry.
@@ -2087,7 +2063,7 @@ give me all movies directed by francis ford coppola.
 	CANDIDATE:  francis 	http://dbpedia.org/property/franchise 	0.777777777778
 	CANDIDATE:  ford 	http://dbpedia.org/property/ord 	0.75
 	CANDIDATE:  coppola 	http://dbpedia.org/property/cupPoles 	0.625
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the ruling party in lisbon?
@@ -2100,7 +2076,7 @@ what is the ruling party in lisbon?
 	CANDIDATE:  party 	http://dbpedia.org/ontology/party 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  lisbon 	http://dbpedia.org/property/eisbn 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who produces orangina?
@@ -2109,7 +2085,7 @@ who produces orangina?
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
 	CANDIDATE:  produces 	http://dbpedia.org/ontology/produces 	1.0
 	CANDIDATE:  orangina 	http://dbpedia.org/ontology/origin 	0.625
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all companies in munich.
@@ -2121,7 +2097,7 @@ give me all companies in munich.
 	CANDIDATE:  companies 	http://dbpedia.org/property/companies 	1.0
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  munich 	http://dbpedia.org/property/munic 	0.833333333333
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the melting point of copper?
@@ -2141,7 +2117,7 @@ was the cuban missile crisis earlier than the bay of pigs invasion?
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  pigs 	http://dbpedia.org/property/pags 	0.75
 	CANDIDATE:  invasion 	http://dbpedia.org/property/inversions 	0.7
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who was john f. kennedy's vice president?
@@ -2155,7 +2131,7 @@ who was john f. kennedy's vice president?
 	CANDIDATE:  's 	http://dbpedia.org/property/7's 	0.666666666667
 	CANDIDATE:  vice 	http://dbpedia.org/property/chairman/vice 	1.0
 	CANDIDATE:  president 	http://dbpedia.org/ontology/president 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 when was capcom founded?
@@ -2165,7 +2141,7 @@ when was capcom founded?
 	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
 	CANDIDATE:  capcom 	http://dbpedia.org/property/capion 	0.666666666667
 	CANDIDATE:  founded 	http://dbpedia.org/property/founded 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 who is the formula 1 race driver with the most races?
@@ -2183,7 +2159,7 @@ who is the formula 1 race driver with the most races?
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  most 	http://dbpedia.org/property/most 	1.0
 	CANDIDATE:  races 	http://dbpedia.org/property/races 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 which u.s. state has been admitted latest?
@@ -2197,7 +2173,7 @@ which u.s. state has been admitted latest?
 	CANDIDATE:  been 	http://dbpedia.org/property/betn 	0.75
 	CANDIDATE:  admitted 	http://dbpedia.org/property/readmitted 	0.8
 	CANDIDATE:  latest 	http://dbpedia.org/property/latest 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all methodist politicians.
@@ -2209,7 +2185,7 @@ give me all methodist politicians.
 	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
 	CANDIDATE:  methodist 	http://dbpedia.org/property/methods 	0.777777777778
 	CANDIDATE:  politicians 	http://dbpedia.org/property/politician 	0.909090909091
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what is the highest place of the urals?
@@ -2223,7 +2199,7 @@ what is the highest place of the urals?
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  urals 	http://dbpedia.org/property/burials 	0.714285714286
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all soccer clubs in the premier league.
@@ -2239,8 +2215,7 @@ give me all soccer clubs in the premier league.
 	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
 	CANDIDATE:  premier 	http://dbpedia.org/property/premier 	1.0
 	CANDIDATE:  league 	http://dbpedia.org/ontology/league 	1.0
-	hits  1 :
-	+  http://dbpedia.org/ontology/league
+	+ tp:  1  precision:  0.111111111111  recall:  0.5  f1:  0.181818181818
 
 
 which monarchs were married to a german?
@@ -2254,7 +2229,7 @@ which monarchs were married to a german?
 	CANDIDATE:  to 	http://dbpedia.org/property/to 	1.0
 	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
 	CANDIDATE:  german 	http://dbpedia.org/property/german 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 show me all songs from bruce springsteen released between 1980 and 1990.
@@ -2269,7 +2244,7 @@ give me all professional skateboarders from sweden.
 	CANDIDATE:  skateboarders 	http://dbpedia.org/property/landborders 	0.615384615385
 	CANDIDATE:  from 	http://dbpedia.org/property/from 	1.0
 	CANDIDATE:  sweden 	http://dbpedia.org/property/seeded 	0.666666666667
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all members of prodigy.
@@ -2281,7 +2256,7 @@ give me all members of prodigy.
 	CANDIDATE:  members 	http://dbpedia.org/property/Members 	1.0
 	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
 	CANDIDATE:  prodigy 	http://dbpedia.org/property/prodMgr 	0.714285714286
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 how many students does the free university in amsterdam have?
@@ -2297,7 +2272,7 @@ how many students does the free university in amsterdam have?
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
 	CANDIDATE:  amsterdam 	http://dbpedia.org/property/masteredAt 	0.7
 	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 give me all australian nonprofit organizations.
@@ -2309,7 +2284,7 @@ give me all australian nonprofit organizations.
 	CANDIDATE:  australian 	http://dbpedia.org/property/australian 	1.0
 	CANDIDATE:  nonprofit 	http://dbpedia.org/property/nonprofit 	1.0
 	CANDIDATE:  organizations 	http://dbpedia.org/property/organizations 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
 what did bruce carver die from?
@@ -2321,7 +2296,12 @@ what did bruce carver die from?
 	CANDIDATE:  carver 	http://dbpedia.org/property/career 	0.833333333333
 	CANDIDATE:  die 	http://dbpedia.org/property/born/Died 	0.75
 	CANDIDATE:  from 	http://dbpedia.org/property/from 	1.0
-	hits  0 :
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-TOTAL HITS:  25
+total TP 	  25
+total FP: 	  1137
+total FN: 	  209
+total PRECISION 	  0.0215146299484
+total RECALL 	  0.106837606838
+total F1 	  0.0358166189112

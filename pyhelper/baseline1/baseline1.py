@@ -6,12 +6,18 @@ Created on Dec 5, 2014
 
 
 
+
+import fyzz                         # SPARQL query parser
+import sys
+import codecs
+import nltk                         # natural language toolkit
+import xml.etree.ElementTree as ET
+from progress.bar import Bar
 from collections import Counter
+from pyxdameraulevenshtein import normalized_damerau_levenshtein_distance as normalized_string_similarity # alternative: damerau_levenshtein_distance
 
 
 def get_props(sparqlQuery):
-    import fyzz                         # SPARQL query parser
-
     """
     Input: SPARQL query String.
     Output: list of used properties in the WHERE clause or empty list if none found
@@ -31,6 +37,7 @@ def get_props(sparqlQuery):
             resultProps.append(propURI)        
         
     except:
+        sys.stderr.write(sparqlQuery + "\n")
         pass 
         #print("get_props() threw Exception")
     return resultProps
@@ -38,9 +45,6 @@ def get_props(sparqlQuery):
 
 
 def print_all_qald_props(qaldTrainXMLPpath="/home/pilatus/Dropbox/AIFB/09_Predicate_Clustering/QALD_challenge/qald-4-data/qald-4_multilingual_train_withanswers.xml"):
-    import xml.etree.ElementTree as ET
-    import codecs
-    import fyzz
     """
     Prints out all property URIs from the QALD-4 training set. 
     Call in bash: print_all_props > all-qald-props.txt
@@ -82,16 +86,50 @@ def print_all_qald_props(qaldTrainXMLPpath="/home/pilatus/Dropbox/AIFB/09_Predic
     #  
     # print namespaceSet
     #===========================================================================
-  
-  
 
+#===========================================================================
+
+#===========================================================================  
+# classification measures declaration
+__TP = 0        # number of hits
+#__TN = 0       # not important
+__FP = 0        # num of candidate props - num of hits
+__FN = 0        # num of gold-standard props - num of hits 
+__PRECISION = 0 # TP / (TP + FP)
+__RECALL = 0    # TP / (TP + FN)
+__F1 = 0        # 2*P*R/(P+R)
+#===========================================================================
+#===========================================================================
+
+
+def update_scores(numHits, numGoldStandard, numCandidates):
+    """
+    Update the classification measures after each question.
+    numHits = number of hits
+    numGoldStandard = num of gold-standard props
+    numCandidates = num of candidate props  
+    return: [precision, recall, f1] for each call
+    """
+    global __TP       
+    global __FP    
+    global __FN        
+
+    __TP += numHits
+    __FP += (numCandidates - numHits)
+    __FN += (numGoldStandard - numHits)
+    
+    # return per-question scores
+    p = 1.0 * numHits / numCandidates
+    r = 1.0 * numHits / numGoldStandard
+    if (p+r) > 0.0 :
+        f1 = 2.0 * p *r / (p + r)
+    else:
+        f1 = 0.0
+    return [p, r, f1]
+    
+    
+    
 def baseline1():  
-    import nltk                         # natural language toolkit
-    from pyxdameraulevenshtein import normalized_damerau_levenshtein_distance as normalized_string_similarity # alternative: damerau_levenshtein_distance
-    import xml.etree.ElementTree as ET
-    from progress.bar import Bar
-
-
     """
     For each token in English QALD questiion: 
         -extract properties from the target SPARQL query
@@ -111,9 +149,8 @@ def baseline1():
     # read qald questions from xml file
     questionItems = ET.parse(open(qaldTrainingXML, "r")).getroot().findall(".//question")
     
-    totalHits = 0
     progressbar = Bar('Processing', max=len(questionItems))
-    
+
     for question in questionItems:
         candidatePropsSet = set()
         questionString = question.find('string[@lang="en"]').text.lower()
@@ -152,17 +189,29 @@ def baseline1():
         #___[iterate over all tokens in the question]
         
         hits = targetPropsSet.intersection(candidatePropsSet)   # for each question
-        print "\t", "hits ", str(len(hits)), ":"
-        for hit in hits:
-            totalHits += 1
-            print "\t", "+ ", hit
+       
+        #====================== update scores
+        p, r, f1 = update_scores(len(hits), len(targetPropsSet), len(candidatePropsSet))
+        if(len(hits)>0):
+            print "\t", "+ tp: ", str(len(hits)), " precision: ", str(p), " recall: ", str(r), " f1: ", f1
+        else:
+            print "\t", "tp: ", str(len(hits)), " precision: ", str(p), " recall: ", str(r), " f1: ", f1
+        #======================
         
         progressbar.next()
         print "\n"
     #___[iterate over all questions]
     
     progressbar.finish()
-    print "TOTAL HITS: ", str(totalHits)
+    
+    print "total TP \t ", str(__TP)
+    print "total FP: \t ", str(__FP)
+    print "total FN: \t ", str(__FN)
+    PRECISIONglobal = 1.0 * __TP/(__TP + __FP)
+    RECALLglobal = 1.0 * __TP/(__TP + __FN)
+    print "total PRECISION \t ", str(PRECISIONglobal)
+    print "total RECALL \t ", str(RECALLglobal)
+    print "total F1 \t ", str( 2.0 * PRECISIONglobal * RECALLglobal / ( PRECISIONglobal + RECALLglobal) )
 #___[def baseline1()]               
 
     
@@ -182,9 +231,6 @@ def baseline1():
 
 
 if __name__ == '__main__':
-    import sys
-    
-
 
     functionName = sys.argv[1]
      
