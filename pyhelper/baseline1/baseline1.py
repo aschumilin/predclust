@@ -16,6 +16,34 @@ from progress.bar import Bar
 from collections import Counter
 from pyxdameraulevenshtein import normalized_damerau_levenshtein_distance as normalized_string_similarity # alternative: damerau_levenshtein_distance
 
+def get_props_workaround(sparqQueryString):
+    """
+    workaround for queries where fyzz fails
+    """
+    lines = [line.strip() for line in sparqQueryString.split("\n")]
+    resultProps = []
+    prefixes = {}
+    # 1. identify triples by the dot at the end
+    # 2. split by blank, take the middle part
+    
+    for line in lines:
+        if "PREFIX" in line:
+            # extract and save prefix
+            parts = line.split(" ")
+            pref = parts[1][0:-1]   # remove the ":" from "dbo:"
+            uri = parts[2][1:-1]    # remove <> from <http://...>
+            prefixes.update({pref:uri})
+        elif len(line) > 0 and ("." in line):       # dot at end of line means triple
+            try:
+                propparts = line.split(".")[0][1:-1].strip().split(" ")[1].split(":")    # "dbo:producer"
+                pref = prefixes.get(propparts[0])
+                resultProps.append(pref + propparts[1])
+            except:
+                pass
+    if len(resultProps) is 0:
+        raise Exception
+    else:       
+        return resultProps
 
 def get_props(sparqlQuery):
     """
@@ -25,22 +53,21 @@ def get_props(sparqlQuery):
     
     resultProps = []
     
-    try:
-        # WHERE clause consists of triples
-        whereStatement = fyzz.parse(sparqlQuery).where
-        
-        # property is the second item in the tuple
-        # it consists of a namespace prefix and the actual property
-        
-        for trip in whereStatement:
-            propURI = trip[1][0] + trip[1][1]
-            resultProps.append(propURI)        
-        
-    except:
-        sys.stderr.write(sparqlQuery + "\n")
-        pass 
-        #print("get_props() threw Exception")
-    return resultProps
+    
+    # WHERE clause consists of triples
+    whereStatement = fyzz.parse(sparqlQuery).where
+    
+    # property is the second item in the tuple
+    # it consists of a namespace prefix and the actual property
+    
+    for trip in whereStatement:
+        propURI = trip[1][0] + trip[1][1]
+        resultProps.append(propURI)        
+    
+    if len(resultProps) is 0:
+        raise Exception
+    else:    
+        return resultProps
     
 
 
@@ -154,15 +181,30 @@ def baseline1():
     for question in questionItems:
         candidatePropsSet = set()
         questionString = question.find('string[@lang="en"]').text.lower()
-        print questionString
+        
         
         # get and print the target properties
         targetQueryString = question.find("query").text
-        targetPropsSet = set(get_props(targetQueryString))
-        if len(targetPropsSet) == 0:
-            print "\t", "exception: failed to parse target query "#, targetQueryString
-            progressbar.next()
-            continue
+        
+        
+        try:
+            targetPropsSet = set(get_props(targetQueryString))
+            
+            # in case the fyzz sparql parser fails:
+        except:         
+            
+            try:
+                targetPropsSet = set(get_props_workaround(targetQueryString))
+                
+            except:
+                # this should be "out-of-scope"
+                sys.stderr.write(targetQueryString + "\n")
+                progressbar.next()
+                continue
+
+    
+        
+        print "Q: ", questionString
         print "\t", "gold-standard properties: "
         for targetPropURI in targetPropsSet: print "\t", ">", "\t", targetPropURI
         
@@ -232,6 +274,10 @@ def baseline1():
 
 if __name__ == '__main__':
 
+    """
+    prints the result to console. pipe the output to file !!!
+    """
+    
     functionName = sys.argv[1]
      
     if functionName     == "print-all":

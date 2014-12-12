@@ -7,37 +7,40 @@ import boto.ec2
 import boto
 import boto.ec2.blockdevicemapping
 
-for id in range(1,20):
+for id in range(1):
     #conn = boto.connect_ec2(profile_name="plankton")
     
     
     
-    con = boto.ec2.connect_to_region(region_name="eu-west-1", profile_name="kozjol")
-    #con = boto.connect_ec2(profile_name="kozjol")
-    
-    
-    workerID = str(id)
-    #################
-    # aws spot request config
-    #################
-    preis = "0.086"
-    amiID = "ami-f40bbc83" # predclust-11
-    instanceType = "m3.2xlarge" 
-    regionName = "eu-west-1a"
-    secGroupName = "launch-wizard-5"
-    # block device map to include SSD instance store
-    blockDevMap = boto.ec2.blockdevicemapping.BlockDeviceMapping()
-    block_dev_type = boto.ec2.blockdevicemapping.BlockDeviceType()
-    block_dev_type.ephemeral_name='ephemeral0'
-    blockDevMap['/dev/sdb'] = block_dev_type
-    # 2. SSD for big m3.2xlarge instance:
-   # block_dev_type2 = boto.ec2.blockdevicemapping.BlockDeviceType()
-   # block_dev_type2.ephemeral_name = 'ephemeral1'
-   # blockDevMap['/dev/sdc'] = block_dev_type2
+   #============================================================================
+   #  con = boto.ec2.connect_to_region(region_name="eu-west-1", profile_name="kozjol")
+   #  #con = boto.connect_ec2(profile_name="kozjol")
+   #  
+   #  
+   # workerID = str(id)
+   #  #################
+   #  # aws spot request config
+   #  #################
+   #  preis = "0.086"
+   #  amiID = "ami-f40bbc83" # predclust-11
+   #  instanceType = "m3.2xlarge" 
+   #  regionName = "eu-west-1a"
+   #  secGroupName = "launch-wizard-5"
+   #  # block device map to include SSD instance store
+   #  blockDevMap = boto.ec2.blockdevicemapping.BlockDeviceMapping()
+   #  block_dev_type = boto.ec2.blockdevicemapping.BlockDeviceType()
+   #  block_dev_type.ephemeral_name='ephemeral0'
+   #  blockDevMap['/dev/sdb'] = block_dev_type
+   #  # 2. SSD for big m3.2xlarge instance:
+   # # block_dev_type2 = boto.ec2.blockdevicemapping.BlockDeviceType()
+   # # block_dev_type2.ephemeral_name = 'ephemeral1'
+   # # blockDevMap['/dev/sdc'] = block_dev_type2
+   #============================================================================
         
     #################
     # worker directories config
     #################
+    workerID = str(id)
     baseDir = "/home/pilatus/ssd/"
     dataDir = baseDir + workerID + "/"
     resultDir = baseDir + workerID + "-result/"
@@ -125,9 +128,9 @@ tar -zcf ' + workerID + '-result.tar.gz ' + resultDirName +'\n\
 python upload.py >> up.log\n\
 touch FINISHED \n'
     
-    #print u_d
+    print u_d
     #conn.run_instances( image_id = amiID, user_data = u_d, instance_type = instanceType)
-    con.request_spot_instances(price=preis, count=1, user_data=u_d, instance_type=instanceType, image_id=amiID, block_device_map = blockDevMap, availability_zone_group=regionName, security_groups=[secGroupName])
+    #con.request_spot_instances(price=preis, count=1, user_data=u_d, instance_type=instanceType, image_id=amiID, block_device_map = blockDevMap, availability_zone_group=regionName, security_groups=[secGroupName])
 
 """
 java  \

@@ -1,12 +1,12 @@
 """
 Compute statistics given a csv-file of clustering labels + predicate details.
 """
+from boto.redshift.exceptions import ClusterAlreadyExists
 '''
 Created on Dec 8, 2014
 
 @author: Artem
 '''
-from itertools import groupby
 
 def graphsPerCluster(clusterIDsList):
     """
@@ -14,9 +14,15 @@ def graphsPerCluster(clusterIDsList):
     Input: simple raw list of clusterIDs
     Return: a List of tuples [ ( cluster_i , #graphs_in_i ) , (...)]
     """
-        
-    return [(clusteriD, clusterIDsList.count(clusteriD)) for clusteriD,_ in groupby(clusterIDsList)]
+    from collections import Counter
 
+    graphsCounter = Counter()
+    
+    for clusterID in clusterIDsList:
+        graphsCounter[clusterID] += 1
+    
+    return graphsCounter.items()
+    
 
     
 
@@ -28,7 +34,7 @@ def processLines(linesOfFileList):
     Return each column as a list.
     """
     separator = ","
-    graphIDs, clusterIDs, predIDs, mentions = []
+    graphIDs, clusterIDs, predIDs, mentions = [],[],[],[]
     
     for line in linesOfFileList:
         parts = line.split(separator)
@@ -51,19 +57,49 @@ def isSpanishGraph(graphID):
     
 def spanishPerCluster(clusterIDsList, graphIDsList, clustersAndTotalCounts=None):
     """
-    calculate the language mixture in each cluster
+    calculate the spanish percentage in each cluster
     input: clustersAndTotalCounts = list of tuples [(clusterID, count), ()]
     return list of tuples [(clusterID, %ES in cluster), ()]
     """
+    from collections import Counter
+    
     if clustersAndTotalCounts is None:
         clustersAndTotalCounts = graphsPerCluster(clusterIDsList)
-    else:
-        for i in range(len(clusterIDsList)):
-            
-            if isSpanishGraph(clusterIDsList[i]):
-                esPerClusterCounter[clustreIDsList[i]] += 1
-                
-                 
+    
+    esPerClusterCounter = Counter()
+    
+    # iterate over all graphs IDs and count the spanish graphs in each cluster
+    for i in range(len(clusterIDsList)):
+        esPerClusterCounter[clusterIDsList[i]] += 0 # init zero value in case this cluster has 0 ES graphs
+        
+        if isSpanishGraph(graphIDsList[i]):
+            esPerClusterCounter[clusterIDsList[i]] += 1
+    #___ done counting
+    
+    # compose return data structure
+    returnListOfTuples = []
+    for tuple in clustersAndTotalCounts:
+        esPercentage = 100.0 * esPerClusterCounter.get(tuple[0]) / tuple[1]
+        returnListOfTuples.append( (tuple[0], esPercentage ) )     
+    #___ done writing list of result tuples  
+    return returnListOfTuples    
+   
+def saveHistogram(dataRow, numBins, xlab, ylab, title, filename): 
+    import matplotlib.pyplot
+    
+    
+    n, bins, patches = matplotlib.pyplot.hist(dataRow, numBins, normed=0, facecolor='blue')#, alpha=0.5)
+
+    matplotlib.pyplot.xlabel(xlab)
+    matplotlib.pyplot.ylabel(ylab)
+    matplotlib.pyplot.title(title)
+    
+    # Tweak spacing to prevent clipping of ylabel
+    #plt.subplots_adjust(left=0.15)
+    matplotlib.pyplot.savefig(filename, bbox_inches='tight')
+    # clear current figure !!!
+    matplotlib.pyplot.clf()
+    
     
 def listToCSV(targetFilePath, matrix, headerString):
     """
@@ -85,40 +121,28 @@ if __name__ == '__main__':
         labels = codecs.open(labelsFile, "r").readlines()
     except:
         print "ERROR in cluster-stats.main: bad argument. Exiting..."
-        return
+        exit
     
     
     graphIDs, clusterIDs, predIDs, mentions = processLines(labels)
     
     #  count graphs per cluster
     clustersAndCounts = graphsPerCluster(clusterIDs)
+    print "cluster counts ", len(clustersAndCounts)
     listToCSV(labelsFile + ".counts", clustersAndCounts, "cluster_ID,graphs_count")
+    
     
     # count en-es mixture in each cluster
     clustersAndEsPercents = spanishPerCluster(clusterIDs, graphIDs) 
-    listToCSV(labelsFile + ".esPercent", clustersAndEsPercents, "cluster_ID,%_spanish_predicates")
+    print "percentages ", len(clustersAndEsPercents)
+    listToCSV(labelsFile + ".es-percent", clustersAndEsPercents, "cluster_ID,%_spanish_predicates")
     
     # plot histograms
-    
-    
-    
-    
-        
-"""
-import numpy as np
-import matplotlib.mlab as mlab
-import matplotlib.pyplot as plt
+    plotTitle = labelsFile.split("/")[-1].split(".")[0]
+    saveHistogram([tuple[1] for tuple in clustersAndCounts], 100, "# graphs in cluster", "# of clusters", plotTitle, labelsFile+".graphs-per-cluster.png")
 
-n, bins, patches = plt.hist(x, num_bins, normed=1, facecolor='green', alpha=0.5)
-# add a 'best fit' line
-y = mlab.normpdf(bins, mu, sigma)
-plt.plot(bins, y, 'r--')
-plt.xlabel('Smarts')
-plt.ylabel('Probability')
-plt.title(r'Histogram of IQ: $\mu=100$, $\sigma=15$')
-
-# Tweak spacing to prevent clipping of ylabel
-plt.subplots_adjust(left=0.15)
-plt.show()
-"""   
     
+    saveHistogram([tuple[1] for tuple in clustersAndEsPercents], 100, "% of spanish graphs in cluster", "# of clusters", plotTitle, labelsFile+".es-percent.png")
+    
+    
+

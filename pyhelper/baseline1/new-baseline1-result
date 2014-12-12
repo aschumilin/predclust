@@ -1,6 +1,16 @@
-how often did jane fonda marry?
-	exception: failed to parse target query 
-which books by kerouac were published by viking press?
+Q:  how often did jane fonda marry?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/spouse
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  often 	http://dbpedia.org/property/ofsted 	0.666666666667
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  jane 	http://dbpedia.org/property/hane 	0.75
+	CANDIDATE:  fonda 	http://dbpedia.org/property/fondo 	0.8
+	CANDIDATE:  marry 	http://dbpedia.org/property/warCry 	0.666666666667
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  which books by kerouac were published by viking press?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/publisher
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -17,7 +27,7 @@ which books by kerouac were published by viking press?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the official website of tom cruise?
+Q:  what is the official website of tom cruise?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/website
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -31,7 +41,7 @@ what is the official website of tom cruise?
 	+ tp:  1  precision:  0.125  recall:  1.0  f1:  0.222222222222
 
 
-which u.s. state has the highest population density?
+Q:  which u.s. state has the highest population density?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/densityrank
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -46,7 +56,7 @@ which u.s. state has the highest population density?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who created wikipedia?
+Q:  who created wikipedia?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/author
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -55,7 +65,7 @@ who created wikipedia?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the founding year of the brewery that produces pilsner urquell?
+Q:  what is the founding year of the brewery that produces pilsner urquell?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/foundation
 	> 	http://dbpedia.org/property/brewery
@@ -74,9 +84,20 @@ what is the founding year of the brewery that produces pilsner urquell?
 	+ tp:  1  precision:  0.0909090909091  recall:  0.5  f1:  0.153846153846
 
 
-how many films did hal roach produce?
-	exception: failed to parse target query 
-in which country does the nile start?
+Q:  how many films did hal roach produce?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/producer
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  many 	http://dbpedia.org/property/many 	1.0
+	CANDIDATE:  films 	http://dbpedia.org/property/films 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  hal 	http://dbpedia.org/property/hail 	0.75
+	CANDIDATE:  roach 	http://dbpedia.org/ontology/coach 	0.8
+	CANDIDATE:  produce 	http://dbpedia.org/property/produce 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  in which country does the nile start?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/sourceCountry
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
@@ -89,7 +110,7 @@ in which country does the nile start?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all federal chancellors of germany.
+Q:  give me all federal chancellors of germany.
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/office
 	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
@@ -102,9 +123,26 @@ give me all federal chancellors of germany.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which states of germany are governed by the social democratic party?
-	exception: failed to parse target query 
-which river does the brooklyn bridge cross?
+Q:  which states of germany are governed by the social democratic party?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/leaderParty
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/property/rulingParty
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  states 	http://dbpedia.org/property/states 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  germany 	http://dbpedia.org/property/german 	0.857142857143
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  governed 	http://dbpedia.org/ontology/governor 	0.75
+	CANDIDATE:  by 	http://dbpedia.org/property/bY 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  social 	http://dbpedia.org/property/social 	1.0
+	CANDIDATE:  democratic 	http://dbpedia.org/property/democratic 	1.0
+	CANDIDATE:  party 	http://dbpedia.org/ontology/party 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  which river does the brooklyn bridge cross?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/crosses
 	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
@@ -117,7 +155,7 @@ which river does the brooklyn bridge cross?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-how tall is claudia schiffer?
+Q:  how tall is claudia schiffer?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/height
 	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
@@ -128,7 +166,7 @@ how tall is claudia schiffer?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which television shows were created by walt disney?
+Q:  which television shows were created by walt disney?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/creator
@@ -143,7 +181,7 @@ which television shows were created by walt disney?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me the websites of companies with more than 500000 employees.
+Q:  give me the websites of companies with more than 500000 employees.
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/property/homepage
@@ -161,7 +199,7 @@ give me the websites of companies with more than 500000 employees.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all cities in new jersey with more than 100000 inhabitants.
+Q:  give me all cities in new jersey with more than 100000 inhabitants.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/isPartOf
 	> 	http://dbpedia.org/ontology/populationTotal
@@ -181,7 +219,7 @@ give me all cities in new jersey with more than 100000 inhabitants.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which actors were born in germany?
+Q:  which actors were born in germany?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
@@ -193,7 +231,7 @@ which actors were born in germany?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which countries have more than two official languages?
+Q:  which countries have more than two official languages?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/officialLanguage
@@ -208,7 +246,7 @@ which countries have more than two official languages?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-in which u.s. state is mount mckinley located?
+Q:  in which u.s. state is mount mckinley located?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/locatedInArea
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -223,7 +261,7 @@ in which u.s. state is mount mckinley located?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-when was the statue of liberty built?
+Q:  when was the statue of liberty built?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/beginningDate
 	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
@@ -236,7 +274,7 @@ when was the statue of liberty built?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all people that were born in vienna and died in berlin.
+Q:  give me all people that were born in vienna and died in berlin.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/birthPlace
 	> 	http://dbpedia.org/ontology/deathPlace
@@ -256,7 +294,7 @@ give me all people that were born in vienna and died in berlin.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all movies with tom cruise.
+Q:  give me all movies with tom cruise.
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/starring
@@ -270,7 +308,7 @@ give me all movies with tom cruise.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-how tall is michael jordan?
+Q:  how tall is michael jordan?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/height
 	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
@@ -281,7 +319,7 @@ how tall is michael jordan?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the total amount of men and women serving in the fdny?
+Q:  what is the total amount of men and women serving in the fdny?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/strength
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -300,7 +338,7 @@ what is the total amount of men and women serving in the fdny?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all breeds of the german shepherd dog.
+Q:  give me all breeds of the german shepherd dog.
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/breed
 	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
@@ -315,9 +353,7 @@ give me all breeds of the german shepherd dog.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-how often was michael jordan divorced?
-	exception: failed to parse target query 
-what is the official language of suriname?
+Q:  what is the official language of suriname?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/officialLanguage
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -330,7 +366,7 @@ what is the official language of suriname?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who composed the music for harold and maude?
+Q:  who composed the music for harold and maude?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/musicComposer
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -344,7 +380,7 @@ who composed the music for harold and maude?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-in which city was the former dutch queen juliana buried?
+Q:  in which city was the former dutch queen juliana buried?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/restingPlace
@@ -361,7 +397,7 @@ in which city was the former dutch queen juliana buried?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who wrote the book the pillars of the earth?
+Q:  who wrote the book the pillars of the earth?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/author
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -376,7 +412,7 @@ who wrote the book the pillars of the earth?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what are the nicknames of san francisco?
+Q:  what are the nicknames of san francisco?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/nickname
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -389,7 +425,7 @@ what are the nicknames of san francisco?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which companies work in the aerospace industry as well as in medicine?
+Q:  which companies work in the aerospace industry as well as in medicine?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/industry
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -408,7 +444,7 @@ which companies work in the aerospace industry as well as in medicine?
 	+ tp:  1  precision:  0.1  recall:  0.5  f1:  0.166666666667
 
 
-which languages are spoken in estonia?
+Q:  which languages are spoken in estonia?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/spokenIn
 	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
@@ -420,7 +456,7 @@ which languages are spoken in estonia?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-are tree frogs a type of amphibian?
+Q:  are tree frogs a type of amphibian?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/class
 	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
@@ -433,9 +469,7 @@ are tree frogs a type of amphibian?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what were the main discoveries of the mars rover curiosity?
-	exception: failed to parse target query 
-when did latvia join the eu?
+Q:  when did latvia join the eu?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/accessioneudate
 	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
@@ -447,7 +481,7 @@ when did latvia join the eu?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-where is the residence of the prime minister of spain?
+Q:  where is the residence of the prime minister of spain?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/residence
 	CANDIDATE:  where 	http://dbpedia.org/property/where 	1.0
@@ -463,7 +497,7 @@ where is the residence of the prime minister of spain?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which countries have more than ten caves?
+Q:  which countries have more than ten caves?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
@@ -476,9 +510,7 @@ which countries have more than ten caves?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all animal species that live in the teutoburg forest.
-	exception: failed to parse target query 
-who created goofy?
+Q:  who created goofy?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/creator
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -487,11 +519,22 @@ who created goofy?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all sister cities of brno.
-	exception: failed to parse target query 
-give me all soccer clubs in spain.
-	exception: failed to parse target query 
-which other weapons did the designer of the uzi develop?
+Q:  give me all soccer clubs in spain.
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/property/ground
+	> 	http://dbpedia.org/ontology/ground
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  soccer 	http://dbpedia.org/property/soccer 	1.0
+	CANDIDATE:  clubs 	http://dbpedia.org/property/clubs 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  spain 	http://dbpedia.org/property/spanIn 	0.833333333333
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  which other weapons did the designer of the uzi develop?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/property/designer
@@ -508,7 +551,7 @@ which other weapons did the designer of the uzi develop?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which caves have more than 3 entrances?
+Q:  which caves have more than 3 entrances?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/entranceCount
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -522,9 +565,20 @@ which caves have more than 3 entrances?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which countries adopted the euro?
-	exception: failed to parse target query 
-which country does the creator of miffy come from?
+Q:  which countries adopted the euro?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/currency
+	> 	http://dbpedia.org/property/currencyCode
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  countries 	http://dbpedia.org/property/countries 	1.0
+	CANDIDATE:  adopted 	http://dbpedia.org/property/adopted 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  euro 	http://dbpedia.org/property/euro 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  which country does the creator of miffy come from?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/nationality
 	> 	http://dbpedia.org/ontology/creator
@@ -540,7 +594,7 @@ which country does the creator of miffy come from?
 	+ tp:  1  precision:  0.111111111111  recall:  0.5  f1:  0.181818181818
 
 
-give me all female given names.
+Q:  give me all female given names.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/gender
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -553,7 +607,7 @@ give me all female given names.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-was margaret thatcher a chemist?
+Q:  was margaret thatcher a chemist?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/profession
 	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
@@ -564,7 +618,7 @@ was margaret thatcher a chemist?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which german cities have more than 250000 inhabitants?
+Q:  which german cities have more than 250000 inhabitants?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/country
 	> 	http://dbpedia.org/ontology/populationTotal
@@ -579,11 +633,31 @@ which german cities have more than 250000 inhabitants?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-was marc chagall a jew?
-	exception: failed to parse target query 
-which presidents were born in 1945?
-	exception: failed to parse target query 
-how many aldi stores are there?
+Q:  was marc chagall a jew?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/ethnicity
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  marc 	http://dbpedia.org/ontology/march 	0.8
+	CANDIDATE:  chagall 	http://dbpedia.org/ontology/channel 	0.571428571429
+	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
+	CANDIDATE:  jew 	http://dbpedia.org/property/jewo 	0.75
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  which presidents were born in 1945?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/birthDate
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  presidents 	http://dbpedia.org/property/presidents 	1.0
+	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
+	CANDIDATE:  born 	http://dbpedia.org/property/born 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  1945 	http://dbpedia.org/property/1994– 	0.6
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  how many aldi stores are there?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/numberOfLocations
 	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
@@ -595,7 +669,7 @@ how many aldi stores are there?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-was u.s. president jackson involved in a war?
+Q:  was u.s. president jackson involved in a war?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/battle
 	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
@@ -609,7 +683,7 @@ was u.s. president jackson involved in a war?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the capital of canada?
+Q:  what is the capital of canada?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/capital
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -621,9 +695,7 @@ what is the capital of canada?
 	+ tp:  1  precision:  0.166666666667  recall:  1.0  f1:  0.285714285714
 
 
-what is the average temperature on hawaii?
-	exception: failed to parse target query 
-in which u.s. state is fort knox located?
+Q:  in which u.s. state is fort knox located?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/country
 	> 	http://dbpedia.org/property/location
@@ -638,7 +710,7 @@ in which u.s. state is fort knox located?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which museum exhibits the scream by munch?
+Q:  which museum exhibits the scream by munch?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/museum
 	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
@@ -651,7 +723,7 @@ which museum exhibits the scream by munch?
 	+ tp:  1  precision:  0.142857142857  recall:  1.0  f1:  0.25
 
 
-for which label did elvis record his first album?
+Q:  for which label did elvis record his first album?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/releaseDate
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -669,7 +741,7 @@ for which label did elvis record his first album?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-do prince harry and prince william have the same mother?
+Q:  do prince harry and prince william have the same mother?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/mother
 	CANDIDATE:  do 	http://dbpedia.org/property/dop 	0.666666666667
@@ -685,9 +757,7 @@ do prince harry and prince william have the same mother?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which budget did the first movie of zdenek sverak have?
-	exception: failed to parse target query 
-in which military conflicts did lawrence of arabia participate?
+Q:  in which military conflicts did lawrence of arabia participate?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/battle
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
@@ -702,9 +772,7 @@ in which military conflicts did lawrence of arabia participate?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who invented the zipper?
-	exception: failed to parse target query 
-give me the capitals of all countries in africa.
+Q:  give me the capitals of all countries in africa.
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/capital
@@ -720,7 +788,7 @@ give me the capitals of all countries in africa.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which states border illinois?
+Q:  which states border illinois?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/borderingstates
 	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
@@ -730,7 +798,7 @@ which states border illinois?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which u.s. states are in the same time zone as utah?
+Q:  which u.s. states are in the same time zone as utah?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/timezone
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -748,7 +816,7 @@ which u.s. states are in the same time zone as utah?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all islands that belong to japan.
+Q:  give me all islands that belong to japan.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/country
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -763,7 +831,7 @@ give me all islands that belong to japan.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who designed the brooklyn bridge?
+Q:  who designed the brooklyn bridge?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/designer
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -774,9 +842,23 @@ who designed the brooklyn bridge?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who was the first president of the united states?
-	exception: failed to parse target query 
-what is the highest mountain in australia?
+Q:  who was the first president of the united states?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/office
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  first 	http://dbpedia.org/property/first 	1.0
+	CANDIDATE:  president 	http://dbpedia.org/ontology/president 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  united 	http://dbpedia.org/property/branch/unit 	0.666666666667
+	CANDIDATE:  states 	http://dbpedia.org/property/states 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  what is the highest mountain in australia?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/locatedInArea
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -791,9 +873,25 @@ what is the highest mountain in australia?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which airports are located in california, usa?
-	exception: failed to parse target query 
-who developed minecraft?
+Q:  which airports are located in california, usa?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/isPartOf
+	> 	http://dbpedia.org/ontology/city
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/operator
+	> 	http://dbpedia.org/ontology/location
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  airports 	http://dbpedia.org/property/airports 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  located 	http://dbpedia.org/property/located 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  california 	http://dbpedia.org/property/calorie 	0.6
+	CANDIDATE:  , 	http://dbpedia.org/property/web, 	0.25
+	CANDIDATE:  usa 	http://dbpedia.org/property/usa 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  who developed minecraft?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/developer
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -802,7 +900,7 @@ who developed minecraft?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which chess players died in the same place they were born in?
+Q:  which chess players died in the same place they were born in?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/birthPlace
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -822,9 +920,20 @@ which chess players died in the same place they were born in?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-how many space missions have there been?
-	exception: failed to parse target query 
-which capitals in europe were host cities of the summer olympic games?
+Q:  how many space missions have there been?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  many 	http://dbpedia.org/property/many 	1.0
+	CANDIDATE:  space 	http://dbpedia.org/property/space 	1.0
+	CANDIDATE:  missions 	http://dbpedia.org/property/missions 	1.0
+	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
+	CANDIDATE:  there 	http://dbpedia.org/property/three 	0.8
+	CANDIDATE:  been 	http://dbpedia.org/property/betn 	0.75
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  which capitals in europe were host cities of the summer olympic games?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
@@ -842,7 +951,7 @@ which capitals in europe were host cities of the summer olympic games?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all cars that are produced in germany.
+Q:  give me all cars that are produced in germany.
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
@@ -857,7 +966,7 @@ give me all cars that are produced in germany.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who was the wife of u.s. president lincoln?
+Q:  who was the wife of u.s. president lincoln?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/spouse
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -871,9 +980,20 @@ who was the wife of u.s. president lincoln?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-how many children did benjamin franklin have?
-	exception: failed to parse target query 
-is michelle obama the wife of barack obama?
+Q:  how many children did benjamin franklin have?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/child
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  many 	http://dbpedia.org/property/many 	1.0
+	CANDIDATE:  children 	http://dbpedia.org/property/children 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  benjamin 	http://dbpedia.org/property/beamIn 	0.75
+	CANDIDATE:  franklin 	http://dbpedia.org/property/rankin 	0.75
+	CANDIDATE:  have 	http://dbpedia.org/property/hane 	0.75
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  is michelle obama the wife of barack obama?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/spouse
 	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
@@ -887,7 +1007,7 @@ is michelle obama the wife of barack obama?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all actors starring in movies directed by william shatner.
+Q:  give me all actors starring in movies directed by william shatner.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/director
 	> 	http://dbpedia.org/ontology/starring
@@ -905,7 +1025,7 @@ give me all actors starring in movies directed by william shatner.
 	+ tp:  1  precision:  0.0909090909091  recall:  0.5  f1:  0.153846153846
 
 
-list the children of margaret thatcher.
+Q:  list the children of margaret thatcher.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/child
 	CANDIDATE:  list 	http://dbpedia.org/property/list 	1.0
@@ -917,7 +1037,7 @@ list the children of margaret thatcher.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which professional surfers were born in australia?
+Q:  which professional surfers were born in australia?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/birthPlace
 	> 	http://dbpedia.org/ontology/occupation
@@ -931,7 +1051,7 @@ which professional surfers were born in australia?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who is the editor of forbes?
+Q:  who is the editor of forbes?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/editor
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -943,7 +1063,7 @@ who is the editor of forbes?
 	+ tp:  1  precision:  0.166666666667  recall:  1.0  f1:  0.285714285714
 
 
-give me all actors starring in last action hero.
+Q:  give me all actors starring in last action hero.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/starring
 	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
@@ -958,7 +1078,7 @@ give me all actors starring in last action hero.
 	+ tp:  1  precision:  0.111111111111  recall:  1.0  f1:  0.2
 
 
-in which programming language is gimp written?
+Q:  in which programming language is gimp written?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/programmingLanguage
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
@@ -971,7 +1091,7 @@ in which programming language is gimp written?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-in which country is the limerick lake?
+Q:  in which country is the limerick lake?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/country
 	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
@@ -984,7 +1104,7 @@ in which country is the limerick lake?
 	+ tp:  1  precision:  0.142857142857  recall:  1.0  f1:  0.25
 
 
-who is the youngest player in the premier league?
+Q:  who is the youngest player in the premier league?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/league
 	> 	http://dbpedia.org/ontology/birthDate
@@ -1001,7 +1121,7 @@ who is the youngest player in the premier league?
 	+ tp:  1  precision:  0.125  recall:  0.333333333333  f1:  0.181818181818
 
 
-give me all video games published by mean hamster software.
+Q:  give me all video games published by mean hamster software.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/publisher
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -1018,7 +1138,7 @@ give me all video games published by mean hamster software.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who produced films starring natalie portman?
+Q:  who produced films starring natalie portman?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/producer
@@ -1032,7 +1152,7 @@ who produced films starring natalie portman?
 	+ tp:  1  precision:  0.166666666667  recall:  0.333333333333  f1:  0.222222222222
 
 
-in which films did julia roberts as well as richard gere play?
+Q:  in which films did julia roberts as well as richard gere play?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/starring
@@ -1051,7 +1171,7 @@ in which films did julia roberts as well as richard gere play?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-was natalie portman born in the united states?
+Q:  was natalie portman born in the united states?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/country
 	> 	http://dbpedia.org/ontology/birthPlace
@@ -1066,9 +1186,22 @@ was natalie portman born in the united states?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-how many films did leonardo dicaprio star in?
-	exception: failed to parse target query 
-what is the second highest mountain on earth?
+Q:  how many films did leonardo dicaprio star in?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/starring
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  many 	http://dbpedia.org/property/many 	1.0
+	CANDIDATE:  films 	http://dbpedia.org/property/films 	1.0
+	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
+	CANDIDATE:  leonardo 	http://dbpedia.org/ontology/monarch 	0.5
+	CANDIDATE:  dicaprio 	http://dbpedia.org/property/captio 	0.625
+	CANDIDATE:  star 	http://dbpedia.org/property/star 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  what is the second highest mountain on earth?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/elevation
@@ -1083,7 +1216,7 @@ what is the second highest mountain on earth?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all books by william goldman with more than 300 pages.
+Q:  give me all books by william goldman with more than 300 pages.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/numberOfPages
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -1103,7 +1236,7 @@ give me all books by william goldman with more than 300 pages.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all danish films.
+Q:  give me all danish films.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/country
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -1115,7 +1248,7 @@ give me all danish films.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the largest city in australia?
+Q:  what is the largest city in australia?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/largestCity
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -1128,7 +1261,7 @@ what is the largest city in australia?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who painted the storm on the sea of galilee?
+Q:  who painted the storm on the sea of galilee?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/author
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -1143,7 +1276,7 @@ who painted the storm on the sea of galilee?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all launch pads operated by nasa.
+Q:  give me all launch pads operated by nasa.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/operator
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -1158,7 +1291,7 @@ give me all launch pads operated by nasa.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who wrote the lyrics for the polish national anthem?
+Q:  who wrote the lyrics for the polish national anthem?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/anthem
 	> 	http://dbpedia.org/property/author
@@ -1174,7 +1307,7 @@ who wrote the lyrics for the polish national anthem?
 	+ tp:  1  precision:  0.125  recall:  0.5  f1:  0.2
 
 
-give me the birthdays of all actors of the television show charmed.
+Q:  give me the birthdays of all actors of the television show charmed.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/birthDate
 	> 	http://dbpedia.org/ontology/starring
@@ -1193,7 +1326,7 @@ give me the birthdays of all actors of the television show charmed.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-in which city did john f. kennedy die?
+Q:  in which city did john f. kennedy die?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/deathPlace
@@ -1208,9 +1341,19 @@ in which city did john f. kennedy die?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who produced the most films?
-	exception: failed to parse target query 
-who created the comic captain america?
+Q:  who produced the most films?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/producer
+	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
+	CANDIDATE:  produced 	http://dbpedia.org/property/produced 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  most 	http://dbpedia.org/property/most 	1.0
+	CANDIDATE:  films 	http://dbpedia.org/property/films 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  who created the comic captain america?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/creator
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -1222,7 +1365,7 @@ who created the comic captain america?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who was the father of queen elizabeth ii?
+Q:  who was the father of queen elizabeth ii?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/father
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -1236,9 +1379,21 @@ who was the father of queen elizabeth ii?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which u.s. state has the abbreviation mn?
-	exception: failed to parse target query 
-which movies did kurosawa direct after rashomon?
+Q:  which u.s. state has the abbreviation mn?
+	gold-standard properties: 
+	> 	postalabbreviation
+	> 	type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  u.s. 	http://dbpedia.org/property/m.s. 	0.75
+	CANDIDATE:  state 	http://dbpedia.org/ontology/state 	1.0
+	CANDIDATE:  has 	http://dbpedia.org/property/ben/whas 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  abbreviation 	http://dbpedia.org/property/abbreviation 	1.0
+	CANDIDATE:  mn 	http://dbpedia.org/property/mn 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  which movies did kurosawa direct after rashomon?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/director
 	> 	http://dbpedia.org/ontology/releaseDate
@@ -1253,13 +1408,38 @@ which movies did kurosawa direct after rashomon?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-is there a video game called battle chess?
-	exception: failed to parse target query 
-which mountains are higher than the nanga parbat?
-	exception: failed to parse target query 
-when is the movie worst case scenario going to be in cinemas in the netherlands?
-	exception: failed to parse target query 
-list all episodes of the first season of the hbo television series the sopranos.
+Q:  is there a video game called battle chess?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://www.w3.org/2000/01/rdf-schema#label
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  there 	http://dbpedia.org/property/three 	0.8
+	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
+	CANDIDATE:  video 	http://dbpedia.org/property/video 	1.0
+	CANDIDATE:  game 	http://dbpedia.org/property/game 	1.0
+	CANDIDATE:  called 	http://dbpedia.org/property/called 	1.0
+	CANDIDATE:  battle 	http://dbpedia.org/ontology/battle 	1.0
+	CANDIDATE:  chess 	http://dbpedia.org/property/mChess 	0.833333333333
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  which mountains are higher than the nanga parbat?
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/elevationM
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/ontology/elevation
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  mountains 	http://dbpedia.org/property/mountains 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  higher 	http://dbpedia.org/property/higher 	1.0
+	CANDIDATE:  than 	http://dbpedia.org/property/thana 	0.8
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  nanga 	http://dbpedia.org/property/manga 	0.8
+	CANDIDATE:  parbat 	http://dbpedia.org/ontology/parent 	0.666666666667
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  list all episodes of the first season of the hbo television series the sopranos.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/series
 	> 	http://dbpedia.org/ontology/seasonNumber
@@ -1280,11 +1460,23 @@ list all episodes of the first season of the hbo television series the sopranos.
 	+ tp:  1  precision:  0.0909090909091  recall:  0.5  f1:  0.153846153846
 
 
-is jens friebe a vegan?
-	exception: failed to parse target query 
-which telecommunications organizations are located in belgium?
-	exception: failed to parse target query 
-give me a list of all american inventions.
+Q:  which telecommunications organizations are located in belgium?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/industry
+	> 	http://dbpedia.org/property/locationCountry
+	> 	http://dbpedia.org/property/industry
+	> 	http://dbpedia.org/ontology/location
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  telecommunications 	http://dbpedia.org/property/communications 	0.777777777778
+	CANDIDATE:  organizations 	http://dbpedia.org/property/organizations 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  located 	http://dbpedia.org/property/located 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  belgium 	http://dbpedia.org/property/selenium 	0.625
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  give me a list of all american inventions.
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
@@ -1298,7 +1490,7 @@ give me a list of all american inventions.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which films starring clint eastwood did he direct himself?
+Q:  which films starring clint eastwood did he direct himself?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/director
 	> 	http://dbpedia.org/ontology/starring
@@ -1314,9 +1506,22 @@ which films starring clint eastwood did he direct himself?
 	+ tp:  1  precision:  0.111111111111  recall:  0.5  f1:  0.181818181818
 
 
-is the wife of president obama called michelle?
-	exception: failed to parse target query 
-what is the highest mountain?
+Q:  is the wife of president obama called michelle?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/spouse
+	> 	http://www.w3.org/2000/01/rdf-schema#label
+	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  wife 	http://dbpedia.org/ontology/wife 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  president 	http://dbpedia.org/ontology/president 	1.0
+	CANDIDATE:  obama 	http://dbpedia.org/property/obama 	1.0
+	CANDIDATE:  called 	http://dbpedia.org/property/called 	1.0
+	CANDIDATE:  michelle 	http://dbpedia.org/property/nicheLabel 	0.6
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  what is the highest mountain?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/elevation
@@ -1328,7 +1533,7 @@ what is the highest mountain?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who are the parents of the wife of juan carlos i?
+Q:  who are the parents of the wife of juan carlos i?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/spouse
 	> 	http://dbpedia.org/ontology/parent
@@ -1346,7 +1551,7 @@ who are the parents of the wife of juan carlos i?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all canadian grunge record labels.
+Q:  give me all canadian grunge record labels.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/genre
 	> 	http://dbpedia.org/ontology/country
@@ -1361,7 +1566,7 @@ give me all canadian grunge record labels.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the birth name of angela merkel?
+Q:  what is the birth name of angela merkel?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/birthName
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -1375,9 +1580,23 @@ what is the birth name of angela merkel?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-in which uk city are the headquarters of the mi6?
-	exception: failed to parse target query 
-what is the longest river?
+Q:  in which uk city are the headquarters of the mi6?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/headquarter
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  uk 	http://dbpedia.org/property/uk 	1.0
+	CANDIDATE:  city 	http://dbpedia.org/ontology/city 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  headquarters 	http://dbpedia.org/property/headquarters 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  mi6 	http://dbpedia.org/property/minimumSinkRateFt/min 	0.666666666667
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  what is the longest river?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -1388,7 +1607,7 @@ what is the longest river?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-did socrates influence aristotle?
+Q:  did socrates influence aristotle?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/influencedBy
 	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
@@ -1398,7 +1617,7 @@ did socrates influence aristotle?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-in which films directed by garry marshall was julia roberts starring?
+Q:  in which films directed by garry marshall was julia roberts starring?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/director
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -1417,7 +1636,7 @@ in which films directed by garry marshall was julia roberts starring?
 	+ tp:  1  precision:  0.0909090909091  recall:  0.333333333333  f1:  0.142857142857
 
 
-who was called scarface?
+Q:  who was called scarface?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/nickname
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -1427,7 +1646,7 @@ who was called scarface?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-is christian bale starring in velvet goldmine?
+Q:  is christian bale starring in velvet goldmine?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/starring
 	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
@@ -1440,7 +1659,7 @@ is christian bale starring in velvet goldmine?
 	+ tp:  1  precision:  0.142857142857  recall:  1.0  f1:  0.25
 
 
-who developed the video game world of warcraft?
+Q:  who developed the video game world of warcraft?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/developer
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -1454,7 +1673,7 @@ who developed the video game world of warcraft?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the time zone of salt lake city?
+Q:  what is the time zone of salt lake city?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/timezone
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -1469,7 +1688,7 @@ what is the time zone of salt lake city?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-through which countries does the yenisei river flow?
+Q:  through which countries does the yenisei river flow?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/country
 	CANDIDATE:  through 	http://dbpedia.org/property/through 	1.0
@@ -1483,7 +1702,7 @@ through which countries does the yenisei river flow?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-list all games by gmt.
+Q:  list all games by gmt.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/publisher
 	CANDIDATE:  list 	http://dbpedia.org/property/list 	1.0
@@ -1494,9 +1713,21 @@ list all games by gmt.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which organizations were founded in 1930?
-	exception: failed to parse target query 
-to which countries does the himalayan mountain system extend?
+Q:  which organizations were founded in 1930?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/formationYear
+	> 	http://dbpedia.org/ontology/foundingYear
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  organizations 	http://dbpedia.org/property/organizations 	1.0
+	CANDIDATE:  were 	http://dbpedia.org/property/where 	0.8
+	CANDIDATE:  founded 	http://dbpedia.org/property/founded 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  1930 	http://dbpedia.org/property/1993– 	0.6
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  to which countries does the himalayan mountain system extend?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/country
 	CANDIDATE:  to 	http://dbpedia.org/property/to 	1.0
@@ -1511,7 +1742,7 @@ to which countries does the himalayan mountain system extend?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-how many employees does ibm have?
+Q:  how many employees does ibm have?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/numberOfEmployees
 	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
@@ -1523,7 +1754,7 @@ how many employees does ibm have?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-when was alberta admitted as province?
+Q:  when was alberta admitted as province?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/admittancedate
 	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
@@ -1535,7 +1766,7 @@ when was alberta admitted as province?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which countries are connected by the rhine?
+Q:  which countries are connected by the rhine?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/country
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -1550,7 +1781,7 @@ which countries are connected by the rhine?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all cosmonauts.
+Q:  give me all cosmonauts.
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
@@ -1560,7 +1791,7 @@ give me all cosmonauts.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who is the mayor of tel aviv?
+Q:  who is the mayor of tel aviv?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/leaderName
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -1573,7 +1804,7 @@ who is the mayor of tel aviv?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which ships were called after benjamin franklin?
+Q:  which ships were called after benjamin franklin?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/shipNamesake
 	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
@@ -1586,7 +1817,7 @@ which ships were called after benjamin franklin?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who is the husband of amanda palmer?
+Q:  who is the husband of amanda palmer?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/spouse
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -1599,7 +1830,7 @@ who is the husband of amanda palmer?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-how many employees does google have?
+Q:  how many employees does google have?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/numberOfEmployees
 	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
@@ -1611,7 +1842,7 @@ how many employees does google have?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which mountain is the highest after the annapurna?
+Q:  which mountain is the highest after the annapurna?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/elevation
@@ -1626,7 +1857,7 @@ which mountain is the highest after the annapurna?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-does breaking bad have more episodes than game of thrones?
+Q:  does breaking bad have more episodes than game of thrones?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/numberOfEpisodes
 	CANDIDATE:  does 	http://dbpedia.org/property/does 	1.0
@@ -1642,7 +1873,7 @@ does breaking bad have more episodes than game of thrones?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me a list of all bandleaders that play trumpet.
+Q:  give me a list of all bandleaders that play trumpet.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/instrument
 	> 	http://dbpedia.org/ontology/occupation
@@ -1659,7 +1890,7 @@ give me a list of all bandleaders that play trumpet.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-when was the battle of gettysburg?
+Q:  when was the battle of gettysburg?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/date
 	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
@@ -1671,7 +1902,7 @@ when was the battle of gettysburg?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-when did michael jackson die?
+Q:  when did michael jackson die?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/deathDate
 	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
@@ -1682,13 +1913,20 @@ when did michael jackson die?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-how many languages are spoken in turkmenistan?
-	exception: failed to parse target query 
-is frank herbert still alive?
-	exception: failed to parse target query 
-how many big fires struck paris during the middle ages?
-	exception: failed to parse target query 
-how many inhabitants does maribor have?
+Q:  how many languages are spoken in turkmenistan?
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/language
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  many 	http://dbpedia.org/property/many 	1.0
+	CANDIDATE:  languages 	http://dbpedia.org/property/languages 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  spoken 	http://dbpedia.org/property/spoken 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  turkmenistan 	http://dbpedia.org/property/currentStay 	0.583333333333
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  how many inhabitants does maribor have?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/populationTotal
 	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
@@ -1700,9 +1938,23 @@ how many inhabitants does maribor have?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me a list of all lakes in denmark.
-	exception: failed to parse target query 
-is proinsulin a protein?
+Q:  give me a list of all lakes in denmark.
+	gold-standard properties: 
+	> 	http://dbpedia.org/ontology/country
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  a 	http://dbpedia.org/property/h/a 	1.0
+	CANDIDATE:  list 	http://dbpedia.org/property/list 	1.0
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  lakes 	http://dbpedia.org/ontology/lake 	0.8
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  denmark 	http://dbpedia.org/property/remark 	0.714285714286
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  is proinsulin a protein?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	CANDIDATE:  is 	http://dbpedia.org/property/is 	1.0
@@ -1712,7 +1964,7 @@ is proinsulin a protein?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which awards did wikileaks win?
+Q:  which awards did wikileaks win?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/awards
 	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
@@ -1723,7 +1975,7 @@ which awards did wikileaks win?
 	+ tp:  1  precision:  0.2  recall:  1.0  f1:  0.333333333333
 
 
-which greek goddesses dwelt on mount olympus?
+Q:  which greek goddesses dwelt on mount olympus?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/abode
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -1737,7 +1989,7 @@ which greek goddesses dwelt on mount olympus?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-how high is the mount everest?
+Q:  how high is the mount everest?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/elevation
 	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
@@ -1749,9 +2001,21 @@ how high is the mount everest?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which country has the most official languages?
-	exception: failed to parse target query 
-give me all communist countries.
+Q:  which country has the most official languages?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/property/officialLanguages
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  country 	http://dbpedia.org/ontology/country 	1.0
+	CANDIDATE:  has 	http://dbpedia.org/property/ben/whas 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  most 	http://dbpedia.org/property/most 	1.0
+	CANDIDATE:  official 	http://dbpedia.org/property/official 	1.0
+	CANDIDATE:  languages 	http://dbpedia.org/property/languages 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  give me all communist countries.
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
@@ -1762,7 +2026,7 @@ give me all communist countries.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which instruments does cat stevens play?
+Q:  which instruments does cat stevens play?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/instrument
 	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
@@ -1774,7 +2038,7 @@ which instruments does cat stevens play?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-sean parnell is the governor of which u.s. state?
+Q:  sean parnell is the governor of which u.s. state?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/property/governor
@@ -1790,7 +2054,7 @@ sean parnell is the governor of which u.s. state?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all books written by danielle steel.
+Q:  give me all books written by danielle steel.
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/author
@@ -1805,9 +2069,7 @@ give me all books written by danielle steel.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the most beautiful painting?
-	exception: failed to parse target query 
-did tesla win a nobel prize in physics?
+Q:  did tesla win a nobel prize in physics?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/award
 	CANDIDATE:  did 	http://dbpedia.org/property/born/Died 	0.75
@@ -1821,7 +2083,7 @@ did tesla win a nobel prize in physics?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who is the owner of universal studios?
+Q:  who is the owner of universal studios?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/owner
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -1834,7 +2096,7 @@ who is the owner of universal studios?
 	+ tp:  1  precision:  0.142857142857  recall:  1.0  f1:  0.25
 
 
-who is the governor of wyoming?
+Q:  who is the governor of wyoming?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/governor
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -1846,7 +2108,7 @@ who is the governor of wyoming?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-when were the hells angels founded?
+Q:  when were the hells angels founded?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/founded
 	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
@@ -1858,7 +2120,7 @@ when were the hells angels founded?
 	+ tp:  1  precision:  0.166666666667  recall:  1.0  f1:  0.285714285714
 
 
-who is the daughter of ingrid bergman married to?
+Q:  who is the daughter of ingrid bergman married to?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/spouse
 	> 	http://dbpedia.org/ontology/child
@@ -1874,7 +2136,7 @@ who is the daughter of ingrid bergman married to?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all libraries established earlier than 1400.
+Q:  give me all libraries established earlier than 1400.
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/established
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -1889,7 +2151,7 @@ give me all libraries established earlier than 1400.
 	+ tp:  1  precision:  0.125  recall:  0.5  f1:  0.2
 
 
-is egypts largest city also its capital?
+Q:  is egypts largest city also its capital?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/largestCity
 	> 	http://dbpedia.org/ontology/capital
@@ -1903,9 +2165,20 @@ is egypts largest city also its capital?
 	+ tp:  1  precision:  0.142857142857  recall:  0.5  f1:  0.222222222222
 
 
-how many countries are there in europe?
-	exception: failed to parse target query 
-who is the mayor of berlin?
+Q:  how many countries are there in europe?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
+	CANDIDATE:  many 	http://dbpedia.org/property/many 	1.0
+	CANDIDATE:  countries 	http://dbpedia.org/property/countries 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  there 	http://dbpedia.org/property/three 	0.8
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  europe 	http://dbpedia.org/property/europe 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  who is the mayor of berlin?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/leader
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -1917,7 +2190,7 @@ who is the mayor of berlin?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-how many people live in the capital of australia?
+Q:  how many people live in the capital of australia?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/populationTotal
 	> 	http://dbpedia.org/ontology/capital
@@ -1933,7 +2206,7 @@ how many people live in the capital of australia?
 	+ tp:  1  precision:  0.111111111111  recall:  0.5  f1:  0.181818181818
 
 
-who founded intel?
+Q:  who founded intel?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/foundedBy
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -1942,7 +2215,7 @@ who founded intel?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all b-sides of the ramones.
+Q:  give me all b-sides of the ramones.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/bSide
 	> 	http://dbpedia.org/ontology/musicalArtist
@@ -1956,7 +2229,7 @@ give me all b-sides of the ramones.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all films produced by hal roach.
+Q:  give me all films produced by hal roach.
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/producer
@@ -1971,9 +2244,25 @@ give me all films produced by hal roach.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which bridges are of the same type as the manhattan bridge?
-	exception: failed to parse target query 
-give me all apollo 14 astronauts.
+Q:  which bridges are of the same type as the manhattan bridge?
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/property/design
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  bridges 	http://dbpedia.org/property/bridges 	1.0
+	CANDIDATE:  are 	http://dbpedia.org/property/city/area 	0.75
+	CANDIDATE:  of 	http://dbpedia.org/property/rof 	0.666666666667
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  same 	http://dbpedia.org/property/same 	1.0
+	CANDIDATE:  type 	http://dbpedia.org/ontology/type 	1.0
+	CANDIDATE:  as 	http://dbpedia.org/property/as 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  manhattan 	http://dbpedia.org/property/manhattan 	1.0
+	CANDIDATE:  bridge 	http://dbpedia.org/property/bridge 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  give me all apollo 14 astronauts.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/mission
 	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
@@ -1985,7 +2274,7 @@ give me all apollo 14 astronauts.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the area code of berlin?
+Q:  what is the area code of berlin?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/areaCode
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -1998,7 +2287,7 @@ what is the area code of berlin?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which software has been developed by organizations founded in california?
+Q:  which software has been developed by organizations founded in california?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/ontology/developer
@@ -2015,7 +2304,7 @@ which software has been developed by organizations founded in california?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the currency of the czech republic?
+Q:  what is the currency of the czech republic?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/currency
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -2029,11 +2318,41 @@ what is the currency of the czech republic?
 	+ tp:  1  precision:  0.142857142857  recall:  1.0  f1:  0.25
 
 
-which music albums contain the song last christmas?
-	exception: failed to parse target query 
-give me all world heritage sites designated within the past two years.
-	exception: failed to parse target query 
-which cities does the weser flow through?
+Q:  which music albums contain the song last christmas?
+	gold-standard properties: 
+	> 	album
+	> 	http://www.w3.org/2000/01/rdf-schema#label
+	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
+	CANDIDATE:  music 	http://dbpedia.org/property/music 	1.0
+	CANDIDATE:  albums 	http://dbpedia.org/property/albums 	1.0
+	CANDIDATE:  contain 	http://dbpedia.org/property/mountain 	0.75
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  song 	http://dbpedia.org/property/song 	1.0
+	CANDIDATE:  last 	http://dbpedia.org/property/last 	1.0
+	CANDIDATE:  christmas 	http://dbpedia.org/property/christmas 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  give me all world heritage sites designated within the past two years.
+	gold-standard properties: 
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	http://dbpedia.org/property/year
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  world 	http://dbpedia.org/ontology/world 	1.0
+	CANDIDATE:  heritage 	http://dbpedia.org/property/heritage 	1.0
+	CANDIDATE:  sites 	http://dbpedia.org/property/sites 	1.0
+	CANDIDATE:  designated 	http://dbpedia.org/property/designated 	1.0
+	CANDIDATE:  within 	http://dbpedia.org/property/widthIn 	0.857142857143
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  past 	http://dbpedia.org/property/past 	1.0
+	CANDIDATE:  two 	http://dbpedia.org/property/two 	1.0
+	CANDIDATE:  years 	http://dbpedia.org/property/years 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  which cities does the weser flow through?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/city
 	CANDIDATE:  which 	http://dbpedia.org/property/wiith 	0.6
@@ -2046,11 +2365,37 @@ which cities does the weser flow through?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all companies in the advertising industry.
-	exception: failed to parse target query 
-give me all people with first name jimmy.
-	exception: failed to parse target query 
-give me all movies directed by francis ford coppola.
+Q:  give me all companies in the advertising industry.
+	gold-standard properties: 
+	> 	http://dbpedia.org/property/industry
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  companies 	http://dbpedia.org/property/companies 	1.0
+	CANDIDATE:  in 	http://dbpedia.org/property/in 	1.0
+	CANDIDATE:  the 	http://dbpedia.org/property/the 	1.0
+	CANDIDATE:  advertising 	http://dbpedia.org/property/advertising 	1.0
+	CANDIDATE:  industry 	http://dbpedia.org/ontology/industry 	1.0
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  give me all people with first name jimmy.
+	gold-standard properties: 
+	> 	http://xmlns.com/foaf/0.1/givenName
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  people 	http://dbpedia.org/property/people 	1.0
+	CANDIDATE:  with 	http://dbpedia.org/property/with 	1.0
+	CANDIDATE:  first 	http://dbpedia.org/property/first 	1.0
+	CANDIDATE:  name 	http://dbpedia.org/property/naMe 	1.0
+	CANDIDATE:  jimmy 	http://dbpedia.org/property/jimmyJib 	0.625
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  give me all movies directed by francis ford coppola.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/director
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -2066,7 +2411,7 @@ give me all movies directed by francis ford coppola.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the ruling party in lisbon?
+Q:  what is the ruling party in lisbon?
 	gold-standard properties: 
 	> 	http://dbpedia.org/property/leaderParty
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -2079,7 +2424,7 @@ what is the ruling party in lisbon?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who produces orangina?
+Q:  who produces orangina?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/product
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -2088,7 +2433,7 @@ who produces orangina?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all companies in munich.
+Q:  give me all companies in munich.
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
@@ -2100,9 +2445,7 @@ give me all companies in munich.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the melting point of copper?
-	exception: failed to parse target query 
-was the cuban missile crisis earlier than the bay of pigs invasion?
+Q:  was the cuban missile crisis earlier than the bay of pigs invasion?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/date
 	CANDIDATE:  was 	http://dbpedia.org/property/wars 	0.75
@@ -2120,7 +2463,7 @@ was the cuban missile crisis earlier than the bay of pigs invasion?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who was john f. kennedy's vice president?
+Q:  who was john f. kennedy's vice president?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/vicePresident
 	CANDIDATE:  who 	http://dbpedia.org/property/who 	1.0
@@ -2134,7 +2477,7 @@ who was john f. kennedy's vice president?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-when was capcom founded?
+Q:  when was capcom founded?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/foundingDate
 	CANDIDATE:  when 	http://dbpedia.org/property/when 	1.0
@@ -2144,7 +2487,7 @@ when was capcom founded?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-who is the formula 1 race driver with the most races?
+Q:  who is the formula 1 race driver with the most races?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/races
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -2162,7 +2505,7 @@ who is the formula 1 race driver with the most races?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-which u.s. state has been admitted latest?
+Q:  which u.s. state has been admitted latest?
 	gold-standard properties: 
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 	> 	http://dbpedia.org/property/admittancedate
@@ -2176,7 +2519,7 @@ which u.s. state has been admitted latest?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all methodist politicians.
+Q:  give me all methodist politicians.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/religion
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -2188,7 +2531,7 @@ give me all methodist politicians.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what is the highest place of the urals?
+Q:  what is the highest place of the urals?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/highestPlace
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -2202,7 +2545,7 @@ what is the highest place of the urals?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all soccer clubs in the premier league.
+Q:  give me all soccer clubs in the premier league.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/league
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -2218,7 +2561,7 @@ give me all soccer clubs in the premier league.
 	+ tp:  1  precision:  0.111111111111  recall:  0.5  f1:  0.181818181818
 
 
-which monarchs were married to a german?
+Q:  which monarchs were married to a german?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/spouse
 	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
@@ -2232,9 +2575,27 @@ which monarchs were married to a german?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-show me all songs from bruce springsteen released between 1980 and 1990.
-	exception: failed to parse target query 
-give me all professional skateboarders from sweden.
+Q:  show me all songs from bruce springsteen released between 1980 and 1990.
+	gold-standard properties: 
+	> 	releaseDate
+	> 	http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+	> 	artist
+	CANDIDATE:  show 	http://dbpedia.org/ontology/show 	1.0
+	CANDIDATE:  me 	http://dbpedia.org/property/me 	1.0
+	CANDIDATE:  all 	http://dbpedia.org/property/all 	1.0
+	CANDIDATE:  songs 	http://dbpedia.org/property/songs 	1.0
+	CANDIDATE:  from 	http://dbpedia.org/property/from 	1.0
+	CANDIDATE:  bruce 	http://dbpedia.org/property/braces 	0.666666666667
+	CANDIDATE:  springsteen 	http://dbpedia.org/property/sprintsTeam 	0.727272727273
+	CANDIDATE:  released 	http://dbpedia.org/property/released 	1.0
+	CANDIDATE:  between 	http://dbpedia.org/property/setBetween 	0.7
+	CANDIDATE:  1980 	http://dbpedia.org/property/1989– 	0.6
+	CANDIDATE:  and 	http://dbpedia.org/property/and 	1.0
+	CANDIDATE:  1990 	http://dbpedia.org/property/1990– 	0.8
+	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
+
+
+Q:  give me all professional skateboarders from sweden.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/occupation
 	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
@@ -2247,7 +2608,7 @@ give me all professional skateboarders from sweden.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all members of prodigy.
+Q:  give me all members of prodigy.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/bandMember
 	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
@@ -2259,7 +2620,7 @@ give me all members of prodigy.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-how many students does the free university in amsterdam have?
+Q:  how many students does the free university in amsterdam have?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/numberOfStudents
 	CANDIDATE:  how 	http://dbpedia.org/ontology/show 	0.75
@@ -2275,7 +2636,7 @@ how many students does the free university in amsterdam have?
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-give me all australian nonprofit organizations.
+Q:  give me all australian nonprofit organizations.
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/type
 	CANDIDATE:  give 	http://dbpedia.org/property/given 	0.8
@@ -2287,7 +2648,7 @@ give me all australian nonprofit organizations.
 	tp:  0  precision:  0.0  recall:  0.0  f1:  0.0
 
 
-what did bruce carver die from?
+Q:  what did bruce carver die from?
 	gold-standard properties: 
 	> 	http://dbpedia.org/ontology/deathCause
 	CANDIDATE:  what 	http://dbpedia.org/property/what 	1.0
@@ -2300,8 +2661,8 @@ what did bruce carver die from?
 
 
 total TP 	  25
-total FP: 	  1137
-total FN: 	  209
-total PRECISION 	  0.0215146299484
-total RECALL 	  0.106837606838
-total F1 	  0.0358166189112
+total FP: 	  1368
+total FN: 	  272
+total PRECISION 	  0.0179468772434
+total RECALL 	  0.0841750841751
+total F1 	  0.0295857988166
