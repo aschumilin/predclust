@@ -3,8 +3,8 @@ package util;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -15,6 +15,7 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.List;
 
+import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.RollingFileAppender;
 import org.jdom2.Document;
@@ -24,9 +25,6 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 import org.jdom2.xpath.XPathFactory;
-
-import parallelizer.Coordinator;
-import parallelizer.CoordinatorSimMat;
 
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -194,6 +192,16 @@ public class Funcs {
 		return inputXML.replaceAll(xml10pattern, " ");
 	}
 
+	public static Logger getTestConsoleLogger(Class c){
+		
+		ConsoleAppender ca = new ConsoleAppender();
+		ca.setLayout(new org.apache.log4j.PatternLayout("%d{dd MMM yyyy HH:mm:ss} %p %t %c - %m%n"));
+		ca.setThreshold(org.apache.log4j.Level.DEBUG);
+		ca.activateOptions();
+		Logger L = Logger.getRootLogger();
+		L.addAppender(ca);
+		return  L;
+	}
 	public static Logger getTestLogger(String logFilePath, Class c){
 		
 		Logger L = Logger.getLogger(c); 
@@ -216,10 +224,18 @@ public class Funcs {
 		while((line = br.readLine()) != null){
 			buffer.append(line + System.getProperty("line.separator"));
 		}
+		br.close();
 		return buffer.toString();
 	}
+	
+	public static void stringToFile(String filePath, String content) throws IOException{
+		BufferedWriter bw = new BufferedWriter(new FileWriter(filePath));
+		bw.write(content);
+		bw.close();
+	}
 
-	public static String getPostResponse(String endpoint, String dataPayload) throws java.io.IOException {
+
+public static String getPostResponse(String endpoint, String dataPayload) throws java.io.IOException {
 		HttpURLConnection connection = null;
 
 		final String CONTENT_TYPE = "text/xml";

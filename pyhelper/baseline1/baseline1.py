@@ -15,35 +15,41 @@ import xml.etree.ElementTree as ET
 from progress.bar import Bar
 from collections import Counter
 from pyxdameraulevenshtein import normalized_damerau_levenshtein_distance as normalized_string_similarity # alternative: damerau_levenshtein_distance
+from rdflib.plugins.sparql import prepareQuery as prepQ
 
-def get_props_workaround(sparqQueryString):
+
+def get_props_workaround(sparqlQueryString):
     """
     workaround for queries where fyzz fails
     """
-    lines = [line.strip() for line in sparqQueryString.split("\n")]
-    resultProps = []
-    prefixes = {}
-    # 1. identify triples by the dot at the end
-    # 2. split by blank, take the middle part
     
-    for line in lines:
-        if "PREFIX" in line:
-            # extract and save prefix
-            parts = line.split(" ")
-            pref = parts[1][0:-1]   # remove the ":" from "dbo:"
-            uri = parts[2][1:-1]    # remove <> from <http://...>
-            prefixes.update({pref:uri})
-        elif len(line) > 0 and ("." in line):       # dot at end of line means triple
-            try:
-                propparts = line.split(".")[0][1:-1].strip().split(" ")[1].split(":")    # "dbo:producer"
-                pref = prefixes.get(propparts[0])
-                resultProps.append(pref + propparts[1])
-            except:
-                pass
-    if len(resultProps) is 0:
-        raise Exception
-    else:       
-        return resultProps
+    #===========================================================================
+    # lines = [line.strip() for line in sparqlQueryString.split("\n")]
+    # resultProps = []
+    # prefixes = {}
+    # # 1. identify triples by the dot at the end
+    # # 2. split by blank, take the middle part
+    # 
+    # for line in lines:
+    #     if "PREFIX" in line:
+    #         # extract and save prefix
+    #         parts = line.split(" ")
+    #         pref = parts[1][0:-1]   # remove the ":" from "dbo:"
+    #         uri = parts[2][1:-1]    # remove <> from <http://...>
+    #         prefixes.update({pref:uri})
+    #     elif len(line) > 0 and ("." in line):       # dot at end of line means triple
+    #         try:
+    #             propparts = line.split(".")[0][1:-1].strip().split(" ")[1].split(":")    # "dbo:producer"
+    #             pref = prefixes.get(propparts[0])
+    #             resultProps.append(pref + propparts[1])
+    #         except:
+    #             pass
+    # if len(resultProps) is 0:
+    #     raise Exception
+    # else:       
+    #     return resultProps
+    #===========================================================================
+    return prepQ(sparqlQueryString).algebra
 
 def get_props(sparqlQuery):
     """
@@ -71,6 +77,35 @@ def get_props(sparqlQuery):
     
 
 
+def print_perquestion_qald_props(qaldTrainXMLPpath="/home/pilatus/Dropbox/AIFB/09_Predicate_Clustering/QALD_challenge/qald-4-data/qald-4_multilingual_train_withanswers.xml"):
+        qaldTrainingFilePath = qaldTrainXMLPpath
+        qaldRawFile = codecs.open(qaldTrainingFilePath, "r")
+        
+        targetBaseDir = "/home/pilatus/Dropbox/AIFB/09_Predicate_Clustering/BaselineX/qald4-graphs/"
+        
+        questions = ET.parse(qaldRawFile).getroot().findall("question")
+        
+        for q in questions:
+             
+            queryString = q.find("query").text
+            qid         = q.attrib["id"]
+            
+            if "OUT OF SCOPE" in queryString:
+                continue
+            else:
+                # try parsing with fyzz
+                try:
+                    targetPropsSet = set(get_props(queryString))              
+                except:
+                    print qid, ",", queryString
+                    continue
+        
+                resFile = open(targetBaseDir + "en-"+qid+"_es-"+qid+"/" + qid +"-gold-props", "w")
+                resultContent = "\n".join(list(targetPropsSet))
+                resFile.write(resultContent)
+                resFile.close()
+
+
 def print_all_qald_props(qaldTrainXMLPpath="/home/pilatus/Dropbox/AIFB/09_Predicate_Clustering/QALD_challenge/qald-4-data/qald-4_multilingual_train_withanswers.xml"):
     """
     Prints out all property URIs from the QALD-4 training set. 
@@ -83,7 +118,7 @@ def print_all_qald_props(qaldTrainXMLPpath="/home/pilatus/Dropbox/AIFB/09_Predic
     # find all <query> elements in the XML
     queries = ET.parse(qaldRawFile).getroot().findall(".//question/query")
     
-    i=0
+    
     propsSet        = Counter()     # count how often each property URI occurs in the qald training set   
     namespaceSet    = Counter()     # count occurences of namespaces
     
@@ -103,8 +138,7 @@ def print_all_qald_props(qaldTrainXMLPpath="/home/pilatus/Dropbox/AIFB/09_Predic
                 
             
         except:
-            if "WHERE" not in qtext:
-                i+=1
+            print "sparql query parsing error in\n", qtext
     
     #===========================================================================
     # for item in sorted(set(propsSet.items())):
@@ -259,17 +293,6 @@ def baseline1():
     
 
         
-                
-            
-            
-            
-            
-        
-
-
-
-
-
 
 
 if __name__ == '__main__':
@@ -283,6 +306,9 @@ if __name__ == '__main__':
     if functionName     == "print-all":
         qaldTrainFileXML = sys.argv[2]
         print_all_qald_props(qaldTrainFileXML) 
+        
+    elif functionName   == "print-perquestion":
+        print_perquestion_qald_props()
         
     elif functionName   == "baseline":
         baseline1()

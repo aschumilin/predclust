@@ -101,19 +101,12 @@ def saveHistogram(dataRow, numBins, xlab, ylab, title, filename):
     matplotlib.pyplot.clf()
     
     
-def listToCSV(targetFilePath, matrix, headerString):
-    """
-    write given matrix as csv file with given header
-    """   
-    targetFile = open(targetFilePath, "w")
-    targetFile.write(headerString + "\n")   
-    targetFile.write("\n".join([",".join([str(value) for value in line]) for line in matrix]))
-    targetFile.close()
-     
+
     
 if __name__ == '__main__':
     import sys
     import codecs
+    from util.toCSV import listToCSV
     
     labels = []
     try:

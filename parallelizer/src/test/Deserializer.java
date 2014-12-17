@@ -1,7 +1,9 @@
 package test;
 
+import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import graph.Argument;
 import graph.Ref;
+import graph.Role;
 import graph.SimilarityMeasure;
 import graphreader.GraphReader;
 
@@ -23,45 +25,14 @@ public class Deserializer {
 	 */
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		 	
-		
-		String fileName = "/ssd/users/arsc/SIM/50k-graph-ids";
-		BufferedReader br =new BufferedReader(new InputStreamReader(new FileInputStream(fileName), Charset.forName("UTF-8")));
-		
-		PrintWriter L = null;
-		try {
-			L = new PrintWriter(new File("/ssd/users/arsc/SIM/50k-graph-details"));
-		} catch (IOException e1) {e1.printStackTrace();}
-		
-		String graphID = "";
-		String line ="";
-		while((graphID = br.readLine()) != null){
-			System.out.println(graphID);
-			String ref = ";";
-			
-			
-			
-			Argument pred = SimilarityMeasure.getRoot(GraphReader.readOneGraphFromFile("/dev/shm/artem/SINGLES/" + graphID));
-			List<Ref> refs = pred.getRefs();
-			if (refs.size() > 0){
-				ref = pred.getRefs().get(0).getURI();				
-			}else{
-				ref = "-";
-			}
-			
-			line = graphID.trim() + " , " + pred.getDisplayName() + " , " + pred.getMention() + " , " + ref + " ;";
-			
-			L.println(line);
+		String someGraph = "/home/pilatus/Dropbox/AIFB/09_Predicate_Clustering/BaselineX/qald-en-graphs/en-194-1-1.graph";
+		DirectedSparseGraph <Argument, Role> g = graphreader.GraphReader.readOneGraphFromFile(someGraph);
+//		test.GRAPHTESTER.visGraph(g, "ölkö");
+	
+		System.out.println();
+		for(Argument a : g.getVertices()){
+			System.out.println(a.getDisplayName());
 		}
-		br.close();
-		L.close();
-		
-		br = new BufferedReader(new InputStreamReader(new FileInputStream("/ssd/users/arsc/SIM/50k-graph-details"), Charset.forName("UTF-8")));
-		
-		while((line = br.readLine()) != null){
-			System.out.println(line);
-		}
-		br.close();
-
 	}
 
 }
