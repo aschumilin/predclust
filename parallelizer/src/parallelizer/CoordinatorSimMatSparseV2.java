@@ -33,9 +33,10 @@ public class CoordinatorSimMatSparseV2 {
 	private static FileWriter[] 	writers 		= null;
 
 	private static String 	resultFileSuffix			= "sparse";
-	public static String[] 	simMeasureNames 			= new String[]{"m1", "m1_2", "m2", "m4", "m6", "m8", "mJC", "mSum"};
-	
-	public static Object[] GRAPHS = null; 
+	public static String[] 	simMeasureNames 			= new String[]{"m1", "m12", "m2", "m4", "m62", "m8", "m82", "mJC", "mSum1.0", "mXLing", "mSum0.7", "mSum0.5", "mSum0.3", "mSum0.1"};
+
+	public static Object[] GRAPHS = null;
+	public static String[] graphUIDs = null;
 	
 	private static final int WAIT_TIME = 200000;
 	private static final void initResultInfra() throws IOException{
@@ -81,7 +82,7 @@ public class CoordinatorSimMatSparseV2 {
 		L.info("==============================================");
 
 	
-		String[] graphUIDs = null;
+		
 		
 		// arg 0
 		String algoClassName = args[0];

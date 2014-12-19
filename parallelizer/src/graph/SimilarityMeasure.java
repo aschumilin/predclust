@@ -3,8 +3,8 @@ package graph;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
@@ -180,6 +180,23 @@ public class SimilarityMeasure {
 		return genericJaccard(roles1, roles2);
 	}
 	
+	public static final double m62TransformedOutRoleLabels(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2, Argument p1, Argument p2){
+		/*
+		 * compare only the transformed role strings. e.g AO:Patient -> Patient
+		 */
+		ArrayList<String> roles1 = new ArrayList<String>(); 
+		ArrayList<String> roles2 = new ArrayList<String>();
+		
+		for(Role role : g1.getOutEdges(p1)){
+			roles1.add(transformRoleString(role.getRole()));
+		}
+		for(Role role : g2.getOutEdges(p2)){
+			roles2.add(transformRoleString(role.getRole()));
+		}
+		
+		return genericJaccard(roles1, roles2);
+	}
+	
 	public static final double m8OutRoleLabelsAndNodes(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2, Argument p1, Argument p2){
 		// ignore predicate-arguments, just the nodes
 		
@@ -205,7 +222,46 @@ public class SimilarityMeasure {
 		return rolesNodesJaccard(c1, c2);
 		
 	}
+	
+	public static final double m82TransformedOutRoleLabelsAndNodes(DirectedSparseGraph<Argument, Role> g1, DirectedSparseGraph<Argument, Role> g2, Argument p1, Argument p2){
+		/*
+		 * compare only the transformed role strings. e.g AO:Patient -> Patient
+		 */
+		Collection <Object[]> c1 = new ArrayList<Object[]>();		
+		Collection <Object[]> c2 = new ArrayList<Object[]>();
+		
+		for (Role role : g1.getOutEdges(p1)){
+			Argument arg = g1.getDest(role);
+			
+			if(! arg.isPredicate()){
+				c1.add(new Object[]{transformRoleString(role.getRole()), arg});
+			}
+		}
+		
+		for (Role role : g2.getOutEdges(p2)){
+			Argument arg = g2.getDest(role);
+			
+			if(! arg.isPredicate()){
+				c2.add(new Object[]{transformRoleString(role.getRole()), arg});
+			}
+		}
+		
+		return rolesNodesJaccard(c1, c2);
+	}
 
+	public static final double mXLingIndicator(String graphID1, String graphID2){
+		/*
+		 * labels must start with "en" or "es"
+		 * return 1 if graphs are from different language
+		 */
+		boolean xLingFlag = ! graphID1.substring(0,2).equals(graphID2.substring(0,2));
+		
+		if(xLingFlag) 
+			return 1.0;
+		else
+			return 0.0;
+	}
+	
 	/**
 	 * @param g1
 	 * @param g2
@@ -243,6 +299,14 @@ public class SimilarityMeasure {
 		System.out.println(a);
 		System.out.println("a".equals("A"));
 		System.out.println("a".equals("a"));
+		
+		String x = "A2:Beneficiary";
+		String y =":Attribute";
+		System.out.println(y.split(":")[1]);
+		System.out.println("en-aaaaaasd".substring(0,2).equals("en-jfjf".substring(0,2)));
+		System.out.println("en-aaaaaasd".substring(0,2));
+		boolean xLingFlag = ! "es-sjsj".substring(0,2).equals("es-asöldkö".substring(0,2));
+		System.out.println("xl:" + xLingFlag);
 
 	}
 
@@ -444,65 +508,24 @@ public class SimilarityMeasure {
 	        return (double) intersectionXY.size() / (double) unionXY.size();
 	    }
 
+	 public static final String transformRoleString(String completeRoleString) throws IllegalArgumentException{
+		 /*
+		  * if role contains ":", split it there and use
+		  * just the second part for comparisons. e.g. A0:Patient -> Patient
+		  */
+		 
+		 if(completeRoleString.contains(":")){
+			 try{
+				 return completeRoleString.split(":")[1];
+			 }catch(ArrayIndexOutOfBoundsException aioobe){				 
+				 throw new IllegalArgumentException("SimilarityMeasure.transformRoleString(): aioobe occured splitting role label: " + completeRoleString);
+			 }
+		 }else{
+			 return completeRoleString;
+		 }
+		 
+	 }
 
-	/*
-	public static final <T> double genericJaccard(Collection<T> cc1, Collection<T> cc2){
-		Set<T> c1 = new HashSet<T>(cc1);
-		Set<T> c2 = new HashSet<T>(cc2);
-		
-		int size1 = c1.size();
-		int size2 = c2.size();
-		
-		if (size1>0 && size2>0){
-			
-			double intersectionSize = 0.0;
-			double duplicates1=0.0, duplicates2=0;
-					
-			// intersection size: iterate over smaller list
-			if(size1 <= size2){
-				// iterate over 1
-				for(T cat : c1){
-					for(T cat : c1){
-						if(c1.t)
-					}
-					if(c2.contains(cat)) intersectionSize++;	
-				}
-				
-				if(intersectionSize> 0.0){
-					//union size
-					double unionSize = size1 + size2;
-					for(T cat : c1){
-						if(c2.contains(cat)) unionSize--;
-					}				
-					return intersectionSize / unionSize;
-				}else{
-					return 0.0;
-				}
-				
-			}else{
-				// iterate over 2
-				for(T cat : c2){
-					if(c1.contains(cat))intersectionSize++;					
-				}
-				
-				if(intersectionSize> 0.0){
-					//union size
-					double unionSize = size1 + size2;
-					for(T cat : c2){
-						if(c1.contains(cat)) unionSize--;
-					}
-					return intersectionSize / unionSize;
-				}else{ 
-					return 0.0;
-				}
-			}
-			
-			
 
-		}else{
-			return 0.0;
-		}
-	}
-	*/
 	
 }
