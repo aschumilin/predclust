@@ -4,6 +4,7 @@ Created on Dec 15, 2014
 @author: Artem
 '''
 
+from util import config
 def send_query(sparqlQueryString, listOfVarNames):
     from SPARQLWrapper import SPARQLWrapper, JSON
     """
@@ -12,7 +13,7 @@ def send_query(sparqlQueryString, listOfVarNames):
     Return: list of result tuples [(xValue, yValue), (), ...]  
     """
     #sparql = SPARQLWrapper("http://dbpedia.org/sparql")
-    sparql = SPARQLWrapper("http://aifb-ls3-merope.aifb.kit.edu:8890/sparql")
+    sparql = SPARQLWrapper(config.GET_CONF_DICT()["sparql.endpoint"])
     sparql.setQuery(sparqlQueryString)
     sparql.setReturnFormat(JSON)
     answer = sparql.query().convert()

@@ -79,7 +79,7 @@ String s2 = "en-14531824-100-1.graph";
 				// leave m6 metric out of calculation
 //				tempResults[4] 		= 0.0;
 ///////////////////////////////////////////////////////////////////////////////////////////
-				
+					
 
 				double m8Value		= SimilarityMeasure.m8OutRoleLabelsAndNodes(g1, g2, root1, root2);
 				tempResults[5]		= m8Value;

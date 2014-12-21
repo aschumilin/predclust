@@ -108,7 +108,7 @@ def get_candidate_props(entitiesOfQuestionSet):
         query associated properties: 
         SELECT DISTINCT ?p WHERE {E ?p ?o} & {?s ?p E}
         Input: set of entity URIs that were recognised in the question
-        Return: list of properties associated with the entity set 
+        Return: list of unique properties list(set()) associated with the entity set 
     """
     
     queryTemplateSubj = "select distinct ?prop where {0} {1} ?prop ?o .{2}"
@@ -221,13 +221,13 @@ if __name__ == '__main__':
      
     progress = Bar("fertig", max=len(os.listdir(baseDir)))
     
-    #resultFileEN = open("en-baseline4-result", "w")
-    #resultFileES = open("es-baseline4-result", "w")
+    #resultFileEN = open("en-baseline-result", "w")
+    #resultFileES = open("es-baseline-result", "w")
     #resultFilesDict = {"en": resultFileEN, "es": resultFileES}
     resultFilesDict = {str(L[0]) : open(L[0]
                                         +"-GRAPH-ENTS_ALL-PROPS_" 
                                         + str(MIN_SIMILARITY) 
-                                        + "_SIMTHRESH-baseline4-result", "w")}
+                                        + "_SIMTHRESH-baseline-result", "w")}
     print str(MIN_SIMILARITY)
     for qdir in os.listdir(baseDir):
         qid = qdir.split("-")[-1]

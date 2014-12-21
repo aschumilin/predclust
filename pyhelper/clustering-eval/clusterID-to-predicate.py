@@ -29,10 +29,10 @@ if __name__ == '__main__':
     # 
     #===========================================================================
     
-    graphsHomeDir       = "/home/pilatus/WORK/pred-clust/data/remus-backup/"
-    labelsFile          = "/home/pilatus/WORK/pred-clust/data/remus-backup/25k-lab"
-    clusterResultsDir   = "/home/pilatus/WORK/pred-clust/data/remus-backup/ClusteringResults/"
-    targetDir           = "/home/pilatus/WORK/pred-clust/data/remus-backup/ClusteringResultsLabeled/"
+    graphsHomeDir       = "/home/pilatus/WORK/pred-clust/data/1-graphs/"
+    labelsFile          = "/home/pilatus/WORK/pred-clust/data/clustering-50k-longarticles/25k-lab"
+    clusterResultsDir   = "/home/pilatus/WORK/pred-clust/data/clustering-50k-longarticles/ClusteringResults/"
+    targetDir           = "/home/pilatus/WORK/pred-clust/data/clustering-50k-longarticles/ClusteringResultsLabeled/"
 
      
     labelsList = [".json".join([line.split(",")[1].strip().split(".")[0], ""]) for line in open(labelsFile, "r").readlines()]
