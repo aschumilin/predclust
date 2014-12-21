@@ -39,15 +39,21 @@ def save_props_of_ent(entURI, propsURIList, targetDirPath):
 
 if __name__ == '__main__':
     """
-    Argument 1 = properties target dir 
+    Argument 1 = directory with <graphID>.entities files
+    Argument 2 = properties target dir 
     """
     entsSet = Counter()
-    
-    entBaseDir = config.GET_CONF_DICT()["25k-long.ents"]
     try:
-        propsTargetDir = sys.argv[1]
+        #entBaseDir = config.GET_CONF_DICT()["25k-long.ents"]
+        entBaseDir = sys.argv[1]
+    except:
+        print "Need to provide entBaseDir as argument 1 !"
+        exit 
+        
+    try:
+        propsTargetDir = sys.argv[2]
     except: 
-        print "Need to provide propsTargetDir as argument !"
+        print "Need to provide propsTargetDir as argument 2 !"
         exit
         
     j = 0
