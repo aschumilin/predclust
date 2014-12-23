@@ -4,7 +4,8 @@ Created on Dec 20, 2014
 @author: Artem
 '''
 """
-Argument 1 = properties target dir 
+Argument 1 = entities base dir 
+Argument 2 = properties target dir 
 
 First: run test.EntExtractorDumper in Java to extract 
 entities of each graph into separate files (one per graph). 
@@ -44,29 +45,36 @@ if __name__ == '__main__':
     """
     entsSet = Counter()
     try:
-        #entBaseDir = config.GET_CONF_DICT()["25k-long.ents"]
-        entBaseDir = sys.argv[1]
+        entBaseDir = config.GET_CONF_DICT()["25k-short.ents"]
+        #entBaseDir = sys.argv[1]
     except:
         print "Need to provide entBaseDir as argument 1 !"
         exit 
         
     try:
-        propsTargetDir = sys.argv[2]
+        propsTargetDir = "/home/pilatus/WORK/pred-clust/data/props-shorts-25k/"
+        #propsTargetDir = sys.argv[2]
     except: 
         print "Need to provide propsTargetDir as argument 2 !"
         exit
         
-    j = 0
+
     #===========================================================================
     # 1. 
     # add all found ents to dictionary
     #===========================================================================
     for entFile in os.listdir(entBaseDir):
-        j += 1
-        if j>=15: break
+        
         
         for entURI in [entLine.split("\t")[0] for entLine in open(entBaseDir + entFile, "r").readlines()]:
             #print entURI
+            
+            #===================================================================
+            # remove \ characters from the URI !!!!!!!!!!
+            # otherwise, query will crash
+            #===================================================================
+            entURI = entURI.replace("\\", "")
+
             entsSet[entURI] += 1
     #___ collect all ents from the given graphs
    
@@ -78,12 +86,17 @@ if __name__ == '__main__':
     #===========================================================================
     queryProgress = Bar("queries done", max=len(entsSet.keys()))
     
-    for entURI in entsSet.keys():
-        entPropsList = filter_props(get_candidate_props([entURI]))
-        
-        print entURI, "\n\t", str(len(entPropsList)), " props found"
-        #print entPropsList
-        save_props_of_ent(entURI, entPropsList, propsTargetDir )
+    for entURI in entsSet.keys():     
+        #print entURI, #"\n\t", str(len(entPropsList)), " props found"
+        try:
+            entPropsList = filter_props(get_candidate_props([entURI]))
+        except:
+            print "exception during sparql query"
+            
+        if len(entPropsList) > 0:
+            save_props_of_ent(entURI, entPropsList, propsTargetDir )
+        #else: 
+            #print "\t NO PROPS FOUND"
         queryProgress.next()
     #___ query and save props for each entity
     

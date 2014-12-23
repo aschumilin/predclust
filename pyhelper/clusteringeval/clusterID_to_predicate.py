@@ -16,6 +16,10 @@ def getPredicateDetails(graph):
 
 
 if __name__ == '__main__':
+    """
+    output: clustering results augmented with graphID and predicate details
+    <graphID.json, clusterID, predicate details>
+    """
     import os
     import json
     from progress.bar import Bar
@@ -34,32 +38,41 @@ if __name__ == '__main__':
     clusterResultsDir   = "/home/pilatus/WORK/pred-clust/data/clustering-50k-longarticles/ClusteringResults/"
     targetDir           = "/home/pilatus/WORK/pred-clust/data/clustering-50k-longarticles/ClusteringResultsLabeled/"
 
-     
+    
+    # 1. read file of graph labels: <sequenctial numbering, graphID>
+    # 2. separate the id from the sequence number
+    # 3. replace the ".graph" ending with ".json"
+    # result: list of relative paths to json graph files
     labelsList = [".json".join([line.split(",")[1].strip().split(".")[0], ""]) for line in open(labelsFile, "r").readlines()]
     
     resultFilesList = os.listdir(clusterResultsDir)
     pbar = Bar("progress", max=len(resultFilesList))
     
 
-
+    # for each metric:
     for clusterFile in resultFilesList:
         
+        # put the result file of the same name as the source file into the result folder
         targetFile = codecs.open(targetDir + clusterFile, "w", "utf-8")
+        
         clusterids = [line.strip() for line in open(clusterResultsDir + clusterFile, "r").readlines()]
         if len(clusterids) != len(labelsList): 
             print "ERROR: unequal files length: ", clusterFile
         else:
             for i in range(len(clusterids)):
-                inputfile = open(graphsHomeDir + labelsList[i], "r")
+                inputfile = open(graphsHomeDir + labelsList[i], "r")        # read json graph
                 graph = json.load(inputfile)
                 inputfile.close()
+                
+                # concat line of <graphID, clusterID, predicate details>
                 newline = ",".join([labelsList[i].split("/")[-1], clusterids[i]] + getPredicateDetails(graph))
                 targetFile.write(newline + "\n")  
             #___ for each line in cluster ids file 
             
             targetFile.close()
         pbar.next()
-    #___ for each cluster results file
+    #___ for each cluster results file (metric)
+    
     pbar.finish()
         
         

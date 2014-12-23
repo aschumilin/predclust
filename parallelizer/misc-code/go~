@@ -34,7 +34,7 @@ java -Dfile.encoding=UTF-8 \
 -Dmongo.addr=localhost \
 -Dmongo.port=22222 \
 -Dmongo.user=atsc \
--Dmongo.pwd=pass \
+-Dmongo.pwd=123 \
 -Dmongo.db.name=all \
 -Dlogfile=en-wikinews-stats.log \
 -jar par.jar algo.SrlToXml 4 nofiles artem/srlTestDoc

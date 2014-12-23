@@ -26,11 +26,7 @@ db.createUser({user: "user", pwd: "pwd", roles: [{ role: "readWrite", db:"all"}]
 mongo --port 22222 -u atsc -p 123
 mongo -u user -p pass localhost:22221/dbName
 
-use admin
-adm/ <pass>
-use all
-atsc/<pass>
-tester/<pass>
+
 
 
 script.js:
@@ -47,8 +43,8 @@ cd /local/users/atsc/mongoDB/mongodb-linux-2.6.1/bin
 
 
 create admin user:
-db.createUser({user:"admin", pwd:"pass", roles:[{role:"userAdminAnyDatabase", db:"admin"}]})
+db.createUser({user:"admin", pwd:"123", roles:[{role:"userAdminAnyDatabase", db:"admin"}]})
 create reader and writer:
-db.createUser({user: "writer", pwd: "pass", roles: [{ role: "readWrite", db:"srl"}]})
-db.createUser({user: "reader", pwd: "pass", roles: [{ role: "read", db:"srl"}]})
+db.createUser({user: "writer", pwd: "1234", roles: [{ role: "readWrite", db:"srl"}]})
+db.createUser({user: "reader", pwd: "12345", roles: [{ role: "read", db:"srl"}]})
 	

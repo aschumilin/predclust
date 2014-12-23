@@ -15,13 +15,13 @@ def listToCSV(targetFilePath, matrix, headerString=""):
         test = matrix[0] # sample element of matrix
         
         if type(test) is tuple:
-            print "tuple"
+            #print "tuple"
             targetFile.write("\n".join([",".join([str(value) for value in line]) for line in matrix]))
         elif type(test) is list: 
-            print "list"
+            #print "list"
             targetFile.write("\n".join([",".join([str(value) for value in line]) for line in matrix]))
         else:
-            print "other type"
+            #print "other type"
             targetFile.write("\n".join([line.strip() for line in matrix]))
     else:
         print "exception when writing matrix to file: ", targetFilePath, "\n"

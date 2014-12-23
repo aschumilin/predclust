@@ -8,7 +8,7 @@ Created on Dec 8, 2014
 @author: Artem
 '''
 
-def graphsPerCluster(clusterIDsList):
+def countGraphsPerCluster(clusterIDsList):
     """
     Count for each cluster, how many graphs it has.
     Input: simple raw list of clusterIDs
@@ -22,10 +22,39 @@ def graphsPerCluster(clusterIDsList):
         graphsCounter[clusterID] += 1
     
     return graphsCounter.items()
+  
+def getClusterGraphsDict(preprocessedClusteringResultsList):
+    """
+    Read pre-processed clustering result file and output 
+    a dict with clusterIDs and corresponding graphIDs.
+    Input: list of csv-strings of the shape <graphID.json, clusterID, predicate details>
+    Output: dict with {clusterID : [graphID1, graphID2,...]}
+    e.g. {998 : ["es-4261544-108-1", ...]}
+    """
+    clusterGraphsDict = dict()
     
-
+    # 1. first pass: preallocate empty lists in dictionary
+    for graphLine in preprocessedClusteringResultsList:
+        parts = graphLine.split(",")
+        clusterID = parts[1]
+        clusterGraphsDict.update({clusterID : []})
+        
+        
+    # 2. second pass: fill empty lists with graphIDs
+    for graphLine in preprocessedClusteringResultsList:
+        parts = graphLine.split(",")
+        graphID = parts[0]
+        clusterID = parts[1]
     
-
+    
+        # remove file ending from the graphID
+        # append graphID to list in dict    
+        if len(graphID.split(".")) > 0:
+            clusterGraphsDict.get(clusterID).append(graphID.split(".")[0])
+        else: 
+            clusterGraphsDict.get(clusterID).append(graphID)
+            
+    return clusterGraphsDict
 
 def processLines(linesOfFileList):
     """
@@ -53,7 +82,6 @@ def isSpanishGraph(graphID):
     """
     return graphID[1] is "s"
 
-
     
 def spanishPerCluster(clusterIDsList, graphIDsList, clustersAndTotalCounts=None):
     """
@@ -64,7 +92,7 @@ def spanishPerCluster(clusterIDsList, graphIDsList, clustersAndTotalCounts=None)
     from collections import Counter
     
     if clustersAndTotalCounts is None:
-        clustersAndTotalCounts = graphsPerCluster(clusterIDsList)
+        clustersAndTotalCounts = countGraphsPerCluster(clusterIDsList)
     
     esPerClusterCounter = Counter()
     
@@ -83,6 +111,7 @@ def spanishPerCluster(clusterIDsList, graphIDsList, clustersAndTotalCounts=None)
         returnListOfTuples.append( (tuple[0], esPercentage ) )     
     #___ done writing list of result tuples  
     return returnListOfTuples    
+   
    
 def saveHistogram(dataRow, numBins, xlab, ylab, title, filename): 
     import matplotlib.pyplot
@@ -120,7 +149,7 @@ if __name__ == '__main__':
     graphIDs, clusterIDs, predIDs, mentions = processLines(labels)
     
     #  count graphs per cluster
-    clustersAndCounts = graphsPerCluster(clusterIDs)
+    clustersAndCounts = countGraphsPerCluster(clusterIDs)
     print "cluster counts ", len(clustersAndCounts)
     listToCSV(labelsFile + ".counts", clustersAndCounts, "cluster_ID,graphs_count")
     
