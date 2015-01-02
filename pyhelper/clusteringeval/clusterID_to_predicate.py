@@ -33,17 +33,19 @@ if __name__ == '__main__':
     # 
     #===========================================================================
     
-    graphsHomeDir       = "/home/pilatus/WORK/pred-clust/data/1-graphs/"
-    labelsFile          = "/home/pilatus/WORK/pred-clust/data/clustering-50k-longarticles/25k-lab"
-    clusterResultsDir   = "/home/pilatus/WORK/pred-clust/data/clustering-50k-longarticles/ClusteringResults/"
-    targetDir           = "/home/pilatus/WORK/pred-clust/data/clustering-50k-longarticles/ClusteringResultsLabeled/"
+    currentWD           = "clustering-longarticles-qald-25k"
+    graphsHomeDir       = "/home/pilatus/WORK/pred-clust/data/"
+    labelsFile          = "/home/pilatus/WORK/pred-clust/data/" + currentWD + "/25k+qald-longarticles-labels"
+    clusterResultsDir   = "/home/pilatus/WORK/pred-clust/data/" + currentWD + "/ClusteringResults/"
+    targetDir           = "/home/pilatus/WORK/pred-clust/data/" + currentWD + "/ClusteringResultsLabeled/"
 
     
     # 1. read file of graph labels: <sequenctial numbering, graphID>
     # 2. separate the id from the sequence number
     # 3. replace the ".graph" ending with ".json"
     # result: list of relative paths to json graph files
-    labelsList = [".json".join([line.split(",")[1].strip().split(".")[0], ""]) for line in open(labelsFile, "r").readlines()]
+    #labelsList = [".json".join([line.split(",")[1].strip().split(".")[0], ""]) for line in open(labelsFile, "r").readlines()]
+    labelsList = [".json".join([line.strip().split(".")[0], ""]) for line in open(labelsFile, "r").readlines()]
     
     resultFilesList = os.listdir(clusterResultsDir)
     pbar = Bar("progress", max=len(resultFilesList))

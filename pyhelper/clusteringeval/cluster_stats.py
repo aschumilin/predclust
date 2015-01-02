@@ -7,6 +7,7 @@ Created on Dec 8, 2014
 
 @author: Artem
 '''
+from collections import Counter
 
 def countGraphsPerCluster(clusterIDsList):
     """
@@ -14,7 +15,6 @@ def countGraphsPerCluster(clusterIDsList):
     Input: simple raw list of clusterIDs
     Return: a List of tuples [ ( cluster_i , #graphs_in_i ) , (...)]
     """
-    from collections import Counter
 
     graphsCounter = Counter()
     
@@ -22,7 +22,36 @@ def countGraphsPerCluster(clusterIDsList):
         graphsCounter[clusterID] += 1
     
     return graphsCounter.items()
-  
+
+def getClusterPredicateDict(preprocessedClusteringResultsList):
+    """
+    Create human-readable overview of clusters and their predicates.
+    Input: list of csv-strings of the shape <graphID.json, clusterID, predicate details>
+    Output: dict with { clusterID : dict of { predicate : count in cluster } }
+    e.g. { 998 : { have.01 : 20 } }
+    """
+    clusterPredicatesDict = dict()
+    
+    # 1. first pass: preallocate empty lists in dictionary
+    for graphLine in preprocessedClusteringResultsList:
+        parts = graphLine.split(",")
+        clusterID = parts[1]
+        clusterPredicatesDict.update({clusterID : Counter() })
+    
+    # 2. second pass: fill empty lists with graphIDs
+    for graphLine in preprocessedClusteringResultsList:
+        parts = graphLine.split(",")
+        predicate = parts[2]
+        clusterID = parts[1]
+    
+    
+        # update predicate dict of this cluster with this predicate
+        clusterPredicatesDict.get(clusterID)[predicate] += 1
+       
+    return clusterPredicatesDict
+#___ getClusterPredicateDict()
+
+
 def getClusterGraphsDict(preprocessedClusteringResultsList):
     """
     Read pre-processed clustering result file and output 
@@ -89,7 +118,6 @@ def spanishPerCluster(clusterIDsList, graphIDsList, clustersAndTotalCounts=None)
     input: clustersAndTotalCounts = list of tuples [(clusterID, count), ()]
     return list of tuples [(clusterID, %ES in cluster), ()]
     """
-    from collections import Counter
     
     if clustersAndTotalCounts is None:
         clustersAndTotalCounts = countGraphsPerCluster(clusterIDsList)
@@ -106,9 +134,9 @@ def spanishPerCluster(clusterIDsList, graphIDsList, clustersAndTotalCounts=None)
     
     # compose return data structure
     returnListOfTuples = []
-    for tuple in clustersAndTotalCounts:
-        esPercentage = 100.0 * esPerClusterCounter.get(tuple[0]) / tuple[1]
-        returnListOfTuples.append( (tuple[0], esPercentage ) )     
+    for tupl in clustersAndTotalCounts:
+        esPercentage = 100.0 * esPerClusterCounter.get(tupl[0]) / tupl[1]
+        returnListOfTuples.append( (tupl[0], esPercentage ) )     
     #___ done writing list of result tuples  
     return returnListOfTuples    
    
@@ -146,6 +174,16 @@ if __name__ == '__main__':
         exit
     
     
+    # write human-readable file of clusters and their predicates
+    clustersPredicates = getClusterPredicateDict(labels)
+    for clusterID in clustersPredicates:
+        print clusterID, " ---------------------------------"
+        predsDict = clustersPredicates.get(clusterID)
+        for pred in predsDict:
+            print "\t", predsDict.get(pred), "\t", pred
+
+
+    """
     graphIDs, clusterIDs, predIDs, mentions = processLines(labels)
     
     #  count graphs per cluster
@@ -161,10 +199,10 @@ if __name__ == '__main__':
     
     # plot histograms
     plotTitle = labelsFile.split("/")[-1].split(".")[0]
-    saveHistogram([tuple[1] for tuple in clustersAndCounts], 100, "# graphs in cluster", "# of clusters", plotTitle, labelsFile+".graphs-per-cluster.png")
+    saveHistogram([tupl[1] for tupl in clustersAndCounts], 100, "# graphs in cluster", "# of clusters", plotTitle, labelsFile+".graphs-per-cluster.png")
 
     
-    saveHistogram([tuple[1] for tuple in clustersAndEsPercents], 100, "% of spanish graphs in cluster", "# of clusters", plotTitle, labelsFile+".es-percent.png")
-    
+    saveHistogram([tupl[1] for tupl in clustersAndEsPercents], 100, "% of spanish graphs in cluster", "# of clusters", plotTitle, labelsFile+".es-percent.png")
+    """
     
 

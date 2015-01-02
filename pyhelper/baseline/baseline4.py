@@ -9,8 +9,36 @@ import os
 import nltk
 from progress.bar import Bar
 from pyxdameraulevenshtein import normalized_damerau_levenshtein_distance as normalized_string_similarity # alternative: damerau_levenshtein_distance
+from xml.etree import ElementTree as ET 
 #from util.sendQuery import send_query
 
+def get_sentence_from_srl(graphID, srlDirPath):
+    """
+    given the path to a graph file, 
+    extract the corresponding article ID, determine language, 
+    read the corresponding srl xml file, 
+    get the correct sentence string from the xml file
+    Input: graph id, e.g. en-1234452-1-12.graph
+    Input: path of dir with all srl xml files
+    Output: Sentence string or None if no srl file found
+    """
+    
+    # decompose graph id
+    parts = graphID.split("-")
+    sentenceID = parts[2]
+    srlFileName = parts[0] +"-" + parts[1] + "_srl.xml"
+    srlFilePath = srlDirPath + srlFileName
+    
+    root = ET.parse(srlFilePath).getroot()
+    sentenceString = root.find("sentences/sentence[@id='" + sentenceID +"']/text")
+    
+    if sentenceString is None:
+        return None
+    else:
+        return sentenceString.text
+#___ get_sentence() 
+    
+    
 def send_query(sparqlQueryString, listOfVarNames):
     from SPARQLWrapper import SPARQLWrapper, JSON
     """

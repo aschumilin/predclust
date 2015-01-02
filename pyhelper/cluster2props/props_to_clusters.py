@@ -6,7 +6,41 @@ Created on Dec 21, 2014
 
 from clusteringeval.cluster_stats import getClusterGraphsDict
 from collections import Counter
+import operator
 
+def get_prop_exclude_set():
+    """
+    Exclude structural wiki props.
+    Output: set of properties to exclude. 
+    """
+    #===============================================================================
+    # count   propURI (25k-noqald-long)
+    # 1345    http://dbpedia.org/ontology/wikiPageExternalLink
+    # 1418    http://dbpedia.org/ontology/wikiPageDisambiguates
+    # 1434    http://dbpedia.org/ontology/thumbnail
+    # 1730    http://dbpedia.org/ontology/abstract
+    # 1733    http://dbpedia.org/ontology/wikiPageRedirects
+    # 1770    http://dbpedia.org/ontology/wikiPageRevisionID
+    # 1770    http://dbpedia.org/ontology/wikiPageID
+    # 1770    http://dbpedia.org/ontology/wikiPageWikiLink
+    #===============================================================================
+    propsToExcludeSet = set()
+    
+    excludeList = ["http://dbpedia.org/ontology/wikiPageExternalLink",
+                   "http://dbpedia.org/ontology/wikiPageDisambiguates",
+                   "http://dbpedia.org/ontology/thumbnail",
+                   "http://dbpedia.org/ontology/abstract",
+                   "http://dbpedia.org/ontology/wikiPageRedirects",
+                   "http://dbpedia.org/ontology/wikiPageRevisionID",
+                   "http://dbpedia.org/ontology/wikiPageID",
+                   "http://dbpedia.org/ontology/wikiPageWikiLink"]
+    
+    for badProp in excludeList:
+        propsToExcludeSet.add(badProp)
+        
+    return propsToExcludeSet
+    
+    
 def get_all_props_of_cluster(entURIsList, propsBaseDirPath):
     """
     For all the graphIDs provided, collect the corresponding properties.
@@ -15,29 +49,33 @@ def get_all_props_of_cluster(entURIsList, propsBaseDirPath):
     Input: complete list of entities that occur in one cluster
     Output: list of property URIs that correspond to all the entities from that cluster 
     
-    !!! 
-    Some ent URIs contain escape char "\". It is removed in this method
+    !!! Note: 
+    1. Some ent URIs contain escape char "\". It is removed in this method
+    2. Certain props are excluded via a stop-list.
     !!!
     """
     
     resultPropsList = []
-    
+    propsToExcludeSet = get_prop_exclude_set()
+        
     # 1. split off the entity label = fileName of the properties file
     # 2. for each uri, read its props, add props to return list
     for entURI in entURIsList:
         
+        # !!! remove escape char 
         entLabel = entURI.replace("\\", "").split("/")[-1]
         propsFileName = propsBaseDirPath + entLabel
         
         props = []
         try:
-            props = open(propsFileName, "r").readlines()
+            props = [prop.strip() for prop in open(propsFileName, "r").readlines()]
         except:
             #print "get_all_props_of_cluster(): props file not found: ", propsFileName 
             continue
             
         # lines of entity file example: <uri> \t <weight>
-        resultPropsList = resultPropsList + [prop.strip() for prop in props]
+        # exclude props via stop-list
+        resultPropsList = resultPropsList + [prop for prop in props if prop not in propsToExcludeSet]
     
     return resultPropsList
         
@@ -89,28 +127,103 @@ def get_all_entities_of_cluster(graphIDsInClusterList, entsBaseDirPath):
         try:
             entsFile = open(entsFileName, "r")
         except: 
-            print "get_all_entities_of_cluster(): ents file not found: ", entsFileName
+            #print "get_all_entities_of_cluster(): ents file not found: ", entsFileName
             continue
         ents = entsFile.readlines()
         
-        resultEntsList = resultEntsList + [ent.split("\t")[0].strip() for ent in ents]
+        resultEntsList = resultEntsList + [ ent.split("\t")[0].strip() for ent in ents ]
     #___ for each graphID in that cluster
       
     return resultEntsList
 
 
-def rank_by_frequency(propsList):
+def produce_global_frequenc_ranking(clustersPropsDict):
     """
-    Rank props of a cluster by their frequency
-    Input: list of prop URIs of a cluster
-    Output: dict ot { propURI : ranking }
+    Rank all props in dataset by their frequency.
+    Input: dict of { clusterID : [props list of cluster] }
+    Output: dict of  {propURI : global freq-ranking } 
+    Sort it later by freq value in descending order.
     """
-    propCounts = Counter()
     
-    for prop in propsList:
-        propCounts[prop] += 1
+    globalPropsRankingDict = Counter()
+    
+    for clusterID in clustersPropsDict:
+        for prop in clustersPropsDict.get(clusterID):
+            globalPropsRankingDict[prop] += 1
+    #___
+    
+    return globalPropsRankingDict
+#___ freq-rank properties in enire dataset
+    
+   
+    
+def produce_cluster_frequency_ranking(clustersPropsDict):
+    """
+    Creates a cluster-specific frequency ranking of properties.  
+    Input: dict of { clusterID : [props list of cluster] }
+    Output: dict of { clusterID : dict {propURI : ranking inside cluster } }
+    Usage: clusterID -> propURI -> freq-ranking
+    """
+    
+    clustersDictsDict = dict()
+    
+    for clusterID in clustersPropsDict:
+        propsInClusterRanking = Counter()
+        
+        for prop in clustersPropsDict.get(clusterID):
+            propsInClusterRanking[ prop ] += 1
+            
+        clustersDictsDict.update( { clusterID : propsInClusterRanking } )
+        
     
     
+    return clustersDictsDict
+#___ create dict of freq-ranking per cluster
+
+ 
+#def produce_cluster_relative_ranking(clustersPropsDict):
+    """
+    Creates a cluster-specific tfidf-like ranking of properties.  
+    Input: dict of { clusterID : [props list of cluster] }
+    Output: dict of { clusterID : dict {propURI : tfidf ranking inside cluster } }
+    Usage: clusterID -> propURI -> tfidf-ranking
+    """
+    # TODO
+def produce_cluster_relative_ranking(clustersPropsDict):
+    """
+    Creates a cluster-specific tfidf-like ranking of properties.  
+    Input: dict of { clusterID : [props list of cluster] }
+    Output: dict of { clusterID : dict {propURI : tfidf ranking inside cluster } }
+    Usage: clusterID -> propURI -> tfidf-ranking
+    """
+    resultDictsDict = dict()
+    
+    byClusterFreqRankedPropsDict = produce_cluster_frequency_ranking(clustersPropsDict)
+    globalFreqRankedPropsDict    = produce_global_frequenc_ranking(clustersPropsDict)
+    numPropsInDataset           = len(globalFreqRankedPropsDict)
+    
+    for clusterID in byClusterFreqRankedPropsDict.keys():
+        
+        tempPropsRanksDict = dict()
+        currentClusterDict = byClusterFreqRankedPropsDict.get(clusterID)
+        clusterSize        = len (currentClusterDict) 
+        # print clusterID
+        for propURI in currentClusterDict.keys():
+            # relativeInCluster / relativeGlobal
+            localPropFreqRank = currentClusterDict.get( propURI )
+            globalPropFreqRank= globalFreqRankedPropsDict.get(propURI)
+            print str(localPropFreqRank), "\t", str(clusterSize), "\t", str( globalPropFreqRank), "\t", str(numPropsInDataset) 
+            relativeRanking =  (1.0 *localPropFreqRank / clusterSize) / (1.0 * globalPropFreqRank / numPropsInDataset) 
+            print "\t", str(relativeRanking)
+            tempPropsRanksDict.update ( { propURI : relativeRanking } )
+        #___ loop over all props in cluster
+        
+        resultDictsDict.update( { clusterID : tempPropsRanksDict } )
+    #___ loop over all clusters
+    
+    return resultDictsDict
+#___ produce_global_relative_ranking()
+ 
 if __name__ == '__main__':
     """
     create dict from clustering -> get entities of cluster -> get properties of entities
@@ -127,11 +240,30 @@ if __name__ == '__main__':
     sumprops = 0
     propslist = []
     print len(clustersPropsDict.values())
-    for clID in clustersPropsDict.keys():
-        print clID
-        propslist += clustersPropsDict.get(clID)
-        print "\t", str(len(clustersPropsDict.get(clID))), "\t", str(len(set(clustersPropsDict.get(clID))))
+    #===========================================================================
+    # for clID in clustersPropsDict.keys():
+    #     print clID
+    #     propslist += clustersPropsDict.get(clID)
+    #     print "\t", str(len(clustersPropsDict.get(clID))), "\t", str(len(set(clustersPropsDict.get(clID))))
+    #===========================================================================
         
-    print "-----------"
-    print str(len(propslist)), "\t", str(len(set(propslist)))
-            
+    #print "-----------"
+    #print str(len(propslist)), "\t", str(len(set(propslist)))
+    #print "-----------"
+    sortedPropsGlobal = sorted(produce_global_frequenc_ranking(clustersPropsDict).items(), key=operator.itemgetter(1), reverse=False)
+    #print "\n".join([str(tupl[1]) +"\t"+ tupl[0] for tupl in sortedPropsGlobal])
+    
+    perClusterFreq = produce_cluster_frequency_ranking(clustersPropsDict)
+    perClusterRelative = produce_cluster_relative_ranking(clustersPropsDict)
+    
+    print len(perClusterFreq)
+    print len(perClusterRelative)
+    
+    #===========================================================================
+    # for clID in perClusterRelative:
+    #     sortedProps = sorted(perClusterRelative.get(clID).items(), key=operator.itemgetter(1), reverse=True)[0:3]
+    #     print clID
+    #     for p in sortedProps:
+    #         print "\t", p[1], "\t", p[0]
+    #===========================================================================
+        

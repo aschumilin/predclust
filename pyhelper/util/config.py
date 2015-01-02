@@ -18,5 +18,8 @@ def GET_CONF_DICT():
                    "/home/pilatus/WORK/pred-clust/data/entities-shorts-25k/"})
     VALUES.update({"sparql.endpoint":
                    "http://aifb-ls3-merope.aifb.kit.edu:8890/sparql"})
-    
+    VALUES.update({"longarticles.srl" : 
+                   "/home/pilatus/WORK/pred-clust/data/srl-longarticles/"})
+    VALUES.update({"shortarticles.srl" :
+                   "/home/pilatus/WORK/pred-clust/data/srl-shortarticles/"})
     return VALUES
