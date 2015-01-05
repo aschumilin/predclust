@@ -27,28 +27,40 @@ def getClusterPredicateDict(preprocessedClusteringResultsList):
     """
     Create human-readable overview of clusters and their predicates.
     Input: list of csv-strings of the shape <graphID.json, clusterID, predicate details>
-    Output: dict with { clusterID : dict of { predicate : count in cluster } }
+    Output1: dict with { clusterID : dict of { predicate : count in cluster } }
+    Output2: dict with { clusterID : dict of { predicate : [list of surface forms] } }
     e.g. { 998 : { have.01 : 20 } }
+         { 998 : { have.01 : [had, has have] } }
     """
     clusterPredicatesDict = dict()
+    clusterSurfaceformsDict = dict()
     
     # 1. first pass: preallocate empty lists in dictionary
     for graphLine in preprocessedClusteringResultsList:
         parts = graphLine.split(",")
         clusterID = parts[1]
         clusterPredicatesDict.update({clusterID : Counter() })
-    
+        clusterSurfaceformsDict.update({clusterID : dict() })
+        
     # 2. second pass: fill empty lists with graphIDs
     for graphLine in preprocessedClusteringResultsList:
         parts = graphLine.split(",")
         predicate = parts[2]
         clusterID = parts[1]
-    
+        surfaceForm = parts[3].strip()
     
         # update predicate dict of this cluster with this predicate
         clusterPredicatesDict.get(clusterID)[predicate] += 1
-       
-    return clusterPredicatesDict
+        # add surface form to this predicate
+        tempPredSFList = clusterSurfaceformsDict.get(clusterID).get(predicate)
+        if not tempPredSFList:
+            # init new surface forms list for that predicate
+            clusterSurfaceformsDict.get(clusterID).update( { predicate : [surfaceForm] } )
+        else:
+            # append surface form to existing list
+            tempPredSFList.append(surfaceForm)
+                                                   
+    return clusterPredicatesDict, clusterSurfaceformsDict
 #___ getClusterPredicateDict()
 
 
@@ -161,6 +173,10 @@ def saveHistogram(dataRow, numBins, xlab, ylab, title, filename):
 
     
 if __name__ == '__main__':
+    """
+    Call this from bash on individual labels files like this:
+    python cluster_stats.py SCResultmsm12-sparse.csvdimensions2Cluster200Normalization1.txt
+    """
     import sys
     import codecs
     from util.toCSV import listToCSV
@@ -169,40 +185,53 @@ if __name__ == '__main__':
     try:
         labelsFile = sys.argv[1]
         labels = codecs.open(labelsFile, "r").readlines()
+        print labelsFile
     except:
         print "ERROR in cluster-stats.main: bad argument. Exiting..."
         exit
     
     
-    # write human-readable file of clusters and their predicates
-    clustersPredicates = getClusterPredicateDict(labels)
-    for clusterID in clustersPredicates:
-        print clusterID, " ---------------------------------"
-        predsDict = clustersPredicates.get(clusterID)
-        for pred in predsDict:
-            print "\t", predsDict.get(pred), "\t", pred
-
-
-    """
+    # 1. write human-readable file of clusters and their predicates
+    clustersPredicatesDict, clustersPredicatesSurfaceFormsDict = getClusterPredicateDict(labels)
+    resultFile = open(labelsFile + ".clusters-surface-readable", "w")
+    buff = []
+    for clusterID in clustersPredicatesDict:
+        buff.append( str(clusterID) + " ---------------------------------\n")
+        countsDict = clustersPredicatesDict.get(clusterID)
+        for pred in countsDict:
+            inClusterCount = countsDict.get(pred)
+            surfaceForms = ",".join( clustersPredicatesSurfaceFormsDict.get(clusterID).get(pred) )
+            buff.append( "\t" + str(inClusterCount) + "\t" + pred + "\t" + surfaceForms + "\n")
+    resultFile.writelines(buff)
+    resultFile.close()
+   
+    #===========================================================================
+    # for clusterID in clustersPredicatesDict:
+    #     buff.append( str(clusterID) + " ---------------------------------\n")
+    #     predsDict = clustersPredicatesDict.get(clusterID)
+    #     for pred in predsDict:
+    #         buff.append( "\t" + str(predsDict.get(pred)) + "\t" + pred + "\n")
+    # resultFile.writelines(buff)
+    # resultFile.close()
+    #===========================================================================
+"""
     graphIDs, clusterIDs, predIDs, mentions = processLines(labels)
     
-    #  count graphs per cluster
+    # 2. count graphs per cluster
     clustersAndCounts = countGraphsPerCluster(clusterIDs)
     print "cluster counts ", len(clustersAndCounts)
     listToCSV(labelsFile + ".counts", clustersAndCounts, "cluster_ID,graphs_count")
     
     
-    # count en-es mixture in each cluster
+    # 3. count en-es mixture in each cluster
     clustersAndEsPercents = spanishPerCluster(clusterIDs, graphIDs) 
     print "percentages ", len(clustersAndEsPercents)
     listToCSV(labelsFile + ".es-percent", clustersAndEsPercents, "cluster_ID,%_spanish_predicates")
     
-    # plot histograms
+    # 4. plot histograms
     plotTitle = labelsFile.split("/")[-1].split(".")[0]
     saveHistogram([tupl[1] for tupl in clustersAndCounts], 100, "# graphs in cluster", "# of clusters", plotTitle, labelsFile+".graphs-per-cluster.png")
-
-    
     saveHistogram([tupl[1] for tupl in clustersAndEsPercents], 100, "% of spanish graphs in cluster", "# of clusters", plotTitle, labelsFile+".es-percent.png")
-    """
+"""    
     
 

@@ -53,7 +53,7 @@ if __name__ == '__main__':
 
     # for each metric:
     for clusterFile in resultFilesList:
-        
+        print clusterFile
         # put the result file of the same name as the source file into the result folder
         targetFile = codecs.open(targetDir + clusterFile, "w", "utf-8")
         

@@ -229,7 +229,7 @@ if __name__ == '__main__':
     create dict from clustering -> get entities of cluster -> get properties of entities
     """
     preprocessedClusteringResultFileName = \
-    "/home/pilatus/WORK/pred-clust/data/clustering-longarticles-25k/ClusteringResultsLabeled/mSum-sparse10eigsSpectralClustering25k2000ClusterNormalization2.csv"
+    "/home/pilatus/WORK/pred-clust/data/clustering-longarticles-qald-25k/ClusteringResultsLabeled/SCResultmsm12-sparse.csvdimensions100Cluster1000Normalization1.txt"
     propsHome ="/home/pilatus/WORK/pred-clust/data/props-longarticles-25k/"
     entsHome = "/home/pilatus/WORK/pred-clust/data/entities-longarticles-25k/"
     
