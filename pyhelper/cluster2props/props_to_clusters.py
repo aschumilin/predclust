@@ -1,3 +1,7 @@
+"""
+Create a mapping of properties to clusters.
+Calculate different ranking scores of properties w.r.t to clusters.
+"""
 '''
 Created on Dec 21, 2014
 
@@ -94,10 +98,10 @@ def get_clusters_props_dict(clustersEntsDict, entsHomeDir, propsHomeDir):
     for clusterID in sorted(clustersEntsDict.keys()):
         
         # get ents from graphIDs
-        entURIsOfCluster = get_all_entities_of_cluster( clustersEntsDict.get(clusterID), entsHome )
+        entURIsOfCluster = get_all_entities_of_cluster( clustersEntsDict.get(clusterID), entsHomeDir )
         
         # get props from ents
-        propURIsOfCluster = get_all_props_of_cluster( entURIsOfCluster, propsHome )   
+        propURIsOfCluster = get_all_props_of_cluster( entURIsOfCluster, propsHomeDir )   
     
         if not propURIsOfCluster:
             continue
@@ -106,7 +110,6 @@ def get_clusters_props_dict(clustersEntsDict, entsHomeDir, propsHomeDir):
     #___ iterate over all cluster IDs
 
     return resultClustersPropsDict
-
 
 
 def get_all_entities_of_cluster(graphIDsInClusterList, entsBaseDirPath):
@@ -137,7 +140,7 @@ def get_all_entities_of_cluster(graphIDsInClusterList, entsBaseDirPath):
     return resultEntsList
 
 
-def produce_global_frequenc_ranking(clustersPropsDict):
+def produce_global_frequency_ranking(clustersPropsDict):
     """
     Rank all props in dataset by their frequency.
     Input: dict of { clusterID : [props list of cluster] }
@@ -154,12 +157,10 @@ def produce_global_frequenc_ranking(clustersPropsDict):
     
     return globalPropsRankingDict
 #___ freq-rank properties in enire dataset
-    
-   
-    
-def produce_cluster_frequency_ranking(clustersPropsDict):
+           
+def produce_cluster_absolute_frequency_ranking(clustersPropsDict):
     """
-    Creates a cluster-specific frequency ranking of properties.  
+    Creates a cluster-specific absolute frequency ranking of properties.  
     Input: dict of { clusterID : [props list of cluster] }
     Output: dict of { clusterID : dict {propURI : ranking inside cluster } }
     Usage: clusterID -> propURI -> freq-ranking
@@ -167,7 +168,7 @@ def produce_cluster_frequency_ranking(clustersPropsDict):
     
     clustersDictsDict = dict()
     
-    for clusterID in clustersPropsDict:
+    for clusterID in clustersPropsDict.keys():
         propsInClusterRanking = Counter()
         
         for prop in clustersPropsDict.get(clusterID):
@@ -181,25 +182,18 @@ def produce_cluster_frequency_ranking(clustersPropsDict):
 #___ create dict of freq-ranking per cluster
 
  
-#def produce_cluster_relative_ranking(clustersPropsDict):
+
+def produce_cluster_tfidf_ranking(clustersPropsDict):
     """
     Creates a cluster-specific tfidf-like ranking of properties.  
     Input: dict of { clusterID : [props list of cluster] }
-    Output: dict of { clusterID : dict {propURI : tfidf ranking inside cluster } }
-    Usage: clusterID -> propURI -> tfidf-ranking
-    """
-    # TODO
-def produce_cluster_relative_ranking(clustersPropsDict):
-    """
-    Creates a cluster-specific tfidf-like ranking of properties.  
-    Input: dict of { clusterID : [props list of cluster] }
-    Output: dict of { clusterID : dict {propURI : tfidf ranking inside cluster } }
+    Output: dict of { clusterID : dict {propURI : tfidf ranking within cluster } }
     Usage: clusterID -> propURI -> tfidf-ranking
     """
     resultDictsDict = dict()
     
-    byClusterFreqRankedPropsDict = produce_cluster_frequency_ranking(clustersPropsDict)
-    globalFreqRankedPropsDict    = produce_global_frequenc_ranking(clustersPropsDict)
+    byClusterFreqRankedPropsDict = produce_cluster_absolute_frequency_ranking(clustersPropsDict)
+    globalFreqRankedPropsDict    = produce_global_frequency_ranking(clustersPropsDict)
     numPropsInDataset           = len(globalFreqRankedPropsDict)
     
     for clusterID in byClusterFreqRankedPropsDict.keys():
@@ -212,9 +206,9 @@ def produce_cluster_relative_ranking(clustersPropsDict):
             # relativeInCluster / relativeGlobal
             localPropFreqRank = currentClusterDict.get( propURI )
             globalPropFreqRank= globalFreqRankedPropsDict.get(propURI)
-            print str(localPropFreqRank), "\t", str(clusterSize), "\t", str( globalPropFreqRank), "\t", str(numPropsInDataset) 
+            # print str(localPropFreqRank), "\t", str(clusterSize), "\t", str( globalPropFreqRank), "\t", str(numPropsInDataset) 
             relativeRanking =  (1.0 *localPropFreqRank / clusterSize) / (1.0 * globalPropFreqRank / numPropsInDataset) 
-            print "\t", str(relativeRanking)
+            # print "\t", str(relativeRanking)
             tempPropsRanksDict.update ( { propURI : relativeRanking } )
         #___ loop over all props in cluster
         
@@ -224,6 +218,44 @@ def produce_cluster_relative_ranking(clustersPropsDict):
     return resultDictsDict
 #___ produce_global_relative_ranking()
  
+ 
+ 
+def produce_cluster_relative_frequency_ranking(clustersPropsDict):
+    """
+    Creates a cluster-specific relative frequency ranking of properties.  
+    Input: dict of { clusterID : [props list of cluster] }
+    Output: dict of { clusterID : dict {propURI : ranking inside cluster } }
+    Usage: clusterID -> propURI -> freq-ranking
+    """
+    
+    clustersDictsDict = dict()
+    
+    for clusterID in clustersPropsDict.keys():
+        
+        propsInClusterRanking = Counter()
+        
+        propsOfClusterList = clustersPropsDict.get( clusterID )
+        numPropsInCluster = len ( propsOfClusterList )
+        
+        # calculate absolute frequency ranking first
+        for prop in propsOfClusterList:
+            propsInClusterRanking[ prop ] += 1
+            
+        
+        # substitute absolute by relative ranking
+        for prop in propsInClusterRanking:
+            propsInClusterRanking[ prop ] = ( 1.0 * propsInClusterRanking[ prop ]) / ( 1.0 * numPropsInCluster)
+        
+        
+        clustersDictsDict.update( { clusterID : propsInClusterRanking } )
+        
+    
+    
+    return clustersDictsDict    
+#___ produce_cluster_relative_ranking()
+
+
+
 if __name__ == '__main__':
     """
     create dict from clustering -> get entities of cluster -> get properties of entities
@@ -239,7 +271,7 @@ if __name__ == '__main__':
     
     sumprops = 0
     propslist = []
-    print len(clustersPropsDict.values())
+    #print len(clustersPropsDict.values())
     #===========================================================================
     # for clID in clustersPropsDict.keys():
     #     print clID
@@ -250,14 +282,14 @@ if __name__ == '__main__':
     #print "-----------"
     #print str(len(propslist)), "\t", str(len(set(propslist)))
     #print "-----------"
-    sortedPropsGlobal = sorted(produce_global_frequenc_ranking(clustersPropsDict).items(), key=operator.itemgetter(1), reverse=False)
+    sortedPropsGlobal = sorted(produce_global_frequency_ranking(clustersPropsDict).items(), key=operator.itemgetter(1), reverse=False)
     #print "\n".join([str(tupl[1]) +"\t"+ tupl[0] for tupl in sortedPropsGlobal])
     
-    perClusterFreq = produce_cluster_frequency_ranking(clustersPropsDict)
-    perClusterRelative = produce_cluster_relative_ranking(clustersPropsDict)
+    perClusterFreq = produce_cluster_absolute_frequency_ranking(clustersPropsDict)
+    perClusterRelative = produce_cluster_tfidf_ranking(clustersPropsDict)
     
-    print len(perClusterFreq)
-    print len(perClusterRelative)
+    #print len(perClusterFreq)
+    #print len(perClusterRelative)
     
     #===========================================================================
     # for clID in perClusterRelative:

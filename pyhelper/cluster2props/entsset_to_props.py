@@ -9,7 +9,7 @@ Argument 2 = properties target dir
 
 First: run test.EntExtractorDumper in Java to extract 
 entities of each graph into separate files (one per graph). 
-Get files <graphID>.entities.
+This creates files named like: <graphID>.entities.
 
 Second: create set of entities from all graphs.
 

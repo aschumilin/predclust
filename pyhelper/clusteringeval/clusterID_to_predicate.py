@@ -1,4 +1,5 @@
 """
+Create preprocessed (augmented) luster labels file.
 Read the file of cluster IDs + graph list. 
 Output the cluster IDs along with graphID, 
 predicate surface form etc.
@@ -21,6 +22,7 @@ if __name__ == '__main__':
     <graphID.json, clusterID, predicate details>
     """
     import os
+    import sys
     import json
     from progress.bar import Bar
     import codecs
@@ -32,13 +34,24 @@ if __name__ == '__main__':
     #     print graphID, clusterID, predID, surface form, wordnetID
     # 
     #===========================================================================
+    try:
+        # e.g. "clustering-longarticles-qald-25k"
+        currentWD = sys.argv[1]
+    except:
+        print "bad <currentWD> argument. Need something like clustering-longarticles-qald-25k \n Exiting..."
     
-    currentWD           = "clustering-longarticles-qald-25k"
     graphsHomeDir       = "/home/pilatus/WORK/pred-clust/data/"
     labelsFile          = "/home/pilatus/WORK/pred-clust/data/" + currentWD + "/25k+qald-longarticles-labels"
     clusterResultsDir   = "/home/pilatus/WORK/pred-clust/data/" + currentWD + "/ClusteringResults/"
     targetDir           = "/home/pilatus/WORK/pred-clust/data/" + currentWD + "/ClusteringResultsLabeled/"
 
+    # verify the currentWD argument 
+    if not os.path.exists(labelsFile):
+        print "bad argument: graph labels file does not exist\n", labelsFile
+    if not os.path.exists(clusterResultsDir):
+        print "bad argument: <ClusteringResults> dir does not exist\n", clusterResultsDir
+    if not os.path.exists(targetDir):
+        print "bad argument: <ClusteringResultsLabeled> dir does not exist\n", targetDir
     
     # 1. read file of graph labels: <sequenctial numbering, graphID>
     # 2. separate the id from the sequence number
@@ -51,9 +64,9 @@ if __name__ == '__main__':
     pbar = Bar("progress", max=len(resultFilesList))
     
 
-    # for each metric:
+    # for each metric in source directory clusterResultsDir:
     for clusterFile in resultFilesList:
-        print clusterFile
+        #print clusterFile
         # put the result file of the same name as the source file into the result folder
         targetFile = codecs.open(targetDir + clusterFile, "w", "utf-8")
         

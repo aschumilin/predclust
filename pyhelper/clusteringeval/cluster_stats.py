@@ -214,24 +214,24 @@ if __name__ == '__main__':
     # resultFile.writelines(buff)
     # resultFile.close()
     #===========================================================================
-"""
+
     graphIDs, clusterIDs, predIDs, mentions = processLines(labels)
     
     # 2. count graphs per cluster
     clustersAndCounts = countGraphsPerCluster(clusterIDs)
-    print "cluster counts ", len(clustersAndCounts)
+    #print "cluster counts ", len(clustersAndCounts)
     listToCSV(labelsFile + ".counts", clustersAndCounts, "cluster_ID,graphs_count")
     
     
     # 3. count en-es mixture in each cluster
     clustersAndEsPercents = spanishPerCluster(clusterIDs, graphIDs) 
-    print "percentages ", len(clustersAndEsPercents)
+    #print "percentages ", len(clustersAndEsPercents)
     listToCSV(labelsFile + ".es-percent", clustersAndEsPercents, "cluster_ID,%_spanish_predicates")
     
     # 4. plot histograms
     plotTitle = labelsFile.split("/")[-1].split(".")[0]
     saveHistogram([tupl[1] for tupl in clustersAndCounts], 100, "# graphs in cluster", "# of clusters", plotTitle, labelsFile+".graphs-per-cluster.png")
     saveHistogram([tupl[1] for tupl in clustersAndEsPercents], 100, "% of spanish graphs in cluster", "# of clusters", plotTitle, labelsFile+".es-percent.png")
-"""    
+    
     
 
