@@ -21,7 +21,7 @@ def GET_CONF_DICT():
     VALUES.update({"25k-long.props":
                    "/home/pilatus/WORK/pred-clust/data/props-longarticles-25k/"})
     VALUES.update({"25k-short.props":
-                   "DONT KNOW YET"})
+                   "/home/pilatus/WORK/pred-clust/data/props-shorts-25k/"})
     
     VALUES.update({"sparql.endpoint":
                    "http://aifb-ls3-merope.aifb.kit.edu:8890/sparql"})

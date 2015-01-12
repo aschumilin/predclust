@@ -174,7 +174,7 @@ if __name__ == '__main__':
         print "ERROR in eval_on_qald.main: bad language argument. Exiting..."
         exit
         
-    resultFileName = "/home/pilatus/WORK/pred-clust/data/clustering-longarticles-qald-25k/EVAL/eval_"  + lang + "_v2.csv" 
+    resultFileName = "/home/pilatus/WORK/pred-clust/data/clustering-shorts-qald-25k/EVAL/eval_"  + lang + "_v2.csv" 
     if os.path.exists(resultFileName):
         resultLog = open(resultFileName, "a")
     else:
@@ -187,8 +187,12 @@ if __name__ == '__main__':
     #===========================================================================
     conf = GET_CONF_DICT()
     qIDsDict            = conf.get("qald-graph.ids.dict")   # read list of all question IDs
-    propsHomedirPath    = conf.get("25k-long.props")        
-    entsHomedirPath     = conf.get("25k-long.ents")
+    #===========================================================================
+    # propsHomedirPath    = conf.get("25k-long.props")        
+    # entsHomedirPath     = conf.get("25k-long.ents")
+    #===========================================================================
+    propsHomedirPath    = conf.get("25k-short.props")        
+    entsHomedirPath     = conf.get("25k-short.ents")
     
     #===========================================================================
     # prepare some infrastructure

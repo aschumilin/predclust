@@ -1,7 +1,6 @@
 """
 Compute statistics given a csv-file of clustering labels + predicate details.
 """
-from boto.redshift.exceptions import ClusterAlreadyExists
 '''
 Created on Dec 8, 2014
 
